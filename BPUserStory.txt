@@ -13,6 +13,6 @@ as needed.
 
 As a buissness planner, I want to view a history for added, deleted, or modified business plan goals, actions, and tasks, so that I can audit who has made changes.
 
-As a buissness planner, I want
+As a buissness planner, I want to view which department that owns a tasks, so that I can ask for updates or query about the notes about the task.
 
-As a buissness planner, I want
+As a buissness planner, I want to 
