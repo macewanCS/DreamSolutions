@@ -1,0 +1,16 @@
+As a buissness planner, I want to check the status of a goal, action, or task so that I can report progress to my owner.
+
+As a buissness planner, I want to quickly see an overview or all tasks at hand, so that I can see what is complete, on-time, or overdue.
+
+As a buissness planner, I want to create business plan actions, business plan tasks, and any team/departmental goals, so that I can allocate new work for the buissness
+plan.
+
+As a buissness planner, I want
+
+As a buissness planner, I want
+
+As a buissness planner, I want
+
+As a buissness planner, I want
+
+As a buissness planner, I want
