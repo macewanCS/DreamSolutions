@@ -37,7 +37,11 @@ Basic User
 
 General Public (READ-ONLY)
 ==========================
--
--
--
-
+- As the general public, I want to check the status of a goal, action, or task
+  so that I can view Edmonton Public Library's progress towards their 
+  business plan.
+- As the general public, I want to view which department owns which task so
+  that I know which department to contact in regards to a specific goal,
+  action or task.
+- As the general public, I want to be able to sort by lead, collaborator, 
+  due date, and goal type so that I can access specific goals easily.
