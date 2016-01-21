@@ -55,7 +55,7 @@ Basic User
   so that I can see historical progress that I and other colleagues have made
   towards a particular business goal.
 - As a basic user, I want to see which goals my department owns and what
-  their current statuses are  so that I have some idea regarding what still 
+  their current statuses are so that I have some idea regarding what still 
   needs to be done.
 
 General Public (READ-ONLY)
