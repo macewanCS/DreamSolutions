@@ -1,0 +1,7 @@
+As a Team Lead/ Department Head working for the Edmonton Public Library, 
+I want to be able to have my work organized so that I can access it quick 
+and on the fly. I would also like to be updated when an 
+employee/collaborator has made progress in a task I have assigned them.
+Being able to see the overall progress my Department has made on each of 
+their individual tasks is important for my planning proccess and helps me 
+create reports to present to my superiors.  
