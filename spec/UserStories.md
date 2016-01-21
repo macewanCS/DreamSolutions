@@ -41,9 +41,22 @@ Team/Department Leader
 
 Basic User
 ==========
--
--
--
+- As a basic user, I want to quickly view a summary of my assigned tasks when I
+  log in, so that I can quickly decide how to prioritize my goals.
+- As a basic user, I want to update the status of a goal I am working on so
+  that the status of a goal is kept up to date. 
+- As a basic user, I want to be able to generate a report 
+  (exported to HTML/CSV/Word) for a goal so that I have a summary of the goal.
+- As a basic user, I want to be able to change my name and password so that my
+  personal information is always up to date.
+- As a basic user, I want to be able to reset my password so that I will be
+  able to log in in the event that I forget my password.
+- As a basic user, I want to be able to view the history of a particular goal
+  so that I can see historical progress that I and other colleagues have made
+  towards a particular business goal.
+- As a basic user, I want to see which goals my department owns and what
+  their current statuses are so that I have some idea regarding what still 
+  needs to be done.
 
 General Public (READ-ONLY)
 ==========================
