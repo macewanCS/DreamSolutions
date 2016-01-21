@@ -5,3 +5,11 @@ employee/collaborator has made progress in a task I have assigned them.
 Being able to see the overall progress my Department has made on each of 
 their individual tasks is important for my planning proccess and helps me 
 create reports to present to my superiors.  
+
+I need to be able to create my own tasks that represent my Department/
+Teams goals as well as have the ability to pass down the tasks created by
+the BP lead.  Deadlines must be met and therefore, I must be able to 
+prioritize my own schedule as well as the schedule of others around those
+deadlines.  Business Plan goals come before my department/team goals as
+well.  
+
