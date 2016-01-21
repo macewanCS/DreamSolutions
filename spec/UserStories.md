@@ -25,9 +25,19 @@ Business Plan Leader
 
 Team/Department Leader
 ======================
--
--
--
+- As a Team Lead/Department Leader, I want to be able to have my work
+  organized so that I can access it quickly.
+- As a Team Lead/Department Leader, I want be updated when an
+  employee/collaborator has made progress on a task I have assigned them, so
+  that I am updated an the status of that task.
+- As a Team Lead/Department Leader, I want to be able to see the overall 
+  progress my department has made on each of their individual tasks for my
+  planning proccess and creation of reports to present to my superiors.
+- As a Team Lead/Department Leader, I want to be able to create my own tasks
+  that represent my Department/Teams goals so that the department can make
+  valuable changes that pertain to the business plan.
+- As a Team Lead/Department Leader, I want to have the ability to assign tasks
+  created by the BP lead so that I can delegate to ensure deadlines are met. 
 
 Basic User
 ==========
