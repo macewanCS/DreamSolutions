@@ -1,3 +1,6 @@
+Admin
+=====
+-
 
 Business Plan Leader
 ====================
@@ -58,13 +61,14 @@ Basic User
   their current statuses are so that I have some idea regarding what still 
   needs to be done.
 
-General Public (READ-ONLY)
-==========================
-- As the general public, I want to check the status of a goal, action, or task
-  so that I can view Edmonton Public Library's progress towards their 
-  business plan.
-- As the general public, I want to view which department owns which task so
-  that I know which department to contact in regards to a specific goal,
-  action or task.
-- As the general public, I want to be able to sort by lead, collaborator, 
-  due date, and goal type so that I can access specific goals easily.
+Read-only Access
+================
+- As a user with read-only access, I want to check the status of a goal, 
+  action, or task so that I can view Edmonton Public Library's progress 
+  towards their business plan.
+- As a user with read-only access, I want to view which department owns which 
+  task so that I know which department to contact in regards to a specific 
+  goal, action or task.
+- As a user with read-only access, I want to be able to sort by lead, 
+  collaborator, due date, and goal type so that I can access specific goals 
+  easily.
