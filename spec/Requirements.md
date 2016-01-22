@@ -9,14 +9,14 @@ access that is easily manageable.
 
 User Requirements
 =================
-- The administrator can add users, modify their information/permission levels,    and delete users. They can also add, modify or delete departments and teams.
+- The administrator can add users, modify their information/permission levels, and delete users. They can also add, modify or delete departments and teams.
 - The Business Plan Lead can create, modify, and delete business plan-related
   goals and objectives. They cannot change non-business plan department/team
   goals.
 - The Team Lead can create, modify, and delete  *actions* and *tasks* 
   for their own deparment as well as assign them to anyone within the 
-  department. They can also create, modify, and delete *non-business plan goals
-  * and *tasks*. They can also be assigned tasks.
+  department. They can also create, modify, and delete *non-business plan goals*
+  and *tasks*. They can also be assigned tasks.
 - A basic user can update the status of an *action* or *task* assigned to them
   as a lead or a collaborator.
 - The lead of a given *action* or *task* can appoint another user to
