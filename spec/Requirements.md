@@ -13,15 +13,15 @@ User Requirements
 - The Business Plan Lead can create, modify, and delete business plan-related
   goals and objectives. They cannot change non-business plan department/team
   goals.
-- The Team Lead can create, modify, and delete  *tasks* and *subtasks* 
+- The Team Lead can create, modify, and delete  *actions* and *tasks* 
   for their own deparment as well as assign them to anyone within the 
   department. They can also create, modify, and delete *non-business plan goals*
   and *tasks*. They can also be assigned tasks.
-- A basic user can update the status of an *task* or *subtask* assigned to them
+- A basic user can update the status of an *action* or *task* assigned to them
   as a lead or a collaborator.
-- The lead of a given *task* or *subtask* can appoint another user to
+- The lead of a given *action* or *task* can appoint another user to
   collaborate on that task, but collaborators can only be removed by the
-  Team Lead of the department that owns the *task*/*subtask* or the
+  Team Lead of the department that owns the *action*/*task* or the
   Business Plan Lead.
 - All users can view a table of all the goals and objectives as well as the
   changelog for each. 
@@ -30,7 +30,7 @@ User Requirements
 Functional Requirements
 =======================
 - Supports the following elements:
-  - Task
+  - Action
   - Budget
   - Due date
   - Lead
@@ -42,14 +42,14 @@ Functional Requirements
 - The business plan and tracked is organized in the following hierarchy:
   - *Business Plan Goals*
     - *Business Plan Objectives*
-      - *Team/Department Tasks*
-        - *Team/Department Subtasks*
+      - *Team/Department Actions*
+        - *Team/Department Tasks*
   - *Non-business plan team/department Goals*
     - *Team/Department Tasks*
 - An interface for users to create and update goals
 - A user management system (add, modify, delete users)
 - Ability to sort, search, and filter data
-- A dashboard view showing on time, completed and overdue *tasks*/*subtasks*
+- A dashboard view showing on time, completed and overdue actions
 
 Options
 - A changelog for each goal or objective
