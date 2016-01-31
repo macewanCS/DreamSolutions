@@ -1,0 +1,25 @@
+body {
+    background-color:		#cccac8;
+    font-family:        	Arial, Helvetica, sans-serif;
+    font-size:			small;
+}
+
+header {
+    background-color:		#FFFFFF;
+    padding:	       		10px;
+    text-align:			center;
+    border:			thin solid black;
+    border-bottom:		none;
+    height:			100px;
+}
+
+#login-area {
+     text-align:		center;	
+     height:			600px;
+     border:			thin solid black;
+}
+
+#logo {
+
+      float:			left;
+}
