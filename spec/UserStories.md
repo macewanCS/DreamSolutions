@@ -1,6 +1,12 @@
 Admin
 =====
--
+- As an admin, I want to be able to create, update and delete users so they
+  can access the business plan system.
+_ As an admin, I want to be able to assign access privileges based on their
+  position in the workplace heirarchy so that users can perform actions that
+  they are allowed to.
+- As an admin, I want to have the ability to reset passwords so that I can
+  assist users who have forgotten their password.
 
 Business Plan Leader
 ====================
@@ -35,7 +41,7 @@ Team/Department Leader
   that I am updated an the status of that task.
 - As a Team Lead/Department Leader, I want to be able to see the overall 
   progress my department has made on each of their individual tasks for my
-  planning proccess and creation of reports to present to my superiors.
+  planning process and creation of reports to present to my superiors.
 - As a Team Lead/Department Leader, I want to be able to create my own tasks
   that represent my Department/Teams goals so that the department can make
   valuable changes that pertain to the business plan.
