@@ -1,23 +1,56 @@
 body {
-    background-color:		#FFFFFF;
+    background-color:		#cccac8;
     font-family:        	Arial, Helvetica, sans-serif;
     font-size:			small;
     margin:			0px;
 }
 
-header {
-    background-color:		#FFFFFF;
-    text-align:			center;
-    height:			100px;
-}
-
 #login-area {
-     text-align:		center;	
-     height:			600px;
-     background-color:		#cccac8;
+     margin:			120px 475px 0px 475px;
+     background-color:		#FFFFFF;
+     padding:			5px;
+     height:			350px;
+     width:			410px;
 }
 
-#logo {
+#login-header {
+     height:			122px;
+     color:			#033076;
+     margin:			10px 10px 0px 10px;
+}
 
-      float:			left;
+img#epl-logo {
+     height:			122px;
+     float:			left;
+}
+
+#login-title {
+    text-align:			center;
+    padding-top:		20px;
+}
+
+#login-username, #login-password {
+    text-align:			left;
+    font-weight:		bold;		
+}
+
+#login-forgetpassword {
+    float:			right;
+}
+
+
+input {
+    width:			400px;
+}    
+
+#login-password-text {
+    margin:			10px 0px 10px 0px;
+}		     
+
+#login-submit-button {
+    color:			#FFFFFF;
+    background-color:		#033076;
+    marin:			10px 0px 10px 0px;
+    width:			410px;
+    height:			55px;
 }
