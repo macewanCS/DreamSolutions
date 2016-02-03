@@ -31,6 +31,8 @@ Business Plan Leader
 - As a business planner, I want to determine what goal, action, or task is a 
   business plan, so that I can determine the priorities of said goal, action,
   or task.
+- As a business planner, I want to be able to create a business plan so that I	<————
+  can allow others to start working towards it (e.g. assigning tasks)
 
 Team/Department Leader
 ======================
@@ -45,17 +47,17 @@ Team/Department Leader
 - As a Team Lead/Department Leader, I want to be able to create my own tasks
   that represent my Department/Teams goals so that the department can make
   valuable changes that pertain to the business plan.
-- As a Team Lead/Department Leader, I want to have the ability to assign tasks
+- As a Team Lead/Department Leader, I want to have the ability to assign tasks	<————
   created by the BP lead so that I can delegate to ensure deadlines are met. 
 
 Basic User
 ==========
-- As a basic user, I want to quickly view a summary of my assigned tasks when I
+- As a basic user, I want to quickly view a summary of my assigned tasks when I <————
   log in, so that I can quickly decide how to prioritize my goals.
 - As a basic user, I want to update the status of a goal I am working on so
   that the status of a goal is kept up to date. 
-- As a basic user, I want to be able to generate a report 
-  (exported to HTML/CSV/Word) for a goal so that I have a summary of the goal.
+- As a basic user, I want to be able to generate a report 			
+  (exported to HTML/CSV/Word) for a goal so that I have a summary of the goal. 	
 - As a basic user, I want to be able to change my name and password so that my
   personal information is always up to date.
 - As a basic user, I want to be able to reset my password so that I will be
@@ -63,18 +65,18 @@ Basic User
 - As a basic user, I want to be able to view the history of a particular goal
   so that I can see historical progress that I and other colleagues have made
   towards a particular business goal.
-- As a basic user, I want to see which goals my department owns and what
+- As a basic user, I want to see which goals my department owns and what	
   their current statuses are so that I have some idea regarding what still 
   needs to be done.
 
 Read-only Access
 ================
-- As a user with read-only access, I want to check the status of a goal, 
+- As a user with read-only access, I want to check the status of a goal, 	<————
   action, or task so that I can view Edmonton Public Library's progress 
   towards their business plan.
 - As a user with read-only access, I want to view which department owns which 
   task so that I know which department to contact in regards to a specific 
   goal, action or task.
-- As a user with read-only access, I want to be able to sort by lead, 
+- As a user with read-only access, I want to be able to sort by lead, 		<————
   collaborator, due date, and goal type so that I can access specific goals 
   easily.
