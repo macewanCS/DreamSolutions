@@ -8,7 +8,7 @@ body {
 #login-area {
      margin:			120px 475px 0px 475px;
      background-color:		#FFFFFF;
-     padding:			5px;
+     padding:			20px;
      padding-top:		0px;
      padding-bottom:		0px;
      height:			350px;
@@ -34,7 +34,7 @@ img#epl-logo {
 
 #login-username, #login-password {
     text-align:			left;
-    font-weight:		bold;		
+    font-weight:		bold;
 }
 
 #login-forgetpassword {
