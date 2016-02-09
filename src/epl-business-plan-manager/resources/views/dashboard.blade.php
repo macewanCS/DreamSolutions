@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Business Plan Manager</title>
-    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
     <script src="jquery-1.12.0.min.js">
         jQuery(document).ready(function() {
             jQuery('.tabs .tab-links a').on('click', function(e)  {
@@ -23,7 +23,7 @@
 <body>
     <div id="header">
         <div id="head" style="display: inline-block;">
-            <img src="images/epl.jpg" alt="EPL logo" style="float: left" width="150" height="132">
+            <img src="/images/epl.jpg" alt="EPL logo" style="float: left" width="150" height="132">
             <h1 style="float: right; margin-left: 330px; margin-top: 50px;">Business Plan</h1>
 
         </div>
@@ -37,12 +37,12 @@
                 <li><a href="#manage">Manage</a></li>
                 <ul style="float:right;list-style-type:none;">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#login">Logout</a></li>
+                    <li><a href="/login">Logout</a></li>
                 </ul>
             </ul>
         </div>
         <div style="float: left; /*margin-right: 150px;*/">
-            <img src="images/Empty_Profile_08.png-square" alt="profile picture" width="300"  style="padding-top: 10px">
+            <img src="/images/Empty_Profile_08.png-square" alt="profile picture" width="300"  style="padding-top: 10px">
             <h2>Vicky Varga</h2>
             <h3>IT Department</h3>
         </div>
