@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
 
 Route::get('login', function () {
@@ -20,7 +20,7 @@ Route::get('login', function () {
 });
 
 Route::get('dashboard', function () {
-    return view('dashboard');
+    return view('dashboard2');
 });
 
 /*
