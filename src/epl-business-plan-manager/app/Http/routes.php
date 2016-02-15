@@ -22,7 +22,6 @@ Route::get('login', function () {
 Route::get('dashboard', function () {
     return view('main_header');
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
