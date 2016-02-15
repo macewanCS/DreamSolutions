@@ -20,7 +20,7 @@ Route::get('login', function () {
 });
 
 Route::get('dashboard', function () {
-    return view('dashboard2');
+    return view('main_header');
 });
 
 /*
