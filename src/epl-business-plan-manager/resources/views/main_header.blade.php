@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Business Plan Manager</title>
-<<<<<<< f365e649dfc3d26f494ab53131bbc6c5f1c78a70
     <link rel="stylesheet" type="text/css" href="/css/header.css">
-=======
-    <link rel="stylesheet" type="text/css" href="/css/header1.css">
->>>>>>> Remove old dashboard prototype, Add template header
 </head>
 <body>
     <div id="header-area">
