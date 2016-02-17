@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Business Plan Manager</title>
-    <link rel="stylesheet" type="text/css" href="/css/header.css">
-</head>
+@extends('app')
+
+@section('header')
+
 <body>
     <div id="header-area">
         <header id="main-header">
@@ -22,8 +19,6 @@
         </div>
     </div>
 
-</body>
-</html>
-
+@stop
 
         
