@@ -2,16 +2,16 @@
 <html>
   
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"></meta>
     <title>Business Plan Manager</title>
-    <link rel="stylesheet" type="text/css" href="/css/bpm.css">
+    <link rel="stylesheet" type="text/css" href="/css/bpm.css"></link>
   </head>
   
   <body>
     <div id="login-area">
       
       <header id="login-header">
-	<img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo">
+	<img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo"></img>
 	<h1 id="login-title">Business Plan<br>Manager</h1>
       </header>
       
@@ -21,7 +21,7 @@
 	</p>
 
 	<form>
-	  <input type="text" name="username">
+	  <input type="text" name="username"></input>
 	</form>
 
       </div>
@@ -33,12 +33,12 @@
 	</p>
 
 	<form>
-	  <input id="login-password-text" type="text" name="password">
+	  <input id="login-password-text" type="text" name="password"></input>
 	</form>
       </div>
 
       <form>
-	<input id="login-submit-button" type="submit" name="Login">
+	<input id="login-submit-button" type="submit" name="Login" value="Login"></input>
       </form>
       
     </div>
