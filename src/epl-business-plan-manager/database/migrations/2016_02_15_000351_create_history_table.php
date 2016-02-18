@@ -16,7 +16,8 @@ class CreateHistoryTable extends Migration
             $table->increments('hid');
             $table->char('change_type');
             $table->string('description');
-            $table->string('uid');
+            $table->foreign('hid')->references('uid')->from('users');
+            $table->timestamp('date');
             $table->timestamps();
         });
     }

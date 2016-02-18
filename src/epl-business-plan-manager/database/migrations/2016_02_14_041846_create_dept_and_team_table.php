@@ -14,8 +14,8 @@ class CreateDeptAndTeamTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('did');
-	       $table->string('name');
-	       $table->boolean('isTeam');
+	        $table->string('name');
+	        $table->boolean('isTeam');
             $table->timestamps();
         });
     }

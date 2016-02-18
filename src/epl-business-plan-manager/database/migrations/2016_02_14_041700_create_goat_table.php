@@ -13,14 +13,15 @@ class CreateGoatTable extends Migration
     public function up()
     {
         Schema::create('goat', function (Blueprint $table) {
-            $table->increments('id');
-	       $table->char('type');
-	       $table->integer('parentId');
-	       $table->string('description');
-	       $table->smallInteger('priority');
-	       $table->date('due');
-	       $table->double('budget', 10, 2);
-	       $table->timestamps();
+            $table->increments('goat_id');
+	        $table->char('type');
+	        $table->integer('parentId');
+	        $table->string('description');
+	        $table->smallInteger('priority');
+	        $table->timestamp('dueDate');
+	        $table->double('budget', 10, 2);
+	        $table->timestamps();
+            $table->foreign('goat_id')->references('bid')->on('business_plan');
         });
     }
 
