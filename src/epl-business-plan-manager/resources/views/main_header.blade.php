@@ -8,6 +8,7 @@
             <img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo">
             <h3>Business Plan Manager</h3>
         </header>   
+        <hr>
         <div id="nav">
             <ul>
                 <li><a href="#dashboard"  class="active">Dashboard</a></li>
