@@ -13,7 +13,9 @@ class CreateBusinessPlanTable extends Migration
     public function up()
     {
         Schema::create('business_plan', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('bid');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }
