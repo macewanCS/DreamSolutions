@@ -14,8 +14,10 @@ class CreatePermissionsTable extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('pid');
-            $table->foreign('pid')->references('uid')->on('users');
-            $table->foreign('pid')->references('did')->on('departments');
+            $table->integer('userid')->unsigned();
+            $table->integer('deptid')->unsigned();
+            $table->foreign('userid')->references('uid')->on('users');
+            $table->foreign('deptid')->references('did')->on('departments');
             $table->char('permission_level');
         });
     }
