@@ -4,5 +4,5 @@ Group Members
 -------------
 - Alan Yong
 - Cody Moorhouse
-- Elliott Sorbek
+- Elliott Sobek
 - John Mulvany-Robbins
