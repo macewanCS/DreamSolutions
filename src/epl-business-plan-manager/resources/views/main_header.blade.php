@@ -2,6 +2,7 @@
 
 @section('header')
 
+
 <body>
     <div id="header-area">
         <header id="main-header">
@@ -19,6 +20,6 @@
         </div>
     </div>
 
-@stop
 
+@stop
         
