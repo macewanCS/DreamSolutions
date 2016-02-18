@@ -1,0 +1,32 @@
+#profile-left{
+	float: left;
+	margin-left: 10%;
+}
+
+#profile-info{
+	text-align: center;
+	background-color:		#FFFFFF;
+ 	height:			300px;
+ 	width: 100%;
+ 	
+}
+
+#profile-stats{
+
+	line-height: 10px;
+	text-align: center;
+	background-color:		#FFFFFF;
+ 	height:			200px;
+ 	width: 100%;
+}
+/*
+#profile-right {
+	
+	float: right;
+	margin-right: 10%;
+	background-color:		#FFFFFF;
+	height: 524px;
+	width: 62%;
+
+
+}*/
