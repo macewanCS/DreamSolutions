@@ -17,8 +17,7 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('dashboard', function () {
-    return view('main_header');
+Route::get('dashboard', 'DashboardController@dashboard');
 
 /*
 |--------------------------------------------------------------------------
