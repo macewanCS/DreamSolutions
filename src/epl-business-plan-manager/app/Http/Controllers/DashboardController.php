@@ -12,6 +12,6 @@ class DashboardController extends Controller
 {
     
     public function dashboard(){
-    	return view('main_header');
+    	return view('dashboard');
     }
 }

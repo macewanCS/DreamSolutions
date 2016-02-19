@@ -12,7 +12,7 @@ class CreateBusinessPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_plan', function (Blueprint $table) {
+        Schema::create('business_plans', function (Blueprint $table) {
             $table->increments('bid');
             $table->date('start');
             $table->date('end');
@@ -27,6 +27,6 @@ class CreateBusinessPlanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('business_plan');
+        Schema::drop('business_plans');
     }
 }
