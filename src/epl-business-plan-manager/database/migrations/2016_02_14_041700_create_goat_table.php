@@ -12,7 +12,7 @@ class CreateGoatTable extends Migration
      */
     public function up()
     {
-        Schema::create('goat', function (Blueprint $table) {
+        Schema::create('goats', function (Blueprint $table) {
             $table->increments('goat_id');
 	        $table->char('type');
 	        $table->integer('parentId');
@@ -21,7 +21,7 @@ class CreateGoatTable extends Migration
 	        $table->timestamp('dueDate');
 	        $table->double('budget', 10, 2);
 	        $table->timestamps();
-            $table->foreign('goat_id')->references('bid')->on('business_plan');
+            $table->foreign('goat_id')->references('bid')->on('business_plans');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateGoatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goat');
+        Schema::drop('goats');
     }
 }
