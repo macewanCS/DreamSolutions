@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -23,4 +23,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function leadOn()
+    {
+        return $this->belongsToMany('App\Goat', 'goat_lead')->withTimestamps();
+    }
+
+    public function collaboratorOn()
+    {
+        return $this->belongsToMany('App\Goat', 'collaborator_goat')->withTimestamps();
+    }
+
+    // To access the permission_level as it is... something like
+    //    $user->departments()->where('name', 'IT')->first()->pivot->permission_level
+    // There's gotta be an easier way than this!
+    public function departments()
+    {
+        return $this->belongsToMany('App\Department')->withPivot('permission_level')->withTimestamps();
+    }
 }
