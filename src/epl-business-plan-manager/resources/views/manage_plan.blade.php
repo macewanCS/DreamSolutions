@@ -4,7 +4,7 @@
     <meta charset="UTF-8"></meta>
     <title>Business Plan Manager</title>
     <link rel="stylesheet" type="text/css" href="/css/header.css"></link>
-    <link rel="stylesheet" type="text/css" href="/css/managePlan.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
 </head>
 <body>
     <div id="header-area">
@@ -24,6 +24,12 @@
             	<input type="text" name="search" placeholder="Search" style="float: right;">
             </div>
         </div>
+    </div>
+
+    <div id="manage-plan-area">
+    	<div>
+    		
+    	</div>
     </div>
 
 </body>
