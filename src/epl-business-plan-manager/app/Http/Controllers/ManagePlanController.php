@@ -20,4 +20,20 @@ class ManagePlanController extends Controller
     public function delete() {
     	
     }
+
+    public function goal() {
+    	
+    }
+
+    public function objective() {
+    	
+    }
+
+    public function action() {
+    	
+    }
+
+    public function task() {
+    	
+    }
 }
