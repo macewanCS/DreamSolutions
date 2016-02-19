@@ -1,6 +1,6 @@
 #profile-left{
 	float: left;
-	margin-left: 10%;
+	margin-left: 100px;
 }
 
 #profile-info{
@@ -19,14 +19,13 @@
  	height:			200px;
  	width: 100%;
 }
-/*
+
 #profile-right {
 	
 	float: right;
-	margin-right: 10%;
+	margin-right: 87px;
 	background-color:		#FFFFFF;
 	height: 524px;
-	width: 62%;
+	width: 875px;
 
-
-}*/
+}
