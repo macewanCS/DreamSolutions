@@ -23,6 +23,8 @@ Route::post('/', 'DashboardController@login');
 Route::get('/dashboard', 'DashboardController@dashboard');
 Route::get('/{id}', 'DashboardController@dashboard');
 
+Route::get('managePlan', 'ManagePlanController@home');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
