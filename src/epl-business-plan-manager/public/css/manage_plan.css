@@ -6,7 +6,7 @@ body {
 }
 
 #manage-plan-area {
-	margin:				20px 0px 60px 150px;
+	margin:				20px 0px 60px 160px;
     background-color:	#FFFFFF;
     border-radius:      20px;
     padding:			20px;
@@ -16,10 +16,68 @@ body {
     width:				1000px;
 }
 
-#duc-bar {
-
+/*----- DUC Tabs -----*/
+.duc-tabs {
+    width: -moz-fit-content;
+    /*display:inline-block;*/
+    margin-left: 300px;
 }
 
-#goat-bar {
+/*----- Tab Links -----*/
+.duc-tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.duc-tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+}
+
+.duc-tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:0px 0px 0px 0px; /*Cause of graphical spec */
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+}
+
+.duc-tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+    background:#fff;
+    color:#4c4c4c;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    padding:5px;
+    border-radius:3px;
+    box-shadow: -1px 1px 0px rgba(0,0,0,0.75);
+    background:#fff;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
+
+.tab-content div {
+    background: #fff;
+}
+
+/*Goat tabs*/
+.goat-tabs {
 
 }
