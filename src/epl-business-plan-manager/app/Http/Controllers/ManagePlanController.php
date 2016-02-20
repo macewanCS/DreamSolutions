@@ -9,31 +9,20 @@ use App\Http\Controllers\Controller;
 
 class ManagePlanController extends Controller
 {
-    public function create() {
+    public function postCreate() {
 
     }
 
-    public function update() {
+    public function patchUpdate() {
 
     }
 
     public function delete() {
-    	
+
     }
 
-    public function goal() {
-    	
+    public function home() {
+        return view('manage_plan');
     }
 
-    public function objective() {
-    	
-    }
-
-    public function action() {
-    	
-    }
-
-    public function task() {
-    	
-    }
 }
