@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', 'DashboardController@dashboard');
 
-Route::get('login', function () {
+/* Login controllers */
+Route::get('/', function () {
     return view('login');
 });
+Route::post('/', 'DashboardController@login');
 
-Route::get('dashboard', 'DashboardController@dashboard');
+
+/* Dashboard controllers*/
+Route::get('/dashboard', 'DashboardController@dashboard');
+Route::get('/{id}', 'DashboardController@dashboard');
 
 /*
 |--------------------------------------------------------------------------
