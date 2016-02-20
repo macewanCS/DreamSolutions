@@ -53,7 +53,7 @@ input {
 #login-submit-button {
     color:			#FFFFFF;
     background-color:		#033076;
-    marin:			10px 0px 10px 0px;
+    margin:			0px 0px 10px 0px;
     width:			410px;
     height:			55px;
 }
