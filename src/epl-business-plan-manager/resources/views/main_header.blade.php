@@ -14,15 +14,17 @@ body {
      padding:           0px;
      padding-top:       0px;
      padding-bottom:        0px;
-     height:            169px;
+     height:            150px;
      width:         1100px;
 }
 
 #main-header{
+    float: left;
      height:            122px;
      color:         #033076;
      margin:            10px 10px 0px 10px;
 }
+
 
 #epl-logo{
     float: left;
@@ -30,14 +32,19 @@ body {
 }
 
 header h3{
+    position: absolute;
     text-align:         center;
-    font-size:          28px;
-    padding-top:        50px;
+    font-size:          20px;
+    padding-top:        60px;
     padding-right: 100px;
     text-shadow: 1px 1px #000;
 
 }
 
+#right-pos{
+    padding-top: 121px;
+    margin-left: 20px;
+}
 
 #nav ul {
     float: left;
@@ -81,18 +88,20 @@ input{
     <div id="header-area">
         <header id="main-header">
             <img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo">
-            <h3>Business Plan Manager</h3>
+            <h3>Business Plan <br>Manager</h3>
         </header>   
-        <hr>
-        <div id="nav">
-            <ul>
-                <li><a href="#dashboard"  class="active">Dashboard</a></li>
-                <li><a href="#view_plan">View Plan</a></li>
-                <li><a href="#manage_plan">Manage Plan</a></li>
-                
-            </ul>
-            <input type="text" name="search" placeholder="Search" style="float: right;">
+        <div id="right-pos">
+            <div id="nav">
+                <ul>
+                    <li><a href="#dashboard"  class="active">Dashboard</a></li>
+                    <li><a href="#view_plan">View Plan</a></li>
+                    <li><a href="#manage_plan">Manage Plan</a></li>
+                    
+                </ul>
+                <input type="text" name="search" placeholder="Search" style="float: right;">
+            </div>
         </div>
     </div>
+
 
 

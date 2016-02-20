@@ -4,8 +4,8 @@
 
 <div id="profile-left">
 		<div id="profile-info">
-			<img src="images/Empty_Profile_08.png-square" alt="profile picture" height=200 width=200>
-			<h3> Vicky Varg </h3>
+			<img src="images/empty-profile.jpg" alt="profile picture" height=200 width=200>
+			<h3> {{ $fname }}  {{ $lname }} </h3>
 			<h4> IT Department </h4>
 			
 		</div>
