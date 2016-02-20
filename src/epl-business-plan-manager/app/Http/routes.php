@@ -19,6 +19,8 @@ Route::get('login', function () {
 
 Route::get('dashboard', 'DashboardController@dashboard');
 
+Route::get('managePlan', 'ManagePlanController@home');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
