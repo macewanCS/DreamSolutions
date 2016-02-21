@@ -1,3 +1,8 @@
+.button {
+    margin-top: 5px;
+    float: right;
+}
+
 body {
     background-color:	#cccac8;
     font-family:        Arial, Helvetica, sans-serif;
@@ -16,18 +21,33 @@ body {
     width:				1000px;
 }
 
+/*----- bpYearPicker -----*/
+#bpYearPicker {
+    float: left;
+}
+
+/*----- createBusinessPlan -----*/
+#createBusinessPlan {
+    float: right;
+}
+
 /*----- DUC Tabs -----*/
 .duc-tabs {
     width: -moz-fit-content;
-    /*display:inline-block;*/
     margin-left: 300px;
 }
 
 /*----- Tab Links -----*/
 .duc-tab-links:after {
+    margin:0px 0px;
     display:block;
     clear:both;
     content:'';
+}
+
+.duc-tab-links {
+    margin: 0px 0px;
+    /*border: 1px solid;*/
 }
 
 .duc-tab-links li {
@@ -39,7 +59,7 @@ body {
 .duc-tab-links a {
     padding:9px 15px;
     display:inline-block;
-    border-radius:0px 0px 0px 0px; /*Cause of graphical spec */
+    border-radius:0px; /*Cause of graphical spec */
     background:#7FB5DA;
     font-size:16px;
     font-weight:600;
@@ -57,11 +77,48 @@ li.active a, li.active a:hover {
     color:#4c4c4c;
 }
 
+/*----- Goat tabs -----*/
+.goat-tabs-links: after {
+    margin:0px 0px;
+    padding: 0px 0px;
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.goat-tab-links {
+    padding: 0px 0px;
+    margin: 5px 0px;
+}
+
+.goat-tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+}
+
+.goat-tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:0px; /*Cause of graphical spec */
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+}
+
+.goat-tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
 /*----- Content of Tabs -----*/
 .tab-content {
+    margin:0px 0px 0px 0px;
+    display:inline-block;
     padding:5px;
-    border-radius:3px;
-    box-shadow: -1px 1px 0px rgba(0,0,0,0.75);
+    /*border:1px solid;*/
     background:#fff;
 }
 
@@ -77,7 +134,77 @@ li.active a, li.active a:hover {
     background: #fff;
 }
 
-/*Goat tabs*/
-.goat-tabs {
+/*----- Goal -----*/
+#goal {
+    margin-top: 20px;
+}
 
+#goal input {
+    margin-top: 5px;
+    height: 150px;
+    width: 400px;
+}
+
+/*----- Objective -----*/
+#objective {
+    margin-top: 20px;
+}
+
+#objective-left {
+    margin-right: 100px;
+    float: left;
+}
+
+#objective-left select {
+    margin-top: 5px;
+}
+
+#objective-right {
+    margin-left: 100px;
+    float: right;
+}
+
+#objective-right input {
+    margin-top: 5px;
+    height: 150px;
+}
+
+/*----- Action -----*/
+#action {
+    margin-top: 20px;
+}
+
+#action-left {
+    margin-right: 100px;
+    float: left;
+}
+
+#action-right {
+    margin-left: 100px;
+    float: right;
+}
+
+#action-right input {
+    margin-top: 5px;
+    height: 150px;
+}
+
+/*----- Task -----*/
+#task {
+    margin-top: 20px;
+}
+
+#task-left {
+    margin-right: 100px;
+    float: left;
+}
+
+#task-right {
+    margin-left: 100px;
+    float: right;
+}
+
+#task-right input {
+    margin-top: 5px;
+    height: 150px;
 }
