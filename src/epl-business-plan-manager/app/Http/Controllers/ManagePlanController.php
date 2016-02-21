@@ -9,11 +9,11 @@ use App\Http\Controllers\Controller;
 
 class ManagePlanController extends Controller
 {
-    public function postCreate() {
+    public function store() {
 
     }
 
-    public function patchUpdate() {
+    public function edit() {
 
     }
 
