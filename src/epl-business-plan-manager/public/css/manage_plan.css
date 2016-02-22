@@ -1,0 +1,213 @@
+.button {
+    margin-top: 5px;
+    float: right;
+}
+
+#manage-plan-area {
+	margin:				20px 0px 60px 160px;
+    background-color:	#FFFFFF;
+    border-radius:      20px;
+    padding:			20px;
+    padding-top:		20px;
+    padding-bottom:		20px;
+    height:				600px;
+    width:				1000px;
+}
+
+/*----- bpYearPicker -----*/
+#bpYearPicker {
+    float: left;
+}
+
+/*----- createBusinessPlan -----*/
+#createBusinessPlan {
+    float: right;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    margin:auto;
+    display:inline-block;
+    background:#fff;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
+
+.tab-content div {
+    background: #fff;
+}
+
+/*----- DUC Tabs -----*/
+.duc-tabs {
+    width: auto;
+    margin-left: 0px;
+}
+
+/*----- DUC Tab Links -----*/
+.duc-tab-links:after {
+    margin:0px 0px;
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.duc-tab-links {
+    margin-top: 35px;
+    padding-left: 360px;
+}
+
+.duc-tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+}
+
+.duc-tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:0px; /*Cause of graphical spec */
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+}
+
+.duc-tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+    background:#fff;
+    color:#4c4c4c;
+}
+
+/*----- Goat Tabs -----*/
+.goat-tabs {
+    width: auto;
+    margin-left: 0px;
+}
+
+/*----- Goat Tabs Links -----*/
+.goat-tabs-links:after {
+    margin:0px 0px;
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.goat-tabs-links {
+    padding-left: 325px;
+    margin: 0px 0px;
+}
+
+.goat-tabs-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+}
+
+.goat-tabs-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:0px; /*Cause of graphical spec */
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+}
+
+.goat-tabs-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
+/*----- Goal -----*/
+#goal {
+    margin-top: 20px;
+    padding-left: 310px;
+}
+
+#goal input {
+    margin-top: 5px;
+    height: 150px;
+    width: 400px;
+}
+
+/*----- Objective -----*/
+#objective {
+    margin-top: 20px;
+    padding-left: 140px;
+}
+
+#objective-left {
+    margin-right: 100px;
+    float: left;
+}
+
+#objective-left select {
+    margin-top: 5px;
+}
+
+#objective-right {
+    margin-left: 100px;
+    float: right;
+}
+
+#objective-right input {
+    margin-top: 5px;
+    height: 150px;
+    width: 400px;
+}
+
+/*----- Action -----*/
+#action {
+    margin-top: 20px;
+    padding-left: 140px;
+}
+
+#action-left {
+    margin-right: 60px;
+    float: left;
+}
+
+#action-right {
+    margin-left: 60px;
+    float: right;
+}
+
+#action-right input {
+    margin-top: 5px;
+    height: 150px;
+    width: 400px;
+}
+
+/*----- Task -----*/
+#task {
+    margin-top: 20px;
+    padding-left: 140px;
+}
+
+#task-left {
+    margin-right: 60px;
+    float: left;
+}
+
+#task-right {
+    margin-left: 60px;
+    float: right;
+}
+
+#task-right input {
+    margin-top: 5px;
+    height: 150px;
+    width: 400px;
+}

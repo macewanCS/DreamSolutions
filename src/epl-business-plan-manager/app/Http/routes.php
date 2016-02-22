@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 Route::post('/', 'DashboardController@login');
 
+// Manage Plan Controller
+Route::get('/managePlan', 'ManagePlanController@home');
 
 /* Dashboard controllers*/
 Route::get('/dashboard', 'DashboardController@dashboard');
