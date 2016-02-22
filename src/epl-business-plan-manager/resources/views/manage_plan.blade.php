@@ -57,7 +57,7 @@
 
                     <!-- Top level container for goal, objective, action, task -->
                     <div class="goat-tabs">
-                        <ul class="goat-tab-links nav-tabs">
+                        <ul class="goat-tabs-links nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#goal">Goal</a></li>
                             <li><a data-toggle="tab" href="#objective">Objective</a></li>
                             <li><a data-toggle="tab" href="#action">Action</a></li>
@@ -71,7 +71,6 @@
                                 </label>
                                 <form>
                                     <input type="text" name="goalDiscription"><br>
-                                    <!-- <input type="submit" value="Create"> -->
                                     <button class="button">Create</button>
                                 </form>
                             </div>
