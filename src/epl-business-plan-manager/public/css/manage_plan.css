@@ -3,13 +3,6 @@
     float: right;
 }
 
-/*.body {
-    background-color:	#cccac8;
-    font-family:        Arial, Helvetica, sans-serif;
-    font-size:			medium;
-    margin:			    0px;
-}*/
-
 #manage-plan-area {
 	margin:				20px 0px 60px 160px;
     background-color:	#FFFFFF;
@@ -31,6 +24,25 @@
     float: right;
 }
 
+/*----- Content of Tabs -----*/
+.tab-content {
+    margin:auto;
+    display:inline-block;
+    background:#fff;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}
+
+.tab-content div {
+    background: #fff;
+}
+
 /*----- DUC Tabs -----*/
 .duc-tabs {
     width: auto;
@@ -48,8 +60,6 @@
 .duc-tab-links {
     margin-top: 35px;
     padding-left: 360px;
-    /*margin: 35px 0px 0px 325px;*/
-    /*border: 1px solid;*/
 }
 
 .duc-tab-links li {
@@ -86,26 +96,25 @@ li.active a, li.active a:hover {
 }
 
 /*----- Goat Tabs Links -----*/
-.goat-tabs-links: after {
+.goat-tabs-links:after {
     margin:0px 0px;
-    padding: 0px 0px;
     display:block;
     clear:both;
     content:'';
 }
 
-.goat-tab-links {
-    padding: 0px 0px;
-    margin: 5px 0px;
+.goat-tabs-links {
+    padding-left: 325px;
+    margin: 0px 0px;
 }
 
-.goat-tab-links li {
+.goat-tabs-links li {
     margin:0px 5px;
     float:left;
     list-style:none;
 }
 
-.goat-tab-links a {
+.goat-tabs-links a {
     padding:9px 15px;
     display:inline-block;
     border-radius:0px; /*Cause of graphical spec */
@@ -116,35 +125,15 @@ li.active a, li.active a:hover {
     transition:all linear 0.15s;
 }
 
-.goat-tab-links a:hover {
+.goat-tabs-links a:hover {
     background:#a7cce5;
     text-decoration:none;
-}
-
-/*----- Content of Tabs -----*/
-.tab-content {
-    margin:auto;
-    display:inline-block;
-/*     padding:0px; */
-    /*border:1px solid;*/
-    background:#fff;
-}
-
-.tab {
-    display:none;
-}
-
-.tab.active {
-    display:block;
-}
-
-.tab-content div {
-    background: #fff;
 }
 
 /*----- Goal -----*/
 #goal {
     margin-top: 20px;
+    padding-left: 310px;
 }
 
 #goal input {
@@ -156,6 +145,7 @@ li.active a, li.active a:hover {
 /*----- Objective -----*/
 #objective {
     margin-top: 20px;
+    padding-left: 140px;
 }
 
 #objective-left {
@@ -175,44 +165,49 @@ li.active a, li.active a:hover {
 #objective-right input {
     margin-top: 5px;
     height: 150px;
+    width: 400px;
 }
 
 /*----- Action -----*/
 #action {
     margin-top: 20px;
+    padding-left: 140px;
 }
 
 #action-left {
-    margin-right: 100px;
+    margin-right: 60px;
     float: left;
 }
 
 #action-right {
-    margin-left: 100px;
+    margin-left: 60px;
     float: right;
 }
 
 #action-right input {
     margin-top: 5px;
     height: 150px;
+    width: 400px;
 }
 
 /*----- Task -----*/
 #task {
     margin-top: 20px;
+    padding-left: 140px;
 }
 
 #task-left {
-    margin-right: 100px;
+    margin-right: 60px;
     float: left;
 }
 
 #task-right {
-    margin-left: 100px;
+    margin-left: 60px;
     float: right;
 }
 
 #task-right input {
     margin-top: 5px;
     height: 150px;
+    width: 400px;
 }
