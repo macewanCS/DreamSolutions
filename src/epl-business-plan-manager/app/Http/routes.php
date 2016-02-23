@@ -22,7 +22,7 @@ Route::post('/', 'DashboardController@login');
 Route::get('/managePlan', 'ManagePlanController@home');
 
 /* Dashboard controllers*/
-Route::get('/dashboard', 'DashboardController@dashboard');
+Route::get('/dashboard', function() { return view("dashboard");});
 Route::get('/{id}', 'DashboardController@dashboard');
 
 /*

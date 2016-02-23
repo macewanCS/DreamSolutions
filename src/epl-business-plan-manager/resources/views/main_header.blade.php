@@ -16,13 +16,14 @@ body {
      padding-bottom:        0px;
      height:            150px;
      width:         1100px;
+     border-style: groove;
 }
 
 #main-header{
     float: left;
      height:            122px;
      color:         #033076;
-     margin:            10px 10px 0px 10px;
+     margin:            10px 10px 5px 10px;
 }
 
 
@@ -42,11 +43,12 @@ header h3{
 }
 
 #right-pos{
-    padding-top: 121px;
+    padding-top: 116px;
     margin-left: 20px;
 }
 
 #nav ul {
+    font-size: 20px;
     float: left;
     list-style-type: none;
     margin: 0;
@@ -56,10 +58,12 @@ header h3{
 }
 
 #nav li {
+
     float: left;
 }
 
 #nav li a {
+
     display: block;
     color: black;
     text-align: center;
@@ -70,11 +74,15 @@ header h3{
 
 
 #nav li a:hover:not(.active) {
-    background-color: #b30047;
+    border-radius: 1px;
+    background-color: #4D90FE;
+
 }
 
-.active {
-    background-color: #b30047;
+#nav .active {
+    border-radius: 1px;
+    background-color: #4D90FE;
+
 }
 
 input{
@@ -87,18 +95,20 @@ input{
 
     <div id="header-area">
         <header id="main-header">
-            <img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo">
-            <h3>Business Plan <br>Manager</h3>
+            <img id="epl-logo" src="images/eplbpm-vertical.png" alt="EPL Logo">
         </header>   
         <div id="right-pos">
             <div id="nav">
                 <ul>
-                    <li><a href="#dashboard"  class="active">Dashboard</a></li>
+                    <li><a href="dashboard"  class="active">Dashboard</a></li>
                     <li><a href="#view_plan">View Plan</a></li>
-                    <li><a href="#manage_plan">Manage Plan</a></li>
+                    <li><a href="managePlan">Manage Plan</a></li>
                     
                 </ul>
-                <input type="text" name="search" placeholder="Search" style="float: right;">
+                <div style="float: right; margin-top: 10px">
+                    Search <img src="images/200px-magnifying_glass_icon.png" height="15px">
+                    <input type="text" name="search">
+                </div>
             </div>
         </div>
     </div>

@@ -9,24 +9,8 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div id="header-area">
-        <header id="main-header">
-            <img id="epl-logo" src="images/epl-logo.jpg" alt="EPL Logo">
-            <h3>Business Plan Manager</h3>
-        </header>
-        <hr>
-        <div id="nav">
-            <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#view_plan" class="active">View Plan</a></li>
-                <li><a href="#manage_plan">Manage Plan</a></li>
-            </ul>
-            <div>
-            	<img style="float: right;" src="https://static.xx.fbcdn.net/rsrc.php/v2/yB/r/Unmn04Ngmxd.gif">
-            	<input type="text" name="search" placeholder="Search" style="float: right;">
-            </div>
-        </div>
-    </div>
+    
+    @include('main_header')
 
     <div id="manage-plan-area">
 
@@ -67,10 +51,10 @@
                         <div class="tab-content">
                             <div id="goal" class="tab fade in active">
                                 <label>
-                                    Goal discription
+                                    Goal description
                                 </label>
                                 <form>
-                                    <input type="text" name="goalDiscription"><br>
+                                    <input type="text" name="goalDescription"><br>
                                     <button class="button">Create</button>
                                 </form>
                             </div>
@@ -89,10 +73,10 @@
                                 </div>
                                 <div id="objective-right">
                                     <label>
-                                        Objective discription
+                                        Objective description
                                     </label>
                                     <form>
-                                        <input type="text" name="objectiveDiscription"><br>
+                                        <input type="text" name="objectiveDescription"><br>
                                         <button class="button">Create</button>
                                     </form>
                                 </div>
@@ -140,10 +124,10 @@
                                 </div>
                                 <div id="action-right">
                                     <label>
-                                    Action discription
+                                    Action description
                                     </label>
                                     <br>
-                                    <input type="text" name="actionDiscription"><br>
+                                    <input type="text" name="actionDescription"><br>
                                     <label>
                                         Priority
                                     </label>
@@ -215,10 +199,10 @@
                                 </div>
                                 <div id="task-right">
                                     <label>
-                                        Action discription
+                                        Action description
                                     </label>
                                     <br>
-                                    <input type="text" name="actionDiscription"><br>
+                                    <input type="text" name="actionDescription"><br>
                                     <label>
                                         Priority
                                     </label>
