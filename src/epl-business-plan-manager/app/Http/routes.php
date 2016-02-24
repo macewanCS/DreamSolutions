@@ -22,7 +22,7 @@ Route::post('/', 'DashboardController@login');
 Route::resource('/managePlan', 'ManagePlanController');
 
 // Create business controller routes
-Route::get('/businessPlan', 'BusinessPlanController@create');
+Route::get('/wizard', 'WizardController@create');
 
 // View plan controller routes
 Route::get('/viewPlan', 'ViewPlanController@index');
