@@ -9,5 +9,7 @@ use App\Http\Controllers\Controller;
 
 class ViewPlanController extends Controller
 {
-    //
+    public function index() {
+    	return view('viewIndex');
+    }
 }
