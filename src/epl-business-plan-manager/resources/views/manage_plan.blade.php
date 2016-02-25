@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"></meta>
-    <title>Business Plan Manager</title>
-    <link rel="stylesheet" type="text/css" href="/css/header.css"></link>
+@extends('app')
+
+@section('head')
     <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-<body>
-    
-    @include('main_header')
+@stop
 
+@section('content')
     <div id="manage-plan-area">
 
         <div id="bpYearPicker">
             <label>Business Plan Year: </label>
             <select>
-                <option>2012-2014</option>
-                <option>2010-2012</option>
-                <option>2008-2010</option>
+                <option>Load years here</option>
             </select>
         </div>
 
         <div id="createBusinessPlan">
-            <a href="#">Create Business Plan</a>
+            <a href="{{ action('WizardController@create') }}">Create Business Plan</a>
         </div>
 
         <!-- Top level tab container for create, update, delete -->
@@ -61,14 +54,10 @@
 
                             <div id="objective" class="tab fade">
                                 <div id="objective-left">
-                                    <label>
-                                        Goal
-                                    </label>
+                                    <label>Goal</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in goals here
-                                        </option>
+                                        <option>Load in goals here</option>
                                     </select>
                                 </div>
                                 <div id="objective-right">
@@ -84,41 +73,28 @@
 
                             <div id="action" class="tab fade">
                                 <div id="action-left">
-                                    <label>
-                                        Goal
-                                    </label>
+                                    <label>Goal</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in goals here
-                                        </option>
+                                        <option>Load in goals here</option>
                                     </select>
                                     <br>
-                                    <label>
-                                        Objective
-                                    </label>
+                                    <label>Objective</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in objectives here
-                                        </option>
+                                        <option>Load in objectives here</option>
                                     </select>
                                     <br>
-                                    <label>
-                                        Lead
-                                    </label>
+                                    <label>Lead</label>
                                     <br>
-                                    <input type="text" name="leadName"><br>
-                                    <!-- If statement here? -->
-                                    <label>
-                                        Collaborator
-                                    </label>
+                                    <form>
+                                        <input type="text" name="leadName"><br>
+                                        <button>+</button>
+                                    </form>
+                                    <label>Collaborator</label>
                                     <br>
                                     <input type="text" name="collaboratorName"><br>
-                                    <!-- If statement here? -->
-                                    <label>
-                                        End date
-                                    </label>
+                                    <label>End date</label>
                                     <br>
                                     <input type="date" name="endDate"><br>
                                 </div>
@@ -133,15 +109,9 @@
                                     </label>
                                     <br>
                                     <select>
-                                        <option>
-                                            High
-                                        </option>
-                                        <option>
-                                            Medium
-                                        </option>
-                                        <option>
-                                            Low
-                                        </option>
+                                        <option>High</option>
+                                        <option>Medium</option>
+                                        <option>Low</option>
                                     </select>
                                     <button class="button">Create</button>
                                 </div>
@@ -149,51 +119,33 @@
 
                             <div id="task" class="tab fade">
                                 <div id="task-left">
-                                    <label>
-                                        Goal
-                                    </label>
+                                    <label>Goal</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in goals here
-                                        </option>
+                                        <option>Load in goals here</option>
                                     </select>
                                     <br>
-                                    <label>
-                                        Objective
-                                    </label>
+                                    <label>Objective</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in objectives here
-                                        </option>
+                                        <option>Load in objectives here</option>
                                     </select>
                                     <br>
-                                    <label>
-                                        Action
-                                    </label>
+                                    <label>Action</label>
                                     <br>
                                     <select>
-                                        <option>
-                                            Load in actions here
-                                        </option>
+                                        <option>Load in actions here</option>
                                     </select>
                                     <br>
-                                    <label>
-                                        Lead
-                                    </label>
+                                    <label>Lead</label>
                                     <br>
                                     <input type="text" name="leadName"><br>
                                     <!-- If statement here? -->
-                                    <label>
-                                        Collaborator
-                                    </label>
+                                    <label>Collaborator</label>
                                     <br>
                                     <input type="text" name="collaboratorName"><br>
                                     <!-- If statement here? -->
-                                    <label>
-                                        End date
-                                    </label>
+                                    <label>End date</label>
                                     <br>
                                     <input type="date" name="endDate"><br>
                                 </div>
@@ -208,15 +160,9 @@
                                     </label>
                                     <br>
                                     <select>
-                                        <option>
-                                            High
-                                        </option>
-                                        <option>
-                                            Medium
-                                        </option>
-                                        <option>
-                                            Low
-                                        </option>
+                                        <option>High</option>
+                                        <option>Medium</option>
+                                        <option>Low</option>
                                     </select>
                                     <button class="button">Create</button>
                                 </div>
@@ -236,8 +182,4 @@
         </div>
 
     </div>
-
-</body>
-<!-- TODO:
-    Verify input -->
-</html>
+@stop
