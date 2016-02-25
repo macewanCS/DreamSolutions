@@ -1,33 +1,26 @@
+/*----- Components -----*/
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button {
     margin-top: 5px;
     float: right;
 }
 
 #manage-plan-area {
-	margin:				20px 87px 60px 100px;
+	margin:				25px 110px 100px 110px;
     background-color:	#FFFFFF;
-    /*border-radius:      20px;*/
-    /*padding:			20px;*/
-    padding-top:		5px;
-    /*padding-bottom:		20px;*/
-    height:				600px;
-    width:				1100px;
-}
-
-/*----- bpYearPicker -----
-#bpYearPicker {
-    float: left;
-}
-
-/*----- createBusinessPlan -----*/
-#createBusinessPlan {
-    float: right;
+    padding-top:		15px;
+    padding-bottom: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /*----- Content of Tabs -----*/
 .tab-content {
-    margin:auto;
-    display:inline-block;
     background:#fff;
 }
 
@@ -36,7 +29,9 @@
 }
 
 .tab.active {
-    display:block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab-content div {
@@ -45,33 +40,30 @@
 
 /*----- DUC Tabs -----*/
 .duc-tabs {
-    width: auto;
-    margin-left: 0px;
+}
+
+/*----- li -----*/
+li.active a, li.active a:hover {
+    background:#fff;
+    color:#4c4c4c;
 }
 
 /*----- DUC Tab Links -----*/
-.duc-tab-links:after {
-    margin:0px 0px;
-    display:block;
-    clear:both;
-    content:'';
-}
-
 .duc-tab-links {
-    margin-top: 35px;
-    padding-left: 360px;
+    display: flex;
 }
 
 .duc-tab-links li {
-    margin:0px 5px;
-    float:left;
-    list-style:none;
+    margin: 5px;
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+    flex: 1;
 }
 
 .duc-tab-links a {
-    padding:9px 15px;
-    display:inline-block;
-    border-radius:0px; /*Cause of graphical spec */
+    padding: 9px 15px;
+    border-radius:1px;
     background:#7FB5DA;
     font-size:16px;
     font-weight:600;
@@ -84,40 +76,26 @@
     text-decoration:none;
 }
 
-li.active a, li.active a:hover {
-    background:#fff;
-    color:#4c4c4c;
-}
-
 /*----- Goat Tabs -----*/
 .goat-tabs {
-    width: auto;
-    margin-left: 0px;
 }
 
 /*----- Goat Tabs Links -----*/
-.goat-tabs-links:after {
-    margin:0px 0px;
-    display:block;
-    clear:both;
-    content:'';
-}
-
 .goat-tabs-links {
-    padding-left: 325px;
-    margin: 0px 0px;
+    display: flex;
 }
 
 .goat-tabs-links li {
-    margin:0px 5px;
-    float:left;
-    list-style:none;
+    margin: 5px;
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+    flex: 1;
 }
 
 .goat-tabs-links a {
     padding:9px 15px;
-    display:inline-block;
-    border-radius:0px; /*Cause of graphical spec */
+    border-radius:1px;
     background:#7FB5DA;
     font-size:16px;
     font-weight:600;
@@ -133,7 +111,6 @@ li.active a, li.active a:hover {
 /*----- Goal -----*/
 #goal {
     margin-top: 20px;
-    padding-left: 310px;
 }
 
 #goal input {
@@ -144,13 +121,12 @@ li.active a, li.active a:hover {
 
 /*----- Objective -----*/
 #objective {
+    align-items: flex-start;
     margin-top: 20px;
-    padding-left: 140px;
 }
 
 #objective-left {
     margin-right: 100px;
-    float: left;
 }
 
 #objective-left select {
@@ -159,7 +135,6 @@ li.active a, li.active a:hover {
 
 #objective-right {
     margin-left: 100px;
-    float: right;
 }
 
 #objective-right input {
@@ -170,18 +145,26 @@ li.active a, li.active a:hover {
 
 /*----- Action -----*/
 #action {
+    align-items: flex-start;
     margin-top: 20px;
-    padding-left: 140px;
 }
 
 #action-left {
     margin-right: 60px;
-    float: left;
+}
+
+#action-left select, input {
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 
 #action-right {
     margin-left: 60px;
-    float: right;
+}
+
+#task-right select {
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 
 #action-right input {
@@ -192,18 +175,26 @@ li.active a, li.active a:hover {
 
 /*----- Task -----*/
 #task {
+    align-items: flex-start;
     margin-top: 20px;
-    padding-left: 140px;
 }
 
 #task-left {
     margin-right: 60px;
-    float: left;
+}
+
+#task-left select, input {
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 
 #task-right {
     margin-left: 60px;
-    float: right;
+}
+
+#task-right select {
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 
 #task-right input {
