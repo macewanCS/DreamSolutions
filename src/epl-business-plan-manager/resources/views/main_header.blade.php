@@ -9,14 +9,13 @@ body {
 }
 
 #header-area {
-     margin:            0px 87px 15px 100px;
+     margin:            0px 100px 15px 100px;
      background-color:      #FFFFFF;
      padding:           0px;
      padding-top:       0px;
      padding-bottom:        0px;
-     height:            150px;
-     width:         1100px;
      border-style: groove;
+     height:            150px;
 }
 
 #main-header{
@@ -96,14 +95,14 @@ input{
     <div id="header-area">
         <header id="main-header">
             <img id="epl-logo" src="images/eplbpm-vertical.png" alt="EPL Logo">
-        </header>   
+        </header>
         <div id="right-pos">
             <div id="nav">
                 <ul>
                     <li><a href="dashboard"  class="active">Dashboard</a></li>
                     <li><a href="#view_plan">View Plan</a></li>
                     <li><a href="managePlan">Manage Plan</a></li>
-                    
+
                 </ul>
                 <div style="float: right; margin-top: 10px">
                     Search <img src="images/200px-magnifying_glass_icon.png" height="15px">
