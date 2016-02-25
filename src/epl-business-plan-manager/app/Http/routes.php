@@ -23,7 +23,6 @@ Route::get('/wizard', 'WizardController@create');
 Route::get('/viewPlan', 'ViewPlanController@index');
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -47,7 +46,4 @@ Route::group(['middleware' => 'web'], function () {
 	});
 	
     Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-    Route::get('/dashboard', 'DashboardController@dashboard');
 });
