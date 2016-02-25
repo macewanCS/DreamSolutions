@@ -12,7 +12,6 @@
 */
 
 
-
 // Manage Plan controller routes
 Route::resource('/managePlan', 'ManagePlanController');
 
@@ -46,6 +45,5 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
     Route::auth();
-
     Route::get('/dashboard', 'DashboardController@dashboard');
 });
