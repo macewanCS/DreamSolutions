@@ -17,7 +17,7 @@
         </div>
 
         <div id="createBusinessPlan">
-            <a href="{{ action('BusinessPlanController@create') }}">Create Business Plan</a>
+            <a href="{{ action('WizardController@create') }}">Create Business Plan</a>
         </div>
 
         <!-- Top level tab container for create, update, delete -->
