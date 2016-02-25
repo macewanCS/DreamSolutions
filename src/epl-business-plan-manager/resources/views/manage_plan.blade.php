@@ -9,24 +9,28 @@
 @section('content')
     <div id="manage-plan-area">
 
-        <div id="bpYearPicker">
-            <label>Business Plan Year: </label>
-            <select>
-                <option>Load years here</option>
-            </select>
-        </div>
+        <div style="height: 25px">
+            <div style="float: left">
+                <label>Business Plan Year: </label>
+                <select>
+                    <option>Load years here</option>
+                </select>
+            </div>
 
-        <div id="createBusinessPlan">
-            <a href="{{ action('WizardController@create') }}">Create Business Plan</a>
+            <div style="float: right;">
+                <a href="{{ action('WizardController@create') }}">Create Business Plan</a>
+            </div>
         </div>
 
         <!-- Top level tab container for create, update, delete -->
         <div class="duc-tabs">
-            <ul class="duc-tab-links nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#create">Create</a></li>
-                <li><a data-toggle="tab" href="#update">Update</a></li>
-                <li><a data-toggle="tab" href="#delete">Delete</a></li>
-            </ul>
+            <nav>
+                <ul class="duc-tab-links">
+                    <li class="active"><a data-toggle="tab" href="#create">Create</a></li>
+                    <li><a data-toggle="tab" href="#update">Update</a></li>
+                    <li><a data-toggle="tab" href="#delete">Delete</a></li>
+                </ul>
+            </nav>
 
             <div class="tab-content">
                 <!-- partials go in here? How to override create, update, delete button? -->
@@ -34,19 +38,20 @@
 
                     <!-- Top level container for goal, objective, action, task -->
                     <div class="goat-tabs">
-                        <ul class="goat-tabs-links nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#goal">Goal</a></li>
-                            <li><a data-toggle="tab" href="#objective">Objective</a></li>
-                            <li><a data-toggle="tab" href="#action">Action</a></li>
-                            <li><a data-toggle="tab" href="#task">Task</a></li>
-                        </ul>
+                        <nav>
+                            <ul class="goat-tabs-links">
+                                <li class="active"><a data-toggle="tab" href="#goal">Goal</a></li>
+                                <li><a data-toggle="tab" href="#objective">Objective</a></li>
+                                <li><a data-toggle="tab" href="#action">Action</a></li>
+                                <li><a data-toggle="tab" href="#task">Task</a></li>
+                            </ul>
+                        </nav>
 
                         <div class="tab-content">
                             <div id="goal" class="tab fade in active">
-                                <label>
-                                    Goal description
-                                </label>
                                 <form>
+                                    <label>Goal description</label>
+                                    <br>
                                     <input type="text" name="goalDescription"><br>
                                     <button class="button">Create</button>
                                 </form>
