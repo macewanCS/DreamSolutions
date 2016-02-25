@@ -13,10 +13,9 @@
 
 
 /* Login controllers */
-Route::get('/', function () {
-    return view('login');
-});
-Route::post('/', 'DashboardController@login');
+Route::get('/', 'Auth\AuthController@getLogin');
+
+// Route::post('/', 'DashboardController@login');
 
 // Manage Plan controller routes
 Route::resource('/managePlan', 'ManagePlanController');
@@ -27,9 +26,7 @@ Route::get('/wizard', 'WizardController@create');
 // View plan controller routes
 Route::get('/viewPlan', 'ViewPlanController@index');
 
-/* Dashboard controllers*/
-Route::get('/dashboard', function() { return view("dashboard");});
-Route::get('/{id}', 'DashboardController@dashboard');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +41,11 @@ Route::get('/{id}', 'DashboardController@dashboard');
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+    Route::get('/dashboard', 'DashboardController@dashboard');
 });
