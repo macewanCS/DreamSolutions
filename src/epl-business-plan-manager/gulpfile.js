@@ -12,6 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
-    mix.scripts('manage_plan_duc_tabs.js');
+    mix.sass('app.scss', 'resources/css');
+
+    mix.styles([
+        'libs/header.css',
+        'app.css',
+    ]);
+
+    mix.version('public/css/all.css');
 });
