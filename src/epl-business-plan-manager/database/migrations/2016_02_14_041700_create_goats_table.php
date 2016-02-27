@@ -14,7 +14,7 @@ class CreateGoatsTable extends Migration
     {
         Schema::create('goats', function (Blueprint $table) {
             $table->increments('id');
-            $table->smallInteger('type');       
+            $table->char('type');       
             $table->integer('parent_id')->unsigned()->nullable();
             $table->string('description');
             $table->smallInteger('priority');
