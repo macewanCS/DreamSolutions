@@ -41,7 +41,10 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     /* Login controllers */
-	Route::get('/', 'Auth\AuthController@getLogin');
+	Route::get('/login', 'Auth\AuthController@getLogin');
+	Route::get('/', function () {
+		return redirect('/login');
+	});
 	
     Route::auth();
 
