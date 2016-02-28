@@ -16,7 +16,7 @@
       </header>
       
       
-    	{!! Form::open() !!}
+    	{!! Form::open(['url' => 'login']) !!}
         
         <b>{!! Form::label('Username:') !!}</b>
     	  {!! Form::text('username', null, ['class' => 'form-control']) !!}
@@ -24,7 +24,7 @@
         <br>
 
         <b>{!! Form::label('password:') !!}</b>
-        {!! Form::text('password') !!}
+        {!! Form::password('password') !!}
 
         <br><br>
 

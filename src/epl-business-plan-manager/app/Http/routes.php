@@ -12,10 +12,6 @@
 */
 
 
-/* Login controllers */
-Route::get('/', 'Auth\AuthController@getLogin');
-
-// Route::post('/', 'DashboardController@login');
 
 // Manage Plan controller routes
 Route::resource('/managePlan', 'ManagePlanController');
@@ -44,6 +40,9 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => 'web'], function () {
+    /* Login controllers */
+	Route::get('/', 'Auth\AuthController@getLogin');
+
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
