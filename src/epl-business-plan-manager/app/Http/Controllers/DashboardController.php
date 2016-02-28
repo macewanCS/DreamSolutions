@@ -22,11 +22,12 @@ class DashboardController extends Controller
 
     public function login(){
 
-    	$username = Request::get('username');
+    	$email = Request::get('username');
     	$password = Request::get('password');
 
-    	$user = User::where('username', '=', $username)->first();
+    	$user = User::where('email', '=', $email)->first();
 
+        
     	if (is_null($user)){
     		return view('bad_up');
     	}
