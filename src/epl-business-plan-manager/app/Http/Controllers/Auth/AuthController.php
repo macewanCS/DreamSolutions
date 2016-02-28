@@ -95,4 +95,5 @@ class AuthController extends Controller
     {
         App::abort('404');
     }
+
 }
