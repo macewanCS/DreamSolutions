@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8"></meta>
     <title>Business Plan Manager</title>
-    <link rel="stylesheet" type="text/css" href="/css/bpm.css"></link>
+    <link rel="stylesheet" href="css/bpm.css">
   </head>
   
   <body>
@@ -16,17 +16,17 @@
       </header>
       
       
-    	{!! Form::open() !!}
+    	{!! Form::open(['url' => 'login']) !!}
         
-        <b>{!! Form::label('Username:') !!}</b>
+        <div id="login-field">
+        {!! Form::label('Username') !!}
     	  {!! Form::text('username', null, ['class' => 'form-control']) !!}
+        </div>
 
-        <br>
-
-        <b>{!! Form::label('password:') !!}</b>
-        {!! Form::text('password') !!}
-
-        <br><br>
+        <div class="login-field">
+        {!! Form::label('Password') !!}
+        {!! Form::password('password') !!}
+        </div>
 
         
         {!! Form::submit('Login', ['id' => "login-submit-button"]) !!}

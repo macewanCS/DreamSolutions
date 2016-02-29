@@ -7,8 +7,8 @@
 @section('content')
 	<div id="profile-left">
 		<div id="profile-info">
-			<img src="images/empty-profile.jpg" alt="profile picture" height=200 width=200></img>
-			<h3> {{ $fname }}  {{ $lname }} </h3>
+			<img src="images/empty-profile.jpg" alt="profile picture" height=200 width=200>
+			<h3> {{ $user->first_name }}  {{ $user->last_name }} </h3>
 			<h4> IT Department </h4>
 		</div>
 

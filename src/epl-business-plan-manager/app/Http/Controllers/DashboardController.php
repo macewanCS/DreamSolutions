@@ -5,43 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Request;
 use App\User;
 use View;
+use Auth;
 //use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    
-    public function __contruct(){
+    public function __construct() 
+    {
         $this->middleware('auth');
     }
 
-    public function dashboard(){
-
-    	return view('dashboard');
+    public function dashboard()
+    {
+        $user = Auth::user();	
+    	return view('dashboard', compact('user'));
     }
-
-    public function login(){
-
-    	$username = Request::get('username');
-    	$password = Request::get('password');
-
-    	$user = User::where('username', '=', $username)->first();
-
-        
-    	if (is_null($user)){
-    		return view('bad_up');
-    	}
-
-    	$pass = $user->password;
-    	$fname = $user->first_name;
-    	$lname = $user->last_name;
-
-    	
-		if (is_null($user) || is_null($pass) || $pass != $password){
-    		return view('bad_up');
-    	}
-
-    	return view('dashboard', compact('fname', 'lname'));
-    }
-
 }

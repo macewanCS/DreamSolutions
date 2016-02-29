@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -28,7 +30,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new authentication controller instance.
@@ -69,4 +71,29 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            return redirect()->intended('dashboard');
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function register()
+    {
+        App::abort('404');
+    }
+
+    public function showRegistrationForm()
+    {
+        App::abort('404');
+    }
+
 }
