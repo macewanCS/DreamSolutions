@@ -22,10 +22,10 @@
 
 #profile-right {
 	
-	float: right;
-	margin-right: 87px;
+	/*float: right;*/
+	margin-left: 320px;
 	background-color:		#FFFFFF;
 	height: 524px;
-	width: 875px;
+	width: 865px;
 
 }

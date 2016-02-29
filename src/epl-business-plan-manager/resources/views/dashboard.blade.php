@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+	
 	<div id="profile-left">
 		<div id="profile-info">
 			<img src="images/empty-profile.jpg" alt="profile picture" height=200 width=200>
@@ -25,4 +26,5 @@
 	<div id="profile-right">
 
 	</div>
+
 @stop
