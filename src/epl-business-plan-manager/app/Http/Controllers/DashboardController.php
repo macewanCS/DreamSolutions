@@ -22,10 +22,10 @@ class DashboardController extends Controller
 
     public function login(){
 
-    	$email = Request::get('username');
+    	$username = Request::get('username');
     	$password = Request::get('password');
 
-    	$user = User::where('email', '=', $email)->first();
+    	$user = User::where('username', '=', $username)->first();
 
         
     	if (is_null($user)){
