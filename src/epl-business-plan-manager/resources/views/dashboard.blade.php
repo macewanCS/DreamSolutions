@@ -24,7 +24,22 @@
 		</div>
 
 		<div id="profile-right">
-
+			<table>
+				<thead>
+				<tr>
+					<th>Action</th>
+					<th>Task</th>
+					<th>Due Date</th>
+					<th>Status</th>
+				</tr>
+				</thead>
+				<tbody>
+					<td>1.13</td>
+					<td><p> Implement approved recommendations fro mthe 2015 Public Computing Report</p></td>
+					<td>2016/06/30</td>
+					<td>Implemented #7</td>
+				</tbody>
+			</table>
 		</div>
 	</div>	
 @stop
