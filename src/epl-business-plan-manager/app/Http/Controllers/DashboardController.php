@@ -11,9 +11,12 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     
+    public function __contruct(){
+        $this->middleware('auth');
+    }
+
     public function dashboard(){
 
-    	
     	return view('dashboard');
     }
 
@@ -24,6 +27,7 @@ class DashboardController extends Controller
 
     	$user = User::where('username', '=', $username)->first();
 
+        
     	if (is_null($user)){
     		return view('bad_up');
     	}

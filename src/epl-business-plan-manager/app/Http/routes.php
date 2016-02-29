@@ -29,7 +29,7 @@ Route::get('/viewPlan', 'ViewPlanController@index');
 
 /* Dashboard controllers*/
 Route::get('/dashboard', function() { return view("dashboard");});
-Route::get('/{id}', 'DashboardController@dashboard');
+// Route::get('/{id}', 'DashboardController@dashboard');
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +44,10 @@ Route::get('/{id}', 'DashboardController@dashboard');
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

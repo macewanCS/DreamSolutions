@@ -24,7 +24,8 @@ class CreateGoatsTable extends Migration
         });
 
         Schema::table('goats', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('goats')->onUpdate('cascade');
+            $table->foreign('parent_id')->references('id')->on('goats')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('did')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
