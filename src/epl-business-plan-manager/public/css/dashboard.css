@@ -23,9 +23,13 @@
 #profile-right {
 	
 	/*float: right;*/
-	margin-left: 320px;
+	margin-left: 320px;	
 	background-color:		#FFFFFF;
 	height: 524px;
 	width: 865px;
 
+}
+
+#profile-area {
+	margin: 10px auto;
 }
