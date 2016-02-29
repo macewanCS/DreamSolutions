@@ -21,7 +21,6 @@ Route::get('/wizard', 'WizardController@create');
 // View plan controller routes
 Route::get('/viewPlan', 'ViewPlanController@index');
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
