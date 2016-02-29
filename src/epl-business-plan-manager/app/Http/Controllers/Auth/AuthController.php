@@ -71,6 +71,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
     public function showLoginForm()
     {
         return view('login');
@@ -83,5 +84,15 @@ class AuthController extends Controller
         } else {
             return redirect('login');
         }
+    }
+
+    public function register()
+    {
+        App::abort('404');
+    }
+
+    public function showRegistrationForm()
+    {
+        App::abort('404');
     }
 }
