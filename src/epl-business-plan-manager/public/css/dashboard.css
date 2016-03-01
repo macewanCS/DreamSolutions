@@ -22,10 +22,36 @@
 
 #profile-right {
 	
-	float: right;
-	margin-right: 87px;
+	/*float: right;*/
+	padding-top: 30px;
+	margin-left: 320px;	
 	background-color:		#FFFFFF;
 	height: 524px;
-	width: 875px;
+	width: 865px;
 
+}
+
+#profile-area {
+	margin: 10px auto;
+}
+
+#profile-right table { 
+  width: 90%; 
+  margin-left: 5%;
+  padding-top: 100px;
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+#profile-right tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+#profile-right th { 
+  background: #004b8e; 
+  color: white; 
+  font-weight: bold; 
+}
+#profile-right td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
 }

@@ -12,9 +12,11 @@ nav {
     margin-left: 5px;
 }
 #manage-plan-area {
-    margin: 25px 110px 100px 110px;
-    background-color: #FFFFFF;
-    padding-top: 15px;
+
+    margin:				25px auto;
+    width: 1055px;
+    background-color:	#FFFFFF;
+    padding-top:		15px;
     padding-bottom: 60px;
     padding-left: 15px;
     padding-right: 15px;
