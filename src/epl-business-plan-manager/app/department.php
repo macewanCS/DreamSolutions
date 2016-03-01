@@ -11,6 +11,16 @@ class Department extends Model
     	'isTeam'
     ];
 
+    public function leadOn()
+    {
+        return $this->belongsToMany('App\Goat', 'dept_role')->where('dept_role', '=', 'L')->withTimestamps();
+    }
+
+    public function collaboratorOn()
+    {
+        return $this->belongsToMany('App\Goat', 'dept_role')->where('dept_role', '=', 'C')->withTimestamps();
+    }
+
     public function users()
     {
     	return $this->belongsToMany('App\User');

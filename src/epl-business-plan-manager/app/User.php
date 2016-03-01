@@ -12,7 +12,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'email',
+        'password',
     ];
 
     /**
@@ -26,12 +29,12 @@ class User extends Authenticatable
 
     public function leadOn()
     {
-        return $this->belongsToMany('App\Goat', 'goat_lead')->withTimestamps();
+        return $this->belongsToMany('App\Goat', 'user_role')->where('user_role', '=', 'L')->withTimestamps();
     }
 
     public function collaboratorOn()
     {
-        return $this->belongsToMany('App\Goat', 'collaborator_goat')->withTimestamps();
+        return $this->belongsToMany('App\Goat', 'user_role')->where('user_role', '=', 'C')->withTimestamps();
     }
 
     // To access the permission_level as it is... something like
