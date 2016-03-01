@@ -13,13 +13,13 @@
 
 
 // Manage Plan controller routes
-Route::resource('/managePlan', 'ManagePlanController');
+Route::resource('/manage', 'ManagePlanController');
 
 // Create business controller routes
 Route::get('/wizard', 'WizardController@create');
 
 // View plan controller routes
-Route::get('/viewPlan', 'ViewPlanController@index');
+Route::get('/view', 'ViewPlanController@index');
 
 /*
 |--------------------------------------------------------------------------
