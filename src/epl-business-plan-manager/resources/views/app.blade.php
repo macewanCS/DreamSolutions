@@ -12,4 +12,7 @@
 	@yield('content')
 
 </body>
+<footer>
+	@yield('foot')
+</footer>
 </html>
