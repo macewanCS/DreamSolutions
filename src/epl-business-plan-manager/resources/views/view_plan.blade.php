@@ -34,15 +34,15 @@
 				
 				@elseif ($goat->type == 'A') 
 
-					<td id="norm">{{ $goat->actionId }}</td>
-					<td id="norm">{{ $goat->priority }}</td>
-					<td id="norm">{{ $goat->description }}</td>
-					<td id="norm">Department</td>
-					<td id="norm">IT Department</td>
-					<td id="norm">Lead</td>
-					<td id="norm">John and Vicky</td>
-					<td id="norm">{{ $goat->due_date}}</td>
-					<td id="norm">In progress</td>
+					<td id="action">{{ $goat->actionId }}</td>
+					<td id="action">{{ $goat->priority }}</td>
+					<td id="action">{{ $goat->description }}</td>
+					<td id="action">Department</td>
+					<td id="action">IT Department</td>
+					<td id="action">Dan</td>
+					<td id="action">Vicky</td>
+					<td id="action">{{ $goat->due_date}}</td>
+					<td id="action">In progress</td>	
 
 				@elseif ($goat->type == 'T')
 
@@ -51,8 +51,8 @@
 					<td id="norm">{{ $goat->description }}</td>
 					<td id="norm">Department</td>
 					<td id="norm">IT Department</td>
-					<td id="norm">Lead</td>
-					<td id="norm">John and Vicky</td>
+					<td id="norm">Vicky</td>
+					<td id="norm">John</td>
 					<td id="norm">{{ $goat->due_date}}</td>
 					<td id="norm">In progress</td>
 
