@@ -19,7 +19,8 @@ class CreateDepartmentUserTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->smallInteger('permission_level')->unsigned();
+            // L - Team Lead, M - Team Member
+            $table->char('permission_level');
 
             $table->timestamps();
         });

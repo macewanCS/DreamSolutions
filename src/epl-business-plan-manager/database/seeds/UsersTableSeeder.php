@@ -13,7 +13,8 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert(array(
 
-    		array(
+            // 1
+            array(
                 'first_name'=>'Vicky',
                 'last_name' => 'Varga',
                 'username' => 'vargav',
@@ -23,7 +24,8 @@ class UsersTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()),
 
-	         array(
+            // 2
+            array(
                  'first_name'=>'John',
                  'last_name' => 'Doe',
                  'username' => 'doej',
@@ -33,7 +35,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 3
+            array(
                  'first_name'=>'mark',
                  'last_name' => 'smith',
                  'username' => 'smithm',
@@ -43,7 +46,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 4
+            array(
                  'first_name'=>'Karl',
                  'last_name' => 'Borlan',
                  'username' => 'borlank',
@@ -53,7 +57,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 5
+            array(
                  'first_name'=>'Marl',
                  'last_name' => 'Cooper',
                  'username' => 'cooperm',
@@ -63,7 +68,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 6
+            array(
                  'first_name'=>'Mary',
                  'last_name' => 'Jones',
                  'username' => 'jonesm',
@@ -72,7 +78,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 7
+            array(
                  'first_name' =>'Sels',
                  'last_name' => 'Hunt',
                  'username' => 'hunts',
@@ -82,7 +89,8 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-             array(
+            // 8
+            array(
                  'first_name'=>'Taylor',
                  'last_name' => 'Swift',
                  'username' => 'swiftt',

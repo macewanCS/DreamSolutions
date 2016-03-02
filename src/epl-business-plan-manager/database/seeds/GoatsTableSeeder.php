@@ -87,8 +87,8 @@ class GoatsTableSeeder extends Seeder
 
 			// Objective - 7
             array('type' => 'O',
-				'parent_id' => 5,
-    			'description' => 'We have a vibrant fund development program with increase donor diversity, and increased value of donations and sponsorships.',
+				'parent_id' => 3,
+    			'description' => 'Online services are highly used and valued',
     			'priority' => 0,
 				'due_date' => Carbon\Carbon::now() ,
 				'budget' => 0,
@@ -132,7 +132,7 @@ class GoatsTableSeeder extends Seeder
 			// Action - 11
             array('type' => 'A',
 				'parent_id' => 7,
-                'description' => 'Obtain $10,000 in shared cost partnerships for 2016 events.',
+                'description' => 'Live stream two forward thinking speaker series events in 2016',
                 'priority' => 1,
 				'due_date' => Carbon\Carbon::now() ,
 				'budget' => 0,
