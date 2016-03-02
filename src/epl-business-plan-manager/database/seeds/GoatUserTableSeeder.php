@@ -11,6 +11,34 @@ class GoatUserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('goat_user')->insert(array(
+
+            // Vicky Varga
+            // Objective - Review public computing needs and develop strategies to meet those needs.
+            array(
+                'goat_id' => 13,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            // Task - Implement approved recommendations from the 2015 Public Computing Report
+            array(
+                'goat_id' => 13,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            // Objective - Implement lending machines in underserved areas of Edmonton.
+            array(
+                'goat_id' => 15,
+                'user_id' => 1,
+                'user_role' => 'C'),
+
+            // John Doe
+            // Action - Create best practice document around event sharing and cost sharing with partner organizations
+            array(
+                'goat_id' => 12,
+                'user_id' => 2,
+                'user_role' => 'L')
+
+        ));
     }
 }
