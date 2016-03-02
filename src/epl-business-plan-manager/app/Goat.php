@@ -28,12 +28,12 @@ class Goat extends Model
 
     public function deptLeads()
     {
-        return $this->belongsToMany('App\Department', 'dept_goat')->where('dept_role', '=', 'L')->withTimestamps();
+        return $this->belongsToMany('App\Department', 'department_goat')->where('department_role', '=', 'L')->withTimestamps();
     }
 
     public function deptCollaborators()
     {
-        return $this->belongsToMany('App\Department', 'dept_goat')->where('dept_role', '=', 'C')->withTimestamps();
+        return $this->belongsToMany('App\Department', 'department_goat')->where('department_role', '=', 'C')->withTimestamps();
     }
 
     public function goat()

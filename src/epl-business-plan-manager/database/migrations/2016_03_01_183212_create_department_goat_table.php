@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeptGoatTable extends Migration
+class CreateDepartmentGoatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateDeptGoatTable extends Migration
      */
     public function up()
     {
-        Schema::create('dept_goat', function(Blueprint $table) {
-            $table->integer('dept_id')->unsigned()->index();
-            $table->foreign('dept_id')->references('id')->on('departments')->onDelete('cascade');
+        Schema::create('department_goat', function(Blueprint $table) {
+            $table->integer('department_id')->unsigned()->index();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
             $table->integer('goat_id')->unsigned()->index();
             $table->foreign('goat_id')->references('id')->on('goats')->onDelete('cascade');
 
             // Collaborator 'C' or Lead 'L'
-            $table->char('dept_role');
+            $table->char('department_role');
 
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateDeptGoatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dept_goat');
+        Schema::drop('department_goat');
     }
 }

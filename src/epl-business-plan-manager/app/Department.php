@@ -13,12 +13,12 @@ class Department extends Model
 
     public function leadOn()
     {
-        return $this->belongsToMany('App\Goat', 'dept_role')->where('dept_role', '=', 'L')->withTimestamps();
+        return $this->belongsToMany('App\Goat', 'department_role')->where('department_role', '=', 'L')->withTimestamps();
     }
 
     public function collaboratorOn()
     {
-        return $this->belongsToMany('App\Goat', 'dept_role')->where('dept_role', '=', 'C')->withTimestamps();
+        return $this->belongsToMany('App\Goat', 'department_role')->where('department_role', '=', 'C')->withTimestamps();
     }
 
     public function users()
