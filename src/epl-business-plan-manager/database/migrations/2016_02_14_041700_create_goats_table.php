@@ -39,9 +39,10 @@ class CreateGoatsTable extends Migration
     public function down()
     {
         Schema::table('goats', function (Blueprint $table) {
-            $table->dropForeign('parent_id');
-            $table->dropForeign('bid');
+            $table->dropForeign('goats_parent_id_foreign');
+            $table->dropForeign('goats_bid_foreign');
         });
+
 
         Schema::drop('goats');
     }

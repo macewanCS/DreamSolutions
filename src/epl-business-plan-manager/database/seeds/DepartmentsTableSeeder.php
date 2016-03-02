@@ -14,6 +14,6 @@ class DepartmentsTableSeeder extends Seeder
         DB::table('departments')->insert([
         	'name' => str_random(10),
         	'isTeam' => rand(0, 1)
-        	])
+        	]);
     }
 }

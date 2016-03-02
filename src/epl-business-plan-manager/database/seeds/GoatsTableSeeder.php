@@ -12,19 +12,63 @@ class GoatsTableSeeder extends Seeder
     public function run()
     {
         DB::table('goats')->insert(array(
-    		array('type' => 'N', 'parent_id' => 1, 'description' => 'NULL PARENT FOR GOALS', 'priority' => 0, 'due_date' => Carbon\Carbon::now() , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
+			// Goals
+            array(
+				'type' => 'G',
+				'parent_id' => null,
+				'description' => 'Transform Communities',
+				'priority' => 0,
+				'due_date' => null ,
+				'budget' => 0,
+				'created_at' => Carbon\Carbon::now(),
+				'updated_at' => Carbon\Carbon::now(),
+				'bid' => 1),
 
-            array('type' => 'G', 'parent_id' => 1, 'description' => 'Transform Communities', 'priority' => 0, 'due_date' => null , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
+            array(
+				'type' => 'G',
+				'parent_id' => null,
+				'description' => 'Evolve our digital environment',
+				'priority' => 0,
+				'due_date' => null ,
+				'budget' => 0,
+				'created_at' => Carbon\Carbon::now(),
+				'updated_at' => Carbon\Carbon::now(),
+				'bid' => 1),
 
-            array('type' => 'G', 'parent_id' => 1, 'description' => 'Evolve our digital environment', 'priority' => 0, 'due_date' => null , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
+            array(
+				'type' => 'G',
+				'parent_id' => null,
+				'description' => 'Act as a catalyst for learning, discovery and creating',
+				'priority' => 0,
+				'due_date' => null ,
+				'budget' => 0,
+				'created_at' => Carbon\Carbon::now(),
+				'updated_at' => Carbon\Carbon::now(),
+				'bid' => 1),
 
-            array('type' => 'G', 'parent_id' => 1, 'description' => 'Act as a catalyst for learning, discovery and creating', 'priority' => 0, 'due_date' => null , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
+            array(
+				'type' => 'G',
+				'parent_id' => null,
+				'description' => 'Transition the way we do business',
+				'priority' => 0,
+				'due_date' => null ,
+				'budget' => 0,
+				'created_at' => Carbon\Carbon::now(),
+				'updated_at' => Carbon\Carbon::now(),
+				'bid' => 1),
 
-            array('type' => 'G', 'parent_id' => 1, 'description' => 'Transition the way we do business', 'priority' => 0, 'due_date' => null , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
-
-            array('type' => 'O', 'parent_id' => 2,
+			// Objectives
+            array(
+				'type' => 'O',
+				'parent_id' => 2,
     			'description' => 'Together with our community we provide successful, meaningful services that are highly rates and heavily used',
-    			'priority' => 0, 'due_date' => Carbon\Carbon::now() , 'budget' => 0, 'created_at' => Carbon\Carbon::now(), 'updated_at' => Carbon\Carbon::now(), 'bid' => 1),
+    			'priority' => 0,
+				'due_date' => Carbon\Carbon::now() ,
+				'budget' => 0,
+				'created_at' => Carbon\Carbon::now(),
+				'updated_at' => Carbon\Carbon::now(),
+				'bid' => 1
+			),
 
             array('type' => 'O', 'parent_id' => 5,
     			'description' => 'There are established partnerships to support programs and services.',
