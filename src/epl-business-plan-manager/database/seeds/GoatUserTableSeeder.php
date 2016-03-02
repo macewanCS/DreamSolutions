@@ -14,7 +14,7 @@ class GoatUserTableSeeder extends Seeder
         DB::table('goat_user')->insert(array(
 
             // Vicky Varga
-            // Objective - Review public computing needs and develop strategies to meet those needs.
+            // Action - Review public computing needs and develop strategies to meet those needs.
             array(
                 'goat_id' => 13,
                 'user_id' => 1,
@@ -26,7 +26,7 @@ class GoatUserTableSeeder extends Seeder
                 'user_id' => 1,
                 'user_role' => 'L'),
 
-            // Objective - Implement lending machines in underserved areas of Edmonton.
+            // Action - Implement lending machines in underserved areas of Edmonton.
             array(
                 'goat_id' => 15,
                 'user_id' => 1,

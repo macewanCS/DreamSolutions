@@ -14,6 +14,8 @@ class CreateChangesTable extends Migration
     {
         Schema::create('changes', function (Blueprint $table) {
             $table->increments('id');
+
+            // 'S' - Status Update, 'N' - Note
             $table->char('change_type');
             $table->string('description');
             
