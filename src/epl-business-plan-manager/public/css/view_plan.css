@@ -1,0 +1,62 @@
+
+#view-plan-area{
+	
+	margin:	25px auto;
+    width: 1055px;
+    background-color:	#FFFFFF;
+    padding-top:		15px;
+    padding-bottom: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+#view-plan-area table { 
+  width: 90%; 
+  margin-left: 5%;
+  padding-top: 100px;
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+
+/*#view-plan-area tr:nth-of-type(odd) { 
+  background: #eee; 
+}*/
+
+#view-plan-area th { 
+  background: #004b8e; 
+  color: white; 
+  font-weight: bold; 
+}
+
+#view-plan-area td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+ 
+}
+
+
+#goal {
+	text-align: left;
+	background: #006622;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#objective {
+	text-align: left;
+	background: #009933;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#action {
+
+	background: #dff;
+}
+
+#norm{
+	font-size: 14px;
+}
