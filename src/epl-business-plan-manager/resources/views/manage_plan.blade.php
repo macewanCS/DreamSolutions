@@ -44,6 +44,7 @@
               </ul>
               
               <div class="tab-content">
+
                 
                 <div id="cgoal" class="tab-pane fade in active">
                   <div>
@@ -126,6 +127,40 @@
             </div>
             </div>
             
+            <div id="update" class="tab-pane fade">
+              <h3>Update</h3>
+              <div class="container">
+              <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#ugoal">Goal</a></li>
+                <li><a data-toggle="pill" href="#uobjective">Objective</a></li>
+                <li><a data-toggle="pill" href="#uaction">Action</a></li>
+                <li><a data-toggle="pill" href="#utask">Task</a></li>
+              </ul>
+              
+              <div class="tab-content">
+                <div id="ugoal" class="tab-pane fade in active">
+                  <h3>Goal</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div id="cgoal" class="tab-pane fade in active">
+                  <h3>Goal</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div id="cobjective" class="tab-pane fade">
+                  <h3>Objective</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="caction" class="tab-pane fade">
+                  <h3>Action</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+                <div id="ctask" class="tab-pane fade">
+                  <h3>Task</h3>
+                  <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+              </div>
+            </div>
+            </div>
             <div id="update" class="tab-pane fade">
               <h3>Update</h3>
               <div class="container">
