@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoatLeadTable extends Migration
+class CreateGoatUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateGoatLeadTable extends Migration
     public function up()
     {
 
-        Schema::create('goat_lead', function(Blueprint $table) {
+        Schema::create('goat_user', function(Blueprint $table) {
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('goat_id')->unsigned()->index();
             $table->foreign('goat_id')->references('id')->on('goats')->onDelete('cascade');
+
+            // Collaborator 'C' or Lead 'L'
+            $table->char('user_role');
 
             $table->timestamps();
         });
@@ -31,6 +34,6 @@ class CreateGoatLeadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goat_lead');
+        Schema::drop('goat_user');
     }
 }

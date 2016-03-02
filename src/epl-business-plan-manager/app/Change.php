@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Change extends Model
 {
 	protected $fillable = [
-	'change_type',
-	'description',
+		'change_type',
+		'description',
 	];
 
 	public function user()

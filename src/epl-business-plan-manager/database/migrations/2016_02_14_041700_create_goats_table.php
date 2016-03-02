@@ -15,19 +15,19 @@ class CreateGoatsTable extends Migration
         Schema::create('goats', function (Blueprint $table) {
             $table->increments('id');
             $table->char('type'); 
-            $table->char('goal_type');      
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->char('goal_type');
             $table->string('description');
             $table->smallInteger('priority');
             $table->date('due_date');
             $table->boolean('complete');
             $table->double('budget', 10, 2);
             $table->timestamps();
-        });
 
-        Schema::table('goats', function (Blueprint $table) {
+            $table->integer('parent_id')->unsigned()->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('goats')->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreign('did')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
+
+            $table->integer('bid')->unsigned()->index();
+            $table->foreign('bid')->references('id')->on('business_plans')->onDelete('cascade');
         });
     }
 
@@ -40,7 +40,12 @@ class CreateGoatsTable extends Migration
     {
         Schema::table('goats', function (Blueprint $table) {
             $table->dropForeign('goats_parent_id_foreign');
+            $table->dropForeign('goats_bid_foreign');
         });
+
+
         Schema::drop('goats');
     }
+
+
 }
