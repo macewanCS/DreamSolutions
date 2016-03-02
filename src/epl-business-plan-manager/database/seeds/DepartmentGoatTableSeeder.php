@@ -14,19 +14,19 @@ class DepartmentGoatTableSeeder extends Seeder
         DB::table('department_goat')->insert(array(
 
             array(
-                'dept_id' => 2,
+                'department_id' => 2,
                 'goat_id' => 11,
-                'dept_role' => 'C'),
+                'department_role' => 'C'),
 
             array(
-                'dept_id' => 3,
+                'department_id' => 3,
                 'goat_id' => 13,
-                'dept_role' => 'C'),
+                'department_role' => 'C'),
 
             array(
-                'dept_id' => 4,
+                'department_id' => 4,
                 'goat_id' => 13,
-                'dept_role' => 'C')
+                'department_role' => 'C')
 
         ));
     }
