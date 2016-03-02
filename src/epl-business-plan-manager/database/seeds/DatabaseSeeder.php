@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessPlanSeeder::class);
         $this->call(GoatsTableSeeder::class);
         $this->call(GoatUserTableSeeder::class);
-
+        $this->call(DepartmentGoatTableSeeder::class);
     }
 }
