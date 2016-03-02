@@ -147,7 +147,7 @@ class GoatsTableSeeder extends Seeder
                 'description' => 'Obtain $40,000 in sponsorships through the FTSS in 2016',
                 'priority' => 1,
 				'due_date' => Carbon\Carbon::now() ,
-				'budget' => 0, 
+				'budget' => 0,
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1),
@@ -163,6 +163,6 @@ class GoatsTableSeeder extends Seeder
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1),
 
-    ));
+    	));
     }
 }

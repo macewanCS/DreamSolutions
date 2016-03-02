@@ -12,7 +12,7 @@ class DepartmentsTableSeeder extends Seeder
     public function run()
     {
         DB::table('departments')->insert([
-        	'name' => str_random(10),
+            'name' => str_random(10),
         	'isTeam' => rand(0, 1)
         	]);
     }
