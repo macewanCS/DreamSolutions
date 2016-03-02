@@ -44,25 +44,88 @@
               </ul>
               
               <div class="tab-content">
+                
                 <div id="cgoal" class="tab-pane fade in active">
-                  <h3>Goal</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <div>
+                    {!! Form::label('Goal description') !!}<br>
+                    {!! Form::textarea('goalDescription') !!}<br>
+                    {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
+                </div>
+                
                 <div id="cobjective" class="tab-pane fade">
-                  <h3>Objective</h3>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <div id="objective-left">
+                    {!! Form::label('Goal') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
                 </div>
+                <div id="objective-right">
+                    {!! Form::label('Objective description') !!}<br>
+                    {!! Form::textarea('objectiveDescription') !!}<br>
+                    {!! Form::submit('submit', ['class' => 'button']) !!}
+                </div>
+                </div>
+
                 <div id="caction" class="tab-pane fade">
-                  <h3>Action</h3>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                  <div id="action-left">
+                    {!! Form::label('Goal') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    {!! Form::label('Objective') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    <div id="actionLeadsContainer" tag="lead">
+                    {!! Form::label('Lead') !!}<br>
+                    {!! Form::text('leadName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("actionLeadsContainer")']) !!}
                 </div>
+                <div id="actionCollaboratorsContainer" tag="co">
+                    {!! Form::label('Collaborator') !!}<br>
+                    {!! Form::text('collaboratorName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("actionCollaboratorsContainer")']) !!}
+                </div>
+                    {!! Form::label('End date') !!}<br>
+                    {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                </div>
+                <div id="action-right">
+                    {!! Form::label('Action description') !!}<br>
+                    {!! Form::textarea('actionDescription') !!}<br>
+                    {!! Form::label('Priority') !!}<br>
+                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::submit('submit', ['class' => 'button']) !!}
+                </div>
+                </div>
+
                 <div id="ctask" class="tab-pane fade">
-                  <h3>Task</h3>
-                  <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                  <div id="task-left">
+                    {!! Form::label('Goal') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    {!! Form::label('Objective') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    {!! Form::label('Action') !!}<br>
+                    {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
+                    <div id="taskLeadsContainer" tag="lead">
+                    {!! Form::label('Lead') !!}<br>
+                    {!! Form::text('leadName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("taskLeadsContainer")']) !!}
+                    </div>
+                    <div id="taskCollaboratorsContainer" tag="co">
+                    {!! Form::label('Collaborator') !!}<br>
+                    {!! Form::text('collaboratorName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("taskCollaboratorsContainer")']) !!}
+                    </div>
+                    {!! Form::label('End date') !!}<br>
+                    {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                </div>
+                <div id="task-right">
+                    {!! Form::label('Task description') !!}<br>
+                    {!! Form::textarea('taskDescription') !!}<br>
+                    {!! Form::label('Priority') !!}<br>
+                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::submit('submit', ['class' => 'button']) !!}
+                </div>
                 </div>
               </div>
             </div>
             </div>
+            
             <div id="update" class="tab-pane fade">
               <h3>Update</h3>
               <div class="container">

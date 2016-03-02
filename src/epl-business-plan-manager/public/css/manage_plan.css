@@ -11,6 +11,11 @@ nav {
 .removeTextBox {
     margin-left: 5px;
 }
+
+div .container{
+    width: 1000px;
+}
+
 #manage-plan-area {
 
     margin:				25px auto;
