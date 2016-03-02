@@ -15,8 +15,7 @@ class CreateGoatsTable extends Migration
         Schema::create('goats', function (Blueprint $table) {
             $table->increments('id');
             $table->char('type'); 
-            $table->char('goal_type');      
-            $table->smallInteger('type');
+            $table->char('goal_type');
             $table->string('description');
             $table->smallInteger('priority');
             $table->date('due_date');
@@ -40,8 +39,10 @@ class CreateGoatsTable extends Migration
     public function down()
     {
         Schema::table('goats', function (Blueprint $table) {
-            $table->dropForeign('goats_parent_id_foreign');
+            $table->dropForeign('parent_id');
+            $table->dropForeign('bid');
         });
+
         Schema::drop('goats');
     }
 
