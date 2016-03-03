@@ -1,5 +1,11 @@
 /*----- Components -----*/
-nav {
+.nav {
+
+    /* display: flex;
+     align-items: center;
+     justify-content: center;*/
+}
+h3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,17 +17,14 @@ nav {
 .removeTextBox {
     margin-left: 5px;
 }
-
-div .container{
+div .container {
     width: 1000px;
 }
-
 #manage-plan-area {
-
-    margin:				25px auto;
+    margin: 25px auto;
     width: 1055px;
-    background-color:	#FFFFFF;
-    padding-top:		15px;
+    background-color: #FFFFFF;
+    padding-top: 15px;
     padding-bottom: 60px;
     padding-left: 15px;
     padding-right: 15px;
@@ -118,12 +121,6 @@ li.active a, li.active a:hover {
 /*----- Goal -----*/
 #goal {
     margin-top: 20px;
-}
-#goal input {
-
-    /*margin-top: 5px;
-    height: 150px;
-    width: 400px;*/
 }
 
 /*----- Objective -----*/
