@@ -146,16 +146,24 @@
                 <div class="tab-content">
                   <div id="ugoal" class="tab-pane fade in active">
                     {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
-                    {!! Form::label('Goal description') !!}<br>
-                    {!! Form::textarea('goalDescription') !!}<br>
-                    {!! Form::submit('submit', ['class' => 'button']) !!}
+                    <div id="uGoal-left">
+                      {!! Form::label('Goal') !!}<br>
+                      {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
+                    </div>
+                    <div id="uGoal-right">
+                      {!! Form::label('Goal description') !!}<br>
+                      {!! Form::textarea('goalDescription') !!}<br>
+                      {!! Form::submit('submit', ['class' => 'button']) !!}
+                    </div>
                     {!! Form::close() !!}
                   </div>
                   <div id="uobjective" class="tab-pane fade">
                     {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
                     <div id="objective-left">
                       {!! Form::label('Goal') !!}<br>
-                      {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
+                      {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                      {!! Form::label('Objective') !!}<br>
+                      {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}
                     </div>
                     <div id="objective-right">
                         {!! Form::label('Objective description') !!}<br>
@@ -171,6 +179,8 @@
                       {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
                       {!! Form::label('Objective') !!}<br>
                       {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                      {!! Form::label('Action') !!}<br>
+                      {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
                       <div id="uActionLeadsContainer" tag="lead">
                         {!! Form::label('Lead') !!}<br>
                         {!! Form::text('leadName') !!}
@@ -202,6 +212,8 @@
                       {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
                       {!! Form::label('Action') !!}<br>
                       {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
+                      {!! Form::label('Task description') !!}<br>
+                      {!! Form::select('size', array('Tmp' => 'Load tasks here')) !!}<br>
                       <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
                       {!! Form::text('leadName') !!}
