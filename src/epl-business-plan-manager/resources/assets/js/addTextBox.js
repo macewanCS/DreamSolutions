@@ -10,7 +10,7 @@ function addTextBox(container) {
         c++;
         name = '"collaboratorsName' + c +'"';
     }
-    div.innerHTML = '<input type="text" name=' + name + '></input><button type="button" onclick="removeTextBox(this,' + container + ')">Remove</button>';
+    div.innerHTML = '<input type="text" name=' + name + '></input><button class="removeTextBox" type="button" onclick="removeTextBox(this,' + container + ')">Remove</button>';
     document.getElementById(container).appendChild(div);
 }
 
