@@ -17,14 +17,16 @@ class ManagePlanController extends Controller
     public function store()
     {
         // Model::create() something
-        return redirect('manage_plan');
+        return back();
     }
 
     public function update()
     {
+        return back();
     }
 
     public function destroy()
     {
+        return back();
     }
 }

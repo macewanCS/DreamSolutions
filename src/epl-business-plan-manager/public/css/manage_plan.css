@@ -1,40 +1,90 @@
 /*----- Components -----*/
 nav {
+    display: flex;    /*align-items: center;*/
+    justify-content: center;
+}
+h3 {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+label {
+    font-weight: 700;
+}
+.nav {
+    display: flex;
+    margin-bottom: 9px;
+}
+.duc-nav {
+    border-bottom: 1px solid;
+}
+.duc-nav a {
+    border-radius: 4px 4px 0 0;
+}
+.nav.nav-tabs li.active a {
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid;
+}
+.goat-nav a {
+    border-radius: 4px;
+}
+.nav li {
+    list-style: none;    /*margin: 0px;
+                        flex: 1;*/
+}
+.nav li a {
+    text-decoration: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid transparent;
+}
+.nav li a:hover {
+    color: #337ab7;
+}
 .button {
     margin-top: 5px;
     float: right;
+    cursor: pointer;
+}
+.addTextBox:hover {
+    cursor: pointer;
 }
 .removeTextBox {
     margin-left: 5px;
 }
-
-div .container{
-    width: 1000px;
+.removeTextBox:hover {
+    cursor: pointer;
 }
-
 #manage-plan-area {
-
-    margin:				25px auto;
-    width: 1055px;
-    background-color:	#FFFFFF;
-    padding-top:		15px;
+    margin: 25px auto;
+    width: 80%;
+    background-color: #FFFFFF;
+    padding-top: 15px;
     padding-bottom: 60px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+/*----- Create Business Plan Wizard -----*/
+#createBusinessPlan {
+    float: right;
+}
+#createBusinessPlan a:hover {
+    background-color: #FFF;
 }
 
 /*----- DUC Content of Tabs -----*/
 .tab-content {
     background: #fff;
 }
-.tab {
+.tab-pane {
     display: none;
 }
-.tab.active {
+.tab-pane.active {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,9 +110,16 @@ div .container{
 }
 
 /*----- li -----*/
-li.active a, li.active a:hover {
-    background: #fff;
-    color: #4c4c4c;
+li.active a {
+    background-color: #337ab7;
+    color: #FFF;
+    cursor: default;
+}
+li.active a:hover {
+    color: #FFF;
+}
+a:hover {
+    background-color: #EEEEEE;
 }
 
 /*----- DUC Tab Links -----*/
@@ -119,11 +176,16 @@ li.active a, li.active a:hover {
 #goal {
     margin-top: 20px;
 }
-#goal input {
-
-    /*margin-top: 5px;
-    height: 150px;
-    width: 400px;*/
+.goal-left {
+    float: left;
+    margin-right: 100px;
+}
+.goal-left select {
+    margin-top: 5px;
+}
+.goal-right {
+    float: right;
+    margin-left: 100px;
 }
 
 /*----- Objective -----*/
@@ -133,12 +195,17 @@ li.active a, li.active a:hover {
 }
 #objective-left {
     margin-right: 100px;
+    float: left;
 }
 #objective-left select {
-    margin-top: 5px;
+
+    /*margin-top: 5px;*/
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 #objective-right {
     margin-left: 100px;
+    float: right;
 }
 
 /*----- Action -----*/
@@ -148,6 +215,7 @@ li.active a, li.active a:hover {
 }
 #action-left {
     margin-right: 60px;
+    float: left;
 }
 #action-left select, input {
     margin-top: 1px;
@@ -155,6 +223,7 @@ li.active a, li.active a:hover {
 }
 #action-right {
     margin-left: 60px;
+    float: right;
 }
 #action-right select {
     margin-top: 1px;
@@ -168,6 +237,7 @@ li.active a, li.active a:hover {
 }
 #task-left {
     margin-right: 60px;
+    float: left;
 }
 #task-left select, input {
     margin-top: 1px;
@@ -175,6 +245,7 @@ li.active a, li.active a:hover {
 }
 #task-right {
     margin-left: 60px;
+    float: right;
 }
 #task-right select {
     margin-top: 1px;
