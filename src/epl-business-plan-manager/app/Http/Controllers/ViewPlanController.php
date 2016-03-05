@@ -11,9 +11,29 @@ class ViewPlanController extends Controller
 {
     public function index() {
     	$bp = Goat::all();
-    	// for($i = 0; i < count($bp); i++) {
-    		
-    	// }
-    	return view('view_plan')->with('bp', $bp);
+
+    	$sorted = collect();
+    	foreach ($bp as $goat) {
+    		if ($goat->type === 'G') {
+    			$sorted->push($goat);
+    			continue;
+    		}
+
+    		for ($i = 0, $len = $sorted->count(); $i < $len; $i++) {
+    			if ($sorted[$i]->id === $goat->parent_id) {
+    				// Hacky fix since when you splice $goat into $sorted, it converts the $goat into
+    				// an array instead of keeping it as a Model object...
+    				$sorted->splice($i + 1, 0, "temp");
+    				$sorted->put($i + 1, $goat);
+    				break;
+    			}
+    		}
+    	}
+
+    	return view('view_plan')->with('bp', $sorted);
+    }
+
+    private function type_to_level($c) {
+    	return strpos("GOAT", $c);
     }
 }

@@ -16,6 +16,7 @@
   margin-left: 5%;
   padding-top: 100px;
   border-collapse: collapse; 
+  font-size: small;
 }
 
 #view-plan-area th { 
@@ -35,7 +36,7 @@
   background: #336633;
   color: white;
   font-weight: bold;
-  font-size: medium;
+  /*font-size: medium;*/
 }
 
 #view-plan-area tr.objective {
@@ -43,14 +44,14 @@
   background: #669966;
   color: white;
   font-weight: bold;
-  font-size: medium;
+  /*font-size: medium;*/
 }
 
 #view-plan-area tr.action {
   background: #dbe6f0;
-  font-size: small;
+  /*font-size: small;*/
 }
 
 #view-plan-area tr.task {
-  font-size: small;
+  /*font-size: small;*/
 }
