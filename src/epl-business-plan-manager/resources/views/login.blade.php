@@ -15,6 +15,9 @@
       	<h1 id="login-title">Business Plan<br>Manager</h1>
       </header>
       
+      @if (Session::has('flash_message'))
+        <div style="color: red; padding-bottom: 5px;">{{ Session::get('flash_message') }}</div>
+      @endif
       
     	{!! Form::open(['url' => 'login']) !!}
         
@@ -34,7 +37,6 @@
 
       {!! Form::close() !!}
       
-      @yield('content')
 
 
     </div>

@@ -82,6 +82,7 @@ class AuthController extends Controller
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             return redirect()->intended('dashboard');
         } else {
+            \Session::flash('flash_message', 'Invalid username or password');
             return redirect('login');
         }
     }

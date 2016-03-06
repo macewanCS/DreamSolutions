@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\goat;
+use App\Goat;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 

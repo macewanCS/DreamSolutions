@@ -11,11 +11,7 @@
 
 
                     <ul id="search-area">
-                        <li class="search-bar">
-                            Search
-                        </li>
-                        <li class="search-bar"><img src="images/200px-magnifying_glass_icon.png" height="15px"></li>
-                        <li class="search-bar"><input type="text" name="search"></li>
+                        <li class="search-bar"><a href="logout">Logout</a></li>
                     </ul>
                 </ul>
                 </div>
