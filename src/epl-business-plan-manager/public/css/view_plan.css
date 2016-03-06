@@ -1,89 +1,107 @@
+
 .tablesorter .filtered {
-  display: none;
+    display : none;
 }
+
 .tablesorter-filter-row td {
-  display: none;
+    display : none;
 }
 
 #reset {
-  background-color: #004b8e;
-  color: #fff;
-  border: none;
-  outline: none;
-  font-weight: bold;
+    background-color : #004b8e;
+    font-weight      : bold;
+    color            : #fff;
+    border           : none;
+    outline          : none;
 }
 
 #reset:active {
-  transform: translateY(1px);
+    transform : translateY(1px);
 }
 
 #filter-bar, #active-filters{
-  width: 90%;
-  margin-left: 5%;
-  margin-bottom: 10px;
+    width         : 90%;
+    margin-bottom : 10px;
+    margin-left   : 5%;
+}
+
+#filter-categories {
+    float           : right;
+
+    margin          : 0;
+    padding         : 0;
+
+    list-style-type : none;
+}
+
+#filter-categories li {
+    display      : inline;
+
+    margin-right : 10px;
+
+    font-size    : small;
 }
 
 span.filter {
-  background-color: #EBE8EB;
-  padding: 3px 5px;
-  font-size: x-small;
+    padding          : 3px 5px;
+
+    background-color : #EBE8EB;
+    font-size        : x-small;
 }
 
 #view-plan-area{
-  
-    margin: 25px auto;
-    width: 1055px;
-    background-color: #FFFFFF;
-    padding-top:    15px;
-    padding-bottom: 60px;
-    padding-left: 15px;
-    padding-right: 15px;
+    width            : 1055px;
+    margin           : 25px auto;
+    padding-top      : 15px;
+    padding-bottom   : 60px;
+    padding-right    : 15px;
+    padding-left     : 15px;
+    background-color : #FFFFFF;
 }
 
-
-#view-plan-area table { 
-  width: 90%; 
-  margin-left: 5%;
-  padding-top: 100px;
-  border-collapse: collapse; 
-  font-size: x-small;
+#view-plan-area table {
+    width           : 90%;
+    margin-left     : 5%;
+    padding-top     : 100px;
+    border-collapse : collapse;
+    font-size       : x-small;
 }
 
 #view-plan-area .hidden {
-  display: none;
+    display : none;
 }
 
-#view-plan-area th { 
-  background: #004b8e; 
-  color: white; 
-  font-weight: bold; 
-  border: 3px solid #fff;
-  font-size: smaller;
+#view-plan-area th {
+    background  : #004b8e;
+    font-size   : smaller;
+    font-weight : bold;
+    color       : white;
+    border      : 3px solid #fff;
 }
 
-#view-plan-area td, th { 
-  padding: 6px; 
-  border-bottom: 1px solid #ccc;
+#view-plan-area td, th {
+    padding       : 6px;
+    border-bottom : 1px solid #ccc;
 }
 
 #view-plan-area tr.goal {
-  text-align: left;
-  background: #336633;
-  color: white;
-  font-weight: bold;
-  font-size: small;
+    background  : #336633;
+    font-size   : small;
+    font-weight : bold;
+    color       : white;
+    text-align  : left;
 }
 
 #view-plan-area tr.objective {
-  text-align: left;
-  background: #669966;
-  color: white;
-  font-weight: bold;
-  font-size: small;
+    background  : #669966;
+    font-size   : small;
+    font-weight : bold;
+    color       : white;
+    text-align  : left;
 }
 
 #view-plan-area tr.action {
-  background: #dbe6f0;
+    background : #dbe6f0;
   /*font-size: small;*/
 }
 
