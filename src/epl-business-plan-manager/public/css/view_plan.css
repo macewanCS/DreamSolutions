@@ -1,3 +1,50 @@
+.tablesorter .filtered {
+  display: none;
+}
+
+/* hidden filter row */
+.tablesorter-filter-row.hideme td {
+  /*** *********************************************** ***/
+  /*** change this padding to modify the thickness     ***/
+  /*** of the closed filter row (height = padding x 2) ***/
+  padding: 0px;
+  /*** *********************************************** ***/
+  margin: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+.tablesorter-filter-row.hideme * {
+  height: 1px;
+  min-height: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  /* don't use visibility: hidden because it disables tabbing */
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.tablesorter-filter {
+  display: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#filter-bar {
+  margin: 10px 0px;
+}
+
+#reset {
+  background-color: #004b8e;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+#reset:active {
+  transform: translateY(1px);
+}
 
 #view-plan-area{
   
@@ -16,7 +63,11 @@
   margin-left: 5%;
   padding-top: 100px;
   border-collapse: collapse; 
-  font-size: small;
+  font-size: x-small;
+}
+
+#view-plan-area .hidden {
+  display: none;
 }
 
 #view-plan-area th { 
