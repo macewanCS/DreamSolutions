@@ -87,7 +87,7 @@
   background: #336633;
   color: white;
   font-weight: bold;
-  /*font-size: medium;*/
+  font-size: small;
 }
 
 #view-plan-area tr.objective {
@@ -95,7 +95,7 @@
   background: #669966;
   color: white;
   font-weight: bold;
-  /*font-size: medium;*/
+  font-size: small;
 }
 
 #view-plan-area tr.action {

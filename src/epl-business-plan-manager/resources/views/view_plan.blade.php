@@ -43,7 +43,7 @@ $(function() {
 			<th>Lead</th>
 			<th>Collaborators</th>
 			<th>Due Date</th>
-			<th>Status</th>
+			<th colspan=2>Status</th>
 		</thead>
 		<tbody>
 			@foreach ($bp as $index => $goat)
@@ -56,17 +56,17 @@ $(function() {
 					@if ($goat->type == 'G' || $goat->type == 'O')
 					
 						<td class="hidden">{{ $goat->type }}</td>
-						<td colspan="8">{{ $goat->description }}</td>
+						<td colspan="9">{{ $goat->description }}</td>
 
 					@else
 
 						<td class="hidden">{{ $goat->type }}</td>
 						<td>{{ $goat->priority }}</td>
 						<td>{{ $goat->description }}</td>
-						<td>Department</td>
+						<td>{{ $goat->goal_type }}</td>
 						<td>IT Department</td>
-						<td>Dan</td>
-						<td>Vicky</td>
+						<td>@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
+						<td>@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
 						<td>{{ $goat->due_date}}</td>
 
 					@if ($goat->complete)
@@ -75,6 +75,8 @@ $(function() {
 						<!-- TODO: Check for overdue -->
 						<td>In Progress</td>
 					@endif
+
+						<td></td>
 
 					@endif
 
