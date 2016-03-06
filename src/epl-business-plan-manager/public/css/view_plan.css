@@ -50,6 +50,7 @@
   color: white; 
   font-weight: bold; 
   border: 3px solid #fff;
+  font-size: smaller;
 }
 
 #view-plan-area td, th { 

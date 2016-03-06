@@ -16,10 +16,39 @@ $(function() {
 	});
 
 	$('#view-plan-table').bind('sortEnd', function() {
+		expandall();
 		$.tablesorter.setFilters( $('#view-plan-table'), ['A|T'], true);
 	});
 });
 
+function expandall() {
+	$('#view-plan-table tbody').find('tr').each(function() {
+		$(this).toggle(true, "fast");
+		$(this).removeAttr('style');
+	});
+}
+
+function typeIndex($type) {
+	switch ($type) {
+		case 'goal' : return 0;
+		case 'objective': return 1;
+		case 'action': return 2;
+		case 'task': return 3;
+	}
+}
+
+$(document).ready(function() {
+	$('tr.goal, tr.objective, tr.action').click(function() {
+		$type = typeIndex($(this).attr('class'));
+		$row = $(this).next();
+		while (  $type - typeIndex($row.attr('class')) < 0 ) {
+			$row.toggle("fast");
+			$row = $row.next();
+		}
+	});
+
+	$('button#expandall').click(expandall);
+});
 </script>
 @stop
 
@@ -28,6 +57,7 @@ $(function() {
 <div id="view-plan-area">
 	<div id="filter-bar">
 		{!! Form::button('Reset View', ['id' => 'reset']); !!}
+		{!! Form::button('Expand all', ['id' => 'expandall']); !!}
 	</div>
 	<table id="view-plan-table">
 		<thead>
