@@ -12,6 +12,7 @@ $(function() {
 
 	$('button#reset').click(function() {
 		$("#view-plan-table").trigger('sortReset').trigger('filterReset');
+		expandall();
 		return false;
 	});
 
