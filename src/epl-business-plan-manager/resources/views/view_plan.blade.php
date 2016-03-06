@@ -5,7 +5,9 @@
 <script src="/js/jquery-1.12.1.min.js"></script>
 <script src="/js/jquery.tablesorter.combined.js"></script>
 <script>
-var firstSort = true;
+var unsorted = true;
+var filterDict = {};
+var filters = [];
 
 $(function() {
 	$("#view-plan-table").tablesorter({
@@ -15,18 +17,55 @@ $(function() {
 	$('button#reset').click(function() {
 		$("#view-plan-table").trigger('sortReset').trigger('filterReset');
 		expandAll();
-		firstSort = true;
+		$('#active-filters').empty();
+		unsorted = true;
 		return false;
 	});
 
 	$('#view-plan-table').bind('sortEnd', function() {
-		if (firstSort) {
+		if (unsorted) {
 			expandAll();
-			$.tablesorter.setFilters( $('#view-plan-table'), ['A|T'], true);
-			firstSort = false;
+			addToFilterDict("0", ['A', 'T']);
+			$('#view-plan-table').trigger('search', [filters]);
+			addFilterToBar('Hierarchy: Actions and below', ["0"], ['A', 'T']);
+			unsorted = false;
 		}
 	});
 });
+
+function addToFilterDict($key, $values) {
+	if ( !($key in filterDict) ) {
+		filterDict[$key] = {};
+	}
+
+	$.each( $values, function(i, val) {
+		filterDict[$key][val] = true;
+	});
+
+	filterDictToFilters();
+}
+
+function removeFromFilterDict($key, $values) {
+	$.each( $values, function(i, val) {
+		delete filterDict[$key][val];
+	});
+
+	filterDictToFilters();
+}
+
+function filterDictToFilters() {
+	// flatten dictionary "set" into array
+	var array = $.map(filterDict, function(val, i) {
+		return [Object.keys(val)];
+	});
+
+	// connect different "set" elements with '|' (or)
+	$.each(array, function(i, val) {
+		filters[i] = val.join('|');
+	});
+
+	console.log(filters);
+}
 
 function expandAll() {
 	$('#view-plan-table tbody').find('tr').each(function() {
@@ -45,17 +84,29 @@ function typeIndex($type) {
 	}
 }
 
-$(document).ready(function() {
-	$('tr.goal, tr.objective, tr.action').click(function() {
-		$type = typeIndex($(this).attr('class'));
-		$row = $(this).next();
-		while (  $type - typeIndex($row.attr('class')) < 0 ) {
-			$row.toggle("fast");
-			$row = $row.next();
-		}
+function addFilterToBar($filterText, $key, $values) {
+	var filter = $("<span class='filter'></span").text($filterText);
+	$('#active-filters').append(filter);
+
+	$(filter).click(function() {
+		removeFromFilterDict($key, $values);
+		$('#view-plan-table').trigger('search', [filters]);
+		$(this).remove();
 	});
 
-	$('button#expandAll').click(expandAll);
+}
+
+$(document).ready(function() {
+	$('tr.goal, tr.objective, tr.action').click(function() {
+		if (unsorted) {
+			$type = typeIndex($(this).attr('class'));
+			$row = $(this).next();
+			while (  $type - typeIndex($row.attr('class')) < 0 ) {
+				$row.toggle("fast");
+				$row = $row.next();
+			}
+		}
+	});
 });
 </script>
 @stop
@@ -65,8 +116,8 @@ $(document).ready(function() {
 <div id="view-plan-area">
 	<div id="filter-bar">
 		{!! Form::button('Reset View', ['id' => 'reset']); !!}
-		{!! Form::button('Expand all', ['id' => 'expandAll']); !!}
 	</div>
+	<div id="active-filters"></div>
 	<table id="view-plan-table">
 		<thead>
 			<th class="hidden">Goal Type</th>
