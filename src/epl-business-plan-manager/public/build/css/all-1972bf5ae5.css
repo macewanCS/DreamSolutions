@@ -48,6 +48,7 @@ body {
     padding:               10px 16px;
     text-decoration:       none;
     font-weight:           bold;
+    border-bottom:         thick solid #FFF;
 }
 
 #nav li a:hover {
@@ -58,18 +59,17 @@ body {
 
 #nav .active {
     border-bottom:         thick solid #004b8e;
-
 }
 
-#nav > ul #search-area {
+#nav > ul #logout-area {
     float:                 right;
     list-style-type:       none;
     text-decoration:       none;
-    padding-top:           5px;
+    padding-top:           0;
     border-right:          none;
 }
 
-#nav > ul #search-area .search-bar {
+#nav > ul #logout-area .logout-bar {
     border-right:         none;
     padding-right:        5px;
 }

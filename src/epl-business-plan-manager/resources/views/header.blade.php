@@ -9,9 +9,8 @@
                     <li><a href="view" class="{{ Request::segments()[0] == "view" ? "active" : "" }}">View Plan</a></li>
                     <li><a href="manage" class="{{ Request::segments()[0] == "manage" ? "active" : "" }}">Manage Plan</a></li>
 
-
-                    <ul id="search-area">
-                        <li class="search-bar"><a href="logout">Logout</a></li>
+                    <ul id="logout-area">
+                        <li class="logout-bar"><a href="logout">Logout</a></li>
                     </ul>
                 </ul>
                 </div>
