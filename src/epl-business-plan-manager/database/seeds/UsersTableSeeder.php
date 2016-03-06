@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
                  'first_name'=>'John',
                  'last_name' => 'Doe',
                  'username' => 'doej',
-                 'password' => 'password',
+                 'password' => bcrypt('password'),
                  'email'=>'john@clivern.com',
                  'overdue' => rand(0, 4),
                  'completed' => rand(0, 26),
