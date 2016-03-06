@@ -5,6 +5,8 @@
 <script src="/js/jquery-1.12.1.min.js"></script>
 <script src="/js/jquery.tablesorter.combined.js"></script>
 <script>
+var firstSort = true;
+
 $(function() {
 	$("#view-plan-table").tablesorter({
 		widgets : ["filter"],
@@ -12,19 +14,24 @@ $(function() {
 
 	$('button#reset').click(function() {
 		$("#view-plan-table").trigger('sortReset').trigger('filterReset');
-		expandall();
+		expandAll();
+		firstSort = true;
 		return false;
 	});
 
 	$('#view-plan-table').bind('sortEnd', function() {
-		expandall();
-		$.tablesorter.setFilters( $('#view-plan-table'), ['A|T'], true);
+		if (firstSort) {
+			expandAll();
+			$.tablesorter.setFilters( $('#view-plan-table'), ['A|T'], true);
+			firstSort = false;
+		}
 	});
 });
 
-function expandall() {
+function expandAll() {
 	$('#view-plan-table tbody').find('tr').each(function() {
 		$(this).toggle(true, "fast");
+		// toggle manually sets style="display: " tag on a row. This conflicts with filter
 		$(this).removeAttr('style');
 	});
 }
@@ -48,7 +55,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('button#expandall').click(expandall);
+	$('button#expandAll').click(expandAll);
 });
 </script>
 @stop
@@ -58,7 +65,7 @@ $(document).ready(function() {
 <div id="view-plan-area">
 	<div id="filter-bar">
 		{!! Form::button('Reset View', ['id' => 'reset']); !!}
-		{!! Form::button('Expand all', ['id' => 'expandall']); !!}
+		{!! Form::button('Expand all', ['id' => 'expandAll']); !!}
 	</div>
 	<table id="view-plan-table">
 		<thead>
