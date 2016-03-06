@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Department')->withPivot('permission_level')->withTimestamps();
     }
+
+    public function name()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
 }
