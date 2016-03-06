@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 class ViewPlanController extends Controller
 {
     public function index() {
+    	// TODO: CACHE THIS!!
     	$bp = Goat::all();
 
     	$sorted = collect();

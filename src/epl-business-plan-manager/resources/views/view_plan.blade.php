@@ -8,10 +8,6 @@
 $(function() {
 	$("#view-plan-table").tablesorter({
 		widgets : ["filter"],
-
-		widgetOptions: {
-			filter_columnFilters : true,
-		}
 	});
 
 	$('button#reset').click(function() {
@@ -65,6 +61,7 @@ $(function() {
 						<td>{{ $goat->description }}</td>
 						<td>{{ $goat->goal_type }}</td>
 						<td>IT Department</td>
+						<!-- TODO: turn into lists -->
 						<td>@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
 						<td>@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
 						<td>{{ $goat->due_date}}</td>
