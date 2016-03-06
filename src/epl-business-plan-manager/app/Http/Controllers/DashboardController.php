@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
 use App\User;
+use App\Goat;
+
 use View;
 use Auth;
+//use User;
 //use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +22,9 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $user = Auth::user();	
-    	return view('dashboard', compact('user'));
+        $tasks = $user->collaboratorOn()->orderBy('description')->get();
+        // dd($tasks);
+        
+    	return view('dashboard', compact('user', 'tasks'));
     }
 }

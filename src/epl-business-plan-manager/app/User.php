@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function collaboratorOn()
     {
-        return $this->belongsToMany('App\Goat', 'user_role')->where('user_role', '=', 'C')->withTimestamps();
+        return $this->belongsToMany('App\Goat');//, 'user_role')->where('user_role', '=', 'C')->withTimestamps();
     }
 
     // To access the permission_level as it is... something like

@@ -24,17 +24,45 @@
 		</div>
 
 		<div id="profile-right">
-			<table>
+			<h2 style="margin-left: 5%">Tasks in Progress</h2>
+			<table id="todo">
 				<thead>
 				<tr>
-					<th>Action</th>
 					<th>Task</th>
 					<th>Due Date</th>
 					<th>Status</th>
 				</tr>
 				</thead>
 				<tbody>
-					<td>1.13</td>
+					
+					@foreach ($tasks as $task)
+						<tr>
+						<td><p>{{ $task->description }}</p></td>
+						<td>{{ $task->due_date }}</td>
+						
+						@if (!$task->complete)
+				        	<td>In progress</td>
+				        
+				        @else
+				        	<td>Complete</td>
+				        
+				        @endif
+						</tr>
+					@endforeach
+				</tbody>
+			</table><br><br>
+
+			<h2 style="margin-left: 5%">Recent Activity</h2>
+			<table id="recent">
+				<thead>
+				<tr>
+					<th>Task</th>
+					<th>Due Date</th>
+					<th>Status</th>
+				</tr>
+				</thead>
+				<tbody>
+					
 					<td><p> Implement approved recommendations fro mthe 2015 Public Computing Report</p></td>
 					<td>2016/06/30</td>
 					<td>Implemented #7</td>
