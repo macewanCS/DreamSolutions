@@ -26,13 +26,13 @@ Route::patch('wizard/goals', 'WizardController@goalsToIndex');
 Route::get('wizard/goals', 'WizardController@showGoals');
 Route::post('wizard/goals', 'WizardController@createGoals');
 
-Route::patch('wizard/goals/objectives', 'WizardController@objectivesToGoal');
-Route::get('wizard/goals/objectives', 'WizardController@showObjectives');
-Route::post('wizard/goals/objectives', 'WizardController@createObjectives');
+Route::patch('wizard/objectives', 'WizardController@objectivesToGoal');
+Route::get('wizard/objectives', 'WizardController@showObjectives');
+Route::post('wizard/objectives', 'WizardController@createObjectives');
 
-Route::patch('wizard/goals/objectives/actions', 'WizardController@actionsToObjectives');
-Route::get('wizard/goals/objectives/actions', 'WizardController@showActions');
-Route::post('wizard/goals/objectives/actions', 'WizardController@createActions');
+Route::patch('wizard/actions', 'WizardController@actionsToObjectives');
+Route::get('wizard/actions', 'WizardController@showActions');
+Route::post('wizard/actions', 'WizardController@createActions');
 
 
 // View plan controller routes

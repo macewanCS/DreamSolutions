@@ -26,7 +26,7 @@ class WizardController extends Controller
     }
 
     public function createGoals() {
-        return redirect('wizard/goals/objectives');
+        return redirect('wizard/objectives');
     }
 
     public function objectivesToGoal() {
@@ -38,11 +38,11 @@ class WizardController extends Controller
     }
 
     public function createObjectives() {
-        return redirect('wizard/goals/objectives/actions');
+        return redirect('wizard/actions');
     }
 
     public function actionsToObjectives() {
-        return redirect('wizard/goals/objectives');
+        return redirect('wizard/objectives');
     }
 
     public function showActions() {
