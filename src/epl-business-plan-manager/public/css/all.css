@@ -7,9 +7,12 @@ body {
 }
 
 #header-area {
-    margin:               0px 100px 15px 100px;
+    margin:               auto;
+    text-align: center;
     background-color:     #FFFFFF;
     border-style:         groove;
+    width:                1055px;
+
 }
 
 #epl-logo{
@@ -77,3 +80,8 @@ body {
 input {
     background:            url('200px-magnifying_glass_icon.png') no-repeat right;
 }
+/**
+ * Created by Cody on 2016-02-25.
+ */
+
+/*# sourceMappingURL=all.css.map */
