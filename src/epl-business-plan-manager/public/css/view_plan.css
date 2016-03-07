@@ -1,62 +1,119 @@
 
+.tablesorter .filtered {
+    display : none;
+}
+
+.tablesorter-filter-row td {
+    display : none;
+}
+
+#filter-bar, #active-filters{
+    overflow      : hidden;
+    width         : 90%;
+    margin-bottom : 10px;
+    margin-left   : 5%;
+}
+
+#filter-categories {
+    float           : left;
+
+    margin          : 0;
+    padding         : 0;
+
+    list-style-type : none;
+}
+
+#filter-categories li {
+    display      : inline;
+
+    margin-right : 10px;
+
+    font-size    : small;
+}
+
+#reset {
+    float            : right;
+
+    background-color : #004b8e;
+    font-weight      : bold;
+    color            : #fff;
+    border           : none;
+    outline          : none;
+}
+
+#reset:active {
+    transform : translateY(1px);
+}
+
+span.filter {
+    padding          : 3px 5px;
+
+    background-color : #EBE8EB;
+    font-size        : x-small;
+}
+
 #view-plan-area{
-	
-	margin:	25px auto;
-    width: 1055px;
-    background-color:	#FFFFFF;
-    padding-top:		15px;
-    padding-bottom: 60px;
-    padding-left: 15px;
-    padding-right: 15px;
+    width            : 1055px;
+    margin           : 25px auto;
+    padding-top      : 15px;
+    padding-bottom   : 60px;
+    padding-right    : 15px;
+    padding-left     : 15px;
+
+    background-color : #FFFFFF;
 }
 
+#view-plan-area table {
+    width           : 90%;
+    margin-left     : 5%;
+    padding-top     : 100px;
+    border-collapse : collapse;
 
-#view-plan-area table { 
-  width: 90%; 
-  margin-left: 5%;
-  padding-top: 100px;
-  border-collapse: collapse; 
-}
-/* Zebra striping */
-
-/*#view-plan-area tr:nth-of-type(odd) { 
-  background: #eee; 
-}*/
-
-#view-plan-area th { 
-  background: #004b8e; 
-  color: white; 
-  font-weight: bold; 
+    font-size       : x-small;
 }
 
-#view-plan-area td, th { 
-  padding: 6px; 
-  border: 1px solid #ccc; 
- 
+#view-plan-area .hidden {
+    display : none;
 }
 
-
-#goal {
-	text-align: left;
-	background: #006622;
-	color: white;
-	font-weight: bold;
-	font-size: 18px;
+#view-plan-area th {
+    background  : #004b8e;
+    font-size   : smaller;
+    font-weight : bold;
+    color       : white;
+    border      : 3px solid #fff;
 }
 
-#objective {
-	text-align: left;
-	background: #009933;
-	color: white;
-	font-weight: bold;
-	font-size: 18px;
+#view-plan-area td, th {
+    padding       : 6px;
+    border-bottom : 1px solid #ccc;
 }
 
-#action {
-
-	background: #dff;
+#view-plan-area tr.goal {
+    background  : #336633;
+    font-size   : small;
+    font-weight : bold;
+    color       : white;
+    text-align  : left;
 }
 
-#norm{
-	font-size: 14px;
+#view-plan-area tr.objective {
+    background  : #669966;
+    font-size   : small;
+    font-weight : bold;
+    color       : white;
+    text-align  : left;
+}
+
+#view-plan-area tr.action {
+    background : #dbe6f0;
+  /*font-size: small;*/
+}
+
+#view-plan-area tr.task {
+  /*font-size: small;*/
+}
+
+.jq-dropdown {
+    font-size : small;
 }
