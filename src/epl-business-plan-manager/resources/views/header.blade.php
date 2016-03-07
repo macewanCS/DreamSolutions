@@ -10,7 +10,7 @@
                     <li><a href="/manage" class="{{ Request::segments()[0] == "manage" ? "active" : "" }}">Manage Plan</a></li>
 
                     <ul id="logout-area">
-                        <li class="logout-bar"><a href="logout">Logout</a></li>
+                        <li class="logout-bar"><a href="/logout">Logout</a></li>
                     </ul>
                 </ul>
                 </div>

@@ -17,7 +17,7 @@
           </div>
 
           <div id="createBusinessPlan">
-              <a href="{{ action('WizardController@create') }}">Create Business Plan</a>
+              <a href="{{ action('WizardController@showIndex') }}">Create Business Plan</a>
           </div>
       </div>
 

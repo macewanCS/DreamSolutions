@@ -6,7 +6,7 @@ body {
     font-size:          medium;
 }
 
-#wizard-year-selection {
+#wizard-year-section {
     text-align:         center;
     background-color:   white;
     border-style:       groove;
@@ -39,4 +39,62 @@ body {
     height:             50px;
     font-size:          20px;
     color:              white;
+}
+
+#wizard-goal-selection {
+    text-align:         center;
+    background-color:   white;
+    border-style:       groove;
+    height:             400px;
+    width:              650px;
+    padding:            20px 0px 20px 0px;
+    margin:             50px auto auto auto;
+    border-radius:      5%;
+}
+
+#wizard-objective-selection {
+    text-align:         center;
+    background-color:   white;
+    border-style:       groove;
+    height:             400px;
+    width:              650px;
+    padding:            20px 0px 20px 0px;
+    margin:             50px auto auto auto;
+    border-radius:      5%;
+}
+
+#wizard-action-selection {
+    text-align:         center;
+    background-color:   white;
+    border-style:       groove;
+    height:             400px;
+    width:              650px;
+    padding:            20px 0px 20px 0px;
+    margin:             50px auto auto auto;
+    border-radius:      5%;
+}
+
+.wizard-button-area {
+    margin-top:         275px;
+    padding:            10px;
+}
+
+.wizard-previous-button {
+    float:              left;
+    border-radius:      5%;
+}
+
+.wizard-next-button {
+    float:              right;
+    border-radius:      5%;
+}
+
+.wizard-button-area-goals {
+    margin-top:         41px;
+    padding:            10px;
+}
+
+.goal-text-boxes {
+    width:              300px;
+    height:             50px;
 }

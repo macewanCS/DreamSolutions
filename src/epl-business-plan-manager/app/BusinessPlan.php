@@ -11,6 +11,6 @@ class BusinessPlan extends Model
         "end"
     ];
 
-
+    protected $dates = ['start', 'end'];
 
 }

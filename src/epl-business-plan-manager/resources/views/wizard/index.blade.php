@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-    <div id="wizard-year-selection">
+    <div id="wizard-year-section">
 
         <h1 id="wizard-year-title">Select Years</h1>
 
@@ -14,8 +14,8 @@
 
             <select class="wizard-years">
                 <?php
-                    foreach(range(date('Y'), (int)date("Y") + 10) as $year) {
-                        echo "\t<option value='".$year."'>".$year."</option>\n\r";
+                    foreach(range(date('Y'), (int)date("Y") + 10) as $startYear) {
+                        echo "\t<option value='".$startYear."'>".$startYear."</option>\n\r";
                     }
                 ?>
             </select>
@@ -24,15 +24,14 @@
 
             <select class="wizard-years">
                 <?php
-                foreach(range(date('Y') + 1, (int)date("Y") + 10) as $year) {
-                    echo "\t<option value='".$year."'>".$year."</option>\n\r";
+                foreach(range(date('Y') + 1, (int)date("Y") + 10) as $endYear) {
+                    echo "\t<option value='".$endYear."'>".$endYear."</option>\n\r";
                 }
                 ?>
             </select>
-
-
         </div>
 
+        {!! Form::open(array('action' => 'WizardController@createBP')) !!}
         {!! Form::submit('Next', ['class' => 'wizard-button']) !!}
 
     </div>
