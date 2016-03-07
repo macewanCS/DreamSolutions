@@ -12,17 +12,22 @@
         <h1 id="wizard-goal-title">Select Goals</h1>
 
         <div class="text-boxes">
-            <p>
-                {!! Form::textarea('Goal 1', '', array('class' => 'goal-text-boxes')) !!}
-            </p>
 
-            <p>
-                {!! Form::textarea('Goal 2', '', array('class' => 'goal-text-boxes')) !!}
-            </p>
+            <div class="goal-area">
+                {!! Form::label('Goal 1: ', '', array('class' => 'goal-text-label')) !!}
+                {!! Form::textarea('Goal 1', '', array('class' => 'goal-text-box')) !!}
+            </div>
 
-            <p>
-                {!! Form::textarea('Goal 3', '', array('class' => 'goal-text-boxes')) !!}
-            </p>
+            <div class="goal-area">
+                {!! Form::label('Goal 2: ', '', array('class' => 'goal-text-label')) !!}
+                {!! Form::textarea('Goal 2', '', array('class' => 'goal-text-box')) !!}
+            </div>
+
+            <div class="goal-area">
+                {!! Form::label('Goal 3: ', '', array('class' => 'goal-text-label')) !!}
+                {!! Form::textarea('Goal 3', '', array('class' => 'goal-text-box')) !!}
+            </div>
+
         </div>
 
         <div class="wizard-button-area-goals">
