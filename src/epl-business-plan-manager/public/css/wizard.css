@@ -99,7 +99,23 @@ body {
     height:             50px;
 }
 
+.goal-area {
+    margin-right:       27px;
+}
+
 .goal-area * {
     margin:             10px 0 10px 0;
     vertical-align:     middle;
+}
+
+.last-goal-area * {
+    margin:             10px 0 10px 0;
+    vertical-align:     middle;
+}
+
+#add-goal-action {
+    border:             thin solid black;
+    background-color:   #004b8e;
+    color:              white;
+    border-radius:      50%;
 }
