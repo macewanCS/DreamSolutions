@@ -11,11 +11,26 @@
 |
 */
 
-// Create business controller routes
-Route::get('/manage/create-new-plan', 'WizardController@create');
-
 // Manage Plan controller routes
 Route::resource('/manage', 'ManagePlanController');
+
+// Create business controller routes
+Route::get('/manage/create-plan', 'CreatePlanController@showYears');
+Route::post('/manage/create-plan', 'CreatePlanController@createBP');
+
+
+Route::patch('/manage/create-plan/goals', 'CreatePlanController@goalsToYears');
+Route::get('/manage/create-plan/goals', 'CreatePlanController@showGoals');
+Route::post('/manage/create-plan/goals', 'CreatePlanController@createGoals');
+
+Route::patch('/manage/create-plan/objectives', 'CreatePlanController@objectivesToGoal');
+Route::get('/manage/create-plan/objectives', 'CreatePlanController@showObjectives');
+Route::post('/manage/create-plan/objectives', 'CreatePlanController@createObjectives');
+
+Route::patch('/manage/create-plan/actions', 'CreatePlanController@actionsToObjectives');
+Route::get('/manage/create-plan/actions', 'CreatePlanController@showActions');
+Route::post('/manage/create-plan/actions', 'CreatePlanController@createActions');
+
 
 // View plan controller routes
 Route::get('/view', 'ViewPlanController@index');

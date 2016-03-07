@@ -14,6 +14,10 @@ class ManagePlanController extends Controller
         return view('manage_plan');
     }
 
+    public function show() {
+        return view('create-plan.years');
+    }
+
     public function store()
     {
         // Model::create() something
