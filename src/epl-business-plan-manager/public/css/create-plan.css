@@ -6,7 +6,7 @@ body {
     font-size:          medium;
 }
 
-#wizard-year-section {
+#create-plan-year-section {
     text-align:         center;
     background-color:   white;
     border-style:       groove;
@@ -17,21 +17,21 @@ body {
     border-radius:      5%;
 }
 
-#wizard-year-title {
+#create-plan-year-title {
     margin-bottom:      0;
 }
 
-#wizard-year-separator {
+#create-plan-year-separator {
     display:            inline-block;
     font-size:          20px;
     padding:            0px 25px 0px 25px;
 }
 
-.wizard-years {
+.create-plan-years {
     width:              125px;
 }
 
-.wizard-button {
+.create-plan-button {
     background-color:   #004b8e;
     border:             thin solid black;
     border-radius:      2%;
@@ -41,7 +41,7 @@ body {
     color:              white;
 }
 
-#wizard-goal-selection {
+#create-plan-goal-selection {
     text-align:         center;
     background-color:   white;
     border-style:       groove;
@@ -52,7 +52,7 @@ body {
     border-radius:      5%;
 }
 
-#wizard-objective-selection {
+#create-plan-objective-selection {
     text-align:         center;
     background-color:   white;
     border-style:       groove;
@@ -63,7 +63,7 @@ body {
     border-radius:      5%;
 }
 
-#wizard-action-selection {
+#create-plan-action-selection {
     text-align:         center;
     background-color:   white;
     border-style:       groove;
@@ -74,22 +74,22 @@ body {
     border-radius:      5%;
 }
 
-.wizard-button-area {
+.create-plan-button-area {
     margin-top:         275px;
     padding:            10px;
 }
 
-.wizard-previous-button {
+.create-plan-previous-button {
     float:              left;
     border-radius:      5%;
 }
 
-.wizard-next-button {
+.create-plan-next-button {
     float:              right;
     border-radius:      5%;
 }
 
-.wizard-button-area-goals {
+.create-plan-button-area-goals {
     margin-top:         25px;
     padding:            10px;
 }

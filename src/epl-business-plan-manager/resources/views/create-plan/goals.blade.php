@@ -1,15 +1,15 @@
 @extends('app')
 
 @section('head')
-    <link rel="stylesheet" type="text/css" href="/css/wizard.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/create-plan.css"></link>
 
 @stop
 
 @section('content')
 
-    <div id="wizard-goal-selection">
+    <div id="create-plan-goal-selection">
 
-        <h1 id="wizard-goal-title">Enter Goals</h1>
+        <h1 id="create-plan-goal-title">Enter Goals</h1>
 
         <div class="text-boxes">
 
@@ -33,8 +33,8 @@
         </div>
 
 
-        <div class="wizard-button-area-goals">
-            @include ('wizard.partials.buttons', ['nextButtonAction' => 'WizardController@createGoals'])
+        <div class="create-plan-button-area-goals">
+            @include ('create-plan.partials.buttons', ['nextButtonAction' => 'CreatePlanController@createGoals'])
         </div>
 
     </div>
