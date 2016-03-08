@@ -15,7 +15,7 @@ class ManagePlanController extends Controller
     }
 
     public function show() {
-        return view('create-plan.years');
+        return view('create-plan');
     }
 
     public function store()
