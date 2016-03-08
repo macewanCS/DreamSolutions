@@ -77,13 +77,11 @@ function expandAll() {
     });
 }
 
-function typeIndex($type) {
-    switch ($type) {
-        case 'goal' : return 0;
-        case 'objective': return 1;
-        case 'action': return 2;
-        case 'task': return 3;
-    }
+function getHierarchy($row) {
+    if      ($row.hasClass('goal')) return 0;
+    else if ($row.hasClass('objective')) return 1;
+    else if ($row.hasClass('action')) return 2;
+    else if ($row.hasClass('task')) return 3;
 }
 
 function addFilterToBar($filterText, $key, $values) {
@@ -103,9 +101,9 @@ function addFilterToBar($filterText, $key, $values) {
 $(document).ready(function() {
     $('tr.goal, tr.objective, tr.action').click(function() {
         if (unsorted) {
-            $type = typeIndex($(this).attr('class'));
+            $type = getHierarchy($(this));
             $row = $(this).next();
-            while (  $type - typeIndex($row.attr('class')) < 0 ) {
+            while (  $type - getHierarchy($row) < 0 ) {
                 $row.toggle("fast");
                 $row = $row.next();
             }
