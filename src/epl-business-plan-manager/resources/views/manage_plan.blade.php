@@ -13,7 +13,11 @@
       <div style="height: 25px">
           <div style="float: left">
               {!! Form::label('Business Plan Year') !!}
-              {!! Form::select('bpYears', array('Tmp' => 'Load years here')) !!}
+              <select>
+                @foreach ($businessPlans as $businessPlan)
+                  <option value={!! $businessPlan->id !!}>{!! $businessPlan->start . '+' . $businessPlan->end !!}</option>
+                @endforeach
+              </select>
           </div>
 
           <div id="createBusinessPlan">
