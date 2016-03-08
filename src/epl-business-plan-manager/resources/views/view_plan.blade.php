@@ -8,6 +8,7 @@
 <script src='/js/jquery.dropdown.min.js'></script>
 <script>
 var unsorted = true;
+var unfiltered = true;
 var filterDict = {};
 var filters = [];
 
@@ -17,8 +18,8 @@ $(function() {
     });
 
     $('button#reset').click(function() {
-        $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
-        $('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
+        allowNesting(true);
+        $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
         $("#view-plan-table").trigger('sortReset').trigger('filterReset');
         expandAll();
         $('#active-filters').empty();
@@ -28,14 +29,51 @@ $(function() {
 
     $('#view-plan-table').bind('sortEnd', function() {
         if (unsorted) {
-            $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
+            allowNesting(false);
             expandAll();
             addToFilterDict("0", ['A', 'T']);
             $('#view-plan-table').trigger('search', [filters]);
-            addFilterToBar('Hierarchy: Actions, Tasks');
             unsorted = false;
         }
     });
+
+    $('.jq-dropdown :checkbox').change(function() {
+        if (unfiltered)
+            allowNesting(false);
+
+        if (this.checked) {
+            addToFilterDict($(this).attr('col'), [$(this).attr('filter')]);
+            unfiltered = false;
+        } else {
+            removeFromFilterDict($(this).attr('col'), [$(this).attr('filter')]);
+            if (allEmpty(filters)) {
+                unfiltered = true;
+                allowNesting(true);
+            }
+        }
+        $('#view-plan-table').trigger('search', [filters]);
+
+    });
+
+    function allEmpty($array) {
+        var result = true;
+        $.each($array, function(i, val) {
+            if (val != "" && val != undefined) {
+                result = false;
+                return false;
+            }
+        });
+        return result;
+    }
+
+    function allowNesting($bool) {
+        if ($bool) {
+            $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
+        $   ('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
+        } else {
+            $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
+        }
+    }
 });
 
 function addToFilterDict($key, $values) {
@@ -60,16 +98,16 @@ function removeFromFilterDict($key, $values) {
 
 function filterDictToFilters() {
     // flatten dictionary "set" into array
-    var array = $.map(filterDict, function(val, i) {
-        return [Object.keys(val)];
+    var array = [];
+
+    $.each(filterDict, function(i, val) {
+        array[i] = Object.keys(val);
     });
 
     // connect different "set" elements with '|' (or)
     $.each(array, function(i, val) {
-        filters[i] = val.join('|');
+        if (array[i] != undefined) filters[i] = val.join('|');
     });
-
-    console.log(filters);
 }
 
 function expandAll() {
@@ -87,23 +125,9 @@ function getHierarchy($row) {
     else if ($row.hasClass('task')) return 3;
 }
 
-function addFilterToBar($filterText, $key, $values) {
-    var filter = $("<span class='filter'></span").text($filterText);
-    $('#active-filters').append(filter);
-
-    if ($key != undefined) {
-        $(filter).click(function() {
-            removeFromFilterDict($key, $values);
-            $('#view-plan-table').trigger('search', [filters]);
-            $(this).remove();
-        });
-    }
-
-}
-
 $(document).ready(function() {
     $('tr.goal, tr.objective, tr.action').click(function() {
-        if (unsorted) {
+        if (unsorted && unfiltered) {
             $(this).toggleClass('hide-children');
             $(this).children('td').eq(1).toggleClass('down-caret');
             $level = getHierarchy($(this));
@@ -197,18 +221,18 @@ $(document).ready(function() {
 
     <div id="hierarchy-dropdown" class="jq-dropdown jq-dropdown-tip">
         <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" />Goal</label></li>
-            <li><label><input type="checkbox" />Objective</label></li>
-            <li><label><input type="checkbox" />Action</label></li>
-            <li><label><input type="checkbox" />Task</label></li>
+            <li><label><input type="checkbox" col=0 filter='G'/>Goal</label></li>
+            <li><label><input type="checkbox" col=0 filter='O'/>Objective</label></li>
+            <li><label><input type="checkbox" col=0 filter='A'/>Action</label></li>
+            <li><label><input type="checkbox" col=0 filter='T'/>Task</label></li>
         </ul>
     </div>
 
     <div id="priority-dropdown" class="jq-dropdown jq-dropdown-tip">
         <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" />High</label></li>
-            <li><label><input type="checkbox" />Medium</label></li>
-            <li><label><input type="checkbox" />Low</label></li>
+            <li><label><input type="checkbox" col=2 filter='1'/>High</label></li>
+            <li><label><input type="checkbox" col=2 filter='2'/>Medium</label></li>
+            <li><label><input type="checkbox" col=2 filter='3'/>Low</label></li>
         </ul>
     </div>
 
@@ -251,9 +275,9 @@ $(document).ready(function() {
 
     <div id="status-dropdown" class="jq-dropdown jq-dropdown-tip">
         <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" />In Progress</label></li>
-            <li><label><input type="checkbox" />Overdue</label></li>
-            <li><label><input type="checkbox" />Complete</label></li>
+            <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
+            <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
+            <li><label><input type="checkbox" col=9 filter='Status'/>Complete</label></li>
         </ul>
     </div>
 
