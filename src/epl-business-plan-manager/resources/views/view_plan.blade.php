@@ -17,6 +17,8 @@ $(function() {
     });
 
     $('button#reset').click(function() {
+        $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
+        $('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
         $("#view-plan-table").trigger('sortReset').trigger('filterReset');
         expandAll();
         $('#active-filters').empty();
@@ -26,6 +28,7 @@ $(function() {
 
     $('#view-plan-table').bind('sortEnd', function() {
         if (unsorted) {
+            $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
             expandAll();
             addToFilterDict("0", ['A', 'T']);
             $('#view-plan-table').trigger('search', [filters]);
@@ -101,9 +104,11 @@ function addFilterToBar($filterText, $key, $values) {
 $(document).ready(function() {
     $('tr.goal, tr.objective, tr.action').click(function() {
         if (unsorted) {
-            $type = getHierarchy($(this));
+            $(this).toggleClass('hide-children');
+            $(this).children('td').eq(1).toggleClass('down-caret');
+            $level = getHierarchy($(this));
             $row = $(this).next();
-            while (  $type - getHierarchy($row) < 0 ) {
+            while ( $level - getHierarchy($row) < 0 ) {
                 $row.toggle("fast");
                 $row = $row.next();
             }
@@ -134,7 +139,7 @@ $(document).ready(function() {
     <table id="view-plan-table">
         <thead>
             <th class="hidden">Goal Type</th>
-            <th>Priority</th>
+            <th colspan=2>Priority</th>
             <th>Task</th>
             <th>Goal Type</th>
             <th>Dept/Team</th>
@@ -154,11 +159,13 @@ $(document).ready(function() {
                     @if ($goat->type == 'G' || $goat->type == 'O')
 
                         <td class="hidden">{{ $goat->type }}</td>
+                        <td class="caret"></td>
                         <td colspan="9">{{ $goat->description }}</td>
 
                     @else
 
                         <td class="hidden">{{ $goat->type }}</td>
+                        <td class="caret"></td>
                         <td>{{ $goat->priority }}</td>
                         <td>{{ $goat->description }}</td>
                         <td>{{ $goat->goal_type }}</td>
