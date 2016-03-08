@@ -22,8 +22,10 @@ $(function() {
         $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
         $("#view-plan-table").trigger('sortReset').trigger('filterReset');
         expandAll();
-        $('#active-filters').empty();
         unsorted = true;
+        unfiltered = true;
+        filterDict = {};
+        filters = [];
         return false;
     });
 
@@ -31,7 +33,8 @@ $(function() {
         if (unsorted) {
             allowNesting(false);
             expandAll();
-            addToFilterDict("0", ['A', 'T']);
+            filters[0] = [];
+            addFilters("0", ['A', 'T']);
             $('#view-plan-table').trigger('search', [filters]);
             unsorted = false;
         }
@@ -42,10 +45,10 @@ $(function() {
             allowNesting(false);
 
         if (this.checked) {
-            addToFilterDict($(this).attr('col'), [$(this).attr('filter')]);
+            addFilters($(this).attr('col'), [$(this).attr('filter')]);
             unfiltered = false;
         } else {
-            removeFromFilterDict($(this).attr('col'), [$(this).attr('filter')]);
+            removeFilters($(this).attr('col'), [$(this).attr('filter')]);
             if (allEmpty(filters)) {
                 unfiltered = true;
                 allowNesting(true);
@@ -76,7 +79,7 @@ $(function() {
     }
 });
 
-function addToFilterDict($key, $values) {
+function addFilters($key, $values) {
     if ( !($key in filterDict) ) {
         filterDict[$key] = {};
     }
@@ -88,7 +91,7 @@ function addToFilterDict($key, $values) {
     filterDictToFilters();
 }
 
-function removeFromFilterDict($key, $values) {
+function removeFilters($key, $values) {
     $.each( $values, function(i, val) {
         delete filterDict[$key][val];
     });
@@ -184,7 +187,7 @@ $(document).ready(function() {
 
                         <td class="hidden">{{ $goat->type }}</td>
                         <td class="caret"></td>
-                        <td colspan="9">{{ $goat->description }}</td>
+                        <td colspan="9">{{ ($goat->type == 'G' ? "Goal : " : "Objective : "). $goat->description }}</td>
 
                     @else
 
