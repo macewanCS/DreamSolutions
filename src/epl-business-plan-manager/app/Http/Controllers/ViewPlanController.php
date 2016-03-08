@@ -37,5 +37,6 @@ class ViewPlanController extends Controller
 
     private function type_to_level($c) {
     	return strpos("GOAT", $c);
+    	//return view('view_plan')->with('bp', $sorted);
     }
 }
