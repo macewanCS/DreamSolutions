@@ -1,12 +1,4 @@
 
-.tablesorter .filtered {
-    display : none;
-}
-
-.tablesorter-filter-row td {
-    display : none;
-}
-
 #filter-bar, #active-filters{
     overflow      : hidden;
     width         : 90%;
@@ -25,9 +17,7 @@
 
 #filter-categories li {
     display      : inline;
-
     margin-right : 10px;
-
     font-size    : small;
 }
 
@@ -75,7 +65,7 @@ span.filter {
 }
 
 #view-plan-area th {
-    background  : #004b8e;
+    background-color  : #004b8e;
     font-size   : smaller;
     font-weight : bold;
     color       : white;
@@ -110,6 +100,49 @@ span.filter {
 
 #view-plan-area tr.task {
   /*font-size: small;*/
+}
+
+#view-plan-area tr.goal td.caret,
+#view-plan-area tr.objective td.caret,
+#view-plan-area tr.action td.caret {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+#view-plan-area tr.goal td.caret.down-caret,
+#view-plan-area tr.objective td.caret.down-caret,
+#view-plan-area tr.action td.caret.down-caret {
+  transform: rotate(-90deg);
+}
+.tablesorter .filtered {
+    display : none;
+}
+
+.tablesorter-filter-row td {
+    display : none;
+}
+
+.tablesorter .header,
+.tablesorter .tablesorter-header {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==); 
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding: 4px 18px 4px 4px;
+  white-space: normal;
+  cursor: pointer;
+
+}
+.tablesorter .headerSortUp,
+.tablesorter .tablesorter-headerSortUp,
+.tablesorter .tablesorter-headerAsc {
+  background-color: #9fbfdf;
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7); 
+}
+.tablesorter .headerSortDown,
+.tablesorter .tablesorter-headerSortDown,
+.tablesorter .tablesorter-headerDesc {
+   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7); 
 }
 
 .jq-dropdown {
