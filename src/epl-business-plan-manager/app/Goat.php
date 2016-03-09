@@ -13,7 +13,8 @@ class Goat extends Model
     	'priority',
     	'due',
     	'budget',
-        'bp_id'
+        'bp_id',
+        'complete'
     ];
 
     public function userLeads()

@@ -31,7 +31,7 @@ class ViewPlanController extends Controller
                 }
             }
         }
-
+        
         return view('view_plan')->with('bp', $sorted);
     }
 }

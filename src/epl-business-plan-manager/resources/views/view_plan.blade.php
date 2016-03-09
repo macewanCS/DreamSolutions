@@ -41,16 +41,21 @@
         <tbody>
             @foreach ($bp as $index => $goat)
 
-            <tr class = {{ $goat->type == 'G' ? "goal" :
+            <tr class = "{{ $goat->type == 'G' ? "goal" :
                           ($goat->type == 'O' ? "objective" :
                           ($goat->type == 'A' ? "action" :
-                          ("task"))) . " " . $goat->goal_type }}>
+                          ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}">
 
                 @if ($goat->type == 'G' || $goat->type == 'O')
 
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
-                    <td colspan="9">{{ ($goat->type == 'G' ? "Goal : " : "Objective : "). $goat->description }}</td>
+                    <td colspan="9">
+                    @if ($goat->goal_type == 'B')
+                    {{ $goat->type == 'G' ? "Goal : " : "Objective : " }}
+                    @endif
+                    {{$goat->description}}
+                    </td>
 
                 @else
 
@@ -58,19 +63,22 @@
                     <td class="caret"></td>
                     <td>{{ $goat->priority }}</td>
                     <td>{{ $goat->description }}</td>
-                    <td>{{ $goat->goal_type }}</td>
-                    <td>IT Department</td>
+                    <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
+                    <td style="white-space: nowrap;">IT Department</td>
                     <!-- TODO: turn into lists -->
-                    <td>@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td>@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td>{{ $goat->due_date}}</td>
+                    <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
+                    <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
+                    <td style="white-space: nowrap;">{{ $goat->due_date}}</td>
 
-                @if ($goat->complete)
-                    <td>Complete</td> 
-                @else
-                    <!-- TODO: Check for overdue -->
-                    <td>In Progress</td>
-                @endif
+                    <td style="white-space: nowrap;">
+                    @if ($goat->complete)
+                        <span class='complete'>Complete</span>
+                    @elseif ($goat->due_date < Carbon\Carbon::now() )
+                        <span class='overdue'>Overdue</span>
+                    @else
+                        <span class='in-progress'>In Progress</span>
+                    @endif
+                    </td>
 
                     <td><!-- blank space for edit buttons etc --></td>
 
@@ -143,7 +151,7 @@
     <ul class="jq-dropdown-menu">
         <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
         <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
-        <li><label><input type="checkbox" col=9 filter='Status'/>Complete</label></li>
+        <li><label><input type="checkbox" col=9 filter='Complete'/>Complete</label></li>
     </ul>
 </div>
 
