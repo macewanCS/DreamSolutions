@@ -1,9 +1,9 @@
 
-#filter-bar, #active-filters{
+#filter-bar {
     overflow      : hidden;
-    width         : 90%;
+    width         : 96%;
     margin-bottom : 10px;
-    margin-left   : 5%;
+    margin-left   : 2%;
 }
 
 #filter-categories {
@@ -52,12 +52,11 @@ span.filter {
 }
 
 #view-plan-area table {
-    width           : 90%;
-    margin-left     : 5%;
+    width           : 96%;
+    margin-left     : 2%;
     padding-top     : 100px;
     border-collapse : collapse;
-
-    font-size       : x-small;
+    font-size       : 8pt;
 }
 
 #view-plan-area .hidden {
@@ -66,10 +65,11 @@ span.filter {
 
 #view-plan-area th {
     background-color  : #004b8e;
-    font-size   : smaller;
+    font-size   : small;
     font-weight : bold;
     color       : white;
-    border      : 3px solid #fff;
+    text-align: left;
+    border-right      : 2px solid #fff;
 }
 
 #view-plan-area td, th {
@@ -103,11 +103,18 @@ span.filter {
 }
 
 #view-plan-area tr.goal td.caret,
-#view-plan-area tr.objective td.caret,
-#view-plan-area tr.action td.caret {
+#view-plan-area tr.objective td.caret {
   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
   background-repeat: no-repeat;
   background-position: center left;
+  width: 5px;
+}
+
+#view-plan-area tr.action td.caret {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+  background-repeat: no-repeat;
+  background-position: center left;
+  width: 5px;
 }
 
 #view-plan-area tr.goal td.caret.down-caret,
