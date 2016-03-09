@@ -22,13 +22,13 @@ class GoatUserTableSeeder extends Seeder
 
             // Task - Implement approved recommendations from the 2015 Public Computing Report
             array(
-                'goat_id' => 14,
+                'goat_id' => 20,
                 'user_id' => 1,
                 'user_role' => 'L'),
 
             // Action - Implement lending machines in underserved areas of Edmonton.
             array(
-                'goat_id' => 15,
+                'goat_id' => 12,
                 'user_id' => 1,
                 'user_role' => 'C'),
 
