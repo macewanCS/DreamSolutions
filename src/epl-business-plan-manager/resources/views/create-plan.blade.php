@@ -39,6 +39,8 @@
 
                 <h3>Goals</h3>
                 <section>
+                    <p id="create-plan-mandatory-label">(*) Mandatory</p>
+
                     <div class="create-plan-goal-section">
                         <h1 class="create-plan-goal-heading">Goal 1 *</h1>
                         <input id="goal1" name="goal1" type="text" class="create-plan-goal-input required">
@@ -54,7 +56,6 @@
                             $(this).appendTo($('.create-plan-goal-section'));
                         });
                     </script>
-                    <p>(*) Mandatory</p>
                 </section>
 
                 <h3>Objectives</h3>
