@@ -1,26 +1,50 @@
 body {
-    margin:             0;
-    padding:            0;
-    background-color:   #cccac8;
-    font-family:        Arial, Helvetica, sans-serif;
-    font-size:          medium;
+    margin:                            0;
+    padding:                           0;
+    background-color:                  #cccac8;
+    font-family:                       Arial, Helvetica, sans-serif;
+    font-size:                         medium;
 }
 
 .create-plan-years {
-    margin-left:        40%;
-    width:              125px;
+    margin-left:                       42%;
+    width:                             125px;
 }
 
 .create-plan-year-labels {
-    text-align:         center;
+    text-align:                        center;
 }
 
 #create-plan-section {
-    background-color:   white;
-    border-style:       groove;
-    height:             400px;
-    width:              650px;
-    padding:            20px 0px 20px 0px;
-    margin:             25px auto;
-    border-radius:      5%;
+    background-color:                  white;
+    border-style:                      groove;
+    height:                            400px;
+    width:                             800px;
+    padding:                           20px 0px 20px 0px;
+    margin:                            25px auto;
+    border-radius:                     5%;
+}
+
+.create-plan-goal-input {
+    background-color:                  white;
+    margin:                            5px auto auto auto;
+    width:                             200px;
+    height:                            25px;
+}
+
+.create-plan-goal-section {
+    text-align:                        center;
+}
+
+#add-extra-goal-button {
+    background-color:                  #004b8e;
+    margin-top: 5px;
+    margin-left:                       180px;
+    color:                             white;
+    border-radius:                     50%;
+}
+
+.create-plan-goal-heading {
+    margin:                            0;
+    font-size:                         20px;
 }

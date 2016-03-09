@@ -15,6 +15,7 @@
     <div id="create-plan-section">
         <form id="create-plan-form" action="#">
             <div>
+
                 <h3>Years</h3>
                 <section>
                     <h1 class="create-plan-year-labels">Start Year</h1>
@@ -35,17 +36,27 @@
                         @endfor
                     </select>
                 </section>
+
                 <h3>Goals</h3>
                 <section>
-                    <label for="goal1">Goal 1</label>
-                    <input id="goal1" name="goal1" type="text" class="required">
-                    <label for="goal2">Goal 2</label>
-                    <input id="goal2" name="goal2" type="text">
-                    <label for="goal3">Goal 3</label>
-                    <input id="goal3" name="goal3" type="text">
-                    <label for="goal4">Goal 4</label>
-                    <input id="goal4" name="goal4" type="text">
+                    <div class="create-plan-goal-section">
+                        <h1 class="create-plan-goal-heading">Goal 1 *</h1>
+                        <input id="goal1" name="goal1" type="text" class="create-plan-goal-input required">
+                        <button type="button" id='add-extra-goal-button'>+</button>
+                    </div>
+
+                    <script>
+                        var count = 1;
+                        $("button").on( "click", function() {
+                            $(this).after("<br><h1 class='create-plan-goal-heading'>Goal " + (++count) + "</h1>" +
+                                    "<input id='goal" + count + "' name='goal" + count + "' type='text' class='create-plan-goal-input'>");
+                            $(this).detach();
+                            $(this).appendTo($('.create-plan-goal-section'));
+                        });
+                    </script>
+                    <p>(*) Mandatory</p>
                 </section>
+
                 <h3>Objectives</h3>
                 <section>
                     <label for="objective1">Objective 1</label>
@@ -57,6 +68,7 @@
                     <label for="objective4">Objective 4</label>
                     <input id="objective4" name="objective4" type="text">
                 </section>
+
                 <h3>Actions</h3>
                 <section>
                     <label for="action1">Action 1</label>
