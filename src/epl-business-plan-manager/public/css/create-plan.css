@@ -18,7 +18,7 @@ body {
 #create-plan-section {
     background-color:                  white;
     border-style:                      groove;
-    height:                            400px;
+    height:                            420px;
     width:                             800px;
     padding:                           20px 0px 20px 0px;
     margin:                            25px auto;
@@ -38,7 +38,7 @@ body {
 
 #add-extra-goal-button {
     background-color:                  #004b8e;
-    margin-top: 5px;
+    margin-top:                        5px;
     margin-left:                       180px;
     color:                             white;
     border-radius:                     50%;
@@ -47,4 +47,8 @@ body {
 .create-plan-goal-heading {
     margin:                            0;
     font-size:                         20px;
+}
+
+#create-plan-mandatory-label {
+    font-size:                         12px;
 }
