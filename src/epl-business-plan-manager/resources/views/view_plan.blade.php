@@ -72,10 +72,11 @@
 
                     <td style="white-space: nowrap;">
                     @if ($goat->complete)
-                        Complete
+                        <span class='complete'>Complete</span>
+                    @elseif ($goat->due_date < Carbon\Carbon::now() )
+                        <span class='overdue'>Overdue</span>
                     @else
-                        <!-- TODO: Check for overdue -->
-                        In Progress
+                        <span class='in-progress'>In Progress</span>
                     @endif
                     </td>
 
@@ -150,7 +151,7 @@
     <ul class="jq-dropdown-menu">
         <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
         <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
-        <li><label><input type="checkbox" col=9 filter='Status'/>Complete</label></li>
+        <li><label><input type="checkbox" col=9 filter='Complete'/>Complete</label></li>
     </ul>
 </div>
 

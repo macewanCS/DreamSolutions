@@ -127,6 +127,14 @@ input:disabled {
 #view-plan-area tr.action td.caret.down-caret {
   transform: rotate(-90deg);
 }
+
+#view-plan-area span.overdue {
+  color: red;
+}
+
+#view-plan-area span.complete {
+  color: #090;
+}
 .tablesorter .filtered {
     display : none;
 }
