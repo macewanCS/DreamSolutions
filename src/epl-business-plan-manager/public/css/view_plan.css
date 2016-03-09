@@ -71,7 +71,7 @@ input:disabled {
 
 #view-plan-area td, th {
     padding       : 6px;
-    border-bottom : 1px solid #ccc;
+    border-bottom : 2px solid #fff;
 }
 
 #view-plan-area tr.goal {
@@ -82,12 +82,20 @@ input:disabled {
     text-align  : left;
 }
 
+#view-plan-area tr.goal.goat-dept {
+    background  : #663399;
+}
+
 #view-plan-area tr.objective {
     background  : #669966;
     font-size   : small;
     font-weight : bold;
     color       : white;
     text-align  : left;
+}
+
+#view-plan-area tr.objective.goat-dept {
+    background  : #9966CB;
 }
 
 #view-plan-area tr.action {

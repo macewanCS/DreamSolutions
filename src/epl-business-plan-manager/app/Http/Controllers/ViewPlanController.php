@@ -32,6 +32,8 @@ class ViewPlanController extends Controller
             }
         }
 
+        foreach($sorted as $goat)
+            var_dump($goat->description);
         return view('view_plan')->with('bp', $sorted);
     }
 }
