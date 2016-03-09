@@ -72,7 +72,7 @@ $(function() {
     function allowNesting($bool) {
         if ($bool) {
             $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
-        $   ('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
+            $('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
         } else {
             $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
         }
@@ -162,7 +162,6 @@ $(document).ready(function() {
     </ul>
     {!! Form::button('Reset View', ['id' => 'reset']); !!}
     </div>
-    <div id="active-filters"></div>
     <table id="view-plan-table">
         <thead>
             <th class="hidden">Goal Type</th>
