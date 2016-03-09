@@ -42,17 +42,17 @@
             @foreach ($bp as $index => $goat)
 
             <tr class = {{ $goat->type == 'G' ? "goal" :
-                ($goat->type == 'O' ? "objective" :
-                    ($goat->type == 'A' ? "action" :
-                    ("task"))) }}>
+                          ($goat->type == 'O' ? "objective" :
+                          ($goat->type == 'A' ? "action" :
+                          ("task"))) . " " . $goat->goal_type }}>
 
-                    @if ($goat->type == 'G' || $goat->type == 'O')
+                @if ($goat->type == 'G' || $goat->type == 'O')
 
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
                     <td colspan="9">{{ ($goat->type == 'G' ? "Goal : " : "Objective : "). $goat->description }}</td>
 
-                    @else
+                @else
 
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
@@ -65,232 +65,246 @@
                     <td>@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
                     <td>{{ $goat->due_date}}</td>
 
-                    @if ($goat->complete)
-                    <td>Complete</td>
-                    @else
+                @if ($goat->complete)
+                    <td>Complete</td> 
+                @else
                     <!-- TODO: Check for overdue -->
                     <td>In Progress</td>
-                    @endif
+                @endif
 
-                    <td></td>
+                    <td><!-- blank space for edit buttons etc --></td>
 
-                    @endif
+                @endif
 
-                </tr>
+            </tr>
 
-                @endforeach
+            @endforeach
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="hierarchy-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <ul class="jq-dropdown-menu">
+        <li><label><input type="checkbox" col=0 filter='G' id="goal-box"/>Goal</label></li>
+        <li><label><input type="checkbox" col=0 filter='O' id="objective-box"/>Objective</label></li>
+        <li><label><input type="checkbox" col=0 filter='A' id="action-box"/>Action</label></li>
+        <li><label><input type="checkbox" col=0 filter='T' id="task-box"/>Task</label></li>
+    </ul>
+</div>
+
+<div id="priority-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <ul class="jq-dropdown-menu">
+        <li><label><input type="checkbox" col=2 filter='1'/>High</label></li>
+        <li><label><input type="checkbox" col=2 filter='2'/>Medium</label></li>
+        <li><label><input type="checkbox" col=2 filter='3'/>Low</label></li>
+    </ul>
+</div>
+
+<div id="goaltype-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <ul class="jq-dropdown-menu">
+        <li><label><input type="checkbox" />Business Plan</label></li>
+        <li><label><input type="checkbox" />Department</label></li>
+    </ul>
+</div>
+
+<div id="deptteam-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        Department searchable dropdown goes here
     </div>
+</div>
 
-
-    <div id="hierarchy-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" col=0 filter='G'/>Goal</label></li>
-            <li><label><input type="checkbox" col=0 filter='O'/>Objective</label></li>
-            <li><label><input type="checkbox" col=0 filter='A'/>Action</label></li>
-            <li><label><input type="checkbox" col=0 filter='T'/>Task</label></li>
-        </ul>
+<div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        Person/department searchable dropdown goes here
     </div>
+</div>
 
-    <div id="priority-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" col=2 filter='1'/>High</label></li>
-            <li><label><input type="checkbox" col=2 filter='2'/>Medium</label></li>
-            <li><label><input type="checkbox" col=2 filter='3'/>Low</label></li>
-        </ul>
+<div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        Person/department searchable dropdown goes here
     </div>
+</div>
 
-    <div id="goaltype-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" />Business Plan</label></li>
-            <li><label><input type="checkbox" />Department</label></li>
-        </ul>
+<div id="collaborator-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        Person/department searchable dropdown goes here
     </div>
+</div>
 
-    <div id="deptteam-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <div class="jq-dropdown-panel">
-            Department searchable dropdown goes here
-        </div>
+<div id="date-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        Start date picker, and also end date picker
     </div>
+</div>
 
-    <div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <div class="jq-dropdown-panel">
-            Person/department searchable dropdown goes here
-        </div>
-    </div>
+<div id="status-dropdown" class="jq-dropdown jq-dropdown-tip">
+    <ul class="jq-dropdown-menu">
+        <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
+        <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
+        <li><label><input type="checkbox" col=9 filter='Status'/>Complete</label></li>
+    </ul>
+</div>
 
-    <div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <div class="jq-dropdown-panel">
-            Person/department searchable dropdown goes here
-        </div>
-    </div>
+<script>
+    var unsorted = true;
+    var unfiltered = true;
+    var filterDict = {};
+    var filters = [];
 
-    <div id="collaborator-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <div class="jq-dropdown-panel">
-            Person/department searchable dropdown goes here
-        </div>
-    </div>
+    $(function() {
+        $("#view-plan-table").tablesorter({
+            widgets : ["filter"],
+        });
 
-    <div id="date-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <div class="jq-dropdown-panel">
-            Start date picker, and also end date picker
-        </div>
-    </div>
+        $('button#reset').click(function() {
+            allowNesting(true);
+            $('.hide-children').each(function() { $(this).removeClass('hide-children'); });
+            $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
+            $("#view-plan-table").trigger('sortReset').trigger('filterReset');
+            expandAll();
+            $('#goal-box').removeAttr('disabled');
+            $('#objective-box').removeAttr('disabled');
+            if ($('#goal-box').parent().parent().is("strike")) {
+                $('#goal-box').parent().unwrap();
+                $('#objective-box').parent().unwrap();
+            }
 
-    <div id="status-dropdown" class="jq-dropdown jq-dropdown-tip">
-        <ul class="jq-dropdown-menu">
-            <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
-            <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
-            <li><label><input type="checkbox" col=9 filter='Status'/>Complete</label></li>
-        </ul>
-    </div>
+            unsorted = true;
+            unfiltered = true;
+            filterDict = {};
+            filters = [];
+            return false;
+        });
 
-    <script>
-        var unsorted = true;
-        var unfiltered = true;
-        var filterDict = {};
-        var filters = [];
-
-        $(function() {
-            $("#view-plan-table").tablesorter({
-                widgets : ["filter"],
-            });
-
-            $('button#reset').click(function() {
-                allowNesting(true);
-                $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
-                $("#view-plan-table").trigger('sortReset').trigger('filterReset');
+        $('#view-plan-table').bind('sortEnd', function() {
+            if (unsorted) {
+                allowNesting(false);
                 expandAll();
-                unsorted = true;
-                unfiltered = true;
-                filterDict = {};
-                filters = [];
-                return false;
-            });
-
-            $('#view-plan-table').bind('sortEnd', function() {
-                if (unsorted) {
-                    allowNesting(false);
-                    expandAll();
-                    filters[0] = [];
-                    addFilters("0", ['A', 'T']);
-                    $('#view-plan-table').trigger('search', [filters]);
-                    unsorted = false;
-                }
-            });
-
-            $('.jq-dropdown :checkbox').change(function() {
-                if (unfiltered)
-                    allowNesting(false);
-
-                if (this.checked) {
-                    addFilters($(this).attr('col'), [$(this).attr('filter')]);
-                    unfiltered = false;
-                } else {
-                    removeFilters($(this).attr('col'), [$(this).attr('filter')]);
-                    if (allEmpty(filters)) {
-                        unfiltered = true;
-                        allowNesting(true);
-                    }
-                }
+                filters[0] = [];
+                addFilters("0", ['A', 'T']);
+                $('#goal-box').attr('disabled', true).parent().wrap("<strike>");
+                $('#objective-box').attr('disabled', true).parent().wrap("<strike>");
+                $('#action-box').prop('checked', true);
+                $('#task-box').prop('checked', true);
                 $('#view-plan-table').trigger('search', [filters]);
-
-            });
-
-            function allEmpty($array) {
-                var result = true;
-                $.each($array, function(i, val) {
-                    if (val != "" && val != undefined) {
-                        result = false;
-                        return false;
-                    }
-                });
-                return result;
-            }
-
-            function allowNesting($bool) {
-                if ($bool) {
-                    $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
-                    $('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
-                } else {
-                    $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
-                }
+                unsorted = false;
             }
         });
 
-        function addFilters($key, $values) {
-            if ( !($key in filterDict) ) {
-                filterDict[$key] = {};
+        $('.jq-dropdown :checkbox').change(function() {
+            if (unfiltered)
+                allowNesting(false);
+
+            if (this.checked) {
+                addFilters($(this).attr('col'), [$(this).attr('filter')]);
+                unfiltered = false;
+            } else {
+                removeFilters($(this).attr('col'), [$(this).attr('filter')]);
+                if (allEmpty(filters) && unsorted) {
+                    unfiltered = true;
+                    allowNesting(true);
+                }
             }
 
-            $.each( $values, function(i, val) {
-                filterDict[$key][val] = true;
-            });
+            if ( !unsorted && filters[0] == "") filters[0] = "A|T";
+            $('#view-plan-table').trigger('search', [filters]);
 
-            filterDictToFilters();
-        }
+        });
 
-        function removeFilters($key, $values) {
-            $.each( $values, function(i, val) {
-                delete filterDict[$key][val];
-            });
-
-            filterDictToFilters();
-        }
-
-        function filterDictToFilters() {
-            // flatten dictionary "set" into array
-            var array = [];
-
-            $.each(filterDict, function(i, val) {
-                array[i] = Object.keys(val);
-            });
-
-            // connect different "set" elements with '|' (or)
-            $.each(array, function(i, val) {
-                if (array[i] != undefined) filters[i] = val.join('|');
-            });
-        }
-
-        function expandAll() {
-            $('#view-plan-table tbody').find('tr').each(function() {
-                $(this).removeClass('hidden');
-            });
-        }
-
-        function getHierarchy($row) {
-            if      ($row.hasClass('goal')) return 0;
-            else if ($row.hasClass('objective')) return 1;
-            else if ($row.hasClass('action')) return 2;
-            else if ($row.hasClass('task')) return 3;
-        }
-
-        $(document).ready(function() {
-            $('tr.goal, tr.objective, tr.action').click(function() {
-                if (unsorted && unfiltered) {
-                    var show = true;
-                    $(this).toggleClass('hide-children');
-                    if ($(this).hasClass('hide-children'))
-                        show = false;
-
-                    $(this).children('td').eq(1).toggleClass('down-caret');
-                    $level = getHierarchy($(this));
-                    $row = $(this).next();
-                    while ( $level - getHierarchy($row) < 0 ) {
-                        if ($row.hasClass('hide-children') && show) {
-                            $row.removeClass('hidden');
-                            var skip_until = getHierarchy($row);
-                            $row = $row.next();
-                            while (skip_until - getHierarchy($row) < 0) $row = $row.next();
-                        } else {
-                            $row.toggleClass('hidden', !show);
-                            $row = $row.next();
-                        }
-                    }
+        function allEmpty($array) {
+            var result = true;
+            $.each($array, function(i, val) {
+                if (val != "" && val != undefined) {
+                    result = false;
+                    return false;
                 }
             });
+            return result;
+        }
+
+        function allowNesting($bool) {
+            if ($bool) {
+                $('td.down-caret').each(function() { $(this).removeClass('down-caret'); } );
+                $('td.no-caret').each(function() { $(this).removeClass('no-caret'); $(this).addClass('caret'); });
+            } else {
+                $('td.caret').each(function() { $(this).removeClass('caret'); $(this).addClass('no-caret'); })
+            }
+        }
+    });
+
+    function addFilters($key, $values) {
+        if ( !($key in filterDict) ) {
+            filterDict[$key] = {};
+        }
+
+        $.each( $values, function(i, val) {
+            filterDict[$key][val] = true;
         });
-    </script>
+
+        filterDictToFilters();
+    }
+
+    function removeFilters($key, $values) {
+        $.each( $values, function(i, val) {
+            delete filterDict[$key][val];
+        });
+
+        filterDictToFilters();
+    }
+
+    function filterDictToFilters() {
+        // flatten dictionary "set" into array
+        var array = [];
+
+        $.each(filterDict, function(i, val) {
+            array[i] = Object.keys(val);
+        });
+
+        // connect different "set" elements with '|' (or)
+        $.each(array, function(i, val) {
+            if (array[i] != undefined) filters[i] = val.join('|');
+        });
+    }
+
+    function expandAll() {
+        $('#view-plan-table tbody').find('tr').each(function() {
+            $(this).removeClass('hidden');
+        });
+    }
+
+    function getHierarchy($row) {
+        if      ($row.hasClass('goal')) return 0;
+        else if ($row.hasClass('objective')) return 1;
+        else if ($row.hasClass('action')) return 2;
+        else if ($row.hasClass('task')) return 3;
+    }
+
+    $(document).ready(function() {
+        $('tr.goal, tr.objective, tr.action').click(function() {
+            if (unsorted && unfiltered) {
+                var show = true;
+                $(this).toggleClass('hide-children');
+                if ($(this).hasClass('hide-children'))
+                    show = false;
+
+                $(this).children('td').eq(1).toggleClass('down-caret');
+                $level = getHierarchy($(this));
+                $row = $(this).next();
+                while ( $level - getHierarchy($row) < 0 ) {
+                    if ($row.hasClass('hide-children') && show) {
+                        $row.removeClass('hidden');
+                        var skip_until = getHierarchy($row);
+                        $row = $row.next();
+                        while (skip_until - getHierarchy($row) < 0) $row = $row.next();
+                    } else {
+                        $row.toggleClass('hidden', !show);
+                        $row = $row.next();
+                    }
+                }
+            }
+        });
+    });
+</script>
 @stop

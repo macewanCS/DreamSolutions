@@ -21,6 +21,10 @@
     font-size    : small;
 }
 
+input:disabled {
+  display: none;
+}
+
 #reset {
     float            : right;
 
@@ -33,13 +37,6 @@
 
 #reset:active {
     transform : translateY(1px);
-}
-
-span.filter {
-    padding          : 3px 5px;
-
-    background-color : #EBE8EB;
-    font-size        : x-small;
 }
 
 #view-plan-area{
