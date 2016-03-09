@@ -6,116 +6,21 @@ body {
     font-size:          medium;
 }
 
-#create-plan-year-section {
-    text-align:         center;
-    background-color:   white;
-    border-style:       groove;
-    height:             200px;
-    width:              500px;
-    padding:            20px 0px 20px 0px;
-    margin:             50px auto auto auto;
-    border-radius:      5%;
-}
-
-#create-plan-year-title {
-    margin-bottom:      0;
-}
-
-#create-plan-year-separator {
-    display:            inline-block;
-    font-size:          20px;
-    padding:            0px 25px 0px 25px;
-}
-
 .create-plan-years {
+    margin-left:        40%;
     width:              125px;
 }
 
-.create-plan-button {
-    background-color:   #004b8e;
-    border:             thin solid black;
-    border-radius:      2%;
-    width:              200px;
-    height:             50px;
-    font-size:          20px;
-    color:              white;
+.create-plan-year-labels {
+    text-align:         center;
 }
 
-#create-plan-goal-selection {
-    text-align:         center;
+#create-plan-section {
     background-color:   white;
     border-style:       groove;
     height:             400px;
     width:              650px;
     padding:            20px 0px 20px 0px;
-    margin:             50px auto auto auto;
+    margin:             25px auto;
     border-radius:      5%;
-}
-
-#create-plan-objective-selection {
-    text-align:         center;
-    background-color:   white;
-    border-style:       groove;
-    height:             400px;
-    width:              650px;
-    padding:            20px 0px 20px 0px;
-    margin:             50px auto auto auto;
-    border-radius:      5%;
-}
-
-#create-plan-action-selection {
-    text-align:         center;
-    background-color:   white;
-    border-style:       groove;
-    height:             400px;
-    width:              650px;
-    padding:            20px 0px 20px 0px;
-    margin:             50px auto auto auto;
-    border-radius:      5%;
-}
-
-.create-plan-button-area {
-    margin-top:         275px;
-    padding:            10px;
-}
-
-.create-plan-previous-button {
-    float:              left;
-    border-radius:      5%;
-}
-
-.create-plan-next-button {
-    float:              right;
-    border-radius:      5%;
-}
-
-.create-plan-button-area-goals {
-    margin-top:         25px;
-    padding:            10px;
-}
-
-.goal-text-box {
-    width:              300px;
-    height:             50px;
-}
-
-.goal-area {
-    margin-right:       27px;
-}
-
-.goal-area * {
-    margin:             10px 0 10px 0;
-    vertical-align:     middle;
-}
-
-.last-goal-area * {
-    margin:             10px 0 10px 0;
-    vertical-align:     middle;
-}
-
-#add-goal-action {
-    border:             thin solid black;
-    background-color:   #004b8e;
-    color:              white;
-    border-radius:      50%;
 }
