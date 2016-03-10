@@ -29,7 +29,7 @@
     <table id="view-plan-table">
         <thead>
             <th class="hidden">Goal Type</th>
-            <th colspan=2>Priority</th>
+            <th colspan=3>Priority</th>
             <th>Task</th>
             <th>Type</th>
             <th>Dept/Team</th>
@@ -47,10 +47,9 @@
                           ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}">
 
                 @if ($goat->type == 'G' || $goat->type == 'O')
-
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
-                    <td colspan="9">
+                    <td colspan="10">
                     @if ($goat->goal_type == 'B')
                     {{ $goat->type == 'G' ? "Goal : " : "Objective : " }}
                     @endif
@@ -61,6 +60,7 @@
 
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
+                    <td><!-- for goal/objective descriptions (otherwise with priority filter) --></td>
                     <td>{{ $goat->priority }}</td>
                     <td>{{ $goat->description }}</td>
                     <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
@@ -104,16 +104,16 @@
 
 <div id="priority-dropdown" class="jq-dropdown jq-dropdown-tip">
     <ul class="jq-dropdown-menu">
-        <li><label><input type="checkbox" col=2 filter='1'/>High</label></li>
-        <li><label><input type="checkbox" col=2 filter='2'/>Medium</label></li>
-        <li><label><input type="checkbox" col=2 filter='3'/>Low</label></li>
+        <li><label><input type="checkbox" col=3 filter='1'/>High</label></li>
+        <li><label><input type="checkbox" col=3 filter='2'/>Medium</label></li>
+        <li><label><input type="checkbox" col=3 filter='3'/>Low</label></li>
     </ul>
 </div>
 
 <div id="goaltype-dropdown" class="jq-dropdown jq-dropdown-tip">
     <ul class="jq-dropdown-menu">
-        <li><label><input type="checkbox" />Business Plan</label></li>
-        <li><label><input type="checkbox" />Department</label></li>
+        <li><label><input type="checkbox" col=5 filter='Business Plan' />Business Plan</label></li>
+        <li><label><input type="checkbox" col=5 filter='Department'/>Department</label></li>
     </ul>
 </div>
 
@@ -149,9 +149,9 @@
 
 <div id="status-dropdown" class="jq-dropdown jq-dropdown-tip">
     <ul class="jq-dropdown-menu">
-        <li><label><input type="checkbox" col=9 filter='In Progress'/>In Progress</label></li>
-        <li><label><input type="checkbox" col=9 filter='Overdue'/>Overdue</label></li>
-        <li><label><input type="checkbox" col=9 filter='Complete'/>Complete</label></li>
+        <li><label><input type="checkbox" col=10 filter='In Progress'/>In Progress</label></li>
+        <li><label><input type="checkbox" col=10 filter='Overdue'/>Overdue</label></li>
+        <li><label><input type="checkbox" col=10 filter='Complete'/>Complete</label></li>
     </ul>
 </div>
 
@@ -163,6 +163,7 @@
 
     $(function() {
         $("#view-plan-table").tablesorter({
+            duplicateSpan: false,
             widgets : ["filter"],
         });
 
