@@ -42,9 +42,9 @@
             @foreach ($bp as $index => $goat)
 
             <tr class = "{{ $goat->type == 'G' ? "goal" :
-                          ($goat->type == 'O' ? "objective" :
-                          ($goat->type == 'A' ? "action" :
-                          ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}">
+                           ($goat->type == 'O' ? "objective" :
+                           ($goat->type == 'A' ? "action" :
+                           ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}">
 
                 @if ($goat->type == 'G' || $goat->type == 'O')
                     <td class="hidden">{{ $goat->type }}</td>
@@ -61,7 +61,7 @@
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
                     <td><!-- for goal/objective descriptions (otherwise with priority filter) --></td>
-                    <td>{{ $goat->priority }}</td>
+                    <td class="priority-{{$goat->priority}}">{{ 'HML'[$goat->priority-1] }}</td>
                     <td>{{ $goat->description }}</td>
                     <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
                     <td style="white-space: nowrap;">IT Department</td>
@@ -104,9 +104,9 @@
 
 <div id="priority-dropdown" class="jq-dropdown jq-dropdown-tip">
     <ul class="jq-dropdown-menu">
-        <li><label><input type="checkbox" col=3 filter='1'/>High</label></li>
-        <li><label><input type="checkbox" col=3 filter='2'/>Medium</label></li>
-        <li><label><input type="checkbox" col=3 filter='3'/>Low</label></li>
+        <li><label><input type="checkbox" col=3 filter='H'/>High</label></li>
+        <li><label><input type="checkbox" col=3 filter='M'/>Medium</label></li>
+        <li><label><input type="checkbox" col=3 filter='L'/>Low</label></li>
     </ul>
 </div>
 
