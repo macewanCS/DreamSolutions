@@ -15,7 +15,7 @@
               {!! Form::label('Business Plan Year') !!}
               <select>
                 @foreach ($businessPlans as $businessPlan)
-                  <option value={!! $businessPlan->id !!}>{!! $businessPlan->start . '+' . $businessPlan->end !!}</option>
+                  <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                 @endforeach
               </select>
           </div>

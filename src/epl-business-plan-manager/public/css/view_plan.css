@@ -58,13 +58,6 @@ input:disabled {
 
 #view-plan-area .hidden {
     display : none;
-
-#view-plan-area table { 
-  width: 90%; 
-  margin-left: 5%;
-  padding-top: 100px;
-  border-collapse: collapse; 
-  font-size: small;
 }
 
 #view-plan-area th {
@@ -107,23 +100,6 @@ input:disabled {
 
 #view-plan-area tr.action {
     background : #dbe6f0;
-  text-align: left;
-  background: #336633;
-  color: white;
-  font-weight: bold;
-  /*font-size: medium;*/
-}
-
-#view-plan-area tr.objective {
-  text-align: left;
-  background: #669966;
-  color: white;
-  font-weight: bold;
-  /*font-size: medium;*/
-}
-
-#view-plan-area tr.action {
-  background: #dbe6f0;
   /*font-size: small;*/
 }
 
