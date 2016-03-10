@@ -135,6 +135,15 @@ input:disabled {
 #view-plan-area span.complete {
   color: #090;
 }
+
+#view-plan-area td.priority-1 {
+  color: red;
+}
+
+#view-plan-area td.priority-3 {
+  color: #090;
+}
+
 .tablesorter .filtered {
     display : none;
 }
