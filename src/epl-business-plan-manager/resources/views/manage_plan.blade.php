@@ -5,21 +5,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   {!! Html::script('js/addTextBox.js') !!}
+  <!-- {!! Html::script('js/jquery.js') !!}
+  {!! Html::script('js/jquery-ui.min.js') !!} -->
 @stop
 
 @section('content')
     <div id="manage-plan-area">
 
       <div style="height: 25px">
-          <div style="float: left">
-              {!! Form::label('Business Plan Year') !!}
-              <select>
-                @foreach ($businessPlans as $businessPlan)
-                  <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
-                @endforeach
-              </select>
-          </div>
-
           <div id="createBusinessPlan">
               <a href="{{ action('CreatePlanController@show') }}">Create Business Plan</a>
           </div>
@@ -53,33 +46,65 @@
 
               <div id="cgoal" class="tab-pane fade in active">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
+                {!! Form::hidden('type','G') !!}
+                {!! Form::label('Business Plan Year') !!}<br>
+                <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <option default selected disabled>Select BP Year</option>
+                  @foreach ($businessPlans as $businessPlan)
+                    <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                  @endforeach
+                </select><br>
                 {!! Form::label('Goal description') !!}<br>
-                {!! Form::textarea('goalDescription') !!}<br>
+                {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
               </div>
 
               <div id="cobjective" class="tab-pane fade">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
-                <div id="objective-left">
-                  {!! Form::label('Goal') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
-                </div>
-                <div id="objective-right">
-                    {!! Form::label('Objective description') !!}<br>
-                    {!! Form::textarea('objectiveDescription') !!}<br>
-                    {!! Form::submit('submit', ['class' => 'button']) !!}
-                </div>
+                {!! Form::hidden('type','O') !!}
+                {!! Form::label('Business Plan Year') !!}<br>
+                <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <option default selected disabled>Select BP Year</option>
+                  @foreach ($businessPlans as $businessPlan)
+                    <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                  @endforeach
+                </select><br>
+                {!! Form::label('Goal') !!}<br>
+                <select name="goalList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                  <option default selected disabled>Select Goal</option>
+                  <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                  @foreach ($goats as $goat)
+                  <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
+                  @endforeach
+                </select><br>
+                {!! Form::label('Objective description') !!}<br>
+                {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
               </div>
 
               <div id="caction" class="tab-pane fade">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 <div id="action-left">
+                  {!! Form::hidden('type','A') !!}
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select id="bob" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                  {!! Form::select('size', ['Tmp' => 'Load goals here']) !!}<br>
                   {!! Form::label('Objective') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                  {!! Form::select('size', ['Tmp' => 'Load objectives here']) !!}<br>
+                  {!! Form::label('Action description') !!}<br>
+                  {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::label('End date') !!}<br>
+                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                </div>
+                <div id="action-right">
                   <div id="cActionLeadsContainer" tag="lead">
                   {!! Form::label('Lead') !!}<br>
                   {!! Form::text('leadName') !!}
@@ -90,12 +115,6 @@
                       {!! Form::text('collaboratorName') !!}
                       {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionCollaboratorsContainer")']) !!}
                   </div>
-                  {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
-                </div>
-                <div id="action-right">
-                    {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription') !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -106,12 +125,26 @@
               <div id="ctask" class="tab-pane fade">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 <div id="task-left">
+                  {!! Form::hidden('type','T') !!}
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select id="bob" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
                   {!! Form::label('Goal') !!}<br>
                   {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
                   {!! Form::label('Objective') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                  {!! Form::select('size', ['Tmp' => 'Load objectives here']) !!}<br>
                   {!! Form::label('Action') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
+                  {!! Form::select('size', ['Tmp' => 'Load actions here']) !!}<br>
+                  {!! Form::label('Task description') !!}<br>
+                  {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::label('End date') !!}<br>
+                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                </div>
+                <div id="task-right">
                   <div id="cAaskLeadsContainer" tag="lead">
                   {!! Form::label('Lead') !!}<br>
                   {!! Form::text('leadName') !!}
@@ -122,12 +155,6 @@
                   {!! Form::text('collaboratorName') !!}
                   {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cAaskCollaboratorsContainer")']) !!}
                   </div>
-                  {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
-                </div>
-                <div id="task-right">
-                  {!! Form::label('Task description') !!}<br>
-                  {!! Form::textarea('taskDescription') !!}<br>
                   {!! Form::label('Priority') !!}<br>
                   {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -159,7 +186,7 @@
                   </div>
                   <div class="goal-right">
                     {!! Form::label('Goal description') !!}<br>
-                    {!! Form::textarea('goalDescription') !!}<br>
+                    {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -174,7 +201,7 @@
                   </div>
                   <div id="objective-right">
                       {!! Form::label('Objective description') !!}<br>
-                      {!! Form::textarea('objectiveDescription') !!}<br>
+                      {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                       {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -203,7 +230,7 @@
                   </div>
                   <div id="action-right">
                     {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription') !!}<br>
+                    {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -236,7 +263,7 @@
                   </div>
                   <div id="task-right">
                     {!! Form::label('Task description') !!}<br>
-                    {!! Form::textarea('taskDescription') !!}<br>
+                    {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -268,7 +295,7 @@
                   </div>
                   <div class="goal-right">
                       {!! Form::label('Goal description') !!}<br>
-                      {!! Form::textarea('objectiveDescription', null, ['readonly']) !!}<br>
+                      {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                       {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -283,7 +310,7 @@
                   </div>
                   <div id="objective-right">
                     {!! Form::label('Objective description') !!}<br>
-                    {!! Form::textarea('objectiveDescription', null, ['readonly']) !!}<br>
+                    {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -312,7 +339,7 @@
                   </div>
                   <div id="action-right">
                     {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription', null, ['readonly']) !!}<br>
+                    {!! Form::textarea('actionDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}

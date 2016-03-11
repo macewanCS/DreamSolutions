@@ -19,7 +19,7 @@ class CreateGoatsTable extends Migration
             $table->string('description');
             $table->smallInteger('priority')->nullable();
             $table->date('due_date')->nullable();
-            $table->boolean('complete');
+            $table->boolean('complete')->nullable();
             $table->double('budget', 10, 2)->nullable();
             $table->timestamps();
 

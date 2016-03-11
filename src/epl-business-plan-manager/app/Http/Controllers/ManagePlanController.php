@@ -3,46 +3,58 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Log;
 use App\Goat;
 use App\BusinessPlan;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class ManagePlanController extends Controller
 {
-    // protected $goalType;
 
     public function index()
     {
-        // $goalType = 'Boberella';
         $businessPlans = BusinessPlan::all();
+        $goats = Goat::all();
 
-        return view('manage_plan', compact('businessPlans'));
+        return view('manage_plan', compact('businessPlans', 'goats'));
     }
 
-    public function show() {
+    public function show()
+    {
         return view('create-plan');
     }
 
-    public function store(Request $request, Goat $goat)
+    public function store(Request $request)
     {
-        // if ($goalType == 'O') {
-        //     return view('view_plan');
-        // } else{
-        //     dd(Request::all());
-        // }
-        $goal = new Goat;
-        $goal->type = 'G';
-        $goal->description = $request->goalDescription;
-        $goal->priority = null;
-        $goal->due_date = null;
-        $goal->budget = null;
-        $goal->bid = 1; // Get this from the choice box uptop left.
-        $goal->save();
-        // DB::table('goats');
+        Log::info($request->all());
+        $elem = new Goat;
+        $type = $request->type;
+        $elem->bid = $request->bId;
+        if ($type == 'G') {
+            $elem->type = $type;
+            $elem->description = $request->goalDescription;
+            $elem->priority = null;
+            $elem->due_date = null;
+            $elem->budget = null;
+            $elem->parent_id = null;
+            $elem->complete = null;
+            return back();
+        } elseif ($type == 'O') {
+            $elem->type = $type;
+            return back();
+        } elseif ($type == 'A') {
+            $elem->type = $type;
+            return back();
+        } else {
+            $elem->type = $type;
+            return back();
+        }
         return back();
-        // return request()->all();
+        $elem->save();
+        return back();
     }
 
     public function update()

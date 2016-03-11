@@ -1,6 +1,6 @@
 /*----- Components -----*/
 nav {
-    display: flex;    /*align-items: center;*/
+    display: flex;
     justify-content: center;
 }
 h3 {
@@ -11,6 +11,10 @@ h3 {
 }
 label {
     font-weight: 700;
+}
+textarea {
+    margin-top: 1px;
+    margin-bottom: 10px;
 }
 .nav {
     display: flex;
@@ -31,8 +35,7 @@ label {
     border-radius: 4px;
 }
 .nav li {
-    list-style: none;    /*margin: 0px;
-                            flex: 1;*/
+    list-style: none;
 }
 .nav li a {
     text-decoration: none;
@@ -42,28 +45,43 @@ label {
     padding-right: 15px;
     border: 1px solid transparent;
 }
-.nav li a:hover {
-    color: #337ab7;
-}
 .button {
+    padding: 5px;
     margin-top: 5px;
     float: right;
     cursor: pointer;
-    background-color: #337ab7;
+    background-color: #004B8E;
     color: #FFF;
+    border: none;
+    border-radius: 4px;
+}
+.addTextBox {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #004B8E;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
 }
 .addTextBox:hover {
     cursor: pointer;
 }
 .removeTextBox {
+    padding: 5px;
     margin-left: 5px;
+    background-color: #004B8E;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
 }
 .removeTextBox:hover {
     cursor: pointer;
 }
 #manage-plan-area {
     margin: 25px auto;
-    width: 1025px;
+    width: 750px;
     background-color: #FFFFFF;
     padding-top: 15px;
     padding-bottom: 60px;
@@ -113,7 +131,7 @@ label {
 
 /*----- li -----*/
 li.active a {
-    background-color: #337ab7;
+    background-color: #004B8E;
     color: #FFF;
     cursor: default;
 }
@@ -121,7 +139,8 @@ li.active a:hover {
     color: #FFF;
 }
 a:hover {
-    background-color: #EEEEEE;
+    background-color: #004B8E;
+    color: #FFF;
 }
 
 /*----- DUC Tab Links -----*/
@@ -196,17 +215,15 @@ a:hover {
     margin-top: 20px;
 }
 #objective-left {
-    margin-right: 100px;
+    margin-right: 50px;
     float: left;
 }
 #objective-left select {
-
-    /*margin-top: 5px;*/
     margin-top: 1px;
     margin-bottom: 10px;
 }
 #objective-right {
-    margin-left: 100px;
+    margin-left: 50px;
     float: right;
 }
 
@@ -216,7 +233,7 @@ a:hover {
     margin-top: 20px;
 }
 #action-left {
-    margin-right: 60px;
+    margin-right: 30px;
     float: left;
 }
 #action-left select, input {
@@ -224,7 +241,7 @@ a:hover {
     margin-bottom: 10px;
 }
 #action-right {
-    margin-left: 60px;
+    margin-left: 30px;
     float: right;
 }
 #action-right select {
@@ -238,7 +255,7 @@ a:hover {
     margin-top: 20px;
 }
 #task-left {
-    margin-right: 60px;
+    margin-right: 30px;
     float: left;
 }
 #task-left select, input {
@@ -246,7 +263,7 @@ a:hover {
     margin-bottom: 10px;
 }
 #task-right {
-    margin-left: 60px;
+    margin-left: 30px;
     float: right;
 }
 #task-right select {
