@@ -29,6 +29,7 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
+        Log::info('Im in store.');
         Log::info($request->all());
         $elem = new Goat;
         $type = $request->type;
@@ -57,13 +58,23 @@ class ManagePlanController extends Controller
         return back();
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        Log::info('Im in update.');
+        $elem = Goat::find($request->goalId);
+        $elem->description = $request->goalDescription;
+        $elem->save();
+        // Log::info($elem);
         return back();
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        // $type = $request->type;
+        Log::info('Im in destroy.');
+        $elem = Goat::find($request->goalId);
+        $elem->delete();
+        // Log::info($elem);
         return back();
     }
 }

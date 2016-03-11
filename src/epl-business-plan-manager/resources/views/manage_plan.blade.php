@@ -179,16 +179,26 @@
               <div class="tab-content">
                 <h3>Update</h3>
                 <div id="ugoal" class="tab-pane fade in active">
-                  {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
-                  <div class="goal-left">
-                    {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
-                  </div>
-                  <div class="goal-right">
-                    {!! Form::label('Goal description') !!}<br>
-                    {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                    {!! Form::submit('submit', ['class' => 'button']) !!}
-                  </div>
+                  {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
+                  {!! Form::hidden('type','G') !!}
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal') !!}<br>
+                  <select name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                    <option default selected disabled>Select Goal</option>
+                    <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    @foreach ($goats as $goat)
+                    <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal description') !!}<br>
+                  {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
                 <div id="uobjective" class="tab-pane fade">
@@ -288,18 +298,29 @@
               <div class="tab-content">
                 <h3>Delete</h3>
                 <div id="dgoal" class="tab-pane fade in active">
-                  {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
-                  <div class="goal-left">
-                    {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}
-                  </div>
-                  <div class="goal-right">
-                      {!! Form::label('Goal description') !!}<br>
-                      {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
-                      {!! Form::submit('submit', ['class' => 'button']) !!}
-                  </div>
+                  {!! Form::open(['url' => 'manage', 'method' => 'DELETE']) !!}
+                  {!! Form::hidden('type','G') !!}
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal') !!}<br>
+                  <select name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                    <option default selected disabled>Select Goal</option>
+                    <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    @foreach ($goats as $goat)
+                    <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal description') !!}<br>
+                  {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
+
                 <div id="dobjective" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   <div id="objective-left">

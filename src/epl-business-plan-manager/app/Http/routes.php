@@ -12,7 +12,10 @@
 */
 
 // Manage Plan controller routes
-Route::resource('/manage', 'ManagePlanController');
+Route::get('/manage', 'ManagePlanController@index');
+Route::post('/manage', 'ManagePlanController@store');
+Route::patch('/manage','ManagePlanController@update');
+Route::delete('/manage', 'ManagePlanController@destroy');
 
 // Create business controller routes
 Route::get('/manage/create-plan', 'CreatePlanController@show');
