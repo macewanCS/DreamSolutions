@@ -1,13 +1,13 @@
 @extends('app')
 
 @section('head')
-	<link rel="stylesheet" type="text/css" href="/css/dashboard.css"></link>
+	<link rel="stylesheet" type="text/css" href="/css/dashboard2.css"></link>
 @stop
 
 @section('content')
 
 	<div id="profile">
-<!-- 	<div id="profile-left">
+	<div id="profile-left">
 		<div id="profile-info">
 			<img src="images/user_pics/{{$pic}}.jpg" alt="profile picture" height=200 width=200>
 			<h3> {{ $user->first_name }}  {{ $user->last_name }} </h3>
@@ -25,7 +25,7 @@
 			</div>
 
 			
-		</div> -->
+		</div>
 
 			<div id="profile-right">
 				<h2 style="margin-left: 5%">Tasks in Progress</h2>
@@ -73,7 +73,6 @@
 					</tbody>
 				</table>
 
-				<a href="dashboard2">dashboard 2</a>
 			</div>
 			</div>
 		

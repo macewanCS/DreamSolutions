@@ -18,7 +18,7 @@ Route::resource('/manage', 'ManagePlanController');
 Route::get('/manage/create-plan', 'CreatePlanController@show');
 Route::post('/manage/create-plan', 'CreatePlanController@create');
 
-
+Route::get('/dashboard2', 'DashboardController@dashboard2');
 // View plan controller routes
 Route::get('/view', 'ViewPlanController@index');
 
@@ -45,5 +45,6 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
     Route::auth();
+    Route::get('/dashboard2', 'DashboardController@dashboard2');
     Route::get('/dashboard', 'DashboardController@dashboard');
 });
