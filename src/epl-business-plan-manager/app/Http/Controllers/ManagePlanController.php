@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Input;
 
 class ManagePlanController extends Controller
 {
-
     public function index()
     {
         $businessPlans = BusinessPlan::all();

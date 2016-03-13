@@ -4,9 +4,29 @@
   <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  {!! Html::script('js/addTextBox.js') !!}
-  <!-- {!! Html::script('js/jquery.js') !!}
-  {!! Html::script('js/jquery-ui.min.js') !!} -->
+  <!-- {!! Html::script('build/js/all.js') !!} -->
+  <script>
+  $(document).ready(function() {
+    $('#bId').on('change', function(e){
+      console.log('Im in the on change listener.');
+      console.log('This is the event: ');
+      console.log(e);
+
+      var b_Id = e.target.value;
+      console.log('This is b_Id: ' + b_Id);
+
+      $.get('/ajax-goal?b_Id=' + b_Id, function(data){
+        console.log('Im in the ajax get.');
+        console.log(data);
+        $('#goalId').empty();
+        $('#goalId').append('<option default selected disabled>Select Goal</option>');
+        $.each(data, function(index, goalObj){
+          $('#goalId').append('<option value="' + goalObj.id + '">' + goalObj.description + '</option>');
+        });
+      });
+    });
+  });
+  </script>
 @stop
 
 @section('content')
@@ -75,7 +95,7 @@
                   <option default selected disabled>Select Goal</option>
                   <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
                   @foreach ($goats as $goat)
-                  <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
+                      <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
                   @endforeach
                 </select><br>
                 {!! Form::label('Objective description') !!}<br>
@@ -182,38 +202,37 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select id="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                     @endforeach
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  <select name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                    <option default selected disabled>Select Goal</option>
-                    <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    @foreach ($goats as $goat)
-                    <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
-                    @endforeach
-                  </select><br>
+                  <select id="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Goal description') !!}<br>
                   {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
+
                 <div id="uobjective" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
-                  <div id="objective-left">
+                    {!! Form::hidden('type','O') !!}
+                    {!! Form::label('Business Plan Year') !!}<br>
+                    <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                      <option default selected disabled>Select BP Year</option>
+                      @foreach ($businessPlans as $businessPlan)
+                        <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                      @endforeach
+                    </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    <select id="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}
-                  </div>
-                  <div id="objective-right">
-                      {!! Form::label('Objective description') !!}<br>
-                      {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                      {!! Form::submit('submit', ['class' => 'button']) !!}
-                  </div>
+                    <select id="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    {!! Form::label('Objective description') !!}<br>
+                    {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                    {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
                 <div id="uaction" class="tab-pane fade">
@@ -248,16 +267,36 @@
                   {!! Form::close() !!}
                 </div>
                 <div id="utask" class="tab-pane fade">
-                  {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
+                  {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   <div id="task-left">
+                    {!! Form::hidden('type','T') !!}
+                    {!! Form::label('Business Plan Year') !!}<br>
+                    <select class="yearDrop" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                      <option default selected disabled>Select BP Year</option>
+                      @foreach ($businessPlans as $businessPlan)
+                        <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                      @endforeach
+                    </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    <select class="goalDrop" name="goalList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                      <option default selected disabled>Select Goal</option>
+                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    </select><br>
                     {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    <select class="objDrop" name="objectiveList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                      <option default selected disabled>Select Objective</option>
+                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    </select><br>
                     {!! Form::label('Action') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
+                    <select class="actionDrop" name="actionList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                      <option default selected disabled>Select Action</option>
+                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    </select><br>
                     {!! Form::label('Task description') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load tasks here')) !!}<br>
+                    <select class="taskDrop" name="taskList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
+                      <option default selected disabled>Select Task</option>
+                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
+                    </select><br>
                     <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
                       {!! Form::text('leadName') !!}

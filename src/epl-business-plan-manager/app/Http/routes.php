@@ -1,5 +1,7 @@
 <?php
 
+use App\Goat;
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -16,6 +18,15 @@ Route::get('/manage', 'ManagePlanController@index');
 Route::post('/manage', 'ManagePlanController@store');
 Route::patch('/manage','ManagePlanController@update');
 Route::delete('/manage', 'ManagePlanController@destroy');
+Route::get('/ajax-goal', function(){
+	Log::info('Im in route get ajax.');
+	$b_Id = Input::get('b_Id');
+	Log::info('This is b_Id: ' . $b_Id);
+
+	$goals = Goat::where('bid', '=', $b_Id)->get();
+
+	return Response::json($goals);
+});
 
 // Create business controller routes
 Route::get('/manage/create-plan', 'CreatePlanController@show');
