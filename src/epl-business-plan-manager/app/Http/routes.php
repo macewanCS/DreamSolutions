@@ -19,13 +19,34 @@ Route::post('/manage', 'ManagePlanController@store');
 Route::patch('/manage','ManagePlanController@update');
 Route::delete('/manage', 'ManagePlanController@destroy');
 Route::get('/ajax-goal', function(){
-	Log::info('Im in route get ajax.');
+	Log::info('Im in route ajax-goal.');
 	$b_Id = Input::get('b_Id');
 	Log::info('This is b_Id: ' . $b_Id);
 
 	$goals = Goat::where('bid', '=', $b_Id)->get();
 
 	return Response::json($goals);
+});
+Route::get('ajax-objective', function(){
+	$goal_Id = Input::get('goal_Id');
+
+	$objectives = Goat::where('parent_id', '=', $goal_Id)->get();
+
+	return Response::json($objectives);
+});
+Route::get('ajax-action', function(){
+	$obj_Id = Input::get('obj_Id');
+
+	$actions = Goat::where('parent_id', '=', $obj_Id)->get();
+
+	return Response::json($actions);
+});
+Route::get('ajax-task', function(){
+	$action_Id = Input::get('action_Id');
+
+	$tasks = Goat::where('parent_id', '=', $action_Id)->get();
+
+	return Response::json($tasks);
 });
 
 // Create business controller routes

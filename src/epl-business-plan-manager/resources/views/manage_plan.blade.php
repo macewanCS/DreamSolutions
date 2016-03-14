@@ -4,29 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <!-- {!! Html::script('build/js/all.js') !!} -->
-  <script>
-  $(document).ready(function() {
-    $('#bId').on('change', function(e){
-      console.log('Im in the on change listener.');
-      console.log('This is the event: ');
-      console.log(e);
-
-      var b_Id = e.target.value;
-      console.log('This is b_Id: ' + b_Id);
-
-      $.get('/ajax-goal?b_Id=' + b_Id, function(data){
-        console.log('Im in the ajax get.');
-        console.log(data);
-        $('#goalId').empty();
-        $('#goalId').append('<option default selected disabled>Select Goal</option>');
-        $.each(data, function(index, goalObj){
-          $('#goalId').append('<option value="' + goalObj.id + '">' + goalObj.description + '</option>');
-        });
-      });
-    });
-  });
-  </script>
+  {!! Html::script('build/js/all.js') !!}
 @stop
 
 @section('content')
@@ -50,7 +28,6 @@
 
         <div class="tab-content">
           <div id="create" class="tab-pane fade in active">
-            <!-- <h3>Create</h3> -->
             <div class="container">
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
@@ -68,7 +45,7 @@
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 {!! Form::hidden('type','G') !!}
                 {!! Form::label('Business Plan Year') !!}<br>
-                <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                   <option default selected disabled>Select BP Year</option>
                   @foreach ($businessPlans as $businessPlan)
                     <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -84,20 +61,14 @@
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 {!! Form::hidden('type','O') !!}
                 {!! Form::label('Business Plan Year') !!}<br>
-                <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                   <option default selected disabled>Select BP Year</option>
                   @foreach ($businessPlans as $businessPlan)
                     <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                   @endforeach
                 </select><br>
                 {!! Form::label('Goal') !!}<br>
-                <select name="goalList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                  <option default selected disabled>Select Goal</option>
-                  <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                  @foreach ($goats as $goat)
-                      <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
-                  @endforeach
-                </select><br>
+                <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                 {!! Form::label('Objective description') !!}<br>
                 {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                 {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -109,35 +80,35 @@
                 <div id="action-left">
                   {!! Form::hidden('type','A') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select id="bob" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                     @endforeach
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  {!! Form::select('size', ['Tmp' => 'Load goals here']) !!}<br>
+                  <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Objective') !!}<br>
-                  {!! Form::select('size', ['Tmp' => 'Load objectives here']) !!}<br>
+                  <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Action description') !!}<br>
                   {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                  {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                 </div>
                 <div id="action-right">
                   <div id="cActionLeadsContainer" tag="lead">
-                  {!! Form::label('Lead') !!}<br>
-                  {!! Form::text('leadName') !!}
-                  {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionLeadsContainer")']) !!}
+                    {!! Form::label('Lead') !!}<br>
+                    {!! Form::text('leadName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionLeadsContainer")']) !!}
                   </div>
                   <div id="cActionCollaboratorsContainer" tag="co">
-                      {!! Form::label('Collaborator') !!}<br>
-                      {!! Form::text('collaboratorName') !!}
-                      {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionCollaboratorsContainer")']) !!}
+                    {!! Form::label('Collaborator') !!}<br>
+                    {!! Form::text('collaboratorName') !!}
+                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionCollaboratorsContainer")']) !!}
                   </div>
-                    {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
-                    {!! Form::submit('submit', ['class' => 'button']) !!}
+                  {!! Form::label('End date') !!}<br>
+                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                  {!! Form::label('Priority') !!}<br>
+                  {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                  {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
               </div>
@@ -147,18 +118,18 @@
                 <div id="task-left">
                   {!! Form::hidden('type','T') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select id="bob" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                     @endforeach
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                  <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Objective') !!}<br>
-                  {!! Form::select('size', ['Tmp' => 'Load objectives here']) !!}<br>
+                  <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Action') !!}<br>
-                  {!! Form::select('size', ['Tmp' => 'Load actions here']) !!}<br>
+                  <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Task description') !!}<br>
                   {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::label('End date') !!}<br>
@@ -202,14 +173,14 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select id="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                     @endforeach
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  <select id="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                  <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Goal description') !!}<br>
                   {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -220,30 +191,43 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
                     {!! Form::hidden('type','O') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                       @endforeach
                     </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    <select id="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    <select id="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective description') !!}<br>
                     {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
+
                 <div id="uaction" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
                   <div id="action-left">
+                    {!! Form::hidden('type','A') !!}
+                    {!! Form::label('Business Plan Year') !!}<br>
+                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                      <option default selected disabled>Select BP Year</option>
+                      @foreach ($businessPlans as $businessPlan)
+                        <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                      @endforeach
+                    </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
+                    <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    {!! Form::label('Action description') !!}<br>
+                    {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  </div>
+                  <div id="action-right">
                     <div id="uActionLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
                       {!! Form::text('leadName') !!}
@@ -256,47 +240,36 @@
                     </div>
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
-                  </div>
-                  <div id="action-right">
-                    {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
                 </div>
+
                 <div id="utask" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   <div id="task-left">
                     {!! Form::hidden('type','T') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="yearDrop" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                       @endforeach
                     </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    <select class="goalDrop" name="goalList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                      <option default selected disabled>Select Goal</option>
-                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    </select><br>
+                    <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    <select class="objDrop" name="objectiveList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                      <option default selected disabled>Select Objective</option>
-                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    </select><br>
+                    <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action') !!}<br>
-                    <select class="actionDrop" name="actionList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                      <option default selected disabled>Select Action</option>
-                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    </select><br>
+                    <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    {!! Form::label('Task') !!}<br>
+                    <select class="taskId" name="taskId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Task description') !!}<br>
-                    <select class="taskDrop" name="taskList" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                      <option default selected disabled>Select Task</option>
-                      <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    </select><br>
+                    {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  </div>
+                  <div id="task-right">
                     <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
                       {!! Form::text('leadName') !!}
@@ -309,10 +282,6 @@
                     </div>
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
-                  </div>
-                  <div id="task-right">
-                    {!! Form::label('Task description') !!}<br>
-                    {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -340,20 +309,14 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
                     @endforeach
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
-                  <select name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;">
-                    <option default selected disabled>Select Goal</option>
-                    <!-- For each goat bp_id that equals the currently selected bp->id load the ones that match. -->
-                    @foreach ($goats as $goat)
-                    <option value={!! $goat->id !!}>{!! $goat->description !!}</option>
-                    @endforeach
-                  </select><br>
+                  <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Goal description') !!}<br>
                   {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -362,29 +325,46 @@
 
                 <div id="dobjective" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
-                  <div id="objective-left">
-                    {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
-                    {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
-                  </div>
-                  <div id="objective-right">
-                    {!! Form::label('Objective description') !!}<br>
-                    {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
-                    {!! Form::submit('submit', ['class' => 'button']) !!}
-                  </div>
+                  {!! Form::hidden('type','O') !!}
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal') !!}<br>
+                  <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                  {!! Form::label('Objective') !!}<br>
+                  <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                  {!! Form::label('Objective description') !!}<br>
+                  {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
+
                 <div id="daction" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   <div id="action-left">
+                    {!! Form::hidden('type','A') !!}
+                    {!! Form::label('Business Plan Year') !!}<br>
+                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                      <option default selected disabled>Select BP Year</option>
+                      @foreach ($businessPlans as $businessPlan)
+                        <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                      @endforeach
+                    </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
-                    {!! Form::label('Lead') !!}<br>
+                    <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    {!! Form::label('Action description') !!}<br>
+                    {!! Form::textarea('actionDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
+                  </div>
+                  <div id="action-right">
+                  {!! Form::label('Lead') !!}<br>
                     <table>
                       <!-- For each -->
                     </table><br>
@@ -396,27 +376,32 @@
                     <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
-                  </div>
-                  <div id="action-right">
-                    {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::select('size', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
                 </div>
+
                 <div id="dtask" class="tab-pane fade">
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   <div id="task-left">
+                    {!! Form::hidden('type','T') !!}
+                    {!! Form::label('Business Plan Year') !!}<br>
+                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                      <option default selected disabled>Select BP Year</option>
+                      @foreach ($businessPlans as $businessPlan)
+                        <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                      @endforeach
+                    </select><br>
                     {!! Form::label('Goal') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load goals here')) !!}<br>
+                    <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load objectives here')) !!}<br>
+                    <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load actions here')) !!}<br>
-                    {!! Form::label('Task description') !!}<br>
-                    {!! Form::select('size', array('Tmp' => 'Load tasks here')) !!}<br>
+                    <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
+                    {!! Form::label('Task') !!}<br>
+                    <select class="taskId" name="taskId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   </div>
                   <div id="task-right">
                     {!! Form::label('Lead') !!}<br>
@@ -432,7 +417,7 @@
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::select('size', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
