@@ -18,6 +18,7 @@ class CreateGoatUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('goat_id')->unsigned()->index();
+            $table->foreign('goat_id')->references('id')->on('goats');
             $table->foreign('goat_id')->references('id')->on('goats')->onDelete('cascade');
 
             // Collaborator 'C' or Lead 'L'

@@ -14,13 +14,13 @@ class CreateGoatsTable extends Migration
     {
         Schema::create('goats', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('type'); 
+            $table->char('type');
             $table->char('goal_type');
             $table->string('description');
-            $table->smallInteger('priority');
-            $table->date('due_date');
-            $table->boolean('complete');
-            $table->double('budget', 10, 2);
+            $table->smallInteger('priority')->nullable();
+            $table->date('due_date')->nullable();
+            $table->boolean('complete')->nullable();
+            $table->double('budget', 10, 2)->nullable();
             $table->timestamps();
 
             $table->integer('parent_id')->unsigned()->index()->nullable();
