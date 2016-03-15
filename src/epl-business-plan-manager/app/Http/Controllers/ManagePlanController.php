@@ -28,7 +28,6 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
-        Log::info('Im in store.');
         Log::info($request->all());
         $elem = new Goat;
         $type = $request->type;
@@ -41,39 +40,68 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = null;
             $elem->complete = null;
-            return back();
         } elseif ($type == 'O') {
             $elem->type = $type;
-            return back();
+            $elem->description = $request->objectiveDescription;
+            $elem->priority = null;
+            $elem->due_date = null;
+            $elem->budget = null;
+            $elem->parent_id = $request->goalId;
+            $elem->complete = null;
         } elseif ($type == 'A') {
             $elem->type = $type;
-            return back();
+            $elem->description = $request->actionDescription;
+            $elem->priority = $request->priority;
+            $elem->due_date = $request->due;
+            $elem->budget = null;
+            $elem->parent_id = $request->objId;
+            $elem->complete = null;
         } else {
             $elem->type = $type;
-            return back();
+            $elem->description = $request->taskDescription;
+            $elem->priority = $request->priority;
+            $elem->due_date = $request->due;
+            $elem->budget = null;
+            $elem->parent_id = $request->actionId;
+            $elem->complete = null;
         }
-        return back();
         $elem->save();
         return back();
     }
 
     public function update(Request $request)
     {
-        Log::info('Im in update.');
-        $elem = Goat::find($request->goalId);
-        $elem->description = $request->goalDescription;
+        $type = $request->type;
+        if ($type == 'G') {
+            $elem = Goat::find($request->goalId);
+            $elem->description = $request->goalDescription;
+        }elseif ($type == 'O') {
+            $elem = Goat::find($request->objId);
+            $elem->description = $request->objectiveDescription;
+        }elseif ($type == 'A') {
+            $elem = Goat::find($request->actionId);
+            $elem->description = $request->actionDescription;
+        }else {
+            $elem = Goat::find($request->taskId);
+            $elem->description = $request->taskDescription;
+        }
         $elem->save();
-        // Log::info($elem);
         return back();
     }
 
     public function destroy(Request $request)
     {
-        // $type = $request->type;
-        Log::info('Im in destroy.');
-        $elem = Goat::find($request->goalId);
+        $type = $request->type;
+        if ($type == 'G') {
+            $elem = Goat::find($request->goalId);
+        }elseif ($type == 'O') {
+            $elem = Goat::find($request->objId);
+        }elseif ($type == 'A') {
+            $elem = Goat::find($request->actionId);
+        }else {
+            $elem = Goat::find($request->taskId);
+        }
         $elem->delete();
-        // Log::info($elem);
         return back();
     }
 }

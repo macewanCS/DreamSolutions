@@ -107,7 +107,7 @@
                   {!! Form::label('End date') !!}<br>
                   {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                  {!! Form::select('priority', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
@@ -147,7 +147,7 @@
                   {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cAaskCollaboratorsContainer")']) !!}
                   </div>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                  {!! Form::select('priority', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
@@ -182,7 +182,7 @@
                   {!! Form::label('Goal') !!}<br>
                   <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Goal description') !!}<br>
-                  {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1', 'class' => 'goalDescription']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
@@ -202,7 +202,7 @@
                     {!! Form::label('Objective') !!}<br>
                     <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Objective description') !!}<br>
-                    {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                    {!! Form::textarea('objectiveDescription', null, ['cols' => '35', 'rows' => '1', 'class' => 'objectiveDescription']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
@@ -225,7 +225,7 @@
                     {!! Form::label('Action') !!}<br>
                     <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                    {!! Form::textarea('actionDescription', null, ['cols' => '35', 'rows' => '1', 'class' => 'actionDescription']) !!}<br>
                   </div>
                   <div id="action-right">
                     <div id="uActionLeadsContainer" tag="lead">
@@ -241,7 +241,7 @@
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::select('priority', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -267,7 +267,7 @@
                     {!! Form::label('Task') !!}<br>
                     <select class="taskId" name="taskId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Task description') !!}<br>
-                    {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                    {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1', 'class' => 'taskDescription']) !!}<br>
                   </div>
                   <div id="task-right">
                     <div id="uAaskLeadsContainer" tag="lead">
@@ -283,7 +283,7 @@
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
+                    {!! Form::select('priority', array('H' => 'High', 'M' => 'Medium', 'L' => 'Low')) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -317,8 +317,6 @@
                   </select><br>
                   {!! Form::label('Goal') !!}<br>
                   <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
-                  {!! Form::label('Goal description') !!}<br>
-                  {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
@@ -337,8 +335,6 @@
                   <select class="goalId" name="goalId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Objective') !!}<br>
                   <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
-                  {!! Form::label('Objective description') !!}<br>
-                  {!! Form::textarea('objectiveDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                   {!! Form::close() !!}
                 </div>
@@ -360,8 +356,6 @@
                     <select class="objId" name="objId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                     {!! Form::label('Action') !!}<br>
                     <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
-                    {!! Form::label('Action description') !!}<br>
-                    {!! Form::textarea('actionDescription', null, ['readonly', 'cols' => '35', 'rows' => '1']) !!}<br>
                   </div>
                   <div id="action-right">
                   {!! Form::label('Lead') !!}<br>
@@ -376,8 +370,8 @@
                     <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
-                    {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                    {!! Form::label(null, 'Priority: ') !!}
+                    {!! Form::label(null, null, ['class' => 'actionPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -416,8 +410,8 @@
                     <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
-                    {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('size', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                    {!! Form::label(null, 'Priority: ') !!}
+                    {!! Form::label(null, null, ['class' => 'taskPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
