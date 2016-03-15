@@ -5,9 +5,56 @@
 }
 
 #edit-content #left {
-	
+	float:left;
 }
 
 #edit-content #right{
+	/*margin-left: 600px;*/
+	float:right;
+	width: 500px;
+}
 
+#right table { 
+  width: 90%; 
+  margin-left: 5%;
+  padding-top: 10px;
+  /*border-collapse: collapse; */
+}
+
+#right th{
+	background: #004b8e; 
+ 	color: white; 
+	font-weight: bold; 
+}
+
+#edit-content #bottom{
+	clear:both;
+	margin: 10px;
+	padding: 10px;
+}
+
+#bottom .button{
+	background: #004b8e;
+	color: white;
+	width: 150px;
+	height: 30px;
+	margin-left: 427px;
+}
+
+#bottom .text-area{
+	margin-left: 150px;
+	width: 700px;
+	height: 90px;
+}	
+
+#bottom .label{
+	margin-left: 150px;
+}
+
+#bottom .field{
+	margin-left: 150px;	
+}
+
+#bottom .clabel{
+	
 }
