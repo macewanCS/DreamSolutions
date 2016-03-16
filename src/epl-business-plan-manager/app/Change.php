@@ -26,5 +26,4 @@ class Change extends Model
 	{
 		return new Carbon($date);
 	}
-
 }
