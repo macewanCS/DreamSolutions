@@ -13,7 +13,7 @@ class CreateGoatUserTable extends Migration
     public function up()
     {
 
-        Schema::create('goat_user', function(Blueprint $table) {
+        Schema::create('goat_users', function(Blueprint $table) {
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
@@ -34,6 +34,6 @@ class CreateGoatUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goat_user');
+        Schema::drop('goat_users');
     }
 }

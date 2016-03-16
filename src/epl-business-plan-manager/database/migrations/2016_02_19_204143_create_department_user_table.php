@@ -12,7 +12,7 @@ class CreateDepartmentUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_user', function(Blueprint $table) {
+        Schema::create('department_users', function(Blueprint $table) {
             $table->integer('department_id')->unsigned()->index();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
@@ -33,6 +33,6 @@ class CreateDepartmentUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('department_user');
+        Schema::drop('department_users');
     }
 }

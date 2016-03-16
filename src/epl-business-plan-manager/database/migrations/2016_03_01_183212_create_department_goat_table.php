@@ -33,6 +33,6 @@ class CreateDepartmentGoatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('department_goat');
+        Schema::drop('department_goats');
     }
 }
