@@ -8,6 +8,36 @@
     <script src="/js/jquery.steps.min.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.steps.create-plan.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var selStartYear = document.getElementById('start-year');
+
+            var today = new Date();
+            var year = today.getFullYear();
+            for (var i = year; i < (year + 10); i++) {
+                var option = document.createElement('option');
+                option.innerHTML = i.toString();
+                option.value = 'year' + (i - year).toString();
+                selStartYear.add(option, (i-year));
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            var selStartYear = document.getElementById('end-year');
+
+            var today = new Date();
+            var year = today.getFullYear() + 1;
+            for (var i = year; i < (year + 10); i++) {
+                var option = document.createElement('option');
+                option.innerHTML = i.toString();
+                option.value = 'year' + (i - year).toString();
+                selStartYear.add(option, (i-year));
+            }
+        });
+    </script>
 @stop
 
 @section('content')
@@ -19,22 +49,10 @@
                 <h3>Years</h3>
                 <section>
                     <h1 class="create-plan-year-labels">Start Year</h1>
-                    <select class="create-plan-years required">
-                        {!! $startYear = date('Y') !!}
-
-                        @for ($startYear; $startYear < (date('Y') + 10); $startYear++)
-                             {!! "\t<option value='".$startYear."'>".$startYear."</option>\n\r" !!}
-                        @endfor
-                    </select>
+                    <select id="start-year" class="create-plan-years required"></select>
 
                     <h1 class="create-plan-year-labels">End Year</h1>
-                    <select class="create-plan-years">
-                        {!! $endYear = date('Y') + 1 !!}
-
-                        @for ($endYear; $endYear < (date('Y') + 11); $endYear++)
-                            {!! "\t<option value='".$endYear."'>".$endYear."</option>\n\r" !!}
-                        @endfor
-                    </select>
+                    <select id="end-year" class="create-plan-years"></select>
                 </section>
 
                 <h3>Goals</h3>
