@@ -9,7 +9,7 @@
 	<div id="edit-content">
 		
 		<div id="left">
-			<table>
+			<table style="width: 550px">
 				<tbody>
 					@foreach($fields as $field)
 						<tr>
@@ -22,7 +22,12 @@
 		</div>
 
 		<div id="right">
-			<table>
+
+			@if ($needsResize)
+				<table style="overflow-y:scroll; height:250px; display:block; scroll-behavior: smooth;">
+			@else
+				<table>
+			@endif
 				<thead>
 					<tr>
 						<th>Date</th>
@@ -32,7 +37,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					
+					@foreach ($changes as $change)
+						<tr>
+							<td>{{ Carbon\Carbon::parse($change->updated_at)}}</td>
+							<td>{{$change->user_id}}</td>
+							@if ($change->type === 'S')
+								<td>Status</td>
+							@else 
+								<td>Note</td>
+							@endif
+							<td>{{$change->description}}</td>
+						</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
