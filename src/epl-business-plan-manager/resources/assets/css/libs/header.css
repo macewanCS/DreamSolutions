@@ -26,7 +26,7 @@ body {
 }
 
 #nav {
-    padding:                           5px 5px 0px 0px;
+    padding:                           5px 0px 0px 0px;
 }
 
 #nav ul {
@@ -73,7 +73,7 @@ body {
 
 #nav > ul #logout-area .logout-bar {
     border-right:                      none;
-    padding-right:                     5px;
+    /*padding-right:                     5px;*/
 }
 
 input {
