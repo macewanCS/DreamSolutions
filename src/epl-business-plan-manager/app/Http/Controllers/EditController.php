@@ -51,7 +51,7 @@ class EditController extends Controller
     		array('Lead', $leads),
     		array('Collaborators', $collabs),
     		array('Status', 'In Progress'),
-    		array('Priority', $priority[$task->priority + 1])
+    		array('Priority', $priority[$task->priority - 1])
     	);
     	
     	return view('edit', compact('fields', 'changes', 'needsResize'));
