@@ -177,3 +177,11 @@ input:disabled {
 .jq-dropdown {
     font-size : small;
 }
+
+.select2-selection {
+  font-size : x-small;
+}
+
+.select2-results {
+  font-size: x-small;
+}

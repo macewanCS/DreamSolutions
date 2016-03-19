@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Goat;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class ViewPlanController extends Controller
             if ($goat->type === 'G') {
                 $sorted->push($goat);
                 continue;
-            }
+            }    
 
             for ($i = 0, $len = $sorted->count(); $i < $len; $i++) {
                 if ($sorted[$i]->id == $goat->parent_id) {
@@ -31,12 +32,8 @@ class ViewPlanController extends Controller
                 }
             }
         }
+        $users = User::all();
         
-        return view('view_plan')->with('bp', $sorted);
-    }
-
-    private function type_to_level($c) {
-    	return strpos("GOAT", $c);
-    	//return view('view_plan')->with('bp', $sorted);
+        return view('view_plan')->with(['bp' => $sorted, 'users' => $users]);
     }
 }

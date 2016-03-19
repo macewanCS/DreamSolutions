@@ -6,6 +6,9 @@
 <script src="/js/jquery-1.12.1.min.js"></script>
 <script src="/js/jquery.tablesorter.combined.js"></script>
 <script src='/js/jquery.dropdown.min.js'></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/view_plan.css"></link>
 
 @stop
 
@@ -61,7 +64,7 @@
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
                     <td><!-- for goal/objective descriptions (otherwise with priority filter) --></td>
-                    <td class="priority-{{$goat->priority}}">{{ 'HML'[$goat->priority-1] }}</td>
+                    <td class="priority-{{$goat->priority}}">{{ ' HML'[min([$goat->priority, 3])] }}</td>
                     <td>{{ $goat->description }}</td>
                     <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
                     <td style="white-space: nowrap;">IT Department</td>
@@ -125,19 +128,21 @@
 
 <div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Person/department searchable dropdown goes here
-    </div>
-</div>
-
-<div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
-    <div class="jq-dropdown-panel">
-        Person/department searchable dropdown goes here
+        <select class="user-select-multiple" col='7' multiple="multiple">
+          @foreach ($users as $user)
+            <option value="{{ $user->name() }}">{{ $user->name() }}</option>
+          @endforeach
+        </select>
     </div>
 </div>
 
 <div id="collaborator-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Person/department searchable dropdown goes here
+        <select class="user-select-multiple" col='8' multiple="multiple">
+            @foreach ($users as $user)
+                <option value="{{ $user->name() }}">{{ $user->name() }}</option>
+            @endforeach
+        </select>
     </div>
 </div>
 
@@ -220,6 +225,30 @@
             if ( !unsorted && filters[0] == "") filters[0] = "A|T";
             $('#view-plan-table').trigger('search', [filters]);
 
+        });
+
+        $('.user-select-multiple').change(function() {
+            if (unfiltered)
+                allowNesting(false);
+
+            var column = $(this).attr('col');
+
+            if ($(this).val() === null) {
+                removeFilters(column, Object.keys(filterDict[column]));
+                if (allEmpty(filters) && unsorted) {
+                    unfiltered = true;
+                    allowNesting(true);
+                }
+            } else {
+                delete filterDict[column];
+                $.each($(this).val(), function(i, val) {
+                    addFilters(column, [val]);
+                    console.log('Adding ' + val);
+                });
+            }
+
+            if ( !unsorted && filters[0] == "") filters[0] = "A|T";
+            $('#view-plan-table').trigger('search', [filters]);
         });
 
         function allEmpty($array) {
@@ -314,6 +343,20 @@
                 }
             }
         });
+    });
+
+    $(".user-select-multiple").select2({ placeholder: 'Select users to filter', width: '200px',  });
+
+    // hack to prevent select2 menu from opening when clearing it
+    // See https://github.com/select2/select2/issues/3320
+    var $el = $('.user-select-multiple');
+    $el.on('select2:unselecting', function(e) {
+        $el.data('unselecting', true);
+    }).on('select2:open', function(e) { // note the open event is important
+        if ($el.data('unselecting')) {    
+            $el.removeData('unselecting'); // you need to unset this before close
+            $el.select2('close');
+        }
     });
 </script>
 @stop
