@@ -63,7 +63,9 @@ Route::post('/manage/create-plan', 'CreatePlanController@create');
 
 // View plan controller routes
 Route::get('/view', 'ViewPlanController@index');
+
 Route::get('/edit/{id}', 'EditController@show');
+Route::post('edit/{id}', 'EditController@create');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
