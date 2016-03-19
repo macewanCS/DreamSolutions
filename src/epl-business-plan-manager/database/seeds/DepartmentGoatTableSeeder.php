@@ -11,7 +11,7 @@ class DepartmentGoatTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('department_goats')->insert(array(
+        DB::table('department_goat')->insert(array(
 
             array(
                 'department_id' => 2,

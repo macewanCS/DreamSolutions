@@ -12,7 +12,7 @@ class CreateDepartmentGoatTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_goats', function(Blueprint $table) {
+        Schema::create('department_goat', function(Blueprint $table) {
             $table->integer('department_id')->unsigned()->index();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
@@ -33,6 +33,6 @@ class CreateDepartmentGoatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('department_goats');
+        Schema::drop('department_goat');
     }
 }
