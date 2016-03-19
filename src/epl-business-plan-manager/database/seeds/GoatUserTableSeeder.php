@@ -11,7 +11,7 @@ class GoatUserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('goat_users')->insert(array(
+        DB::table('goat_user')->insert(array(
 
             // Vicky Varga
             // Action - Review public computing needs and develop strategies to meet those needs.
