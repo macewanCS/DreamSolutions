@@ -19,7 +19,7 @@ class ViewPlanController extends Controller
             if ($goat->type === 'G') {
                 $sorted->push($goat);
                 continue;
-            }    
+            }
 
             for ($i = 0, $len = $sorted->count(); $i < $len; $i++) {
                 if ($sorted[$i]->id == $goat->parent_id) {
