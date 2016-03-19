@@ -1,6 +1,7 @@
 #profile {
 	margin: 25px auto;
 	width: 1055px;
+	border-style: groove;
 }
 
 #profile-left{
