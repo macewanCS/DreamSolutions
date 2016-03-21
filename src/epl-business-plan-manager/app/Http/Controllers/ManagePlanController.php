@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Log;
 use App\Goat;
+use App\User;
 use App\BusinessPlan;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -17,8 +18,9 @@ class ManagePlanController extends Controller
     {
         $businessPlans = BusinessPlan::all();
         $goats = Goat::all();
+        $users = User::all();
 
-        return view('manage_plan', compact('businessPlans', 'goats'));
+        return view('manage_plan', compact('businessPlans', 'goats', 'users'));
     }
 
     public function show()
@@ -34,6 +36,7 @@ class ManagePlanController extends Controller
         $elem->bid = $request->bId;
         if ($type == 'G') {
             $elem->type = $type;
+            $elem->goal_type = 'B'; // Make checkbox.
             $elem->description = $request->goalDescription;
             $elem->priority = null;
             $elem->due_date = null;
@@ -42,6 +45,7 @@ class ManagePlanController extends Controller
             $elem->complete = null;
         } elseif ($type == 'O') {
             $elem->type = $type;
+            $elem->goal_type = 'B'; // Make checkbox.
             $elem->description = $request->objectiveDescription;
             $elem->priority = null;
             $elem->due_date = null;
@@ -50,6 +54,7 @@ class ManagePlanController extends Controller
             $elem->complete = null;
         } elseif ($type == 'A') {
             $elem->type = $type;
+            $elem->goal_type = 'B'; // Make checkbox.
             $elem->description = $request->actionDescription;
             $elem->priority = $request->priority;
             $elem->due_date = $request->due;
@@ -58,6 +63,7 @@ class ManagePlanController extends Controller
             $elem->complete = null;
         } else {
             $elem->type = $type;
+            $elem->goal_type = 'B'; // Make checkbox.
             $elem->description = $request->taskDescription;
             $elem->priority = $request->priority;
             $elem->due_date = $request->due;
@@ -66,6 +72,8 @@ class ManagePlanController extends Controller
             $elem->complete = null;
         }
         $elem->save();
+        $elem->userLeads()->sync($request->leadName);
+        $elem->userLeads()->sync($request->collaboratorName);
         return back();
     }
 
@@ -86,6 +94,8 @@ class ManagePlanController extends Controller
             $elem->description = $request->taskDescription;
         }
         $elem->save();
+        $elem->userLeads()->sync($request->leadName);
+        $elem->userLeads()->sync($request->collaboratorName);
         return back();
     }
 
@@ -100,6 +110,14 @@ class ManagePlanController extends Controller
             $elem = Goat::find($request->actionId);
         }else {
             $elem = Goat::find($request->taskId);
+        }
+        $users = $elem->userLeads();
+        foreach ($users as $user) {
+        	$user->delete();
+        }
+        $users = $elem->userCollaborators();
+        foreach ($users as $user) {
+        	$user->delete();
         }
         $elem->delete();
         return back();
