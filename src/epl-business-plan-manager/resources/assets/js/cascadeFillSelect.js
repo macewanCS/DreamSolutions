@@ -81,23 +81,4 @@ $(document).ready(function() {
       var taskId = $('.taskId option[value=' + task_Id + ']').first().text();
       $('.taskDescription').text(taskId);
     });
-
-    $('.leadName').keyup(function(e) {
-      console.log('Im in.')
-      clearTimeout($.data(this, 'timer'));
-      if (e.keyCode == 13)
-        search(true);
-      else
-        $(this).data('timer', setTimeout(search, 500));
-    });
-
-    function search(force) {
-        var existingString = $(".leadName").val();
-        if (!force && existingString.length < 1) return;
-        console.log('In more.');
-        $.get('/ajax-userName?userName=' + existingString, function(data) {
-            $('div.cActionLeadsContainer').html(data);
-            $('.cActionLeadsContainer').show();
-        });
-    }
   });
