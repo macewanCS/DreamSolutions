@@ -163,7 +163,7 @@ Users are added to these departments and teams from the user management page.
 Supplemental Materials
 ======================
 
-    Database schema
+[Database schema](https://github.com/adfyong/DreamSolutions/blob/spec/spec/DreamSolutionsSchema.png)
 
 License
 =======
