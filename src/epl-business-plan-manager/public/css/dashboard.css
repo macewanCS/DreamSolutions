@@ -44,14 +44,14 @@
 #profile-right table { 
  	width           : 90%;
     margin: 0px 5%;
-    padding-top     : 100px;
-    border-collapse : collapse;
+    
+    /*border-collapse : collapse;*/
     font-size       : 12pt;
   /*border-collapse: collapse; */
 }
 /* Zebra striping */
 #profile-right tr:nth-of-type(odd) { 
-  background: #eee; 
+  background: #dbe6f0; 
 }
 
 #todo th { 

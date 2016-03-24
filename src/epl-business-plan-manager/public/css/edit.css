@@ -6,6 +6,7 @@
 	border-style: groove;
 }
 
+
 #edit-content #left {
 	float:left;
 }
@@ -23,7 +24,7 @@
 }
 
 #right tr:nth-of-type(odd) { 
-  background: #eee; 
+  background: #dbe6f0; 
 }
 
 #right th{
@@ -66,4 +67,12 @@
 
 #bottom .clabel{
 	
+}
+
+#edit-content .options{
+	float: left;
+}
+
+#edit-content #options{
+	margin-left: 150px;
 }

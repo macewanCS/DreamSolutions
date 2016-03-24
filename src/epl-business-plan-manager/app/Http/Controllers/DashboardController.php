@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $user = Auth::user();	
-        // dd($user);
+        // $recent = Change::where('goat_id', $id)->get();
         $tasks = $user->collaboratorOn()->orderBy('due_date')->get();
         $dept = $user->departments()->get();
         
