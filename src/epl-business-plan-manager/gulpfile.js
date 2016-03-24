@@ -22,7 +22,6 @@ elixir(function(mix) {
     mix.version('public/css/all.css');
 
     mix.scripts([
-    	'addTextBox.js',
     	'cascadeFillSelect.js'
     	], 'public/build/js/all.js',
     	'resources/assets/js');

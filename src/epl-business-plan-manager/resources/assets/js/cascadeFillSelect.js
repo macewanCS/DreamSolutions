@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var pri = ['High', 'Medium', 'Low'];
     $('.bId').on('change', function(e){
       var b_Id = e.target.value;
 
@@ -58,7 +59,7 @@ $(document).ready(function() {
       $.get('/ajax-actionPriority?action_Id=' + action_Id, function(data){
         $.each(data, function(index, priorityLevel){
           $('.actionPriority').empty();
-          $('.actionPriority').text(priorityLevel.priority);
+          $('.actionPriority').text(pri[priorityLevel.priority-1]);
         });
       });
 
@@ -73,12 +74,8 @@ $(document).ready(function() {
       $.get('/ajax-taskPriority?task_Id=' + task_Id, function(data){
         $.each(data, function(index, priorityLevel){
           $('.taskPriority').empty();
-          $('.taskPriority').text(priorityLevel.priority);
+          $('.taskPriority').text(pri[priorityLevel.priority-1]);
         });
       });
-
-      $('.taskDescription').empty();
-      var taskId = $('.taskId option[value=' + task_Id + ']').first().text();
-      $('.taskDescription').text(taskId);
     });
   });
