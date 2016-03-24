@@ -10,8 +10,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $('select').select2();
-        $(".js-example-basic-multiple").select2();
-
+        $(".js-basic-multiple").select2();
     });
   </script>
 @stop
@@ -21,7 +20,7 @@
 
       <div style="height: 25px">
           <div id="createBusinessPlan">
-              <a href="{{ action('CreatePlanController@show') }}">Create Business Plan</a>
+              <a id="cBP" style="color: #004B8E;" href="{{ action('CreatePlanController@show') }}">Create Business Plan</a>
           </div>
       </div>
 
@@ -53,6 +52,7 @@
               <div id="cgoal" class="tab-pane fade in active">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 {!! Form::hidden('type','G') !!}
+                <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
                 {!! Form::label('Business Plan Year') !!}<br>
                 <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
                   <option default selected disabled>Select BP Year</option>
@@ -106,26 +106,24 @@
                   <div id="cActionLeadsContainer" tag="lead">
                     {!! Form::label('Lead') !!}<br>
                     <!-- {!! Form::text('leadName', null, ['class' => 'leadName']) !!} -->
-                    <select class=".js-example-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
+                    <select class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionLeadsContainer")']) !!}
                   </div>
                   <div id="cActionCollaboratorsContainer" tag="co">
                     {!! Form::label('Collaborator') !!}<br>
-                    <select class=".js-example-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
+                    <select class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                    {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cActionCollaboratorsContainer")']) !!}
                   </div>
                   {!! Form::label('End date') !!}<br>
                   {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('priority', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
@@ -156,24 +154,22 @@
                 <div id="task-right">
                   <div id="cAaskLeadsContainer" tag="lead">
                   {!! Form::label('Lead') !!}<br>
-                  <select class=".js-example-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
+                  <select class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                  {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cAaskLeadsContainer")']) !!}
                   </div>
                   <div id="cAaskCollaboratorsContainer" tag="co">
                   {!! Form::label('Collaborator') !!}<br>
-                  <select class=".js-example-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
+                  <select class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                  {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("cAaskCollaboratorsContainer")']) !!}
                   </div>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('priority', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
@@ -256,26 +252,24 @@
                   <div id="action-right">
                     <div id="uActionLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
-                      <select class=".js-example-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
+                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                      {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("uActionLeadsContainer")']) !!}
                     </div>
                     <div id="uActionCollaboratorsContainer" tag="co">
                         {!! Form::label('Collaborator') !!}<br>
-                        <select class=".js-example-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
+                        <select class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                        {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("uActionCollaboratorsContainer")']) !!}
                     </div>
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -306,26 +300,24 @@
                   <div id="task-right">
                     <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
-                      <select class=".js-example-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                      {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("uAaskLeadsContainer")']) !!}
                     </div>
                     <div id="uAaskCollaboratorsContainer" tag="co">
                       {!! Form::label('Collaborator') !!}<br>
-                      <select class=".js-example-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
-                      {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("uAaskCollaboratorsContainer")']) !!}
                     </div>
                     {!! Form::label('End date') !!}<br>
                     {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['H' => 'High', 'M' => 'Medium', 'L' => 'Low']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
