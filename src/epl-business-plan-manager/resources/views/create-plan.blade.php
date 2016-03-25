@@ -8,7 +8,6 @@
     <script src="/js/jquery-1.12.1.min.js"></script>
     <script src="/js/jquery.steps.min.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
-    <script src="/js/jquery.steps.create-plan.js"></script>
     <script src="/js/create-plan.js"></script>
 
 
@@ -21,11 +20,13 @@
             <div>
                 <h3>Years</h3>
                 <section>
-                    <h1 class="create-plan-year-labels">Start Year</h1>
-                    <select id="start-year" class="create-plan-years required"></select>
+                    <div id="createPlanYearContainer" tag="year">
+                        <h1 class="create-plan-year-labels">Start Year</h1>
+                        <select id="start-year" class="create-plan-years required"></select>
 
-                    <h1 class="create-plan-year-labels">End Year</h1>
-                    <select id="end-year" class="create-plan-years"></select>
+                        <h1 class="create-plan-year-labels">End Year</h1>
+                        <select id="end-year" class="create-plan-years"></select>
+                    </div>
                 </section>
 
                 <h3>Goals</h3>
@@ -33,8 +34,8 @@
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
 
                     <div id="createPlanGoalContainer" tag="goal">
-                        {!! Form::label('Goal') !!}
-                        <input type="text" name="goalName0" class="required">
+                        {!! Form::label('Goal *') !!}
+                        <input type="text" id="goal0" name="Goal" class="required">
                         {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanGoalContainer")']) !!}
                     </div>
                 </section>
@@ -44,8 +45,8 @@
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
 
                     <div id="createPlanObjectiveContainer" tag="goal">
-                        {!! Form::label('Objective') !!}
-                        <input type="text" name="objectiveName0" class="required">
+                        {!! Form::label('Objective *') !!}
+                        <input type="text" id="objective0" name="Objective" class="required">
                         {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanObjectiveContainer")']) !!}
                     </div>
                 </section>
@@ -55,8 +56,8 @@
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
 
                         <div id="createPlanActionContainer" tag="goal">
-                        {!! Form::label('Action') !!}
-                        <input type="text" name="actionName0" class="required">
+                        {!! Form::label('Action *') !!}
+                        <input type="text" id="action0" name="Action" class="required">
                         {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanActionContainer")']) !!}
                     </div>
                 </section>

@@ -4,8 +4,16 @@
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
 
-$(function() {
+
+var g = 0;
+var o = 0;
+var a = 0;
+
+var data = {};
+
+$(document).ready(function() {
     var form = $("#create-plan-form");
+
     form.validate({
         errorPlacement: function errorPlacement(error, element) { element.before(error); },
         rules: {
@@ -22,11 +30,54 @@ $(function() {
         onStepChanging: function (event, currentIndex, newIndex)
         {
             if (currentIndex > newIndex) { return true; }
+
             form.validate().settings.ignore = ":disabled,:hidden";
+
+            if (currentIndex === 1) {
+                var numElements = 0;
+                for (var i = 0; i <= g; i++) {
+                    if (document.getElementById('goal' + i) !== null && document.getElementById('goal' + i).value !== "") {
+                        data['goal' + i] = document.getElementById('goal' + i).value;
+                        numElements++;
+                    }
+                    else if (document.getElementById('goal' + i) !== null) {
+                        numElements++;
+                    }
+                    else {
+                        delete data['goal' + i];
+                    }
+                }
+                g = numElements;
+                console.log(data);
+            }
+
+
             return form.valid();
         },
+
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            var elem = document.createElement("h1");
+            elem.innerText = "Hey";
+            elem.setAttribute("class", "goal");
+
+            if (priorIndex === 1) {
+                var container = document.getElementById("createPlanObjectiveContainer");
+                if (container !== null) {
+                    console.log(g);
+                    for (var i = 0; i <= g; i++) {
+                        container.appendChild(elem);
+                    }
+                };
+            }
+
+
+
+            return;
+        },
+
         onFinishing: function (event, currentIndex)
         {
+
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
@@ -64,31 +115,31 @@ $(document).ready(function() {
     }
 });
 
-var g = 0;
-var o = 0;
-var a = 0;
 
 function addTextBox(container) {
     var div = document.createElement('div');
     var name = '';
 
     if (document.getElementById(container).getAttribute('tag') == "goal") {
-        name = "goalName" + ++g;
+        name = "goal";
+        id = name + ++g;
         $("#create-plan-section").css( "height","+=50" );
         $(".wizard > .content").css( "height","+=50" );
 
     } else if (document.getElementById(container).getAttribute('tag') == "objective") {
-        name = "objectiveName" + ++o;
+        name = "objective"
+        id = name + ++o;
         $("#create-plan-section").css( "height","+=50" );
         $(".wizard > .content").css( "height","+=50" );
 
     } else if (document.getElementById(container).getAttribute('tag') == "action") {
-        name = "actionName" + ++a;
+        name = "action"
+        id = name + ++a;
         $("#create-plan-section").css( "height","+=50" );
         $(".wizard > .content").css( "height","+=50" );
     }
 
-    div.innerHTML = '<input type="text" name=' + name + '><button class="removeTextBox" type="button" onclick="removeTextBox(this,' + container + ')">Remove</button>';
+    div.innerHTML = '<input type="text" id=' + id + ' name=' + name + '><button class="removeTextBox" type="button" onclick="removeTextBox(this,' + container + ')">Remove</button>';
     document.getElementById(container).appendChild(div);
 }
 
@@ -99,18 +150,16 @@ function removeTextBox(div, container) {
         $(".wizard > .content").css( "height","-=50" );
         $("#create-plan-section").css( "height","-=50" );
         containerId.removeChild(div.parentNode);
-        g--;
+
 
     } else if (containerId.getAttribute('tag') == "objective") {
         $(".wizard > .content").css( "height","-=50" );
         $("#create-plan-section").css( "height","-=50" );
         containerId.removeChild(div.parentNode);
-        o--;
 
     } else if (containerId.getAttribute('tag') == "action") {
         $(".wizard > .content").css( "height","-=50" );
         $("#create-plan-section").css( "height","-=50" );
         containerId.removeChild(div.parentNode);
-        a--;
     }
 }
