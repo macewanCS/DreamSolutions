@@ -103,7 +103,7 @@
     height:                            310px;
     width:                             778px;
     position:                          relative;
-    overflow:                          scroll;
+    overflow:                          hidden;
     border:                            groove;
 }
 
