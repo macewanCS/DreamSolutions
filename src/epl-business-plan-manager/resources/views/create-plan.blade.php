@@ -43,19 +43,14 @@
                 <h3>Objectives</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
-
-                    <div id="createPlanObjectiveContainer" tag="goal">
-                        {!! Form::label('Objective *') !!}
-                        <input type="text" id="objective0" name="Objective" class="required">
-                        {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanObjectiveContainer")']) !!}
-                    </div>
+                    <div id="createPlanObjectiveContainer" tag="objective"></div>
                 </section>
 
                 <h3>Actions</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
 
-                        <div id="createPlanActionContainer" tag="goal">
+                        <div id="createPlanActionContainer" tag="action">
                         {!! Form::label('Action *') !!}
                         <input type="text" id="action0" name="Action" class="required">
                         {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanActionContainer")']) !!}

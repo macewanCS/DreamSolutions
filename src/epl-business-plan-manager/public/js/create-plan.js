@@ -1,14 +1,29 @@
-/*!
- * jQuery Steps v1.1.0 - 09/04/2014
- * Copyright (c) 2014 Rafael Staib (http://www.jquery-steps.com)
- * Licensed under MIT http://www.opensource.org/licenses/MIT
+/*
+ Should match CSS heights:
+
+ create-plan.css        (see 'create-plan-section')
+ jquery.steps.css       (see '.wizard > .content')
  */
+var sectionHeight = 420;
+var contentHeight = 310;
 
+/* Multipliers for dynamic height */
+var goalScreenMult = 23;
+var objScreenMult = goalScreenMult * 2;
+var actScreenMult = goalScreenMult * 3;
 
-var g = 0;
-var o = 0;
-var a = 0;
+/* When the '+' button is pressed it will increase height by amount below */
+var buttonChangeHeight = 75;
 
+/* Number of Goals */
+var numGoals = 0;
+
+/* Number of input boxes on screen */
+var goalField = 0;
+var objField = 0;
+var actField = 0;
+
+/* Stores all the data */
 var data = {};
 
 $(document).ready(function() {
@@ -34,43 +49,67 @@ $(document).ready(function() {
             form.validate().settings.ignore = ":disabled,:hidden";
 
             if (currentIndex === 1) {
-                var numElements = 0;
-                for (var i = 0; i <= g; i++) {
+                for (var i = 0; i <= goalField; i++) {
                     if (document.getElementById('goal' + i) !== null && document.getElementById('goal' + i).value !== "") {
-                        data['goal' + i] = document.getElementById('goal' + i).value;
-                        numElements++;
-                    }
-                    else if (document.getElementById('goal' + i) !== null) {
-                        numElements++;
-                    }
-                    else {
+                        data['goal' + i] = { desc: document.getElementById('goal' + i).value };
+                        numGoals++;
+                    } else {
                         delete data['goal' + i];
+                        numGoals--;
                     }
                 }
-                g = numElements;
-                console.log(data);
             }
-
+            console.log(data);
 
             return form.valid();
         },
 
         onStepChanged: function (event, currentIndex, priorIndex) {
-            var elem = document.createElement("h1");
-            elem.innerText = "Hey";
-            elem.setAttribute("class", "goal");
 
-            if (priorIndex === 1) {
-                var container = document.getElementById("createPlanObjectiveContainer");
-                if (container !== null) {
-                    console.log(g);
-                    for (var i = 0; i <= g; i++) {
-                        container.appendChild(elem);
-                    }
-                };
+            if (currentIndex === 1) {
+                $("#create-plan-section").css("height",(sectionHeight + numGoals * goalScreenMult));
+                $(".wizard > .content").css("height", (contentHeight + numGoals * goalScreenMult));
             }
 
+            if (currentIndex === 2) {
+                var container = document.getElementById("createPlanObjectiveContainer");
+                if (container !== null) {
+                    for (var i = 0; i <= numGoals; i++) {
+                        if (data[Object.keys(data)[i]] !== undefined) {
+                            var head = document.createElement("H1");
+                            var text = document.createTextNode('Goal ' + (i + 1) + ': ' + data[Object.keys(data)[i]].desc);
+                            head.appendChild(text);
+                            container.appendChild(head);
 
+                            var label = document.createElement("label");
+                            label.appendChild(document.createTextNode('Objective *'));
+                            container.appendChild(label);
+
+                            var input = document.createElement("input");
+                            input.type = 'text';
+                            input.id = 'objective0';
+                            input.name = 'Objective';
+                            input.className = 'required';
+                            container.appendChild(input);
+
+                            var button = document.createElement("button");
+                            button.type = 'button';
+                            button.className = 'addTextBox';
+                            button.innerHTML = '+';
+                            button.setAttribute('onclick', 'addTextBox("createPlanObjectiveContainer")');
+                            container.appendChild(button);
+                        }
+                    }
+
+                    $("#create-plan-section").css("height",(sectionHeight + numGoals * objScreenMult));
+                    $(".wizard > .content").css("height", (contentHeight + numGoals * objScreenMult));
+                }
+            }
+
+            if (currentIndex === 3) {
+                $("#create-plan-section").css("height",(sectionHeight + numGoals * actScreenMult));
+                $(".wizard > .content").css("height", (contentHeight + numGoals * actScreenMult));
+            }
 
             return;
         },
@@ -122,44 +161,28 @@ function addTextBox(container) {
 
     if (document.getElementById(container).getAttribute('tag') == "goal") {
         name = "goal";
-        id = name + ++g;
-        $("#create-plan-section").css( "height","+=50" );
-        $(".wizard > .content").css( "height","+=50" );
+        id = name + ++goalField;
 
     } else if (document.getElementById(container).getAttribute('tag') == "objective") {
-        name = "objective"
-        id = name + ++o;
-        $("#create-plan-section").css( "height","+=50" );
-        $(".wizard > .content").css( "height","+=50" );
+        name = "objective";
+        id = name + ++objField;
 
     } else if (document.getElementById(container).getAttribute('tag') == "action") {
-        name = "action"
-        id = name + ++a;
-        $("#create-plan-section").css( "height","+=50" );
-        $(".wizard > .content").css( "height","+=50" );
+        name = "action";
+        id = name + ++actField;
     }
+
+
+    $("#create-plan-section").css( "height","+=" + buttonChangeHeight );
+    $(".wizard > .content").css( "height","+=" + buttonChangeHeight );
 
     div.innerHTML = '<input type="text" id=' + id + ' name=' + name + '><button class="removeTextBox" type="button" onclick="removeTextBox(this,' + container + ')">Remove</button>';
     document.getElementById(container).appendChild(div);
 }
 
 function removeTextBox(div, container) {
-    var containerId = document.getElementById(container.id);
+    document.getElementById(container.id).removeChild(div.parentNode);
 
-    if (containerId.getAttribute('tag') == "goal") {
-        $(".wizard > .content").css( "height","-=50" );
-        $("#create-plan-section").css( "height","-=50" );
-        containerId.removeChild(div.parentNode);
-
-
-    } else if (containerId.getAttribute('tag') == "objective") {
-        $(".wizard > .content").css( "height","-=50" );
-        $("#create-plan-section").css( "height","-=50" );
-        containerId.removeChild(div.parentNode);
-
-    } else if (containerId.getAttribute('tag') == "action") {
-        $(".wizard > .content").css( "height","-=50" );
-        $("#create-plan-section").css( "height","-=50" );
-        containerId.removeChild(div.parentNode);
-    }
+    $(".wizard > .content").css( "height","-=" + buttonChangeHeight );
+    $("#create-plan-section").css( "height","-=" + buttonChangeHeight );
 }
