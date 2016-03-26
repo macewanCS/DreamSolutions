@@ -100,10 +100,10 @@
     background:                        #eee;
     display:                           block;
     margin:                            0.5em;
-    height:                            310px;
+    height:                            250px;
     width:                             778px;
     position:                          relative;
-    overflow:                          scroll;
+    overflow:                          hidden;
     border:                            groove;
 }
 

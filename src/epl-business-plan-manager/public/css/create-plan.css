@@ -18,13 +18,13 @@ body {
 #create-plan-section {
     background-color:                  white;
     border-style:                      groove;
-    height:                            420px;
+    height:                            350px;
     width:                             800px;
     padding:                           20px 0px 20px 0px;
     margin:                            25px auto;
 }
 
-#createPlanGoalContainer {
+#createPlanGoalContainer, #createPlanObjectiveContainer, #createPlanActionContainer {
     margin:                            5px auto auto auto;
     width:                             400px;
     height:                            25px;
@@ -50,4 +50,9 @@ input, textarea {
 
 #create-plan-mandatory-label {
     font-size:                         12px;
+}
+
+button {
+    margin: 0px 0px 10px 0px;
+    float: right;
 }
