@@ -10,7 +10,6 @@
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/create-plan.js"></script>
 
-
 @stop
 
 @section('content')
@@ -18,6 +17,9 @@
     <div id="create-plan-section">
         <form id="create-plan-form" action="#">
             <div>
+
+
+
                 <h3>Years</h3>
                 <section>
                     <div id="createPlanYearContainer" tag="year">
@@ -29,22 +31,23 @@
                     </div>
                 </section>
 
+
+
                 <h3>Goals</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
-
-                    <div id="createPlanGoalContainer" tag="goal">
-                        {!! Form::label('Goal *') !!}
-                        <input type="text" id="goal0" name="Goal" class="required">
-                        {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanGoalContainer")']) !!}
-                    </div>
+                    <div id="createPlanGoalContainer" tag="goal"></div>
                 </section>
+
+
 
                 <h3>Objectives</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Mandatory</p>
                     <div id="createPlanObjectiveContainer" tag="objective"></div>
                 </section>
+
+
 
                 <h3>Actions</h3>
                 <section>
@@ -56,6 +59,9 @@
                         {!! Form::button('+', ['class' => 'addTextBox', 'onclick' => 'addTextBox("createPlanActionContainer")']) !!}
                     </div>
                 </section>
+
+
+
             </div>
         </form>
     </div>
