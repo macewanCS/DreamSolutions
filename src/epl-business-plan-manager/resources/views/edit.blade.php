@@ -41,7 +41,7 @@
 						<tr>
 							<td>{{ Carbon\Carbon::parse($change->updated_at)}}</td>
 							<td>{{$change->user_id}}</td>
-							@if ($change->type === 'S')
+							@if ($change->change_type === 'S')
 								<td>Status</td>
 							@else 
 								<td>Note</td>
@@ -53,11 +53,19 @@
 			</table>
 		</div>
 
+
 		<div id="bottom">
+				<br><br>
 			 	{!! Form::open() !!}
-                {!! Form::label('Enter Status Update:', null, ['class' => 'label']) !!}<br>
+                {!! Form::label('Enter Status Update:', null, ['class' => 'label']) !!}<br><br>
+                <div id="options">
+	                {!! Form::label('Note', null, ['class' => 'options']) !!}
+	                {!! Form::radio('option', 'Note', false, ['class' => 'options']) !!}
+	                {!! Form::label('Status', null, ['class' => 'options']) !!}
+				 	{!! Form::radio('option', 'Status', true, ['class' => 'options']) !!}<br>
+				</div>
                 {!! Form::textarea('statusUpdate', null, ['class' => 'text-area']) !!}<br>
-                {!! Form::checkbox('agree', 1, null, ['class' => 'field']) !!}
+                {!! Form::checkbox('complete', 1, null, ['class' => 'field']) !!}
                 {!! Form::label('Task Complete', null, ['class' => 'clabel']) !!}
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}

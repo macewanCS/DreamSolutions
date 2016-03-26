@@ -61,12 +61,20 @@ class EditController extends Controller
 
         $user = Auth::user();
         $change = new Change;
-        $change->goat_id = $req->id;
-        $change->user_id = 1;
-        $change->description = $req->statusUpdate;
+        // dd($user);
+      
+        if ($req->option === 'Status'){
+            $changeType = 'S';
+        }
+        else{
+            $changeType = 'N';
+        }
+        if ($req->complete){
+            Goat::where('id', $req->id)->update(['complete' =>'1']);
+        }
 
         $change = Change::create([
-            'change_type' => 'S',
+            'change_type' => $changeType,
             'description' => $req->statusUpdate,
             'goat_id' => $req->id,
             'user_id' => 1
