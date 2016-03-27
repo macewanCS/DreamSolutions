@@ -66,7 +66,7 @@
                     <td class="priority-{{$goat->priority}}">{{ ' HML'[min([$goat->priority, 3])] }}</td>
                     <td>{{ $goat->description }}</td>
                     <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
-                    <td style="white-space: nowrap;">IT Department</td>
+                    <td style="white-space: nowrap;">{{ $goat->deptLeads()->first() ? $goat->deptLeads()->first()->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
                     <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>

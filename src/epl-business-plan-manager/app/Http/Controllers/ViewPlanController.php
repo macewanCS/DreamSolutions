@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Goat;
+use App\Department;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -33,7 +34,9 @@ class ViewPlanController extends Controller
             }
         }
         $users = User::all();
+        $depts = Department::all();
         
-        return view('view_plan')->with(['bp' => $sorted, 'users' => $users]);
+        return view('view_plan')->with(['bp' => $sorted, 'users' => $users,
+            'depts' => $depts]);
     }
 }
