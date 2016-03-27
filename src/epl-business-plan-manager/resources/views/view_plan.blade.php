@@ -121,7 +121,11 @@
 
 <div id="deptteam-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Department searchable dropdown goes here
+        <select class="user-select-multiple" col='6' multiple="multiple">
+          @foreach ($depts as $dept)
+            <option value="{{ $dept->name }}">{{ $dept->name }}</option>
+          @endforeach
+        </select>
     </div>
 </div>
 
@@ -242,7 +246,6 @@
                 delete filterDict[column];
                 $.each($(this).val(), function(i, val) {
                     addFilters(column, [val]);
-                    console.log('Adding ' + val);
                 });
             }
 
@@ -344,7 +347,7 @@
         });
     });
 
-    $(".user-select-multiple").select2({ placeholder: 'Select users to filter', width: '200px',  });
+    $(".user-select-multiple").select2({ placeholder: 'Select filters', width: '200px',  });
 
     // hack to prevent select2 menu from opening when clearing it
     // See https://github.com/select2/select2/issues/3320
