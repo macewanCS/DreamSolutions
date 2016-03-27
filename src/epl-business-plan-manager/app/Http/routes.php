@@ -2,6 +2,7 @@
 
 use App\Goat;
 use App\User;
+use App\GoatUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,14 @@ use App\User;
 */
 
 // Manage Plan controller routes
-Route::get('/manage', 'ManagePlanController@index');
+Route::get('/manage', 'ManagePlanController@index'); // Depricated.
 Route::post('/manage', 'ManagePlanController@store');
 Route::patch('/manage', 'ManagePlanController@update');
 Route::delete('/manage', 'ManagePlanController@destroy');
 Route::get('/ajax-goal', function () {
+
+    // Log::info(Goat::first()->userLeads());
+
     $b_Id = Input::get('b_Id');
 
     $goals = Goat::where('bid', '=', $b_Id)->where('type', '=', 'G')->get();
@@ -47,15 +51,38 @@ Route::get('ajax-task', function () {
 
     return Response::json($tasks);
 });
-Route::get('ajax-actionPriority', function () {
+Route::get('ajax-actionData', function () {
     $actionId = Input::get('action_Id');
-    $priority = Goat::where('id', '=', $actionId)->where('type', '=', 'A')->get();
-    return Response::json($priority);
+    $data = Goat::where('id', '=', $actionId)->where('type', '=', 'A')->get();
+    return Response::json($data);
 });
-Route::get('ajax-taskPriority', function () {
+Route::get('ajax-taskData', function () {
     $taskId = Input::get('task_Id');
-    $priority = Goat::where('id', '=', $taskId)->where('type', '=', 'T')->get();
-    return Response::json($priority);
+    $data = Goat::where('id', '=', $taskId)->where('type', '=', 'T')->get();
+    return Response::json($data);
+});
+Route::get('ajax-Leads', function () {
+    $actionId = Input::get('goat_Id');
+    $leads = Goat::where('id', '=', $actionId)->first()->userLeads;
+    $names = $leads->map(function($lead) {
+        return $lead->name();
+    });
+    return Response::json($names);
+});
+Route::get('ajax-Collabs', function () {
+    $actionId = Input::get('goat_Id');
+    $collabs = Goat::where('id', '=', $actionId)->first()->userCollaborators;
+    $names = $collabs->map(function($collab) {
+        return $collab->name();
+    });
+    return Response::json($names);
+});
+Route::get('ajax-goat_users', function() {
+    $actionId = Input::get('goat_Id');
+    Log::info($actionId);
+    $data = GoatUser::where('goat_id', '=', $actionId)->get();
+    Log::info($data);
+    return Response::json($data);
 });
 
 // Create business controller routes
@@ -97,4 +124,5 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/edit/{id}', 'EditController@show');
     Route::post('edit/{id}', 'EditController@create');
+    // Route::get('/manage', 'ManagePlanController@index');
 });
