@@ -42,4 +42,9 @@ class Goat extends Model
     {
         return $this->belongsTo('App\BusinessPlan');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'goat_user');
+    }
 }
