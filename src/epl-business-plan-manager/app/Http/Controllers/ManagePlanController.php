@@ -6,6 +6,7 @@ use DB;
 use Log;
 use App\Goat;
 use App\User;
+use App\GoatUser;
 use App\BusinessPlan;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Input;
 
 class ManagePlanController extends Controller
 {
+
+    // public function __construct()
+ 	//    {
+ 	//        $this->middleware('auth');
+ 	//    }
+
     public function index()
     {
         $businessPlans = BusinessPlan::all();
