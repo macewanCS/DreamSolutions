@@ -151,7 +151,8 @@
 
 <div id="date-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Start date picker, and also end date picker
+        From <input type="date" id="from-date" class="date-filter" col='9'> 
+        to <input type="date" id="to-date" class="date-filter" col='9'>
     </div>
 </div>
 
@@ -248,6 +249,31 @@
                     addFilters(column, [val]);
                 });
             }
+
+            if ( !unsorted && filters[0] == "") filters[0] = "A|T";
+            $('#view-plan-table').trigger('search', [filters]);
+        });
+
+        $('.date-filter').change(function() {
+            if (unfiltered)
+                allowNesting(false);
+
+            var column = $(this).attr('col');
+            delete filterDict[column];
+
+            fromDate = $('#from-date').val();
+            toDate = $('#to-date').val();
+
+            filter = fromDate ?
+                        toDate ? fromDate + ' - ' + toDate :
+                        '>=' + fromDate :
+                     toDate ?
+                        '<=' + toDate :
+                     '';
+
+            console.log(filter);
+
+            addFilters(column, [filter]);
 
             if ( !unsorted && filters[0] == "") filters[0] = "A|T";
             $('#view-plan-table').trigger('search', [filters]);
