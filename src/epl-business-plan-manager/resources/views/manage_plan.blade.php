@@ -311,7 +311,7 @@
                     {!! Form::label('End date') !!}<br>
                     <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'taskPriority']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -421,12 +421,12 @@
                   </div>
                   <div id="task-right">
                     {!! Form::label('Lead') !!}<br>
-                    <table>
+                    <table id="dTaskLeads">
                       <!-- For each -->
                     </table><br>
                     <!-- //{!! Form::text('leadName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('Collaborator') !!}<br>
-                    <table>
+                    <table id="dTaskCollabs">
                       <!-- For each -->
                     </table><br>
                     <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->

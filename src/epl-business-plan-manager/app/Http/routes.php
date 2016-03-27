@@ -2,7 +2,6 @@
 
 use App\Goat;
 use App\User;
-use App\GoatUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +63,7 @@ Route::get('ajax-taskData', function () {
 Route::get('ajax-Leads', function () {
     $actionId = Input::get('goat_Id');
     $leads = Goat::where('id', '=', $actionId)->first()->userLeads;
-    $names = $leads->map(function($lead) {
+    $names = $leads->map(function ($lead) {
         return $lead->name();
     });
     return Response::json($names);
@@ -72,15 +71,20 @@ Route::get('ajax-Leads', function () {
 Route::get('ajax-Collabs', function () {
     $actionId = Input::get('goat_Id');
     $collabs = Goat::where('id', '=', $actionId)->first()->userCollaborators;
-    $names = $collabs->map(function($collab) {
+    $names = $collabs->map(function ($collab) {
         return $collab->name();
     });
     return Response::json($names);
 });
-Route::get('ajax-goat_users', function() {
+Route::get('ajax-goat_lUsers', function () {
     $actionId = Input::get('goat_Id');
-    Log::info($actionId);
-    $data = GoatUser::where('goat_id', '=', $actionId)->get();
+    $data = Goat::where('id', '=', $actionId)->first()->userLeads;
+    Log::info($data);
+    return Response::json($data);
+});
+Route::get('ajax-goat_cUsers', function () {
+    $actionId = Input::get('goat_Id');
+    $data = Goat::where('id', '=', $actionId)->first()->userCollaborators;
     Log::info($data);
     return Response::json($data);
 });

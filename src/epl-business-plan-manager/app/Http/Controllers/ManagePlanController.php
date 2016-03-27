@@ -6,7 +6,6 @@ use DB;
 use Log;
 use App\Goat;
 use App\User;
-use App\GoatUser;
 use App\BusinessPlan;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -17,9 +16,9 @@ class ManagePlanController extends Controller
 {
 
     // public function __construct()
- 	//    {
- 	//        $this->middleware('auth');
- 	//    }
+    //    {
+    //        $this->middleware('auth');
+    //    }
 
     public function index()
     {
@@ -76,41 +75,8 @@ class ManagePlanController extends Controller
             $elem->save();
 
             $leads = array_fill_keys($request->leadName, ['user_role' => 'L']);
-			$collabs = array_fill_keys($request->collaboratorName, ['user_role' => 'C']);
-			$elem->userLeads()->sync($leads + $collabs);
-
-            // if ((!($request->leadName === null)) && (!($request->collaboratorName === null))) {
-            //     foreach ($request->leadName as $lead) {
-            //     	$store = new GoatUser;
-            //     	$store->goat_id = $elem->id;
-            //     	$store->user_id = $lead;
-            //     	$store->user_role = 'L';
-            //     	$store->save();
-            //     }
-            //     foreach ($request->collaboratorName as $collab) {
-            //     	$store = new GoatUser;
-            //     	$store->goat_id = $elem->id;
-            //     	$store->user_id = $collab;
-            //     	$store->user_role = 'C';
-            //     	$store->save();
-            //     }
-            // } elseif (!($request->leadName === null)) {
-            //     foreach ($request->leadName as $lead) {
-            //     	$store = new GoatUser;
-            //     	$store->goat_id = $elem->id;
-            //     	$store->user_id = $lead;
-            //     	$store->user_role = 'L';
-            //     	$store->save();
-            //     }
-            // } elseif (!($request->collaboratorName === null)) {
-            //     foreach ($request->collaboratorName as $collab) {
-            //     	$store = new GoatUser;
-            //     	$store->goat_id = $elem->id;
-            //     	$store->user_id = $collab;
-            //     	$store->user_role = 'C';
-            //     	$store->save();
-            //     }
-            // }
+            $collabs = array_fill_keys($request->collaboratorName, ['user_role' => 'C']);
+            $elem->userLeads()->sync($leads + $collabs);
         } else {
             $elem->type = $type;
             $elem->goal_type = 'B';
@@ -122,38 +88,9 @@ class ManagePlanController extends Controller
             $elem->complete = null;
             $elem->save();
 
-            if ((!($request->leadName === null)) && (!($request->collaboratorName === null))) {
-                foreach ($request->leadName as $lead) {
-                	$store = new GoatUser;
-                	$store->goat_id = $elem->id;
-                	$store->user_id = $lead;
-                	$store->user_role = 'L';
-                	$store->save();
-                }
-                foreach ($request->collaboratorName as $collab) {
-                	$store = new GoatUser;
-                	$store->goat_id = $elem->id;
-                	$store->user_id = $collab;
-                	$store->user_role = 'C';
-                	$store->save();
-                }
-            } elseif (!($request->leadName === null)) {
-                foreach ($request->leadName as $lead) {
-                	$store = new GoatUser;
-                	$store->goat_id = $elem->id;
-                	$store->user_id = $lead;
-                	$store->user_role = 'L';
-                	$store->save();
-                }
-            } elseif (!($request->collaboratorName === null)) {
-                foreach ($request->collaboratorName as $collab) {
-                	$store = new GoatUser;
-                	$store->goat_id = $elem->id;
-                	$store->user_id = $collab;
-                	$store->user_role = 'C';
-                	$store->save();
-                }
-            }
+            $leads = array_fill_keys($request->leadName, ['user_role' => 'L']);
+            $collabs = array_fill_keys($request->collaboratorName, ['user_role' => 'C']);
+            $elem->userLeads()->sync($leads + $collabs);
         }
         return back();
     }
@@ -175,8 +112,9 @@ class ManagePlanController extends Controller
             $elem->description = $request->taskDescription;
         }
         $elem->save();
-        $elem->userLeads()->sync($request->leadName);
-        $elem->userCollaborators()->sync($request->collaboratorName);
+        $leads = array_fill_keys($request->leadName, ['user_role' => 'L']);
+        $collabs = array_fill_keys($request->collaboratorName, ['user_role' => 'C']);
+        $elem->userLeads()->sync($leads + $collabs);
         return back();
     }
 
