@@ -23,7 +23,7 @@ class UserController extends Controller
 
         $users = $request->input("dept") ?
                     Department::find($request->input("dept"))->users() :
-                    User::orderBy('first_name');
+                    User::select('*');
 
         switch($request->input("sort")) {
             case "username":
