@@ -2,11 +2,23 @@
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="/css/admin.css"></link>
+<script src="/js/jquery-1.12.1.min.js"></script>
+<script src="/js/admin.js"></script>
 @stop
 
 @section('content')
 
 <div class="container">
+    <div id="filter-bar">
+        Find users in:
+        <select id="select-dept">
+        <option selected disabled></option>
+        <option value=''>All</option>
+        @foreach ($depts as $dept)
+        <option value="{{$dept->id}}">{{$dept->name}}</option>
+        @endforeach
+        </select>
+    </div>
     <table id="users-table">
         <thead>
             <th><a href="?sort=username">Username</a></th>

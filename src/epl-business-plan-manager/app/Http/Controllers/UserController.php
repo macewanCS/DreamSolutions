@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\User;
+use App\Department;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,12 +22,16 @@ class UserController extends Controller
         $query = $request->input();
         //unset($query['page']);
 
+        $users = $request->input("dept") ?
+                    Department::find($request->input("dept"))->users() :
+                    User::orderBy('id');
+
         switch($request->input("sort")) {
             case "username":
-                $users = User::orderBy('username')->paginate($pagesize);
+                $users = $users->orderBy('username')->paginate($pagesize);
                 break;
             case "name":
-                $users = User::orderBy('first_name')->paginate($pagesize);
+                $users = $users->orderBy('first_name')->paginate($pagesize);
                 break;
             case "dept":
                 break;
@@ -34,10 +39,12 @@ class UserController extends Controller
                 // TODO: active/inactive
                 break;
             default:
-                $users = User::paginate($pagesize);
+                $users = $users->paginate($pagesize);
         }
 
-        return view('admin', ['users' => $users, 'query' => $query]);
+        $depts = Department::all();
+
+        return view('admin', ['users' => $users, 'query' => $query, 'depts' => $depts]);
     }
 
     /**
