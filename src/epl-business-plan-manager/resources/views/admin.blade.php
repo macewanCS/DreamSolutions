@@ -20,7 +20,11 @@
             <tr>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->name() }}</td>
-                <td>None?</td>
+                <td>
+                @foreach ($user->departments as $dept)
+                    {{ $dept->name . ($dept->pivot->permission_level == 'T' ? ': Lead' : '') }}
+                @endforeach
+                </td>
                 <td>Active</td>
                 <td><img src="images/edit.jpeg" width=20px height=20px /></td>
             </tr>
