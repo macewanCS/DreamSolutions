@@ -137,11 +137,11 @@ class UsersTableSeeder extends Seeder
 
             // 9
             array(
-                 'first_name'=>'Idi',
-                 'last_name' => 'Amin',
-                 'username' => 'amini',
+                 'first_name'=>'Ad',
+                 'last_name' => 'Min',
+                 'username' => 'admin',
                  'password' => bcrypt('supersecret'),
-                 'email'=>'admini@epl.ca',
+                 'email'=>'admin@epl.ca',
                  'is_admin' => true,
                  'overdue' => 0,
                  'completed' => 0,
