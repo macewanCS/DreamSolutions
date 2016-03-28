@@ -20,34 +20,23 @@ Route::post('/manage', 'ManagePlanController@store');
 Route::patch('/manage', 'ManagePlanController@update');
 Route::delete('/manage', 'ManagePlanController@destroy');
 Route::get('/ajax-goal', function () {
-
-    // Log::info(Goat::first()->userLeads());
-
     $b_Id = Input::get('b_Id');
-
     $goals = Goat::where('bid', '=', $b_Id)->where('type', '=', 'G')->get();
-
     return Response::json($goals);
 });
 Route::get('ajax-objective', function () {
     $goal_Id = Input::get('goal_Id');
-
     $objectives = Goat::where('parent_id', '=', $goal_Id)->where('type', '=', 'O')->get();
-
     return Response::json($objectives);
 });
 Route::get('ajax-action', function () {
     $obj_Id = Input::get('obj_Id');
-
     $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
-
     return Response::json($actions);
 });
 Route::get('ajax-task', function () {
     $action_Id = Input::get('action_Id');
-
     $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
-
     return Response::json($tasks);
 });
 Route::get('ajax-actionData', function () {
