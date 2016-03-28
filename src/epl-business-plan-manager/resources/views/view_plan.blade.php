@@ -66,7 +66,7 @@
                     <td class="priority-{{$goat->priority}}">{{ ' HML'[min([$goat->priority, 3])] }}</td>
                     <td>{{ $goat->description }}</td>
                     <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
-                    <td style="white-space: nowrap;">IT Department</td>
+                    <td style="white-space: nowrap;">{{ $goat->deptLeads()->first() ? $goat->deptLeads()->first()->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
                     <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
@@ -121,7 +121,11 @@
 
 <div id="deptteam-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Department searchable dropdown goes here
+        <select class="user-select-multiple" col='6' multiple="multiple">
+          @foreach ($depts as $dept)
+            <option value="{{ $dept->name }}">{{ $dept->name }}</option>
+          @endforeach
+        </select>
     </div>
 </div>
 
@@ -147,7 +151,8 @@
 
 <div id="date-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        Start date picker, and also end date picker
+        From <input type="date" id="from-date" class="date-filter" col='9'> 
+        to <input type="date" id="to-date" class="date-filter" col='9'>
     </div>
 </div>
 
@@ -242,9 +247,33 @@
                 delete filterDict[column];
                 $.each($(this).val(), function(i, val) {
                     addFilters(column, [val]);
-                    console.log('Adding ' + val);
                 });
             }
+
+            if ( !unsorted && filters[0] == "") filters[0] = "A|T";
+            $('#view-plan-table').trigger('search', [filters]);
+        });
+
+        $('.date-filter').change(function() {
+            if (unfiltered)
+                allowNesting(false);
+
+            var column = $(this).attr('col');
+            delete filterDict[column];
+
+            fromDate = $('#from-date').val();
+            toDate = $('#to-date').val();
+
+            filter = fromDate ?
+                        toDate ? fromDate + ' - ' + toDate :
+                        '>=' + fromDate :
+                     toDate ?
+                        '<=' + toDate :
+                     '';
+
+            console.log(filter);
+
+            addFilters(column, [filter]);
 
             if ( !unsorted && filters[0] == "") filters[0] = "A|T";
             $('#view-plan-table').trigger('search', [filters]);
@@ -344,7 +373,7 @@
         });
     });
 
-    $(".user-select-multiple").select2({ placeholder: 'Select users to filter', width: '200px',  });
+    $(".user-select-multiple").select2({ placeholder: 'Select filters', width: '200px',  });
 
     // hack to prevent select2 menu from opening when clearing it
     // See https://github.com/select2/select2/issues/3320
