@@ -35,7 +35,7 @@
 
                 <h3>Goals</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">(*) Mandatory</p>
+                    <p id="create-plan-mandatory-label">* Top box is required</p>
                     <div id="createPlanGoalContainer" tag="goal"></div>
                 </section>
 
@@ -43,7 +43,7 @@
 
                 <h3>Objectives</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">(*) Mandatory</p>
+                    <p id="create-plan-mandatory-label">(*) Required</p>
                     <div id="createPlanObjectiveContainer" tag="objective"></div>
                 </section>
 
@@ -51,7 +51,7 @@
 
                 <h3>Actions</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">(*) Mandatory</p>
+                    <p id="create-plan-mandatory-label">(*) Required</p>
 
                         <div id="createPlanActionContainer" tag="action">
                         {!! Form::label('Action *') !!}

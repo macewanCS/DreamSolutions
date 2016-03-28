@@ -56,7 +56,6 @@ $(document).ready(function() {
 
                             data.push(goalElem);
                         }
-
                     }
                 }
             }
@@ -70,6 +69,8 @@ $(document).ready(function() {
             var label = document.createElement("label");
             var input = document.createElement("input");
             var button = document.createElement("button");
+            var header1 = document.createElement("h1");
+
             var container;
             var i;
 
@@ -92,7 +93,9 @@ $(document).ready(function() {
                         div.className = 'removable';
 
                         if (i === 0) {
-                            label.appendChild(document.createTextNode('Goal *'));
+                            header1.innerHTML = "Goal";
+
+                            label.appendChild(header1);
                             input.className = 'required';
 
                             input.type = 'text';
@@ -135,6 +138,7 @@ $(document).ready(function() {
                             if (data[Object.keys(data)[i]] !== undefined) {
                                 div = document.createElement("div");
                                 div.className = 'removeObj';
+                                div.id = 'goalSec' + (i + 1);
 
                                 var head = document.createElement("H1");
                                 var text = document.createTextNode('Goal ' + (i + 1) + ': ' + Object.keys(data[i]));
@@ -156,7 +160,7 @@ $(document).ready(function() {
                                 button.type = 'button';
                                 button.className = 'addTextBox';
                                 button.innerHTML = '+';
-                                button.setAttribute('onclick', 'addTextBox("createPlanObjectiveContainer")');
+                                button.setAttribute('onclick', 'addTextBox("goalSec' + (i + 1) + '")');
                                 div.appendChild(button);
 
                                 container.appendChild(div);
