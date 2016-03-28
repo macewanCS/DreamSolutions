@@ -54,7 +54,7 @@
 }
 
 .wizard > .steps > ul > li {
-    width:                             25%;
+    width:                             33.333333333333%;
 }
 
 .wizard > .steps > ul > li, .wizard > .actions > ul > li {
@@ -100,8 +100,8 @@
     background:                        #eee;
     display:                           block;
     margin:                            0.5em;
-    height:                            250px;
-    width:                             778px;
+    height:                            300px;
+    width:                             1035px;
     position:                          relative;
     overflow:                          hidden;
     border:                            groove;

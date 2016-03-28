@@ -4,21 +4,19 @@
  create-plan.css        (see 'create-plan-section')
  jquery.steps.css       (see '.wizard > .content')
  */
-var sectionHeight = 350;
-var contentHeight = 250;
+var sectionHeight = 400;
+var contentHeight = 300;
 
 /* Number of input boxes on screen */
 var goalField = 0;
 var objField = 0;
-var actField = 0;
 
 /* When the '+' button is pressed it will increase height by amount below */
 var buttonChangeHeight = 70;
 
 /* Multipliers for dynamic height */
-var goalScreenMult = buttonChangeHeight;
-var objScreenMult = goalScreenMult * 1.80;
-var actScreenMult = goalScreenMult * 2.0;
+var goalScreenMult = buttonChangeHeight * 1.5;
+var objScreenMult = goalScreenMult * 1.2;
 
 /* Stores all the data */
 var data = [];
@@ -173,11 +171,6 @@ $(document).ready(function() {
                 $(".wizard > .content").css("height", (contentHeight + data.length * objScreenMult));
             }
 
-            if (currentIndex === 3) {
-                $("#create-plan-section").css("height",(sectionHeight + goalField * actScreenMult));
-                $(".wizard > .content").css("height", (contentHeight + goalField * actScreenMult));
-            }
-
         },
 
         onFinishing: function (event, currentIndex)
@@ -264,9 +257,6 @@ function addTextBox(container) {
         input.name = 'Objective';
         inputId = 'objective' + objField;
 
-    } else if (element.getAttribute('tag') == "action") {
-        input.name = 'Action';
-        inputId = 'action' + actField;
     }
 
     input.type = 'text';
