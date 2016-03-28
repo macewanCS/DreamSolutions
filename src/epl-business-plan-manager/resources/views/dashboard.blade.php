@@ -8,12 +8,11 @@
 
 	<div id="profile">
 
-
-		<div id="profile-right">
+		<div id="profile-right" >
 
 			
-
-			<h3 style="margin-left: 5%">My Tasks:</h3>
+		<h2 style="margin-left: 5px">Hello, {{$user->first_name}}</h2>
+			<h3 style="margin-left: 5%">Your Tasks:</h3>
 
 			<table id="todo">
 				<thead>
@@ -26,11 +25,16 @@
 				</thead>
 				<tbody>
 
+					@if ($tasksEmpty)
+					<tr>
+						<td colspan="4" style="padding-left: 315px;"><h4>You have no assigned tasks at the moment</h4></td>
+					</tr>
+					@endif
 					@foreach ($tasks as $task)
 
 					@if (!$task->complete)
 						<tr>
-						<td><p>{{ $task->description }}</p></td>
+						<td>{{ $task->description }}</td>
 						<td>{{ $task->due_date }}</td>
 						<td style="white-space: nowrap;">In progress</td>
 						<td><a href="edit/{{$task->id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td>
@@ -42,7 +46,7 @@
 				</tbody>
 			</table><br><br>
 
-			<h3 style="margin-left: 5%">My Recent Activity:</h3>
+			<h3 style="margin-left: 5%">Your Activity:</h3>
 			<table id="recent">
 				<thead>
 				<tr>
@@ -53,10 +57,15 @@
 				</tr>
 				</thead>
 				<tbody>
+					@if ($recentEmpty)
+					<tr>
+						<td colspan="3" style="padding-left: 360px;"><h4>No recent activity to show</h4></td>
+					</tr>
+					@endif
 					@foreach ($recent as $task)
 					<tr>
-						<td><p>{{$task->task}}</p></td>
-						<td><p>{{$task->description}}</p></td>
+						<td>{{$task->task}}</td>
+						<td>{{$task->description}}</td>
 						<td>{{ Carbon\Carbon::parse($task->updated_at)}}	</td>
 						<!-- <td><a href="edit/{{$task->goat_id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td> -->
 					</tr>

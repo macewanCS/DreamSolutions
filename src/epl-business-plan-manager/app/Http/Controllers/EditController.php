@@ -39,7 +39,9 @@ class EditController extends Controller
             $needsResize = true;
         }
 
+        $empty = true;
         foreach($changes as $change){
+            $empty = false;
             $change->fname = User::where('id', $change->user_id)->value('first_name');
             $change->lname = User::where('id', $change->user_id)->value('last_name');
         }
@@ -59,7 +61,7 @@ class EditController extends Controller
     		array('Priority', $priority[$task->priority - 1])
     	);
     	
-    	return view('edit', compact('fields', 'changes', 'needsResize'));
+    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty'));
     }
 
     public function create(Request $req){
