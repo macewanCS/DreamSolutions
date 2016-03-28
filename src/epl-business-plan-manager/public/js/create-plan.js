@@ -20,6 +20,8 @@ var objScreenMult = goalScreenMult * 1.2;
 
 /* Stores all the data */
 var data = [];
+var sYear = 0;
+var eYear = 0;
 
 $(document).ready(function() {
     var form = $("#create-plan-form");
@@ -42,6 +44,11 @@ $(document).ready(function() {
             if (currentIndex > newIndex) { return true; }
 
             form.validate().settings.ignore = ":disabled,:hidden";
+
+            if (currentIndex === 0) {
+                sYear = document.getElementById("start-year").value;
+                eYear = document.getElementById("end-year").value;
+            }
 
             if (currentIndex === 1) {
                 for (var i = 0; i <= goalField; i++) {
@@ -198,8 +205,8 @@ $(document).ready(function() {
     for (var i = year; i < (year + 10); i++) {
         var option = document.createElement('option');
         option.innerHTML = i.toString();
-        option.value = 'year' + (i - year).toString();
-        selStartYear.add(option, (i-year));
+        option.value = i.toString();
+        selStartYear.add(option, i);
     }
 });
 
@@ -211,8 +218,8 @@ $(document).ready(function() {
     for (var i = year; i < (year + 10); i++) {
         var option = document.createElement('option');
         option.innerHTML = i.toString();
-        option.value = 'year' + (i - year).toString();
-        selStartYear.add(option, (i-year));
+        option.value = i.toString();
+        selStartYear.add(option, i);
     }
 });
 
