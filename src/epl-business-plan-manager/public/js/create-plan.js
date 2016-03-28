@@ -49,14 +49,14 @@ $(document).ready(function() {
                 for (var i = 0; i <= goalField; i++) {
                     if (document.getElementById('goal' + i) !== null && document.getElementById('goal' + i).value !== "") {
 
-                        /* Make the goal a key and make an empty array its value */
-                        var goalElem = {};
-                        goalElem[document.getElementById('goal' + i).value] = [];
+                        if (data.length === 0 || isGoalDef(document.getElementById('goal' + i).value) === false) {
+                            /* Make the goal a key and make an empty array its value */
+                            var goalElem = {};
+                            goalElem[document.getElementById('goal' + i).value] = [];
 
-                        data.push(goalElem);
+                            data.push(goalElem);
+                        }
 
-                    } else {
-                        //delete data['goal' + i];
                     }
                 }
             }
@@ -216,6 +216,25 @@ $(document).ready(function() {
     }
 });
 
+function isGoalDef(goal) {
+
+    for (var i = 0; i < data.length; i++) {
+        if (Object.keys(data[i]).indexOf(goal) !== -1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function removeGoal(inputId) {
+    var element = document.getElementById(inputId).value;
+    for (var i = 0; i < data.length; i++) {
+        if (Object.keys(data[i]).indexOf(element) !== -1) {
+            data.splice(i, 1);
+        }
+    }
+}
 
 function addTextBox(container) {
     var element = document.getElementById(container);
@@ -225,29 +244,34 @@ function addTextBox(container) {
     var input = document.createElement("input");
     var button = document.createElement("button");
 
+    var inputId = '';
+
     div.className = "removable";
 
     if (element.getAttribute('tag') == "goal") {
         input.name = 'Goal';
-        input.id = 'goal' + ++goalField;
+        inputId = 'goal' + ++goalField;
+
+        /* Populate the goal inputs */
         if (goalField < data.length)
             input.value = Object.keys(data[goalField]);
 
     } else if (element.getAttribute('tag') == "objective") {
         input.name = 'Objective';
-        input.id = 'objective' + objField;
+        inputId = 'objective' + objField;
 
     } else if (element.getAttribute('tag') == "action") {
         input.name = 'Action';
-        input.id = 'action' + actField;
+        inputId = 'action' + actField;
     }
 
     input.type = 'text';
+    input.id = inputId;
 
     button.type = 'button';
     button.className = 'removeTextBox';
     button.innerHTML = 'Remove';
-    button.setAttribute('onclick', 'removeTextBox(this,' + container + ')');
+    button.setAttribute('onclick', 'removeTextBox(this,"' + inputId + '",' + container + ')');
 
     div.appendChild(input);
     div.appendChild(button);
@@ -258,11 +282,10 @@ function addTextBox(container) {
     document.getElementById(container).appendChild(div);
 }
 
-function removeTextBox(button, container) {
+function removeTextBox(button, inputId, container) {
     var containerId = document.getElementById(container.id);
-
     if (containerId.getAttribute('tag') == "goal") {
-
+        removeGoal(inputId);
     }
 
     containerId.removeChild(button.parentNode);
