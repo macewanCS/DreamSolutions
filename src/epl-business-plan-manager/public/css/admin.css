@@ -15,14 +15,14 @@ div.container {
     margin-left   : 2%;
 }
 
-#users-table {
+#admin-table {
     width           : 96%;
     margin-left     : 2%;
     padding-top     : 100px;
     border-collapse : collapse;
 }
 
-#users-table th {
+#admin-table th {
     background-color : #004b8e;
     font-size        : small;
     font-weight      : bold;
@@ -31,12 +31,12 @@ div.container {
     border-right     : 2px solid #fff;
 }
 
-#users-table th a {
+#admin-table th a {
     color           : white;
     text-decoration : none;
 }
 
-#users-table td, th {
+#admin-table td, th {
     padding       : 6px;
     border-bottom : 2px solid #fff;
 }

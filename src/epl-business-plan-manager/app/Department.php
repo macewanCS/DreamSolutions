@@ -25,4 +25,9 @@ class Department extends Model
     {
     	return $this->belongsToMany('App\User');
     }
+
+    public function leads()
+    {
+        return $this->users()->where('permission_level', 'T');
+    }
 }

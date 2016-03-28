@@ -21,7 +21,7 @@
         @endforeach
         </select>
     </div>
-    <table id="users-table">
+    <table id="admin-table">
         <thead>
             <th><a href="?sort=username">Username</a></th>
             <th><a href="?sort=name">Name</th>

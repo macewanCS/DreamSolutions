@@ -91,6 +91,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/view', 'ViewPlanController@index');
 
     Route::resource('/admin/users', 'UserController');
+    Route::resource('/admin/depts', 'DepartmentController');
 
     Route::get('/manage/create-plan', 'CreatePlanController@show');
     Route::post('/manage/create-plan', 'CreatePlanController@create');
