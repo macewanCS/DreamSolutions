@@ -1,0 +1,72 @@
+
+div.container {
+    width            : 1055px;
+    margin           : 25px auto;
+    padding-top      : 15px;
+    padding-bottom   : 60px;
+
+    background-color : #FFFFFF;
+}
+
+#filter-bar {
+    overflow      : hidden;
+    width         : 96%;
+    margin-bottom : 10px;
+    margin-left   : 2%;
+}
+
+#users-table {
+    width           : 96%;
+    margin-left     : 2%;
+    padding-top     : 100px;
+    border-collapse : collapse;
+}
+
+#users-table th {
+    background-color : #004b8e;
+    font-size        : small;
+    font-weight      : bold;
+    color            : white;
+    text-align       : left;
+    border-right     : 2px solid #fff;
+}
+
+#users-table th a {
+    color           : white;
+    text-decoration : none;
+}
+
+#users-table td, th {
+    padding       : 6px;
+    border-bottom : 2px solid #fff;
+}
+
+ul.pagination {
+    text-align      : center;
+    list-style-type : none;
+}
+
+ul.pagination li {
+    display : inline;
+
+    margin  : 0px 5px;
+    padding : 5px 10px;
+}
+
+ul.pagination li a {
+    color           : black;
+    text-decoration : none;
+}
+
+ul.pagination li:hover {
+    background-color : #0062b8;
+}
+
+ul.pagination li:hover a {
+    color : white;
+}
+
+ul.pagination li.active{
+    background-color : #004b8e;
+    color            : white;
+}
