@@ -71,7 +71,16 @@ class UserController extends Controller
         $user->password = bcrypt($request->input("password"));
         $user->email = $request->input("email");
 
+        $permissions = array();
+        foreach (Department::lists('id') as $dept_id) {
+            $perm = $request->input($dept_id);
+            if ($perm) {
+                $permissions[$dept_id] = ['permission_level' => $perm];
+            }
+        }
+
         $user->save();
+        $user->departments()->sync($permissions);
     }
 
     /**
