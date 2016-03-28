@@ -10,6 +10,7 @@
 
 <div class="container">
     <div id="filter-bar">
+        <p><a href="/admin/users">Manage Users</a> | <a href="/admin/depts">Manage Departments</a></p>
         <p><a href="/admin/depts/create" data-featherlight="ajax">Create a new department or team</a></p>
     </div>
     <table id="admin-table">
