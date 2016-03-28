@@ -59,11 +59,9 @@ Route::get('ajax-taskPriority', function () {
 });
 
 // Create business controller routes
-Route::get('/manage/create-plan', 'CreatePlanController@show');
-Route::post('/manage/create-plan', 'CreatePlanController@create');
+// Route::get('/manage/create-plan', 'CreatePlanController@show');
+// Route::post('/manage/create-plan', 'CreatePlanController@create');
 
-Route::get('/edit/{id}', 'EditController@show');
-Route::post('edit/{id}', 'EditController@create');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -93,4 +91,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/view', 'ViewPlanController@index');
 
     Route::resource('/admin/users', 'UserController');
+    Route::get('/manage/create-plan', 'CreatePlanController@show');
+    Route::post('/manage/create-plan', 'CreatePlanController@create');
+
+    Route::get('/edit/{id}', 'EditController@show');
+    Route::post('edit/{id}', 'EditController@create');
 });
