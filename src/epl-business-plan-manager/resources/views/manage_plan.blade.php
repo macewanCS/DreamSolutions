@@ -142,8 +142,6 @@
                   <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Task description') !!}<br>
                   {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                  {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                 </div>
                 <div id="task-right">
                   <div id="cAaskLeadsContainer" tag="lead">
@@ -162,6 +160,8 @@
                         @endforeach
                     </select>
                   </div>
+                  {!! Form::label('End date') !!}<br>
+                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
                   {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -261,7 +261,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -294,7 +294,7 @@
                   <div id="task-right">
                     <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
-                      <select id="uTaskLeads" class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select id="uTaskLeads" class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
@@ -302,14 +302,14 @@
                     </div>
                     <div id="uAaskCollaboratorsContainer" tag="co">
                       {!! Form::label('Collaborator') !!}<br>
-                      <select id="uTaskCollabs" class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select id="uTaskCollabs" class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
