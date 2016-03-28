@@ -49,4 +49,5 @@
 
 </div>
 
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 @stop

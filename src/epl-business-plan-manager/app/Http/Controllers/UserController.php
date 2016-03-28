@@ -18,13 +18,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $pagesize = 3;
+        $pagesize = 5;
         $query = $request->input();
         //unset($query['page']);
 
         $users = $request->input("dept") ?
                     Department::find($request->input("dept"))->users() :
-                    User::orderBy('id');
+                    User::orderBy('first_name');
 
         switch($request->input("sort")) {
             case "username":
@@ -44,7 +44,7 @@ class UserController extends Controller
 
         $depts = Department::all();
 
-        return view('admin', ['users' => $users, 'query' => $query, 'depts' => $depts]);
+        return view('admin.users', ['users' => $users, 'query' => $query, 'depts' => $depts]);
     }
 
     /**
