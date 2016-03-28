@@ -37,6 +37,11 @@
 					</tr>
 				</thead>
 				<tbody>
+					@if ($empty)
+					<tr>
+						<td colspan="4" style="padding-left: 145px;"><h4>No activity for this task yet</h4></td>
+					</tr>
+					@endif
 					@foreach ($changes as $change)
 						<tr>
 							<td>{{$change->description}}</td>
