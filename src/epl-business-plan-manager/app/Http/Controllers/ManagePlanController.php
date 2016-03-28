@@ -170,6 +170,7 @@ class ManagePlanController extends Controller
         } else {
             $elem = Goat::find($request->taskId);
         }
+        // Not certain if this for loop does what its supposed to => logging and testing required.
         $users = $elem->userLeads();
         foreach ($users as $user) {
             $user->delete();
@@ -178,7 +179,7 @@ class ManagePlanController extends Controller
         foreach ($users as $user) {
             $user->delete();
         }
-        return back();
+        return back(); // Tmp
         $elem->delete();
         return back();
     }
