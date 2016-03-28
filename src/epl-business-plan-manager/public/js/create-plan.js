@@ -4,21 +4,19 @@
  create-plan.css        (see 'create-plan-section')
  jquery.steps.css       (see '.wizard > .content')
  */
-var sectionHeight = 350;
-var contentHeight = 250;
+var sectionHeight = 400;
+var contentHeight = 300;
 
 /* Number of input boxes on screen */
 var goalField = 0;
 var objField = 0;
-var actField = 0;
 
 /* When the '+' button is pressed it will increase height by amount below */
 var buttonChangeHeight = 70;
 
 /* Multipliers for dynamic height */
-var goalScreenMult = buttonChangeHeight;
-var objScreenMult = goalScreenMult * 1.80;
-var actScreenMult = goalScreenMult * 2.0;
+var goalScreenMult = buttonChangeHeight * 1.5;
+var objScreenMult = goalScreenMult * 1.2;
 
 /* Stores all the data */
 var data = [];
@@ -49,14 +47,13 @@ $(document).ready(function() {
                 for (var i = 0; i <= goalField; i++) {
                     if (document.getElementById('goal' + i) !== null && document.getElementById('goal' + i).value !== "") {
 
-                        /* Make the goal a key and make an empty array its value */
-                        var goalElem = {};
-                        goalElem[document.getElementById('goal' + i).value] = [];
+                        if (data.length === 0 || isGoalDef(document.getElementById('goal' + i).value) === false) {
+                            /* Make the goal a key and make an empty array its value */
+                            var goalElem = {};
+                            goalElem[document.getElementById('goal' + i).value] = [];
 
-                        data.push(goalElem);
-
-                    } else {
-                        //delete data['goal' + i];
+                            data.push(goalElem);
+                        }
                     }
                 }
             }
@@ -70,6 +67,8 @@ $(document).ready(function() {
             var label = document.createElement("label");
             var input = document.createElement("input");
             var button = document.createElement("button");
+            var header1 = document.createElement("h1");
+
             var container;
             var i;
 
@@ -92,7 +91,9 @@ $(document).ready(function() {
                         div.className = 'removable';
 
                         if (i === 0) {
-                            label.appendChild(document.createTextNode('Goal *'));
+                            header1.innerHTML = "Goal";
+
+                            label.appendChild(header1);
                             input.className = 'required';
 
                             input.type = 'text';
@@ -135,6 +136,7 @@ $(document).ready(function() {
                             if (data[Object.keys(data)[i]] !== undefined) {
                                 div = document.createElement("div");
                                 div.className = 'removeObj';
+                                div.id = 'goalSec' + (i + 1);
 
                                 var head = document.createElement("H1");
                                 var text = document.createTextNode('Goal ' + (i + 1) + ': ' + Object.keys(data[i]));
@@ -156,7 +158,7 @@ $(document).ready(function() {
                                 button.type = 'button';
                                 button.className = 'addTextBox';
                                 button.innerHTML = '+';
-                                button.setAttribute('onclick', 'addTextBox("createPlanObjectiveContainer")');
+                                button.setAttribute('onclick', 'addTextBox("goalSec' + (i + 1) + '")');
                                 div.appendChild(button);
 
                                 container.appendChild(div);
@@ -167,11 +169,6 @@ $(document).ready(function() {
 
                 $("#create-plan-section").css("height",(sectionHeight + data.length * objScreenMult));
                 $(".wizard > .content").css("height", (contentHeight + data.length * objScreenMult));
-            }
-
-            if (currentIndex === 3) {
-                $("#create-plan-section").css("height",(sectionHeight + goalField * actScreenMult));
-                $(".wizard > .content").css("height", (contentHeight + goalField * actScreenMult));
             }
 
         },
@@ -216,6 +213,25 @@ $(document).ready(function() {
     }
 });
 
+function isGoalDef(goal) {
+
+    for (var i = 0; i < data.length; i++) {
+        if (Object.keys(data[i]).indexOf(goal) !== -1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function removeGoal(inputId) {
+    var element = document.getElementById(inputId).value;
+    for (var i = 0; i < data.length; i++) {
+        if (Object.keys(data[i]).indexOf(element) !== -1) {
+            data.splice(i, 1);
+        }
+    }
+}
 
 function addTextBox(container) {
     var element = document.getElementById(container);
@@ -225,29 +241,31 @@ function addTextBox(container) {
     var input = document.createElement("input");
     var button = document.createElement("button");
 
+    var inputId = '';
+
     div.className = "removable";
 
     if (element.getAttribute('tag') == "goal") {
         input.name = 'Goal';
-        input.id = 'goal' + ++goalField;
+        inputId = 'goal' + ++goalField;
+
+        /* Populate the goal inputs */
         if (goalField < data.length)
             input.value = Object.keys(data[goalField]);
 
     } else if (element.getAttribute('tag') == "objective") {
         input.name = 'Objective';
-        input.id = 'objective' + objField;
+        inputId = 'objective' + objField;
 
-    } else if (element.getAttribute('tag') == "action") {
-        input.name = 'Action';
-        input.id = 'action' + actField;
     }
 
     input.type = 'text';
+    input.id = inputId;
 
     button.type = 'button';
     button.className = 'removeTextBox';
     button.innerHTML = 'Remove';
-    button.setAttribute('onclick', 'removeTextBox(this,' + container + ')');
+    button.setAttribute('onclick', 'removeTextBox(this,"' + inputId + '",' + container + ')');
 
     div.appendChild(input);
     div.appendChild(button);
@@ -258,11 +276,10 @@ function addTextBox(container) {
     document.getElementById(container).appendChild(div);
 }
 
-function removeTextBox(button, container) {
+function removeTextBox(button, inputId, container) {
     var containerId = document.getElementById(container.id);
-
     if (containerId.getAttribute('tag') == "goal") {
-
+        removeGoal(inputId);
     }
 
     containerId.removeChild(button.parentNode);

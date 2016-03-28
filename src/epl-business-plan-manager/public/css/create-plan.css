@@ -13,13 +13,14 @@ body {
 
 .create-plan-year-labels {
     text-align:                        center;
+    margin-right:                      37px;
 }
 
 #create-plan-section {
     background-color:                  white;
     border-style:                      groove;
-    height:                            350px;
-    width:                             800px;
+    height:                            400px;
+    width:                             1055px;
     padding:                           20px 0px 20px 0px;
     margin:                            25px auto;
 }
@@ -53,6 +54,6 @@ input, textarea {
 }
 
 button {
-    margin: 0px 0px 10px 0px;
-    float: right;
+    margin:                            0px 0px 10px 0px;
+    float:                             right;
 }
