@@ -98,7 +98,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->first_name = $request->input("first_name");
+        $user->last_name = $request->input("last_name");
+        $user->email = $request->input("email");
+
+        $permissions = array();
+        foreach (Department::lists('id') as $dept_id) {
+            $perm = $request->input($dept_id);
+            if ($perm) {
+                $permissions[$dept_id] = ['permission_level' => $perm];
+            }
+        }
+
+        $user->save();
+        $user->departments()->sync($permissions);
+
+        return redirect('admin/users');
     }
 
     /**

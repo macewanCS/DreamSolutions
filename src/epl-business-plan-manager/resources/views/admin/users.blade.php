@@ -35,11 +35,11 @@
                 <td>{{ $user->name() }}</td>
                 <td>
                 @foreach ($user->departments as $dept)
-                    {{ $dept->name . ($dept->pivot->permission_level == 'T' ? ': Lead' : '') }}
+                    {!! $dept->name . ($dept->pivot->permission_level == 'T' ? ': <b style="color:green">Lead</b>' : '') !!} <br />
                 @endforeach
                 </td>
                 <td>Active</td>
-                <td><a href="users/{{ $user->id }}/edit" data-featherlight="ajax"><img src="/images/edit.jpeg" width=20px height=20px /></a></td>
+                <td><a href="/admin/users/{{ $user->id }}/edit" data-featherlight="ajax"><img src="/images/edit.jpeg" width=20px height=20px /></a></td>
             </tr>
             @endforeach
         </tbody>

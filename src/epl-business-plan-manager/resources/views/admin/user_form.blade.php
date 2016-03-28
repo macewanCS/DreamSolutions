@@ -29,9 +29,9 @@
 @foreach ($depts as $dept)
     <tr>
     <td>{!! Form::label($dept->name, $dept->name) !!}</td>
-    <td>{!! Form::radio($dept->id . '-permission', 'T', $user->permission($dept) == 'T') !!}</td>
-    <td>{!! Form::radio($dept->id . '-permission', 'M', $user->permission($dept) == 'M') !!}</td>
-    <td>{!! Form::radio($dept->id . '-permission', "none", !$user->permission($dept)) !!}</td>
+    <td>{!! Form::radio($dept->id, 'T', $user->permission($dept) == 'T') !!}</td>
+    <td>{!! Form::radio($dept->id, 'M', $user->permission($dept) == 'M') !!}</td>
+    <td>{!! Form::radio($dept->id, '', !$user->permission($dept)) !!}</td>
     </tr>
 @endforeach
     </tbody>
