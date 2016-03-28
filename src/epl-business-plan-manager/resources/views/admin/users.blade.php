@@ -3,6 +3,7 @@
 @section('head')
 <link rel="stylesheet" type="text/css" href="/css/admin.css"></link>
 <script src="/js/jquery-1.12.1.min.js"></script>
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 <script src="/js/admin.js"></script>
 @stop
 
@@ -38,7 +39,7 @@
                 @endforeach
                 </td>
                 <td>Active</td>
-                <td><img src="images/edit.jpeg" width=20px height=20px /></td>
+                <td><a href="users/{{ $user->id }}/edit" data-featherlight="ajax"><img src="/images/edit.jpeg" width=20px height=20px /></a></td>
             </tr>
             @endforeach
         </tbody>

@@ -92,5 +92,5 @@ Route::group(['middleware' => 'web'], function () {
     // View plan controller routes
     Route::get('/view', 'ViewPlanController@index');
 
-    Route::resource('/admin', 'UserController');
+    Route::resource('/admin/users', 'UserController');
 });

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\User;
 use App\Department;
 use Illuminate\Http\Request;
@@ -87,7 +86,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.user_edit', ['user' => User::findOrFail($id), 'depts' => Department::all()]);
     }
 
     /**
