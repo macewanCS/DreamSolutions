@@ -15,11 +15,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(1);
+        $pagesize = 3;
+        $query = $request->input();
+        //unset($query['page']);
 
-        return view('admin', ['users' => $users]);
+        switch($request->input("sort")) {
+            case "username":
+                $users = User::orderBy('username')->paginate($pagesize);
+                break;
+            case "name":
+                $users = User::orderBy('first_name')->paginate($pagesize);
+                break;
+            case "dept":
+                break;
+            case "status":
+                // TODO: active/inactive
+                break;
+            default:
+                $users = User::paginate($pagesize);
+        }
+
+        return view('admin', ['users' => $users, 'query' => $query]);
     }
 
     /**

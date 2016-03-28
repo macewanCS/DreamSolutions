@@ -9,25 +9,27 @@
 <div class="container">
     <table id="users-table">
         <thead>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Departments/Teams</th>
+            <th><a href="?sort=username">Username</a></th>
+            <th><a href="?sort=name">Name</th>
+            <th>Departments/Teams</a></th>
             <th>Status</th>
             <th></th>
         </thead>
         <tbody>
             @foreach ($users as $user)
+            <tr>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->name() }}</td>
                 <td>None?</td>
                 <td>Active</td>
-                <td>abc</td>
+                <td><img src="images/edit.jpeg" width=20px height=20px /></td>
+            </tr>
             @endforeach
         </tbody>
     </table>
 
 
-    {!! $users->render() !!}
+    {!! $users->appends($query)->render() !!}
 
 </div>
 

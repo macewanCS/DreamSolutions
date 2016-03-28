@@ -22,19 +22,25 @@ div.container {
     border-right      : 2px solid #fff;
 }
 
+#users-table th a {
+    text-decoration: none;
+    color: white;
+}
+
 #users-table td, th {
     padding       : 6px;
     border-bottom : 2px solid #fff;
 }
 
 ul.pagination {
+    text-align: center;
     list-style-type: none;
 }
 
 ul.pagination li {
     display: inline;
     padding: 5px 10px;
-
+    margin: 0px 5px;
 }
 
 ul.pagination li a {
