@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Request;
 use App\User;
 use App\Goat;
+use App\Change;
 use File;
 
 use View;
@@ -23,25 +24,27 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $user = Auth::user();	
-        // $recent = Change::where('goat_id', $id)->get();
+        $recent = Change::where('user_id', $user->id)->get();
         $tasks = $user->collaboratorOn()->orderBy('due_date')->get();
         $dept = $user->departments()->get();
+        $recentEmpty = true;
+        $tasksEmpty = true;
+
+        foreach($tasks as $task){
+            if (!$task->complete){
+                $tasksEmpty = false;
+            }
+        }
+
+
+        foreach ($recent as $task){
+            $recentEmpty = false;
+            $task->task = Goat::where('id', $task->goat_id)->value('description');
+            // $task->due_date = Goat::where('id', $task->goat_id)->value('due_date');
+        }
         
-    	return view('dashboard', compact('user', 'tasks', 'dept', 'pic'));
+    	return view('dashboard', compact('user', 'tasks', 'dept', 'recent', 'recentEmpty', 'tasksEmpty'));
     }
 
-    public function dashboard2()
-    {
-        $user = Auth::user();   
-        $tasks = $user->collaboratorOn()->orderBy('due_date')->get();
-        $dept = $user->departments()->get();
-        if (File::exists('images/user_pics/' . $user->username . '.jpg')){
-            $pic = $user->username;
-        }
-        else{
-            $pic = 'empty-profile';
-        }
-        // dd($pic);
-        return view('dashboard2', compact('user', 'tasks', 'dept', 'pic'));
-    }
+   
 }

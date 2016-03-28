@@ -30,23 +30,28 @@
 			@endif
 				<thead>
 					<tr>
-						<th>Date</th>
-						<th>Author</th>
-						<th>Type</th>
 						<th>Update</th>
+						<th>Author</th>
+						<th width="50px">Type</th>
+						<th width="100px">Date</th>
 					</tr>
 				</thead>
 				<tbody>
+					@if ($empty)
+					<tr>
+						<td colspan="4" style="padding-left: 145px;"><h4>No activity for this task yet</h4></td>
+					</tr>
+					@endif
 					@foreach ($changes as $change)
 						<tr>
-							<td>{{ Carbon\Carbon::parse($change->updated_at)}}</td>
-							<td>{{$change->user_id}}</td>
+							<td>{{$change->description}}</td>
+							<td>{{$change->fname}} {{$change->lname}}</td>
 							@if ($change->change_type === 'S')
 								<td>Status</td>
 							@else 
 								<td>Note</td>
 							@endif
-							<td>{{$change->description}}</td>
+							<td>{{ Carbon\Carbon::parse($change->updated_at)}}</td>
 						</tr>
 					@endforeach
 				</tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Change;
 use App\Goat;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
@@ -11,10 +12,10 @@ use Auth;
 class EditController extends Controller
 {
 
-    // public function __construct() 
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
 
     public function show($id){
         
@@ -38,7 +39,13 @@ class EditController extends Controller
             $needsResize = true;
         }
 
-        // dd($leadsArray);
+        $empty = true;
+        foreach($changes as $change){
+            $empty = false;
+            $change->fname = User::where('id', $change->user_id)->value('first_name');
+            $change->lname = User::where('id', $change->user_id)->value('last_name');
+        }
+
         $leads = join(",", $leadsArray);
         $collabs = join(",", $collabsArray);
         
@@ -54,14 +61,13 @@ class EditController extends Controller
     		array('Priority', $priority[$task->priority - 1])
     	);
     	
-    	return view('edit', compact('fields', 'changes', 'needsResize'));
+    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty'));
     }
 
     public function create(Request $req){
 
         $user = Auth::user();
         $change = new Change;
-        // dd($user);
       
         if ($req->option === 'Status'){
             $changeType = 'S';
@@ -77,7 +83,7 @@ class EditController extends Controller
             'change_type' => $changeType,
             'description' => $req->statusUpdate,
             'goat_id' => $req->id,
-            'user_id' => 1
+            'user_id' => $user->id
             ]);
 
         return redirect('dashboard');
