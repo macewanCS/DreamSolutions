@@ -53,7 +53,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user_create', ['depts' => Department::all()]);
     }
 
     /**
@@ -64,7 +64,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->first_name = $request->input("first_name");
+        $user->last_name = $request->input("last_name");
+        $user->username = $request->input("username");
+        $user->password = bcrypt($request->input("password"));
+        $user->email = $request->input("email");
+
+        $user->save();
     }
 
     /**
@@ -101,6 +108,8 @@ class UserController extends Controller
         $user = User::find($id);
         $user->first_name = $request->input("first_name");
         $user->last_name = $request->input("last_name");
+        $user->username = $request->input("username");
+        $user->password = bcrypt($request->input("password") || $user->password);
         $user->email = $request->input("email");
 
         $permissions = array();

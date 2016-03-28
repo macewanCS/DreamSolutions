@@ -10,6 +10,16 @@
 </div>
 
 <div>
+{!! Form::label('username', 'Username:') !!}
+{!! Form::text('username', null) !!}
+</div>
+
+<div>
+{!! Form::label('password', 'Password:') !!}
+{!! Form::password('password', null) !!}
+</div>
+
+<div>
 {!! Form::label('email', 'Email:') !!}
 {!! Form::text('email', null) !!}
 

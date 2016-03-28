@@ -11,6 +11,7 @@
 
 <div class="container">
     <div id="filter-bar">
+        <p><a href="/admin/users/create" data-featherlight="ajax">Create a new user</a></p>
         Find users in:
         <select id="select-dept">
         <option selected disabled></option>
