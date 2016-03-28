@@ -57,6 +57,11 @@ $(document).ready(function() {
                     }
                 }
             }
+
+            if (currentIndex === 2) {
+
+
+            }
             console.log(data);
 
             return form.valid();
@@ -124,45 +129,43 @@ $(document).ready(function() {
             }
 
             if (currentIndex === 2) {
-                if (priorIndex == 1) {
+                /* Reset Screen */
+                $('.removeObj').remove();
 
-                    /* Reset Screen */
-                    $('.removeObj').remove();
+                /* Rebuild Screen */
+                container = document.getElementById("createPlanObjectiveContainer");
+                if (container !== null) {
+                    for (i = 0; i <= data.length; i++) {
+                        if (data[Object.keys(data)[i]] !== undefined) {
+                            div = document.createElement("div");
+                            div.className = 'removeObj';
+                            div.id = 'goalSec' + (i + 1);
+                            div.setAttribute('tag', 'obj');
 
-                    /* Rebuild Screen */
-                    container = document.getElementById("createPlanObjectiveContainer");
-                    if (container !== null) {
-                        for (i = 0; i <= data.length; i++) {
-                            if (data[Object.keys(data)[i]] !== undefined) {
-                                div = document.createElement("div");
-                                div.className = 'removeObj';
-                                div.id = 'goalSec' + (i + 1);
+                            var head = document.createElement("H1");
+                            var text = document.createTextNode('Goal ' + (i + 1) + ': ' + Object.keys(data[i]));
+                            head.appendChild(text);
+                            div.appendChild(head);
 
-                                var head = document.createElement("H1");
-                                var text = document.createTextNode('Goal ' + (i + 1) + ': ' + Object.keys(data[i]));
-                                head.appendChild(text);
-                                div.appendChild(head);
+                            label = document.createElement("label");
+                            label.appendChild(document.createTextNode('Objective *'));
+                            div.appendChild(label);
 
-                                label = document.createElement("label");
-                                label.appendChild(document.createTextNode('Objective *'));
-                                div.appendChild(label);
+                            input = document.createElement("input");
+                            input.type = 'text';
+                            input.id = 'goal' + (i + 1) + '-obj0';
+                            input.name = 'Objective';
+                            input.className = 'required';
+                            div.appendChild(input);
 
-                                input = document.createElement("input");
-                                input.type = 'text';
-                                input.id = 'goal' + (i + 1) + '-obj0';
-                                input.name = 'Objective';
-                                input.className = 'required';
-                                div.appendChild(input);
+                            button = document.createElement("button");
+                            button.type = 'button';
+                            button.className = 'addTextBox';
+                            button.innerHTML = '+';
+                            button.setAttribute('onclick', 'addTextBox("goalSec' + (i + 1) + '")');
+                            div.appendChild(button);
 
-                                button = document.createElement("button");
-                                button.type = 'button';
-                                button.className = 'addTextBox';
-                                button.innerHTML = '+';
-                                button.setAttribute('onclick', 'addTextBox("goalSec' + (i + 1) + '")');
-                                div.appendChild(button);
-
-                                container.appendChild(div);
-                            }
+                            container.appendChild(div);
                         }
                     }
                 }
@@ -253,7 +256,7 @@ function addTextBox(container) {
         if (goalField < data.length)
             input.value = Object.keys(data[goalField]);
 
-    } else if (element.getAttribute('tag') == "objective") {
+    } else if (element.getAttribute('tag') == "obj") {
         input.name = 'Objective';
         inputId = 'objective' + objField;
 

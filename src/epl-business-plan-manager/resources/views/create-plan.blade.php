@@ -36,7 +36,7 @@
                 <h3>Objectives</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Required</p>
-                    <div id="createPlanObjectiveContainer" tag="objective"></div>
+                    <div id="createPlanObjectiveContainer" tag="obj"></div>
                 </section>
 
             </div>
