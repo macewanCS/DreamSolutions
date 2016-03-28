@@ -81,6 +81,8 @@ class UserController extends Controller
 
         $user->save();
         $user->departments()->sync($permissions);
+
+        return redirect('admin/users');
     }
 
     /**
