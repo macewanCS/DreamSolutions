@@ -9,6 +9,11 @@ use App\Http\Requests;
 
 class DepartmentController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('App\Http\Middleware\RedirectIfNotAdmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
