@@ -62,9 +62,6 @@ Route::get('ajax-taskPriority', function () {
 Route::get('/manage/create-plan', 'CreatePlanController@show');
 Route::post('/manage/create-plan', 'CreatePlanController@create');
 
-// View plan controller routes
-Route::get('/view', 'ViewPlanController@index');
-
 Route::get('/edit/{id}', 'EditController@show');
 Route::post('edit/{id}', 'EditController@create');
 /*
@@ -91,4 +88,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
     Route::get('/dashboard', 'DashboardController@dashboard');
+
+    // View plan controller routes
+    Route::get('/view', 'ViewPlanController@index');
+
+    Route::resource('/admin', 'UserController');
 });
