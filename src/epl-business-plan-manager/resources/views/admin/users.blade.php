@@ -11,6 +11,7 @@
 
 <div class="container">
     <div id="filter-bar">
+        <p><a href="/admin/users">Manage Users</a> | <a href="/admin/depts">Manage Departments</a></p>
         <p><a href="/admin/users/create" data-featherlight="ajax">Create a new user</a></p>
         Find users in:
         <select id="select-dept">
@@ -21,7 +22,7 @@
         @endforeach
         </select>
     </div>
-    <table id="users-table">
+    <table id="admin-table">
         <thead>
             <th><a href="?sort=username">Username</a></th>
             <th><a href="?sort=name">Name</th>
