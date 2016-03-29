@@ -173,7 +173,6 @@ $(document).ready(function() {
                         }
                     }
                 }
-                console.log(data.length);
                 setHeight((data.length * headingHeight) + (extraObjSz * buttonHeightAdded));
             }
         },
@@ -185,9 +184,27 @@ $(document).ready(function() {
 
         onFinished: function () {
             populateObjectives();
-            console.log(data);
+            $.ajax({
+                url: '/manage/create-plan',
+                type: "post",
+                dataType: 'json',
+                data: { 'sYear': sYear, 'eYear': eYear, 'data': data },
+                beforeSend: function (xhr) {
+                    // Function needed from Laravel because of the CSRF Middleware
+                    var token = $('meta[name="csrf_token"]').attr('content');
 
-            alert("Business Plan Created!");
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function() {
+                    alert("Business Plan Created!");
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
+
         }
     });
 });

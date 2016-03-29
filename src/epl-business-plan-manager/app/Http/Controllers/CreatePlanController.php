@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class CreatePlanController extends Controller
 {
@@ -19,7 +18,9 @@ class CreatePlanController extends Controller
         return view('create-plan');
     }
 
-    public function create() {
+    public function create(Request $request) {
+        dd("HELLO");
+
         return redirect('manage');
     }
 
