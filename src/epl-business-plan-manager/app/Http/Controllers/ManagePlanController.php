@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Input;
 
 class ManagePlanController extends Controller
 {
+    public function __Construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $businessPlans = BusinessPlan::all();
