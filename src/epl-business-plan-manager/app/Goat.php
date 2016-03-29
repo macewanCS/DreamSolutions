@@ -14,7 +14,8 @@ class Goat extends Model
     	'due',
     	'budget',
         'bp_id',
-        'complete'
+        'complete',
+        'dept_id'
     ];
 
     public function userLeads()
@@ -27,14 +28,14 @@ class Goat extends Model
     	return $this->belongsToMany('App\User', 'goat_user')->where('user_role', '=', 'C')->withTimestamps();
     }
 
-    public function deptLeads()
+    public function department()
     {
-        return $this->belongsToMany('App\Department', 'department_goat')->where('department_role', '=', 'L')->withTimestamps();
+        return $this->belongsTo('App\Department');
     }
 
     public function deptCollaborators()
     {
-        return $this->belongsToMany('App\Department', 'department_goat')->where('department_role', '=', 'C')->withTimestamps();
+        return $this->belongsToMany('App\Department', 'department_goat')->withTimestamps();
     }
 
     public function goat()
