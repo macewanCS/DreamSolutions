@@ -15,11 +15,9 @@ var goalNum = 0;
 var goalObjBoxes = {};
 
 /* When the '+' button is pressed it will increase height by amount below */
-var buttonChangeHeight = 70;
-
-/* Multipliers for dynamic height */
-var goalScreenMult = buttonChangeHeight * 1.5;
-var objScreenMult = goalScreenMult * 1.2;
+var buttonHeightAdded = 72.5437;
+var headingHeight = 104.549;
+var topMessageHeight =  13.33;
 
 /* Stores all the data */
 var data = [];
@@ -83,7 +81,7 @@ $(document).ready(function() {
                             header1.innerHTML = "Goal";
 
                             label.appendChild(header1);
-                            input.className = 'required';
+                            input.className = 'required valid';
 
                             input.type = 'text';
                             input.id = 'goal' + goalField;
@@ -109,8 +107,7 @@ $(document).ready(function() {
                     }
                 }
 
-                $("#create-plan-section").css("height",(sectionHeight + goalField * goalScreenMult));
-                $(".wizard > .content").css("height", (contentHeight + goalField * goalScreenMult));
+                setHeight(goalField * buttonHeightAdded);
             }
 
             if (currentIndex === 2) {
@@ -120,6 +117,8 @@ $(document).ready(function() {
                 for (var x = 0; x < Object.keys(goalObjBoxes).length; x++) {
                     goalObjBoxes['goal' + x] = 0;
                 }
+
+                var extraObjSz = 0;
 
                 /* Rebuild Screen */
                 container = document.getElementById("createPlanObjectiveContainer");
@@ -149,7 +148,7 @@ $(document).ready(function() {
                                     input.type = 'text';
                                     input.id = 'goal' + i + '-obj' + j;
                                     input.name = 'Objective';
-                                    input.className = 'required';
+                                    input.className = 'required valid';
 
                                     if (numObjs > 0) {
                                         input.value = data[i][key][j];
@@ -169,14 +168,14 @@ $(document).ready(function() {
                                 else {
                                     addTextBox("goalSec" + i);
                                 }
+                                extraObjSz++;
                             }
                         }
                     }
                 }
-                $("#create-plan-section").css("height",(sectionHeight + data.length * objScreenMult));
-                $(".wizard > .content").css("height", (contentHeight + data.length * objScreenMult));
+                console.log(data.length);
+                setHeight((data.length * headingHeight) + (extraObjSz * buttonHeightAdded));
             }
-
         },
 
         onFinishing: function () {
@@ -337,8 +336,7 @@ function addTextBox(container) {
     div.appendChild(input);
     div.appendChild(button);
 
-    $("#create-plan-section").css("height", "+=" + buttonChangeHeight);
-    $(".wizard > .content").css("height", "+=" + buttonChangeHeight);
+    changeHeight(buttonHeightAdded);
 
     document.getElementById(container).appendChild(div);
 }
@@ -364,6 +362,16 @@ function removeTextBox(button, inputId, container) {
     }
     containerId.removeChild(button.parentNode);
 
-    $(".wizard > .content").css( "height","-=" + buttonChangeHeight );
-    $("#create-plan-section").css( "height","-=" + buttonChangeHeight );
+    changeHeight(-1 * buttonHeightAdded);
+
+}
+
+function changeHeight(number) {
+    $("#create-plan-section").css( "height", "+=" + number);
+    $(".wizard > .content").css( "height", "+=" + number);
+}
+
+function setHeight(number) {
+    $("#create-plan-section").css( "height", sectionHeight + number - topMessageHeight);
+    $(".wizard > .content").css( "height", contentHeight + number - topMessageHeight);
 }
