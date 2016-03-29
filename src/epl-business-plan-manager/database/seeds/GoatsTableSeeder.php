@@ -26,7 +26,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Goal - 2
             array(
@@ -41,7 +41,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Goal - 3
             array(
@@ -56,7 +56,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Goal - 4
             array(
@@ -71,7 +71,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Objective - 5
             array(
@@ -86,7 +86,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null
+                'department_id' => null
 			),
 
             // Action - 6
@@ -101,7 +101,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'dept_id' => 1),
+                'department_id' => 1),
 
 			// Task - 7
             array('type' => 'T',
@@ -115,7 +115,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 2),
+                'department_id' => 2),
 
 			// Task - 8
             array('type' => 'T',
@@ -129,7 +129,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 3),
+                'department_id' => 3),
 
 			// Task - 9
             array('type' => 'T',
@@ -143,7 +143,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 4),
+                'department_id' => 4),
 
 			// Objective - 10
             array('type' => 'O',
@@ -157,7 +157,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Action - 11
             array('type' => 'A',
@@ -171,7 +171,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 5),
+                'department_id' => 5),
 
 			// Task - 12
             array('type' => 'T',
@@ -185,7 +185,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 1),
+                'department_id' => 1),
 
 			// Action - 13
             array('type' => 'A',
@@ -199,7 +199,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 2),
+                'department_id' => 2),
 
 			// Task - 14
             array('type' => 'T',
@@ -213,7 +213,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 3),
+                'department_id' => 3),
 
 			// Objective - 15
             array('type' => 'O',
@@ -227,7 +227,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
 			// Action - 16
 			array('type' => 'A',
@@ -241,7 +241,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'dept_id' => 4),
+                'department_id' => 4),
 
             // Task - 17
             array('type' => 'T',
@@ -255,7 +255,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'dept_id' => 4),
+                'department_id' => 4),
 
             // IT Goal - 18
             array('type' => 'G',
@@ -269,7 +269,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
 
             // IT Goal - 19
             array('type' => 'O',
@@ -283,7 +283,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'dept_id' => null),
+                'department_id' => null),
             
             // IT Goal - 20
             array('type' => 'T',
@@ -297,7 +297,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'dept_id' => 5)
+                'department_id' => 5)
 
 		));
     }
