@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BusinessPlan;
+use App\Department;
 use App\Goat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class CreatePlanController extends Controller
 
         $newBusinessPlan = new BusinessPlan();
         $newBusinessPlan->start = date($request['sYear'].'-01-01 00:00:00');
-        $newBusinessPlan->end = date($request['eYear'].'-01-01 00:00:00');
+        $newBusinessPlan->end = date($request['eYear'].'-12-31 00:00:00');
         $newBusinessPlan->save();
 
         foreach (array_keys($request['data']) as $idx) {
@@ -60,6 +61,22 @@ class CreatePlanController extends Controller
                 $newObj->bid = $newBusinessPlan->id;
                 $newObj->save();
             }
+        }
+
+        foreach (Department::lists('name') as $dept_name) {
+            $newGoal = new Goat();
+            $newGoal->type = 'G';
+            $newGoal->parent_id = null;
+            $newGoal->description = $dept_name." Goals";
+            $newGoal->priority = 0;
+            $newGoal->complete = false;
+            $newGoal->goal_type = 'D';
+            $newGoal->due_date = null;
+            $newGoal->budget = 0;
+            $newGoal->created_at = Carbon::now();
+            $newGoal->updated_at = Carbon::now();
+            $newGoal->bid = $newBusinessPlan->id;
+            $newGoal->save();
         }
 
         return response()->json([], 200);
