@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
                 'completed' => 1,
                 'in_progress' => 2,
                 'remember_token' => true,
+                'is_active' => true,
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()),
 
@@ -41,6 +42,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => 1,
                  'in_progress' => 1,
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -57,6 +59,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => false,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -72,6 +75,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -87,6 +91,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -102,6 +107,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => false,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -117,6 +123,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -132,6 +139,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => rand(0, 26),
                  'in_progress' => rand(2, 5),
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
@@ -147,6 +155,7 @@ class UsersTableSeeder extends Seeder
                  'completed' => 0,
                  'in_progress' => 0,
                  'remember_token' => true,
+                 'is_active' => true,
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
           ));

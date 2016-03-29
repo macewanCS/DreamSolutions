@@ -15,7 +15,7 @@ class Goat extends Model
     	'budget',
         'bp_id',
         'complete',
-        'dept_id'
+        'department_id'
     ];
 
     public function userLeads()
@@ -33,7 +33,7 @@ class Goat extends Model
         return $this->belongsTo('App\Department');
     }
 
-    public function deptCollaborators()
+    public function departmentCollaborators()
     {
         return $this->belongsToMany('App\Department', 'department_goat')->withTimestamps();
     }
