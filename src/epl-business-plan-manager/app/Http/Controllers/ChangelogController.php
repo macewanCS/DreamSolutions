@@ -30,14 +30,15 @@ class ChangelogController extends Controller
 
         $changes = $changes->join('goats', 'goats.id', '=', 'changes.goat_id')
                            ->select('changes.description as description', 
-                                    'goat.description as gdescription',
                                     'changes.created_at as created_at',
                                     'changes.change_type as change_type',
-                                    'changes.user_id as user_id');
+                                    'changes.user_id as user_id',
+                                    'changes.goat_id as goat_id');
+
         if ($request->input('dept')) {
-            $changes = $changes->where;
+            $changes = $changes->where('department_id', $request->input('dept'));
         }
 
-        return view('changelog')->with(['changes' => $changes->paginate(20)]);
+        return view('changelog')->with(['changes' => $changes->orderBy('created_at', 'desc')->paginate(20)]);
     }
 }
