@@ -16,7 +16,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     <div id="create-plan-section">
-        <form id="create-plan-form" action="#">
+        <form id="create-plan-form" action="POST" url="/manage/create-plan">
             <div>
 
                 <h3>Years</h3>
@@ -32,14 +32,14 @@
 
                 <h3>Goals</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">* Top box is required</p>
                     <div id="createPlanGoalContainer" tag="goal"></div>
+                    <p id="create-plan-mandatory-label">* Top box is required</p>
                 </section>
 
                 <h3>Objectives</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">(*) Required</p>
                     <div id="createPlanObjectiveContainer" tag="obj"></div>
+                    <p id="create-plan-mandatory-label">(*) Required</p>
                 </section>
 
             </div>
