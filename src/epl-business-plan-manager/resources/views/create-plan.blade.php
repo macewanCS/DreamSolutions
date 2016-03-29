@@ -12,6 +12,9 @@
 @stop
 
 @section('content')
+
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
+
     <div id="create-plan-section">
         <form id="create-plan-form" action="#">
             <div>
@@ -36,7 +39,7 @@
                 <h3>Objectives</h3>
                 <section>
                     <p id="create-plan-mandatory-label">(*) Required</p>
-                    <div id="createPlanObjectiveContainer" tag="objective"></div>
+                    <div id="createPlanObjectiveContainer" tag="obj"></div>
                 </section>
 
             </div>
