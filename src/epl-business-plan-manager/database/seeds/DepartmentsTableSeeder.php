@@ -20,23 +20,58 @@ class DepartmentsTableSeeder extends Seeder
 
             // 2
             array(
-                'name' => "ITS",
+                'name' => "IT Services",
                 'isTeam' => 0),
 
             // 3
             array(
-                'name' => "IT",
+                'name' => "Human Resources",
                 'isTeam' => 0),
 
             // 4
             array(
-                'name' => "DLI",
+                'name' => "Financial Services",
                 'isTeam' => 0),
 
             // 5
             array(
-                'name' => str_random(10),
-                'isTeam' => rand(0, 1))
+                'name' => "Marketing",
+                'isTeam' => 0),
+
+            // 6
+            array(
+                'name' => "Fund Development",
+                'isTeam' => 0),
+
+            // 7
+            array(
+                'name' => "Collection Management and Access",
+                'isTeam' => 0),
+
+            // 8
+            array(
+                'name' => "School Aged Services (SAS) Team",
+                'isTeam' => 1),
+
+            // 9
+            array(
+                'name' => "Community-Led Team",
+                'isTeam' => 1),
+
+            // 10
+            array(
+                'name' => "Foundational Programming Team",
+                'isTeam' => 1),
+
+            // 11
+            array(
+                'name' => "Membership Services Team",
+                'isTeam' => 1),
+
+            // 12
+            array(
+                'name' => "Discovery Team",
+                'isTeam' => 1),
         ));
     }
 }
