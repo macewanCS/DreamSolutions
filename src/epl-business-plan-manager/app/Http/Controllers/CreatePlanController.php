@@ -25,7 +25,7 @@ class CreatePlanController extends Controller
 
         $newBusinessPlan = new BusinessPlan();
         $newBusinessPlan->start = date($request['sYear'].'-01-01 00:00:00');
-        $newBusinessPlan->end = date($request['eYear'].'-01-01 00:00:00');
+        $newBusinessPlan->end = date($request['eYear'].'-12-31 00:00:00');
         $newBusinessPlan->save();
 
         foreach (array_keys($request['data']) as $idx) {
