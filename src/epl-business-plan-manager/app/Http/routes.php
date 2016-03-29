@@ -15,10 +15,10 @@ use App\User;
 */
 
 // Manage Plan controller routes
-Route::get('/manage', 'ManagePlanController@index'); // Depricated.
-Route::post('/manage', 'ManagePlanController@store');
-Route::patch('/manage', 'ManagePlanController@update');
-Route::delete('/manage', 'ManagePlanController@destroy');
+// Route::get('/manage', 'ManagePlanController@index'); // Depricated.
+// Route::post('/manage', 'ManagePlanController@store');
+// Route::patch('/manage', 'ManagePlanController@update');
+// Route::delete('/manage', 'ManagePlanController@destroy');
 Route::get('/ajax-goal', function () {
     $b_Id = Input::get('b_Id');
     $goals = Goat::where('bid', '=', $b_Id)->where('type', '=', 'G')->get();
@@ -118,5 +118,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/edit/{id}', 'EditController@show');
     Route::post('edit/{id}', 'EditController@create');
-    // Route::get('/manage', 'ManagePlanController@index');
+
+    // Manage Plan controller routes
+    Route::get('/manage', 'ManagePlanController@index');
+    Route::post('/manage', 'ManagePlanController@store');
+    Route::patch('/manage', 'ManagePlanController@update');
+    Route::delete('/manage', 'ManagePlanController@destroy');
 });

@@ -58,6 +58,13 @@
                 {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
+                @if (count($errors))
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                  @endforeach
+                </ul>
+                @endif
               </div>
 
               <div id="cobjective" class="tab-pane fade">
@@ -167,6 +174,13 @@
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
+                @if (count($errors))
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                  @endforeach
+                </ul>
+                @endif
               </div>
             </div>
             </div>
