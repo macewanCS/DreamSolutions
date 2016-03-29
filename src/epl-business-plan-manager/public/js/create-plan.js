@@ -184,6 +184,8 @@ $(document).ready(function() {
 
         onFinished: function () {
             populateObjectives();
+/*            form.action = data;
+            form.submit();*/
             $.ajax({
                 url: '/manage/create-plan',
                 type: "post",
@@ -198,7 +200,10 @@ $(document).ready(function() {
                     }
                 },
                 success: function() {
+
                     alert("Business Plan Created!");
+                    window.location.href = "/manage";
+
                 },
                 error: function(e) {
                     console.log(e);
