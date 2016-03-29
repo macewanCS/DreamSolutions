@@ -15,18 +15,15 @@ class DepartmentGoatTableSeeder extends Seeder
 
             array(
                 'department_id' => 2,
-                'goat_id' => 11,
-                'department_role' => 'C'),
+                'goat_id' => 11),
 
             array(
                 'department_id' => 3,
-                'goat_id' => 13,
-                'department_role' => 'C'),
+                'goat_id' => 13),
 
             array(
                 'department_id' => 4,
-                'goat_id' => 13,
-                'department_role' => 'C')
+                'goat_id' => 13),
 
         ));
     }

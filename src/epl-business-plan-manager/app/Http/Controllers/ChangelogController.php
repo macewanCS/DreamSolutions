@@ -28,8 +28,14 @@ class ChangelogController extends Controller
             $changes = $changes->where('goat_id', $request->input('goat'));
         }
 
+        $changes = $changes->join('goats', 'goats.id', '=', 'changes.goat_id')
+                           ->select('changes.description as description', 
+                                    'goat.description as gdescription',
+                                    'changes.created_at as created_at',
+                                    'changes.change_type as change_type',
+                                    'changes.user_id as user_id');
         if ($request->input('dept')) {
-            //
+            $changes = $changes->where;
         }
 
         return view('changelog')->with(['changes' => $changes->paginate(20)]);

@@ -18,10 +18,7 @@ class CreateDepartmentGoatTable extends Migration
 
             $table->integer('goat_id')->unsigned()->index();
             $table->foreign('goat_id')->references('id')->on('goats')->onDelete('cascade');
-
-            // Collaborator 'C' or Lead 'L'
-            $table->char('department_role');
-
+            
             $table->timestamps();
         });
     }

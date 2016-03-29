@@ -28,6 +28,8 @@ class CreateGoatsTable extends Migration
 
             $table->integer('bid')->unsigned()->index();
             $table->foreign('bid')->references('id')->on('business_plans')->onDelete('cascade');
+
+
         });
     }
 
