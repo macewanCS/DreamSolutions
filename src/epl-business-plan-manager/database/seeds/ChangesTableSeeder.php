@@ -20,7 +20,9 @@ class ChangesTableSeeder extends Seeder
                 'change_type' => 'N',
                 'description' => '10 locations now have making tech and iMacs roll out shortly.',
                 'goat_id' => 13,
-                'user_id' => 1),
+                'user_id' => 1,
+                'created_at' => \Carbon\Carbon::parse('2016-01-01')
+            ),
 
             // 2
             // Vicky Varga
@@ -29,7 +31,9 @@ class ChangesTableSeeder extends Seeder
                 'change_type' => 'S',
                 'description' => 'Projects in each of 2014, 2015, 2016.',
                 'goat_id' => 14,
-                'user_id' => 1),
+                'user_id' => 1,
+                'created_at' => \Carbon\Carbon::parse('2016-02-01')
+            ),
 
             // 3
             // John Doe
@@ -38,7 +42,9 @@ class ChangesTableSeeder extends Seeder
                 'change_type' => 'N',
                 'description' => 'Stanley said to talk with Billy who has some great ideas',
                 'goat_id' => 11,
-                'user_id' => 2),
+                'user_id' => 2,
+                'created_at' => \Carbon\Carbon::parse('2016-03-01')
+            ),
 
             // 4
             // Vicky Varga
@@ -47,7 +53,9 @@ class ChangesTableSeeder extends Seeder
                 'change_type' => 'S',
                 'description' => 'Completed',
                 'goat_id' => 10,
-                'user_id' => 1),
+                'user_id' => 1,
+                'created_at' => \Carbon\Carbon::parse('2016-03-15')
+            ),
 
             // 5
             // Mark Smith
@@ -56,7 +64,9 @@ class ChangesTableSeeder extends Seeder
                 'change_type' => 'N',
                 'description' => 'Talked to John Doe who told me something useful.',
                 'goat_id' => 9,
-                'user_id' => 3)
+                'user_id' => 3,
+                'created_at' => \Carbon\Carbon::parse('2016-03-20')
+            )
 
         ));
     }
