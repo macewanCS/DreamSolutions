@@ -104,7 +104,6 @@
     width:                             1035px;
     position:                          relative;
     overflow:                          hidden;
-    border:                            groove;
 }
 
 .wizard.vertical > .content {
