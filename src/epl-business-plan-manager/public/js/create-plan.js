@@ -39,7 +39,12 @@ $(document).ready(function() {
 
             /* Action performed based on current index */
             if (currentIndex === 0) { populateYears(); }
-            if (currentIndex === 1) { populateGoals(); }
+            if (currentIndex === 1) {
+                if (document.getElementById('goal0') === undefined || document.getElementById('goal0') === null) {
+                    return false;
+                }
+                populateGoals();
+            }
             if (currentIndex === 2) { populateObjectives(); }
 
             /* Allows previous button to be pushed without validation */
@@ -184,6 +189,8 @@ $(document).ready(function() {
 
         onFinished: function () {
             populateObjectives();
+/*            form.action = data;
+            form.submit();*/
             $.ajax({
                 url: '/manage/create-plan',
                 type: "post",
@@ -198,7 +205,10 @@ $(document).ready(function() {
                     }
                 },
                 success: function() {
+
                     alert("Business Plan Created!");
+                    window.location.href = "/manage";
+
                 },
                 error: function(e) {
                     console.log(e);
