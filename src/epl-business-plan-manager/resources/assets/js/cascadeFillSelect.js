@@ -1,5 +1,12 @@
 $(document).ready(function() {
+  $('select').select2();
+  $('.uActionPriority').select2();
+  $('#uActionLeads').select2();
+  $(".js-basic-multiple").select2();
   var pri = ['High', 'Medium', 'Low'];
+  var actionDate = '';
+  var taskDate = '';
+//----------------------------------------------------------------------------------------------------------------
     $('.bId').on('change', function(e){
       var b_Id = e.target.value;
 
@@ -11,7 +18,7 @@ $(document).ready(function() {
         });
       });
     });
-
+//----------------------------------------------------------------------------------------------------------------
     $('.goalId').on('change', function(e){
       var goal_Id = e.target.value;
 
@@ -28,7 +35,7 @@ $(document).ready(function() {
       $('.goalDescription').text(goalId);
 
     });
-
+//----------------------------------------------------------------------------------------------------------------
     $('.objId').on('change', function(e){
       var obj_Id = e.target.value;
 
@@ -44,38 +51,130 @@ $(document).ready(function() {
       var objId = $('.objId option[value=' + obj_Id + ']').first().text();
       $('.objectiveDescription').text(objId);
     });
-
+//----------------------------------------------------------------------------------------------------------------
     $('.actionId').on('change', function(e){
       var action_Id = e.target.value;
 
-      $.get('/ajax-task?action_Id=' + action_Id, function(data){
-        $('.taskId').empty();
-        $('.taskId').append('<option default selected disabled>Select Task</option>');
-        $.each(data, function(index, taskObj){
-          $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
+      if ($('#delete').hasClass('active')) {
+        if ($('#daction').hasClass('active')) {
+            $.get('ajax-Leads?goat_Id=' + action_Id, function(data){
+            $('#dActionLeads').empty();
+            $.each(data, function(index, user){
+              $('#dActionLeads').append('<tr><td>' + user + '</td></tr>');
+            });
+          });
+          $.get('ajax-Collabs?goat_Id=' + action_Id, function(data){
+            $('#dActionCollabs').empty();
+            $.each(data, function(index, user){
+              $('#dActionCollabs').append('<tr><td>' + user + '</td></tr>');
+            });
+          });
+          $.get('/ajax-actionData?action_Id=' + action_Id, function(data){
+          $.each(data, function(index, actionData){
+            $('.actionPriority').empty();
+            $('.actionPriority').text(pri[actionData.priority-1]);
+            });
+          });
+        } else { // Delete, task
+          $.get('/ajax-task?action_Id=' + action_Id, function(data){
+            $('.taskId').empty();
+            $('.taskId').append('<option default selected disabled>Select Task</option>');
+            $.each(data, function(index, taskObj){
+              $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
+            });
+          });
+        }
+      } else { // In update section.
+        if ($('#uaction').hasClass('active')) {
+          var lUsers = new Array();
+          $.get('ajax-goat_lUsers?goat_Id=' + action_Id, function(data){
+          $.each(data, function(index, userData) {
+            lUsers.push(userData.id);
+          });
+          $('#uActionLeads').val(lUsers).trigger("change");
+          });
+          var cUsers = new Array();
+          $.get('ajax-goat_cUsers?goat_Id=' + action_Id, function(data){
+          $.each(data, function(index, userData) {
+            cUsers.push(userData.id);
+          });
+          $('#uActionCollabs').val(cUsers).trigger("change");
+          });
+          $('.actionDescription').empty();
+          var actionId = $('.actionId option[value=' + action_Id + ']').first().text();
+          $('.actionDescription').text(actionId);
+        } else {
+          $.get('/ajax-task?action_Id=' + action_Id, function(data){
+            $('.taskId').empty();
+            $('.taskId').append('<option default selected disabled>Select Task</option>');
+            $.each(data, function(index, taskObj){
+              $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
+            });
+          });
+        }
+      }
+      if (($('#uaction').hasClass('active')) || ($('#daction').hasClass('active'))) {
+        $.get('/ajax-actionData?action_Id=' + action_Id, function(data){
+        $.each(data, function(index, actionData){
+          $('.uActionPriority').val(actionData.priority).trigger("change");
+          $('.dDate').val(actionData.due_date);
         });
-      });
-
-      $.get('/ajax-actionPriority?action_Id=' + action_Id, function(data){
-        $.each(data, function(index, priorityLevel){
-          $('.actionPriority').empty();
-          $('.actionPriority').text(pri[priorityLevel.priority-1]);
         });
-      });
-
-      $('.actionDescription').empty();
-      var actionId = $('.actionId option[value=' + action_Id + ']').first().text();
-      $('.actionDescription').text(actionId);
+      }
     });
-
+//----------------------------------------------------------------------------------------------------------------
     $('.taskId').on('change', function(e){
       var task_Id = e.target.value;
 
-      $.get('/ajax-taskPriority?task_Id=' + task_Id, function(data){
-        $.each(data, function(index, priorityLevel){
-          $('.taskPriority').empty();
-          $('.taskPriority').text(pri[priorityLevel.priority-1]);
-        });
+      if ($('#delete').hasClass('active')) {
+        if ($('#dtask').hasClass('active')) {
+          $.get('ajax-Leads?goat_Id=' + task_Id, function(data){
+            $('#dTaskLeads').empty();
+            $.each(data, function(index, user){
+              $('#dTaskLeads').append('<tr><td>' + user + '</td></tr>');
+            });
+          });
+          $.get('ajax-Collabs?goat_Id=' + task_Id, function(data){
+            $('#dTaskCollabs').empty();
+            $.each(data, function(index, user){
+              $('#dTaskCollabs').append('<tr><td>' + user + '</td></tr>');
+            });
+          });
+          $.get('/ajax-taskData?task_Id=' + task_Id, function(data){
+            $.each(data, function(index, taskData){
+              $('.taskPriority').empty();
+              $('.taskPriority').text(pri[taskData.priority-1]);
+            });
+          });
+        }
+      } else { // In update section.
+        if ($('#utask').hasClass('active')) {
+          var lUsers = new Array();
+          $.get('ajax-goat_lUsers?goat_Id=' + task_Id, function(data){
+          $.each(data, function(index, userData) {
+            lUsers.push(userData.id);
+          });
+          $('#uTaskLeads').val(lUsers).trigger("change");
+          });
+          var cUsers = new Array();
+          $.get('ajax-goat_cUsers?goat_Id=' + task_Id, function(data){
+          $.each(data, function(index, userData) {
+            cUsers.push(userData.id);
+          });
+          $('#uTaskCollabs').val(cUsers).trigger("change");
+          });
+          $('.taskDescription').empty();
+          var taskId = $('.taskId option[value=' + task_Id + ']').first().text();
+          $('.taskDescription').text(taskId);
+      }
+    }
+    if (($('#utask').hasClass('active')) || ($('#dtask').hasClass('active'))) {
+      $.get('/ajax-taskData?task_Id=' + task_Id, function(data){
+      $.each(data, function(index, taskData){
+        $('.uTaskPriority').val(taskData.priority).trigger("change");
+        $('.dDate').val(taskData.due_date);
       });
+      });
+    }
     });
   });

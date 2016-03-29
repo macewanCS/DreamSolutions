@@ -2,17 +2,11 @@
 
 @section('head')
   <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  {!! Html::script('build/js/all.js') !!}
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"></link>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        $('select').select2();
-        $(".js-basic-multiple").select2();
-    });
-  </script>
+  {!! Html::script('build/js/all.js') !!}
 @stop
 
 @section('content')
@@ -64,6 +58,13 @@
                 {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
+                @if (count($errors))
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                  @endforeach
+                </ul>
+                @endif
               </div>
 
               <div id="cobjective" class="tab-pane fade">
@@ -148,8 +149,6 @@
                   <select class="actionId" name="actionId" style="margin-bottom: 10px; margin-top: 1px; width: 250px;"></select><br>
                   {!! Form::label('Task description') !!}<br>
                   {!! Form::textarea('taskDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                  {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                 </div>
                 <div id="task-right">
                   <div id="cAaskLeadsContainer" tag="lead">
@@ -168,11 +167,20 @@
                         @endforeach
                     </select>
                   </div>
+                  {!! Form::label('End date') !!}<br>
+                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
                   {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
+                @if (count($errors))
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                  @endforeach
+                </ul>
+                @endif
               </div>
             </div>
             </div>
@@ -252,7 +260,7 @@
                   <div id="action-right">
                     <div id="uActionLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
-                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
+                      <select id="uActionLeads" class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
@@ -260,16 +268,16 @@
                     </div>
                     <div id="uActionCollaboratorsContainer" tag="co">
                         {!! Form::label('Collaborator') !!}<br>
-                        <select class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
+                        <select id="uActionCollabs" class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                    <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -300,7 +308,7 @@
                   <div id="task-right">
                     <div id="uAaskLeadsContainer" tag="lead">
                       {!! Form::label('Lead') !!}<br>
-                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select id="uTaskLeads" class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
@@ -308,16 +316,16 @@
                     </div>
                     <div id="uAaskCollaboratorsContainer" tag="co">
                       {!! Form::label('Collaborator') !!}<br>
-                      <select class=".js-basic-mulitple" multiple="multiple" name="leadName" style="width: 250px;">
+                      <select id="uTaskCollabs" class=".js-basic-mulitple" multiple="multiple" name="collaboratorName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
                         @endforeach
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                    <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -393,17 +401,11 @@
                   </div>
                   <div id="action-right">
                   {!! Form::label('Lead') !!}<br>
-                    <table>
-                      <!-- For each -->
-                    </table><br>
-                    <!-- //{!! Form::text('leadName', null, ['readonly']) !!}<br> -->
+                    <table id="dActionLeads"></table><br>
                     {!! Form::label('Collaborator') !!}<br>
-                    <table>
-                      <!-- For each -->
-                    </table><br>
-                    <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
+                    <table id="dActionCollabs"></table><br>
                     {!! Form::label('End date') !!}<br>
-                    {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
+                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'actionPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -433,17 +435,17 @@
                   </div>
                   <div id="task-right">
                     {!! Form::label('Lead') !!}<br>
-                    <table>
+                    <table id="dTaskLeads">
                       <!-- For each -->
                     </table><br>
                     <!-- //{!! Form::text('leadName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('Collaborator') !!}<br>
-                    <table>
+                    <table id="dTaskCollabs">
                       <!-- For each -->
                     </table><br>
                     <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('End date') !!}<br>
-                    {!! Form::date('end', \Carbon\Carbon::now(), ['readonly']) !!}<br>
+                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'taskPriority']) !!}
                     {!! Form::submit('submit', ['class' => 'button']) !!}
