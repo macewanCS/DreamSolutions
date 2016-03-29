@@ -10,7 +10,6 @@
 
 		<div id="profile-right" >
 
-			
 		<h2 style="margin-left: 5px">Hello, {{$user->first_name}}</h2>
 			<h3 style="margin-left: 5%">Your Tasks:</h3>
 
@@ -73,11 +72,11 @@
 				</tbody>
 			</table>
 
-		
-			
+
+
 		</div>
 
 	</div>
-	
+
 
 @stop
