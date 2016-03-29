@@ -32,14 +32,14 @@
 
                 <h3>Goals</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">* Top box is required</p>
                     <div id="createPlanGoalContainer" tag="goal"></div>
+                    <p id="create-plan-mandatory-label">* Top box is required</p>
                 </section>
 
                 <h3>Objectives</h3>
                 <section>
-                    <p id="create-plan-mandatory-label">(*) Required</p>
                     <div id="createPlanObjectiveContainer" tag="obj"></div>
+                    <p id="create-plan-mandatory-label">(*) Required</p>
                 </section>
 
             </div>

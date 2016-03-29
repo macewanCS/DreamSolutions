@@ -97,11 +97,10 @@
 }
 
 .wizard > .content {
-    background:                        #eee;
     display:                           block;
     margin:                            0.5em;
     height:                            295px;
-    width:                             1035px;
+    width:                             785px;
     position:                          relative;
     overflow:                          hidden;
 }
