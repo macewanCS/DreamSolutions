@@ -28,6 +28,11 @@ class Goat extends Model
     	return $this->belongsToMany('App\User', 'goat_user')->where('user_role', '=', 'C')->withTimestamps();
     }
 
+    public function department()
+    {
+        return $this->belongsTo('App\Department');
+    }
+
     public function deptCollaborators()
     {
         return $this->belongsToMany('App\Department', 'department_goat')->withTimestamps();
