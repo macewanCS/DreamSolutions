@@ -32,7 +32,7 @@
     <table id="view-plan-table">
         <thead>
             <th class="hidden">Goal Type</th>
-            <th colspan=3>Priority</th>
+            <th colspan=3 class="sorter-priority">Priority</th>
             <th>Task</th>
             <th>Dept/Team</th>
             <th>Lead</th>

@@ -1,8 +1,27 @@
+
 $(document).ready(function() {
     var unsorted = true;
     var unfiltered = true;
     var filterDict = {};
     var filters = [];
+
+    // add parser through the tablesorter addParser method 
+    $.tablesorter.addParser({ 
+        // set a unique id 
+        id: 'priority', 
+        is: function(s) { 
+            // return false so this parser is not auto detected 
+            return false; 
+        }, 
+        format: function(s, table, cell, cellIndex) {
+        // format your data for normalization
+        return s.replace(/H/,2)
+                .replace(/M/,1)
+                .replace(/L/,0);
+        },
+        // set type, either numeric or text 
+        type: 'numeric' 
+    }); 
 
     $("#view-plan-table").tablesorter({
         duplicateSpan: false,
