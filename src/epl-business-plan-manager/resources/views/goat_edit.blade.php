@@ -6,7 +6,8 @@
 
     <body>
         <div class="view-goal-form">
-                <h3>Editing: {!! $goat->description!!}</h3>
+                <h3>Editing:</h3>
+                <h3>{!! $goat->description!!}</h3>
                 <hr>
                 {!! Form::model($goat, ['method' => 'PATCH', 'action' => ['ViewPlanController@updateGoat', $goat->id]]) !!}
                         @include ('goat_form', ['submitButtonText' => 'Update'])
