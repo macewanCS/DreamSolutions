@@ -5,7 +5,9 @@
         <div id="right-pos">
             <div id="nav">
                 <ul>
+                    @if (Auth::user())
                     <li><a href="/dashboard" class="{{ Request::segments()[0] == "dashboard" ? "active" : "" }}">Dashboard</a></li>
+                    @endif
                     <li><a href="/view" class="{{ Request::segments()[0] == "view" ? "active" : "" }}">View Plan</a></li>
                     <li><a href="/changes" class="{{ Request::segments()[0] == "changes" ? "active" : "" }}">Changelog  </a></li>
                     @if (Auth::user() && count(Auth::user()->leadOf))
@@ -15,7 +17,7 @@
                     <li><a href="/admin/users" class="{{ Request::segments()[0] == "admin" ? "active" : "" }}">Admin</a></li>
                     @endif
                     <ul id="logout-area">
-                        <li class="logout-bar"><a href="/logout">Logout</a></li>
+                        <li class="logout-bar"><a href="/logout">{{ Auth::user() ? 'Logout' : 'Login' }}</a></li>
                     </ul>
                 </ul>
                 </div>

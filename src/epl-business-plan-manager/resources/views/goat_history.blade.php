@@ -19,7 +19,15 @@ No changes to display
         <tr>
         <td>{{ $change->created_at }}</td>
         <td>{{ $change->user->name() }}</td>
-        <td>{{ ($change->change_type == 'S' ? 'Status: ' : 'Note: ') . $change->description }}</td>
+        <td>{{ ($change->change_type === 'S' ? 'Status: ' : 
+                ($change->change_type === 'N' ? 'Note: ' :
+                ($change->change_type === 'G' ? '' :
+                ($change->change_type === 'L' ? 'Leads: ' :
+                ($change->change_type === 'C' ? 'Collaborators: ' :
+                ($change->change_type === 'T' ? 'Date ' :
+                ($change->change_type === 'D' ? 'Description: ' :
+                ($change->change_type === 'P' ? 'Priority: ' :
+                '')))))))) . $change->description }}</td>
         </tr>
         @endforeach
 
