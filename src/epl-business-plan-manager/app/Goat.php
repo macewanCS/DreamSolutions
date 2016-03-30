@@ -38,6 +38,11 @@ class Goat extends Model
         return $this->belongsToMany('App\Department', 'department_goat')->withTimestamps();
     }
 
+    public function changes()
+    {
+        return $this->hasMany('App\Change');
+    }
+
     public function goat()
     {
         return $this->belongsTo('App\BusinessPlan');

@@ -110,6 +110,8 @@ Route::group(['middleware' => 'web'], function () {
     // View plan controller routes
     Route::get('/view', 'ViewPlanController@index');
 
+    Route::get('/view/{id}', 'ViewPlanController@showChanges');
+
     Route::get('/changes', 'ChangelogController@index');
 
     Route::resource('/admin/users', 'UserController');

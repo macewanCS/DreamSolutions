@@ -39,4 +39,8 @@ class ViewPlanController extends Controller
         return view('view_plan')->with(['bp' => $sorted, 'users' => $users,
             'depts' => $depts]);
     }
+
+    public function showChanges($id) {
+        return view('goat_history', ['changes' => Goat::findOrFail($id)->changes()->orderBy('created_at', 'desc')->get()]);
+    }
 }
