@@ -18,18 +18,16 @@ class ViewPlanController extends Controller
 
         if ($request->bp) {
             $currentBp = BusinessPlan::find($request->bp);
-            $bp = Goat::where('bid', $request->bp)->get();
         } else {
             $currentBp = BusinessPlan::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->first();
-            if ($currentBp) {
-                $bp = Goat::where('bid', $currentBp->id)->get();
-            } else {
-                $bp = Goat::where('bid', BusinessPlan::all()->last()->id)->get();
+            if (!$currentBp) {
+                $currentBp = BusinessPlan::all()->last();
             }
         }
-        // TODO: CACHE THIS!!
 
-        $sorted = collect();
+        $sorted = Goat::where('bid', $currentBp->id)->where('type', 'G')->orderBy('goal_type')->orderBy('description')->get();
+        $bp = Goat::where('bid', $currentBp->id)->where('type', '<>', 'G')->orderBy('description', 'desc')->get();
+
         foreach ($bp as $goat) {
             if ($goat->type === 'G') {
                 $sorted->push($goat);
