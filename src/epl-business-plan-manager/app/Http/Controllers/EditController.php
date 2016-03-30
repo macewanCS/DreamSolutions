@@ -23,6 +23,7 @@ class EditController extends Controller
         $changes = Change::where('goat_id', $id)->get();
         $task = Goat::where('id', $id)->first();
         $leads = $task->userLeads()->get();
+        // dd($task->complete);
 
         $collabs = $task->userCollaborators()->get();
         $leadsArray = array();
@@ -46,8 +47,9 @@ class EditController extends Controller
             $change->lname = User::where('id', $change->user_id)->value('last_name');
         }
 
-        $leads = join(",", $leadsArray);
-        $collabs = join(",", $collabsArray);
+        
+        $leads = join(", ", $leadsArray);
+        $collabs = join(", ", $collabsArray);
         
         $priority = array("High", "Medium", "Low");
 
@@ -61,7 +63,7 @@ class EditController extends Controller
     		array('Priority', $priority[$task->priority - 1])
     	);
     	
-    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty'));
+    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty', 'task'));
     }
 
     public function create(Request $req){
@@ -77,6 +79,13 @@ class EditController extends Controller
         }
         if ($req->complete){
             Goat::where('id', $req->id)->update(['complete' =>'1']);
+        }
+        else{
+            Goat::where('id', $req->id)->update(['complete' => false]);
+        }
+
+        if ($req->statusUpdate === '' && $req->complete){
+            $req->statusUpdate = 'Complete';
         }
 
         $change = Change::create([

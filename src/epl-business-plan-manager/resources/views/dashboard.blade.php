@@ -10,15 +10,15 @@
 
 		<div id="profile-right" >
 
-		<h2 style="margin-left: 5px">Hello, {{$user->first_name}}</h2>
+		<h2 style="margin-left: 18px">Hello, {{$user->first_name}}</h2>
 			<h3 style="margin-left: 5%">Your Tasks:</h3>
 
 			<table id="todo">
 				<thead>
 				<tr>
 					<th>Task</th>
-					<th>Due Date</th>
-					<th>Status</th>
+					<th width="100px">Due Date</th>
+					<!-- <th>Status</th> -->
 					<th></th>
 				</tr>
 				</thead>
@@ -31,11 +31,11 @@
 					@endif
 					@foreach ($tasks as $task)
 
-					@if (!$task->complete)
+						@if (!$task->complete)
 						<tr>
 						<td>{{ $task->description }}</td>
 						<td>{{ $task->due_date }}</td>
-						<td style="white-space: nowrap;">In progress</td>
+						<!-- <td style="white-space: nowrap;">In progress</td> -->
 						<td><a href="edit/{{$task->id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td>
 
 
@@ -51,8 +51,8 @@
 				<tr>
 					<th>Task</th>
 					<th>Update</th>
-					<th>Date</th>
-					<!-- <th></th> -->
+					<th width="100px">Date</th>
+					<th></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -66,7 +66,7 @@
 						<td>{{$task->task}}</td>
 						<td>{{$task->description}}</td>
 						<td>{{ Carbon\Carbon::parse($task->updated_at)}}	</td>
-						<!-- <td><a href="edit/{{$task->goat_id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td> -->
+						<td><a href="edit/{{$task->goat_id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td>
 					</tr>
 					@endforeach
 				</tbody>

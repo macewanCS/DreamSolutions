@@ -13,7 +13,7 @@
 				<tbody>
 					@foreach($fields as $field)
 						<tr>
-							<td style="padding: 10px 20px">{{ $field[0] }}:</td>
+							<td style="padding: 10px 20px; width: 100px">{{ $field[0] }}:</td>
 							<td>{{ $field[1] }}</td>
 						</tr>
 					@endforeach
@@ -69,8 +69,8 @@
 	                {!! Form::label('Status', null, ['class' => 'options']) !!}
 				 	{!! Form::radio('option', 'Status', true, ['class' => 'options']) !!}<br>
 				</div>
-                {!! Form::textarea('statusUpdate', null, ['class' => 'text-area']) !!}<br>
-                {!! Form::checkbox('complete', 1, null, ['class' => 'field']) !!}
+                {!! Form::textarea('statusUpdate', null, ['class' => 'text-area', 'required']) !!}<br>
+                {!! Form::checkbox('complete', 1, $task->complete, ['class' => 'field']) !!}
                 {!! Form::label('Task Complete', null, ['class' => 'clabel']) !!}
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
