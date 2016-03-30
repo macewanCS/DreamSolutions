@@ -9,6 +9,8 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 <script src="js/view.plan.js"></script>
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 
 @stop
 
@@ -16,6 +18,16 @@
 
 <div id="view-plan-area">
     <div id="filter-bar">
+        <div>
+        Select Business Plan:
+        <select id="bp-selector">
+            @foreach ($plans as $plan)
+            <option value={{ $plan->id }} {{ $plan->id == $bp_id ? 'selected' : '' }}>{{ $plan->start->format('Y') . ' - ' . $plan->end->format('Y') }}</option>
+            @endforeach
+        </select>
+        </div>
+
+
         <ul id="filter-categories">
             <li>Filter by:</li>
             <li><a href='#' data-jq-dropdown="#hierarchy-dropdown">Hierarchy</a></li>
@@ -32,9 +44,9 @@
     <table id="view-plan-table">
         <thead>
             <th class="hidden">Goal Type</th>
-            <th colspan=3>Priority</th>
+            <th colspan=3 class="sorter-priority">Priority</th>
             <th>Task</th>
-            <th>Type</th>
+            <th class="hidden"></th>
             <th>Dept/Team</th>
             <th>Lead</th>
             <th>Collab</th>
@@ -52,11 +64,16 @@
                 @if ($goat->type == 'G' || $goat->type == 'O')
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
-                    <td colspan="10">
+                    <td colspan="8">
                     @if ($goat->goal_type == 'B')
                     {{ $goat->type == 'G' ? "Goal : " : "Objective : " }}
                     @endif
                     {{$goat->description}}
+                    </td>
+                    <td align="right">
+                    @if (count($leadOf) && $goat->type == 'O' || ($goat->type == 'G' && $goat->goal_type == 'D'))
+                    <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-a">+</a>
+                    @endif
                     </td>
 
                 @else
@@ -66,7 +83,7 @@
                     <td><!-- for goal/objective descriptions (otherwise with priority filter) --></td>
                     <td class="priority-{{$goat->priority}}">{{ ' HML'[min([$goat->priority, 3])] }}</td>
                     <td>{{ $goat->description }}</td>
-                    <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
+                    <td class="hidden">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
                     <td style="white-space: nowrap;">{{ $goat->department ? $goat->department->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
@@ -83,7 +100,15 @@
                     @endif
                     </td>
 
-                    <td><!-- blank space for edit buttons etc --></td>
+                    <td style="white-space: nowrap; font-size: 15px; font-weight: bold">
+                        <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="/images/note.png" width=15px height=15px></a>
+                        @if (in_array($goat->department_id, $leadOf))
+                        <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit.png" width=15px height=15px></a>
+                        @endif
+                        @if (in_array($goat->department_id, $leadOf) && $goat->type == 'A')
+                        <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-t">+</a>
+                        @endif
+                    </td>
 
                 @endif
 

@@ -1,3 +1,12 @@
+a.create-a {
+  text-decoration: none;
+  color: white;
+}
+
+a.create-t {
+  text-decoration: none;
+  color: black;
+}
 
 #filter-bar {
     overflow      : hidden;
@@ -113,6 +122,7 @@ input:disabled {
   background-repeat: no-repeat;
   background-position: center left;
   width: 5px;
+  cursor: pointer;
 }
 
 #view-plan-area tr.action td.caret {
@@ -120,6 +130,7 @@ input:disabled {
   background-repeat: no-repeat;
   background-position: center left;
   width: 5px;
+  cursor: pointer;
 }
 
 #view-plan-area tr.goal td.caret.down-caret,
@@ -184,4 +195,8 @@ input:disabled {
 
 .select2-results {
   font-size: x-small;
+}
+
+.select2-container {
+  z-index: 999999999999999999999;
 }

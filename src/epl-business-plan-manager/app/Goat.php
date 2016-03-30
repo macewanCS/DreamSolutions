@@ -38,8 +38,43 @@ class Goat extends Model
         return $this->belongsToMany('App\Department', 'department_goat')->withTimestamps();
     }
 
+    public function changes()
+    {
+        return $this->hasMany('App\Change');
+    }
+
     public function goat()
     {
         return $this->belongsTo('App\BusinessPlan');
+    }
+
+    public function goat_level()
+    {
+        switch ($this->type) {
+            case 'G':
+                return 1;
+            case 'O':
+                return 2;
+            case 'A':
+                return 3;
+            case 'T':
+                return 4;
+            default:
+                return 0;
+        }
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Goat', 'parent_id', 'id');
+    }
+
+    public function get_parent($level)
+    {
+        $goat = $this;
+        while ($goat->goat_level() > $level)
+            $goat = $goat->parent;
+
+        return $goat;
     }
 }

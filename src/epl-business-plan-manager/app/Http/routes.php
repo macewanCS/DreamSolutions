@@ -93,10 +93,6 @@ Route::get('ajax-goat_cUsers', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
     /* Login controllers */
     Route::get('/login', 'Auth\AuthController@getLogin');
@@ -109,6 +105,11 @@ Route::group(['middleware' => 'web'], function () {
 
     // View plan controller routes
     Route::get('/view', 'ViewPlanController@index');
+    Route::get('/view/{id}', 'ViewPlanController@showChanges');
+    Route::get('/view/{id}/edit', 'ViewPlanController@editGoat');
+    Route::patch('/view/{id}/edit', 'ViewPlanController@updateGoat');
+    Route::get('/view/{id}/create', 'ViewPlanController@createGoat');
+    Route::post('/view/{id}/create', 'ViewPlanController@storeGoat');
 
     Route::get('/changes', 'ChangelogController@index');
 

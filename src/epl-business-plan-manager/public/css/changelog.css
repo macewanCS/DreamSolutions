@@ -61,12 +61,6 @@ button:active {
     border-right     : 2px solid #fff;
 }
 
-#change-table th.unsorted {
-  background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==); 
-  background-repeat: no-repeat;
-  background-position: center right;
-}
-
 #change-table th a {
     color           : white;
     text-decoration : none;

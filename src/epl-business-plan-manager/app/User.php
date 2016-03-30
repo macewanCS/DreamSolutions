@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $dept ? $dept->pivot->permission_level : null;
     }
 
+    public function leadOf()
+    {
+        return $this->belongsToMany('App\Department')->where('permission_level', 'T')->withTimestamps();
+    }
+
     public function name()
     {
         return $this->first_name . " " . $this->last_name;

@@ -1,8 +1,31 @@
+
 $(document).ready(function() {
     var unsorted = true;
     var unfiltered = true;
     var filterDict = {};
     var filters = [];
+
+    $('#bp-selector').change(function() {
+        location.href = $(this).val() ? '?bp=' + $(this).val() : '?';
+    });
+
+    // add parser through the tablesorter addParser method 
+    $.tablesorter.addParser({ 
+        // set a unique id 
+        id: 'priority', 
+        is: function(s) { 
+            // return false so this parser is not auto detected 
+            return false; 
+        }, 
+        format: function(s, table, cell, cellIndex) {
+        // format your data for normalization
+        return s.replace(/H/,2)
+                .replace(/M/,1)
+                .replace(/L/,0);
+        },
+        // set type, either numeric or text 
+        type: 'numeric' 
+    }); 
 
     $("#view-plan-table").tablesorter({
         duplicateSpan: false,
@@ -180,16 +203,17 @@ $(document).ready(function() {
     }
 
 
-    $('tr.goal, tr.objective, tr.action').click(function() {
+    $('.caret').click(function() {
+        $parent = $(this).closest('tr');
         if (unsorted && unfiltered) {
             var show = true;
-            $(this).toggleClass('hide-children');
-            if ($(this).hasClass('hide-children'))
+            $parent.toggleClass('hide-children');
+            if ($parent.hasClass('hide-children'))
                 show = false;
 
-            $(this).children('td').eq(1).toggleClass('down-caret');
-            $level = getHierarchy($(this));
-            $row = $(this).next();
+            $parent.children('td').eq(1).toggleClass('down-caret');
+            $level = getHierarchy($parent);
+            $row = $parent.next();
             while ( $level - getHierarchy($row) < 0 ) {
                 if ($row.hasClass('hide-children') && show) {
                     $row.removeClass('hidden');
@@ -217,4 +241,8 @@ $(document).ready(function() {
             $el.select2('close');
         }
     });
+
+    $.featherlight.defaults.afterOpen = function() {
+        $(".select-multiple").select2({ placeholder: 'Select users', width: '200px' });
+    };
 });
