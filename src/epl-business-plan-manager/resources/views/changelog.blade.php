@@ -42,7 +42,15 @@
                 <td>{{ $change->created_at }}</td>
                 <td>{{ ($change->goat->goal_type == 'B' ? "BP: " . ($change->goat->type == 'A' ? 'Action' : 'Task') : "Dept") }}
                 <td>{{ $change->goat->description }}</td>
-                <td>{{ $change->change_type == 'S' ? 'Status' : 'Note'}}</td>
+                <td>{{ ($change->change_type === 'S' ? 'Status' :
+                ($change->change_type === 'N' ? 'Note' :
+                ($change->change_type === 'G' ? 'Create' :
+                ($change->change_type === 'L' ? 'Leads' :
+                ($change->change_type === 'C' ? 'Collaborators' :
+                ($change->change_type === 'T' ? 'Date' :
+                ($change->change_type === 'D' ? 'Description' :
+                ($change->change_type === 'P' ? 'Priority' :
+                ''))))))))}}</td>
                 <td>{{ $change->description }}</td>
                 <td>{{ $change->goat->department ? $change->goat->department->name : 'None'}}</td>
                 <td style='white-space: nowrap'>{{ $change->user->name() }}</td>

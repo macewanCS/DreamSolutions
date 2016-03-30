@@ -55,7 +55,7 @@ class ViewPlanController extends Controller
         
         return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
             'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
-            'query' => $request, 'bp_id' => $currentBp->id]);
+            'query' => $request, 'bp_id' => $currentBp->id, 'is_bplead' => Auth::user() && Auth::user()->is_bplead]);
     }
 
     public function showChanges($id) {
@@ -137,7 +137,8 @@ class ViewPlanController extends Controller
                     $change->goat_id = $goat->id;
                     $change->user_id = Auth::user()->id;
                     $change->save();
-                } elseif ($diff = array_diff($curLeads, $newLeads)) {
+                } 
+                if ($diff = array_diff($curLeads, $newLeads)) {
                     $users = array_map(function($id) {
                         return User::findOrFail($id)->name();
                     }, $diff);

@@ -269,7 +269,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => null),
+                'department_id' => 2),
 
             // IT Goal - 19
             array('type' => 'O',
@@ -283,10 +283,10 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => null),
+                'department_id' => 2),
             
             // IT Goal - 20
-            array('type' => 'T',
+            array('type' => 'A',
                 'parent_id' => 19,
                 'description' => 'Create internal documentation for each profile (i.e. Early literacy and Mini-makerspace) applied to EPL iPads by EPL\'s Mobile Device Management software',
                 'priority' => 2,
