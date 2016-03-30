@@ -12,11 +12,13 @@
 @section('content')
     <div id="manage-plan-area">
 
-      <div style="height: 25px">
-          <div id="createBusinessPlan">
-              <a id="cBP" style="color: #004B8E;" href="{{ action('CreatePlanController@show') }}">Create Business Plan</a>
-          </div>
-      </div>
+      @if (Auth::user()->is_bplead)
+        <div style="height: 25px">
+            <div id="createBusinessPlan">
+                <a id="cBP" style="color: #004B8E;" href="{{ action('CreatePlanController@show') }}">Create Business Plan</a>
+            </div>
+        </div>
+      @endif
 
       <!-- Top level tab container for create, update, delete -->
       <div class="container">
@@ -33,9 +35,13 @@
             <div class="container">
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
+                @if (Auth::user()->is_bplead)
                   <li class="active"><a data-toggle="pill" href="#cgoal">Goal</a></li>
                   <li><a data-toggle="pill" href="#cobjective">Objective</a></li>
                   <li><a data-toggle="pill" href="#caction">Action</a></li>
+                @else
+                    <li class="active"><a data-toggle="pill" href="#caction">Action</a></li>
+                @endif
                   <li><a data-toggle="pill" href="#ctask">Task</a></li>
                 </ul>
               </nav>
@@ -43,22 +49,26 @@
             <div class="tab-content">
               <h3>Create</h3>
 
-              <div id="cgoal" class="tab-pane fade in active">
-                {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
-                {!! Form::hidden('type','G') !!}
-                <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
-                {!! Form::label('Business Plan Year') !!}<br>
-                <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
-                  <option default selected disabled>Select BP Year</option>
-                  @foreach ($businessPlans as $businessPlan)
-                    <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
-                  @endforeach
-                </select><br>
-                {!! Form::label('Goal description') !!}<br>
-                {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
-                {!! Form::submit('submit', ['class' => 'button']) !!}
-                {!! Form::close() !!}
-              </div>
+              @if (Auth::user()->is_bplead)
+                <div id="cgoal" class="tab-pane fade in active">
+              @else
+                <div id="cgoal" class="tab-pane fade">
+              @endif
+                  {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
+                  {!! Form::hidden('type','G') !!}
+                  <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
+                  {!! Form::label('Business Plan Year') !!}<br>
+                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <option default selected disabled>Select BP Year</option>
+                    @foreach ($businessPlans as $businessPlan)
+                      <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
+                    @endforeach
+                  </select><br>
+                  {!! Form::label('Goal description') !!}<br>
+                  {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
+                  {!! Form::submit('submit', ['class' => 'button']) !!}
+                  {!! Form::close() !!}
+                </div>
 
               <div id="cobjective" class="tab-pane fade">
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
@@ -78,7 +88,11 @@
                 {!! Form::close() !!}
               </div>
 
-              <div id="caction" class="tab-pane fade">
+              @if (!Auth::user()->is_bplead)
+                <div id="caction" class="tab-pane fade in active">
+              @else
+                <div id="caction" class="tab-pane fadee">
+              @endif
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 <div id="action-left">
                   {!! Form::hidden('type','A') !!}
@@ -176,16 +190,24 @@
             <div class="container">
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
-                  <li class="active"><a data-toggle="pill" href="#ugoal">Goal</a></li>
-                  <li><a data-toggle="pill" href="#uobjective">Objective</a></li>
-                  <li><a data-toggle="pill" href="#uaction">Action</a></li>
+                @if (Auth::user()->is_bplead)
+                  <li class="active"><a data-toggle="pill" href="#cgoal">Goal</a></li>
+                  <li><a data-toggle="pill" href="#cobjective">Objective</a></li>
+                  <li><a data-toggle="pill" href="#caction">Action</a></li>
+                @else
+                    <li class="active"><a data-toggle="pill" href="#caction">Action</a></li>
+                @endif
                   <li><a data-toggle="pill" href="#utask">Task</a></li>
                 </ul>
               </nav>
 
               <div class="tab-content">
                 <h3>Update</h3>
-                <div id="ugoal" class="tab-pane fade in active">
+                  @if (Auth::user()->is_bplead)
+                    <div id="ugoal" class="tab-pane fade in active">
+                  @else
+                    <div id="ugoal" class="tab-pane fade">
+                  @endif
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
@@ -223,7 +245,11 @@
                   {!! Form::close() !!}
                 </div>
 
-                <div id="uaction" class="tab-pane fade">
+                  @if (!Auth::user()->is_bplead)
+                    <div id="uaction" class="tab-pane fade in active">
+                  @else
+                    <div id="uaction" class="tab-pane fadee">
+                  @endif
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
                   <div id="action-left">
                     {!! Form::hidden('type','A') !!}
@@ -324,16 +350,24 @@
             <div class="container">
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
-                  <li class="active"><a data-toggle="pill" href="#dgoal">Goal</a></li>
-                  <li><a data-toggle="pill" href="#dobjective">Objective</a></li>
-                  <li><a data-toggle="pill" href="#daction">Action</a></li>
+                @if (Auth::user()->is_bplead)
+                  <li class="active"><a data-toggle="pill" href="#cgoal">Goal</a></li>
+                  <li><a data-toggle="pill" href="#cobjective">Objective</a></li>
+                  <li><a data-toggle="pill" href="#caction">Action</a></li>
+                @else
+                    <li class="active"><a data-toggle="pill" href="#caction">Action</a></li>
+                @endif
                   <li><a data-toggle="pill" href="#dtask">Task</a></li>
                 </ul>
               </nav>
 
               <div class="tab-content">
                 <h3>Delete</h3>
-                <div id="dgoal" class="tab-pane fade in active">
+                  @if (Auth::user()->is_bplead)
+                    <div id="dgoal" class="tab-pane fade in active">
+                  @else
+                    <div id="dgoal" class="tab-pane fade">
+                  @endif
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
@@ -367,7 +401,11 @@
                   {!! Form::close() !!}
                 </div>
 
-                <div id="daction" class="tab-pane fade">
+                  @if (!Auth::user()->is_bplead)
+                    <div id="daction" class="tab-pane fade in active">
+                  @else
+                    <div id="daction" class="tab-pane fadee">
+                  @endif
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   <div id="action-left">
                     {!! Form::hidden('type','A') !!}
