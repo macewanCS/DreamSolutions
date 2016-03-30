@@ -4,9 +4,9 @@
 </head>
 <body>
 
-<h3>Edit: {!! $goat->description!!}</h3>
+<h3>Create</h3>
 
-{!! Form::model($goat, ['method' => 'PATCH', 'action' => ['ViewPlanController@updateGoat', $goat->id]]) !!}
+{!! Form::model($goat, ['method' => 'POST', 'action' => ['ViewPlanController@createGoat', $parentId]]) !!}
         @include ('goat_form', ['submitButtonText' => 'Create'])
 {!! Form::close() !!}
 </body> 

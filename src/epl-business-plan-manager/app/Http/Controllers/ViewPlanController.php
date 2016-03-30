@@ -66,8 +66,43 @@ class ViewPlanController extends Controller
     public function createGoat($parent_id) {
         $goat = new Goat;
         $goat->parent_id = $parent_id;
+        $goat->type = $goat->parent->type == 'G' ? 'O' :
+                      $goat->parent->type == 'O' ? 'A' :
+                      'T';
 
-        return view('goat_create', ['goat' => $goat, 'users' => User::all()]);
+        return view('goat_create', ['goat' => $goat, 'users' => User::all(), 'parentId' => $parent_id]);
+    }
+
+    public function storeGoat(Request $request, $parent_id)
+    {
+        $goat = new Goat;
+
+        $goat->parent_id = $parent_id;
+        $goat->type = $goat->parent->type == 'G' ? 'O' :
+                      $goat->parent->type == 'O' ? 'A' :
+                      'T';
+        $goat->goal_type = $goat->parent->goal_type;
+        $goat->bid = $goat->parent->bid;
+        $goat->department_id = Auth::user()->leadOf()->first()->id;
+        $goat->budget = null;
+
+        $goat->description = $request->description;
+        $goat->due_date = $request->due_date;
+        $goat->priority = $request->priority;
+        $goat->save();
+
+        $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
+        $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
+        $goat->userLeads()->sync($leads + $collabs);
+
+        $change = new \App\Change;
+        $change->change_type = 'G';
+        $change->description = "GOAT created";
+        $change->goat_id = $goat->id;
+        $change->user_id = Auth::user()->id;
+        $change->save();
+
+        return redirect('/view');
     }
 
     public function editGoat($id) {
@@ -173,7 +208,7 @@ class ViewPlanController extends Controller
         $goat->priority = $request->priority;
         $goat->save();
 
-        $leads = array_fill_keys($request->leads, ['user_role' => 'L']);
+        $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
         $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
 
