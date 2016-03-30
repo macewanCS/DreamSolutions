@@ -70,3 +70,46 @@ ul.pagination li.active{
     background-color : #004b8e;
     color            : white;
 }
+
+#admin-table-head {
+    background-color : #004b8e;
+    color:             white;
+}
+
+.admin-radio-button {
+    text-align: center;
+}
+
+.admin-submit-button {
+    padding: 5px;
+    margin-top: 5px;
+    float: right;
+    cursor: pointer;
+    background-color: #004B8E;
+    color: #FFF;
+    border: none;
+    font-size: 16px;
+}
+
+.admin-heading {
+    text-align: center;
+}
+
+.admin-label {
+    display:   inline-block;
+    min-width: 100px;
+    margin:    auto;
+}
+
+.admin-text {
+    float: right;
+}
+
+#admin-manage-department-table {
+    margin: auto;
+    text-align: center;
+}
+
+.admin-table-heading {
+    width: 33%;
+}
