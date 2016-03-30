@@ -40,6 +40,7 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
+        Log::info($request);
         $elem = new Goat;
         $type = $request->type;
         $elem->bid = $request->bId;
@@ -60,6 +61,7 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = null;
             $elem->complete = null;
+            // return back();
             $elem->save();
         } elseif ($type == 'O') {
             $this->validate($request, [
