@@ -190,11 +190,11 @@ input:disabled {
 }
 
 .select2-selection {
-  font-size : x-small;
+  font-size : small;
 }
 
 .select2-results {
-  font-size: x-small;
+  font-size: small;
 }
 
 .select2-container {
@@ -207,4 +207,29 @@ input:disabled {
 
 .view-form-label {
     vertical-align: top;
+}
+
+.view-form-button {
+    padding: 5px;
+    margin-top: 5px;
+    float: right;
+    cursor: pointer;
+    background-color: #004B8E;
+    color: #FFF;
+    border: none;
+    font-size: 16px;
+ }
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.view-form-textarea {
+    resize: none;
+    font-size: 14px;
+}
+
+#due_date {
+    font-size: 12px;
 }
