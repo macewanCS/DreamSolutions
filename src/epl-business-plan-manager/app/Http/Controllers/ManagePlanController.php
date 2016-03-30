@@ -40,6 +40,7 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
+        Log::info($request);
         $elem = new Goat;
         $type = $request->type;
         $elem->bid = $request->bId;
@@ -82,7 +83,8 @@ class ManagePlanController extends Controller
             'goalId' => 'required',
             'objId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem->type = $type;
             $elem->goal_type = 'B';
@@ -113,7 +115,8 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem->type = $type;
             $elem->goal_type = 'B';
@@ -168,7 +171,8 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem = Goat::find($request->actionId);
             $elem->description = $request->actionDescription;
@@ -182,7 +186,8 @@ class ManagePlanController extends Controller
             'actionId' => 'required',
             'taskId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem = Goat::find($request->taskId);
             $elem->description = $request->taskDescription;
