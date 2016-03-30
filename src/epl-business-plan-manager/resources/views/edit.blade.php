@@ -11,7 +11,7 @@
 		@if ($message)
 			<table>
 				<tr>
-					<th colspan="6" width="1055px" style="background: {{$message[0]}};"><h4>{{$message[1]}}</h4></td>
+					<th colspan="6" width="1055px" height="30px" style="background: {{$message[0]}}; color: white">{{$message[1]}}</td>
 				</tr>
 			</table>
 			@endif

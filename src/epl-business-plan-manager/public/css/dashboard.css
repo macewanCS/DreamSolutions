@@ -40,7 +40,7 @@
 
 
 
-#profile-right table { 
+#profile-right #recent { 
  	width           : 90%;
     margin: 0px 5%;
     
@@ -48,8 +48,22 @@
     font-size       : 12pt;
   /*border-collapse: collapse; */
 }
+
+#profile-right #todo { 
+ 	width           : 90%;
+    margin: 0px 5%;
+    
+    /*border-collapse : collapse;*/
+    font-size       : 12pt;
+  /*border-collapse: collapse; */
+}
+
 /* Zebra striping */
-#profile-right tr:nth-of-type(odd) { 
+#profile-right #todo tr:nth-of-type(odd) { 
+  background: #dbe6f0; 
+}
+
+#profile-right #recent tr:nth-of-type(odd) { 
   background: #dbe6f0; 
 }
 
@@ -65,7 +79,13 @@
   font-weight: bold; 
 }
 
-#profile-right td, th { 
+#profile-right #recent td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+#profile-right #todo td, th { 
   padding: 6px; 
   border: 1px solid #ccc; 
   text-align: left; 

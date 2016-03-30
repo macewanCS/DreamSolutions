@@ -166,7 +166,7 @@ class GoatsTableSeeder extends Seeder
                 'priority' => 2,
                 'complete' => false,
                 'goal_type' => 'B',
-				'due_date' => Carbon\Carbon::createFromDate(2016, 6, 5),
+				'due_date' => Carbon\Carbon::createFromDate(2016, 5, 2),
 				'budget' => 0,
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
