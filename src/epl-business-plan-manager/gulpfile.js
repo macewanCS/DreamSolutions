@@ -22,8 +22,7 @@ elixir(function(mix) {
     mix.version('public/css/all.css');
 
     mix.scripts([
-    	'cascadeFillSelect.js',
-        'managePlanError.js'
+    	'cascadeFillSelect.js'
     	], 'public/build/js/all.js',
     	'resources/assets/js');
 });
