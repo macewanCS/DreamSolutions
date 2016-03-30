@@ -97,7 +97,7 @@ class ViewPlanController extends Controller
 
         $change = new \App\Change;
         $change->change_type = 'G';
-        $change->description = "GOAT created";
+        $change->description = "New item created";
         $change->goat_id = $goat->id;
         $change->user_id = Auth::user()->id;
         $change->save();
@@ -171,7 +171,9 @@ class ViewPlanController extends Controller
                     $change->goat_id = $goat->id;
                     $change->user_id = Auth::user()->id;
                     $change->save();
-                } elseif ($diff = array_diff($curCollaborators, $newCollaborators)) {
+                }
+
+                if ($diff = array_diff($curCollaborators, $newCollaborators)) {
                     $users = array_map(function($id) {
                         return User::findOrFail($id)->name();
                     }, $diff);
