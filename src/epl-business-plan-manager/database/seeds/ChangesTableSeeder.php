@@ -18,10 +18,11 @@ class ChangesTableSeeder extends Seeder
             // Review public computing needs and develop strategies to meet those needs.
             array(
                 'change_type' => 'N',
-                'description' => '10 locations now have making tech and iMacs roll out shortly.',
+                'description' => '10 locations now have iMacs roll out shortly.',
                 'goat_id' => 13,
                 'user_id' => 1,
-                'created_at' => \Carbon\Carbon::parse('2016-01-01')
+                'created_at' => \Carbon\Carbon::parse('2016-02-11 13:41:23'),
+                'updated_at' => \Carbon\Carbon::parse('2016-02-11 13:41:23')
             ),
 
             // 2
@@ -32,7 +33,8 @@ class ChangesTableSeeder extends Seeder
                 'description' => 'Projects in each of 2014, 2015, 2016.',
                 'goat_id' => 14,
                 'user_id' => 1,
-                'created_at' => \Carbon\Carbon::parse('2016-02-01')
+                'created_at' => \Carbon\Carbon::parse('2016-01-01 00:00:00'),
+                'updated_at' => \Carbon\Carbon::parse('2016-02-01 09:42:20')
             ),
 
             // 3
@@ -43,7 +45,8 @@ class ChangesTableSeeder extends Seeder
                 'description' => 'Stanley said to talk with Billy who has some great ideas',
                 'goat_id' => 11,
                 'user_id' => 2,
-                'created_at' => \Carbon\Carbon::parse('2016-03-01')
+                'created_at' => \Carbon\Carbon::parse('2016-03-01 07:24:54'),
+                'updated_at' => \Carbon\Carbon::parse('2016-03-01 07:24:54')
             ),
 
             // 4
@@ -54,7 +57,8 @@ class ChangesTableSeeder extends Seeder
                 'description' => 'Completed',
                 'goat_id' => 10,
                 'user_id' => 1,
-                'created_at' => \Carbon\Carbon::parse('2016-03-15')
+                'created_at' => \Carbon\Carbon::parse('2016-01-15 00:00:00'),
+                'updated_at' => \Carbon\Carbon::parse('2016-03-23 10:01:13')
             ),
 
             // 5
@@ -62,12 +66,40 @@ class ChangesTableSeeder extends Seeder
             // Host EPL Day celebrations at all branches on March 13, 2016
             array(
                 'change_type' => 'N',
-                'description' => 'Talked to John Doe who told me something useful.',
+                'description' => 'Advised branches of EPL Day date.',
                 'goat_id' => 9,
                 'user_id' => 3,
-                'created_at' => \Carbon\Carbon::parse('2016-03-20')
-            )
+                'created_at' => \Carbon\Carbon::parse('2016-02-14 11:11:11'),
+                'updated_at' => \Carbon\Carbon::parse('2016-02-14 11:11:11')
+            ),
 
+            // 4
+            // Vicky Varga
+            //
+            // Provide planning assistance to the Customer Payments team to
+            // implement the necessary changes to support a fine-free day
+            array(
+                'change_type' => 'N',
+                'description' => 'Talk to John Doe who told me something useful',
+                'goat_id' => 12,
+                'user_id' => 1,
+                'created_at' => \Carbon\Carbon::parse('2016-03-12 14:31:45'),
+                'updated_at' => \Carbon\Carbon::parse('2016-03-12 14:31:45')
+            ),
+
+            // 4
+            // Vicky Varga
+            //
+            // Provide planning assistance to the Customer Payments team to
+            // implement the necessary changes to support a fine-free day
+            array(
+                'change_type' => 'N',
+                'description' => 'Made posters for the fine-free day',
+                'goat_id' => 12,
+                'user_id' => 1,
+                'created_at' => \Carbon\Carbon::parse('2016-03-15 12:42:57'),
+                'updated_at' => \Carbon\Carbon::parse('2016-03-15 12:42:57')
+            ),
         ));
     }
 }

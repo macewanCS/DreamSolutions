@@ -120,7 +120,7 @@ class GoatsTableSeeder extends Seeder
 			// Task - 8
             array('type' => 'T',
 				'parent_id' => 6,
-    			'description' => 'Upgrade LibOnline to the latest version (4.9).',
+    			'description' => 'Hire more people to help upgrade LibOnline to the latest version (4.9)',
                 'complete' => true,
     			'priority' => 3,
                 'goal_type' => 'B',
@@ -135,7 +135,7 @@ class GoatsTableSeeder extends Seeder
             array('type' => 'T',
 				'parent_id' => 6,
                 'complete' => false,
-    			'description' => 'Implement wireless printing.',
+    			'description' => 'Pay wireless bill',
     			'priority' => 1,
                 'goal_type' => 'B',
 				'due_date' => Carbon\Carbon::createFromDate(2016, 5, 3),
@@ -162,7 +162,7 @@ class GoatsTableSeeder extends Seeder
 			// Action - 11
             array('type' => 'A',
 				'parent_id' => 10,
-                'description' => 'Establish a fine-free day to take place every second year.',
+                'description' => 'Establish a fine-free day to take place every second year',
                 'priority' => 2,
                 'complete' => false,
                 'goal_type' => 'B',
@@ -190,7 +190,7 @@ class GoatsTableSeeder extends Seeder
 			// Action - 13
             array('type' => 'A',
 				'parent_id' => 10,
-                'description' => 'Extend literacy van services to underserved communities in Edmonton and surrounding areas.',
+                'description' => 'Extend literacy van services to underserved communities in Edmonton and surrounding areas',
                 'priority' => 2,
                 'complete' => false,
                 'goal_type' => 'B',
@@ -232,7 +232,7 @@ class GoatsTableSeeder extends Seeder
 			// Action - 16
 			array('type' => 'A',
 				'parent_id' => 15,
-				'description' => 'Implement a single point of discovery for EPL content.',
+				'description' => 'Implement a single point of discovery for EPL content',
 				'priority' => 2,
                 'complete' => true,
                 'goal_type' => 'B',
@@ -241,7 +241,7 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 4),
+                'department_id' => 5),
 
             // Task - 17
             array('type' => 'T',
@@ -255,7 +255,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 4),
+                'department_id' => 2),
 
             // IT Goal - 18
             array('type' => 'G',
@@ -297,7 +297,7 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 5)
+                'department_id' => 2)
 
 		));
     }
