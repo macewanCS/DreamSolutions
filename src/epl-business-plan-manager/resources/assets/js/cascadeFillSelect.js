@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  $('select').select2();
-  $('.uActionPriority').select2();
-  $('#uActionLeads').select2();
-  $(".js-basic-multiple").select2();
+  $('select').select2({width: '232px'});
   var pri = ['High', 'Medium', 'Low'];
   var actionDate = '';
   var taskDate = '';
