@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('head')
-  <link rel="stylesheet" type="text/css" href="/css/manage_plan.css"></link>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"></link>
+  <link rel="stylesheet" type="text/css" href="/css/manage_plan.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
@@ -113,7 +113,6 @@
                 <div id="action-right">
                   <div id="cActionLeadsContainer" tag="lead">
                     {!! Form::label('Lead') !!}<br>
-                    <!-- {!! Form::text('leadName', null, ['class' => 'leadName']) !!} -->
                     <select class=".js-basic-mulitple" multiple="multiple" name="leadName[]" style="width: 250px;">
                         @foreach ($users as $user)
                             <option value={!! $user->id !!}>{!! $user->first_name . ' ' . $user->last_name !!}</option>
@@ -287,7 +286,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" value="" type="date"><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -335,7 +334,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" value="" type="date"><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -404,7 +403,7 @@
                   @if (!Auth::user()->is_bplead)
                     <div id="daction" class="tab-pane fade in active">
                   @else
-                    <div id="daction" class="tab-pane fadee">
+                    <div id="daction" class="tab-pane fade">
                   @endif
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   <div id="action-left">
@@ -429,7 +428,7 @@
                     {!! Form::label('Collaborator') !!}<br>
                     <table id="dActionCollabs"></table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'actionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -465,7 +464,7 @@
                     <table id="dTaskCollabs">
                     </table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'taskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -477,11 +476,13 @@
           </div>
         </div>
         @if (count($errors))
-          <div style="color: #f00; display: flex; align-items: center; justify-content: center;"><ul>
-            @foreach ($errors->all() as $error)
-              <li>{!! $error !!}</li>
-            @endforeach
-          </ul></div>
+          <div style="color: #f00; display: flex; align-items: center; justify-content: center;">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{!! $error !!}</li>
+              @endforeach
+            </ul>
+          </div>
         @endif
       </div>
     </div>
