@@ -18,6 +18,16 @@
 
 <div id="view-plan-area">
     <div id="filter-bar">
+        <div>
+        Select Business Plan:
+        <select id="bp-selector">
+            @foreach ($plans as $plan)
+            <option value={{ $plan->id }} {{ $query && $plan->id == $query->bp ? 'selected' : '' }}>{{ $plan->start->format('Y') . ' - ' . $plan->end->format('Y') }}</option>
+            @endforeach
+        </select>
+        </div>
+
+
         <ul id="filter-categories">
             <li>Filter by:</li>
             <li><a href='#' data-jq-dropdown="#hierarchy-dropdown">Hierarchy</a></li>

@@ -5,6 +5,10 @@ $(document).ready(function() {
     var filterDict = {};
     var filters = [];
 
+    $('#bp-selector').change(function() {
+        location.href = $(this).val() ? '?bp=' + $(this).val() : '?';
+    });
+
     // add parser through the tablesorter addParser method 
     $.tablesorter.addParser({ 
         // set a unique id 

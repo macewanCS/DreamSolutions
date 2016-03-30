@@ -7,14 +7,18 @@ use Auth;
 use App\User;
 use App\Goat;
 use App\Department;
+use App\BusinessPlan;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class ViewPlanController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        if ($request->bp)
+            $bp = Goat::where('bid', $request->bp)->get();
+        else
+            $bp = Goat::where('bid', BusinessPlan::all()->last()->id)->get();
         // TODO: CACHE THIS!!
-        $bp = Goat::all();
 
         $sorted = collect();
         foreach ($bp as $goat) {
@@ -41,7 +45,8 @@ class ViewPlanController extends Controller
         }
         
         return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
-            'depts' => Department::all(), 'leadOf' => $leadOf]);
+            'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
+            'query' => $request]);
     }
 
     public function showChanges($id) {
