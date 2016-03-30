@@ -76,5 +76,4 @@ class Goat extends Model
             $goat = $goat->parent;
 
         return $goat;
-    }
 }
