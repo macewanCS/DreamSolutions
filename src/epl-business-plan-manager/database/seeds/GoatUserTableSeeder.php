@@ -57,6 +57,13 @@ class GoatUserTableSeeder extends Seeder
                 'user_id' => 3,
                 'user_role' => 'L'),
 
+            //Mark Smith
+            //Task - Pay wireless bill
+            array(
+                'goat_id' => 9,
+                'user_id' => 3,
+                'user_role' => 'C'),
+
             // Sels Hunt
             // Task - Provide planning assistance to the Customer Payments team to
             //        implement the necessary changes to support a fine-free day

@@ -29,8 +29,8 @@ class DashboardController extends Controller
         $dept = $user->departments()->get();
         $recentEmpty = true;
         $tasksEmpty = true;
-        // dd($tasks);
-
+        
+        
         foreach($tasks as $task){
             if (!$task->complete){
                 $tasksEmpty = false;
@@ -41,7 +41,6 @@ class DashboardController extends Controller
         foreach ($recent as $task){
             $recentEmpty = false;
             $task->task = Goat::where('id', $task->goat_id)->value('description');
-            // $task->due_date = Goat::where('id', $task->goat_id)->value('due_date');
         }
         
     	return view('dashboard', compact('user', 'tasks', 'dept', 'recent', 'recentEmpty', 'tasksEmpty'));

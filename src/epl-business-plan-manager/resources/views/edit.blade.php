@@ -5,10 +5,18 @@
 @stop
 
 @section('content')
+	
 
 	<div id="edit-content">
-		
-		<div id="left">
+		@if ($message)
+			<table>
+				<tr>
+					<th colspan="6" width="1055px" style="background: {{$message[0]}};"><h4>{{$message[1]}}</h4></td>
+				</tr>
+			</table>
+			@endif
+
+		<div id="left" style="margin-top: 20px">
 			<table style="width: 550px">
 				<tbody>
 					@foreach($fields as $field)
@@ -21,7 +29,7 @@
 			</table>
 		</div>
 
-		<div id="right">
+		<div id="right" style="margin-top: 20px">
 
 			@if ($needsResize)
 				<table style="overflow-y:scroll; height:250px; display:block; scroll-behavior: smooth;">
@@ -56,10 +64,13 @@
 					@endforeach
 				</tbody>
 			</table>
+
 		</div>
 
 
+
 		<div id="bottom">
+			
 				<br><br>
 			 	{!! Form::open() !!}
                 {!! Form::label('Enter Status Update:', null, ['class' => 'label']) !!}<br><br>

@@ -18,7 +18,6 @@
 				<tr>
 					<th>Task</th>
 					<th width="100px">Due Date</th>
-					<!-- <th>Status</th> -->
 					<th width="20px"></th>
 				</tr>
 				</thead>
@@ -35,7 +34,6 @@
 						<tr>
 						<td>{{ $task->description }}</td>
 						<td>{{ $task->due_date }}</td>
-						<!-- <td style="white-space: nowrap;">In progress</td> -->
 						<td><a href="edit/{{$task->id}}"><img src="images/edit.jpeg" alt="edit" title="edit" height="20px" width="20px"></a></td>
 
 
