@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert(array(
 
-            // 1
+            // 1 - Vicky Varga
             array(
                 'first_name'=>'Vicky',
                 'last_name' => 'Varga',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => Carbon\Carbon::now()),
 
 
-            // 2
+            // 2 - John Doe
             array(
                  'first_name'=>'John',
                  'last_name' => 'Doe',
@@ -47,10 +47,10 @@ class UsersTableSeeder extends Seeder
                  'updated_at' => Carbon\Carbon::now()),
 
 
-            // 3
+            // 3 - Mark Smith
             array(
-                 'first_name'=>'mark',
-                 'last_name' => 'smith',
+                 'first_name'=>'Mark',
+                 'last_name' => 'Smith',
                  'username' => 'smithm',
                  'password' => bcrypt('test'),
                  'email'=>'mark@epl.ca',
@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 4
+            // 4 - Karl Borlan
             array(
                  'first_name'=>'Karl',
                  'last_name' => 'Borlan',
@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 5
+            // 5 - Marl Cooper
             array(
                  'first_name'=>'Marl',
                  'last_name' => 'Cooper',
@@ -95,7 +95,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 6
+            // 6 - Mary Jones
             array(
                  'first_name'=>'Mary',
                  'last_name' => 'Jones',
@@ -111,7 +111,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 7
+            // 7 - Sels Hunt
             array(
                  'first_name' =>'Sels',
                  'last_name' => 'Hunt',
@@ -127,7 +127,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 8
+            // 8 - Taylor Swift
             array(
                  'first_name'=>'Taylor',
                  'last_name' => 'Swift',
@@ -143,7 +143,7 @@ class UsersTableSeeder extends Seeder
                  'created_at' => Carbon\Carbon::now(),
                  'updated_at' => Carbon\Carbon::now()),
 
-            // 9
+            // 9 - Ad Min
             array(
                  'first_name'=>'Ad',
                  'last_name' => 'Min',
