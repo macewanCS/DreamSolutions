@@ -109,8 +109,9 @@ Route::group(['middleware' => 'web'], function () {
 
     // View plan controller routes
     Route::get('/view', 'ViewPlanController@index');
-
     Route::get('/view/{id}', 'ViewPlanController@showChanges');
+    Route::get('/view/{id}/edit', 'ViewPlanController@editGoat');
+    Route::patch('/view/{id}/edit', 'ViewPlanController@updateGoat');
 
     Route::get('/changes', 'ChangelogController@index');
 

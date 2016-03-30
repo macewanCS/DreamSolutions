@@ -237,4 +237,8 @@ $(document).ready(function() {
             $el.select2('close');
         }
     });
+
+    $.featherlight.defaults.afterOpen = function() {
+        $(".select-multiple").select2({ placeholder: 'Select users', width: '200px' });
+    };
 });

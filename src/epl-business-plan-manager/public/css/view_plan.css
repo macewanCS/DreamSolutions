@@ -187,3 +187,7 @@ input:disabled {
 .select2-results {
   font-size: x-small;
 }
+
+.select2-container {
+  z-index: 999999999999999999999;
+}

@@ -54,7 +54,7 @@
                 @if ($goat->type == 'G' || $goat->type == 'O')
                     <td class="hidden">{{ $goat->type }}</td>
                     <td class="caret"></td>
-                    <td colspan="9">
+                    <td colspan="8">
                     @if ($goat->goal_type == 'B')
                     {{ $goat->type == 'G' ? "Goal : " : "Objective : " }}
                     @endif
@@ -90,7 +90,7 @@
                     <td style="white-space: nowrap;">
                         <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="images/note.png" width=15px height=15px></a>
                         @if (in_array($goat->department_id, $leadOf))
-                        <img src="images/edit.png" width=15px height=15px>  
+                        <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="images/edit.png" width=15px height=15px></a>
                         @endif
 
                     </td>
