@@ -15,8 +15,9 @@ use Carbon\Carbon;
 class ViewPlanController extends Controller
 {
     public function index(Request $request) {
-        $currentBp;
+
         if ($request->bp) {
+            $currentBp = BusinessPlan::find($request->bp);
             $bp = Goat::where('bid', $request->bp)->get();
         } else {
             $currentBp = BusinessPlan::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->first();
