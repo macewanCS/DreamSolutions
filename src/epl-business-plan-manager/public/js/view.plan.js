@@ -199,16 +199,17 @@ $(document).ready(function() {
     }
 
 
-    $('tr.goal, tr.objective, tr.action').click(function() {
+    $('.caret').click(function() {
+        $parent = $(this).closest('tr');
         if (unsorted && unfiltered) {
             var show = true;
-            $(this).toggleClass('hide-children');
-            if ($(this).hasClass('hide-children'))
+            $parent.toggleClass('hide-children');
+            if ($parent.hasClass('hide-children'))
                 show = false;
 
-            $(this).children('td').eq(1).toggleClass('down-caret');
-            $level = getHierarchy($(this));
-            $row = $(this).next();
+            $parent.children('td').eq(1).toggleClass('down-caret');
+            $level = getHierarchy($parent);
+            $row = $parent.next();
             while ( $level - getHierarchy($row) < 0 ) {
                 if ($row.hasClass('hide-children') && show) {
                     $row.removeClass('hidden');
