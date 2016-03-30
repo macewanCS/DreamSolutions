@@ -58,7 +58,7 @@
                   {!! Form::hidden('type','G') !!}
                   <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -74,7 +74,7 @@
                 {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                 {!! Form::hidden('type','O') !!}
                 {!! Form::label('Business Plan Year') !!}<br>
-                <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                   <option default selected disabled>Select BP Year</option>
                   @foreach ($businessPlans as $businessPlan)
                     <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -97,7 +97,7 @@
                 <div id="action-left">
                   {!! Form::hidden('type','A') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -129,7 +129,7 @@
                     </select>
                   </div>
                   {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                  {!! Form::date('endDate', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
                   {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -142,7 +142,7 @@
                 <div id="task-left">
                   {!! Form::hidden('type','T') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -175,7 +175,7 @@
                     </select>
                   </div>
                   {!! Form::label('End date') !!}<br>
-                  {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
+                  {!! Form::date('endDate', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
                   {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -211,7 +211,7 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -229,7 +229,7 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'PATCH', 'action' => ['managePlanController@update']]) !!}
                     {!! Form::hidden('type','O') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -254,7 +254,7 @@
                   <div id="action-left">
                     {!! Form::hidden('type','A') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -287,7 +287,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -300,7 +300,7 @@
                   <div id="task-left">
                     {!! Form::hidden('type','T') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -335,7 +335,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -371,7 +371,7 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE']) !!}
                   {!! Form::hidden('type','G') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -387,7 +387,7 @@
                   {!! Form::open(['url' => 'manage', 'method' => 'DELETE', 'action' => ['managePlanController@destroy']]) !!}
                   {!! Form::hidden('type','O') !!}
                   {!! Form::label('Business Plan Year') !!}<br>
-                  <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                  <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
                     @foreach ($businessPlans as $businessPlan)
                       <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -410,7 +410,7 @@
                   <div id="action-left">
                     {!! Form::hidden('type','A') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -429,7 +429,7 @@
                     {!! Form::label('Collaborator') !!}<br>
                     <table id="dActionCollabs"></table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'actionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -442,7 +442,7 @@
                   <div id="task-left">
                     {!! Form::hidden('type','T') !!}
                     {!! Form::label('Business Plan Year') !!}<br>
-                    <select class="bId" name="bId" style="margin-bottom: 10px; margin-top: 1px;">
+                    <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                       <option default selected disabled>Select BP Year</option>
                       @foreach ($businessPlans as $businessPlan)
                         <option value={!! $businessPlan->id !!}>{!! $businessPlan->start->year . '-' . $businessPlan->end->year !!}</option>
@@ -465,7 +465,7 @@
                     <table id="dTaskCollabs">
                     </table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
+                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'taskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}

@@ -24,16 +24,10 @@ textarea {
 .duc-nav {
     border-bottom: 1px solid;
 }
-.duc-nav a {
-    border-radius: 4px 4px 0 0;
-}
 .nav.nav-tabs li.active a {
     background-color: #FFF;
     color: #000;
     border: 1px solid;
-}
-.goat-nav a {
-    border-radius: 4px;
 }
 .nav li {
     list-style: none;
@@ -54,7 +48,6 @@ textarea {
     background-color: #004B8E;
     color: #FFF;
     border: none;
-    border-radius: 4px;
 }
 .addTextBox {
     padding-left: 4px;
@@ -64,7 +57,6 @@ textarea {
     background-color: #004B8E;
     color: #FFF;
     border: none;
-    border-radius: 4px;
 }
 .addTextBox:hover {
     cursor: pointer;
@@ -75,7 +67,6 @@ textarea {
     background-color: #004B8E;
     color: #FFF;
     border: none;
-    border-radius: 4px;
 }
 .removeTextBox:hover {
     cursor: pointer;
@@ -157,7 +148,6 @@ a:hover {
 }
 .duc-tab-links a {
     padding: 9px 15px;
-    border-radius: 1px;
     background: #7FB5DA;
     font-size: 16px;
     font-weight: 600;
@@ -182,7 +172,6 @@ a:hover {
 }
 .goat-tabs-links a {
     padding: 9px 15px;
-    border-radius: 1px;
     background: #7FB5DA;
     font-size: 16px;
     font-weight: 600;
