@@ -34,6 +34,7 @@
             <th class="hidden">Goal Type</th>
             <th colspan=3 class="sorter-priority">Priority</th>
             <th>Task</th>
+            <th class="hidden"></th>
             <th>Dept/Team</th>
             <th>Lead</th>
             <th>Collab</th>
@@ -82,7 +83,7 @@
                     @endif
                     </td>
 
-                    <td><!-- blank space for edit buttons etc --></td>
+                    <td><a href="#" ><img src="images/note.png" width=15px height=15px></a></td>
 
                 @endif
 
