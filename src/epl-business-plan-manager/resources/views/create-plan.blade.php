@@ -21,13 +21,14 @@
 
                 <h3>Years</h3>
                 <section>
+                    <p id="create-plan-mandatory-label">* Start year may not exceed end year</p>
+
                     <div id="createPlanYearContainer" tag="year">
                         <h1 class="create-plan-year-labels">Start Year</h1>
                         <select id="start-year" class="create-plan-years required"></select>
 
                         <h1 class="create-plan-year-labels">End Year</h1>
                         <select id="end-year" class="create-plan-years"></select>
-                        <p id="create-plan-mandatory-label">* Start year may not exceed end year</p>
                     </div>
                 </section>
 
