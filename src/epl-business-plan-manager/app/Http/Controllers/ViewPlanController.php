@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\User;
 use App\Goat;
 use App\Department;
@@ -33,11 +34,14 @@ class ViewPlanController extends Controller
                 }
             }
         }
-        $users = User::all();
-        $depts = Department::all();
+
+        $leadOf = array();
+        foreach (Auth::user()->leadOf as $dept) {
+            array_push($leadOf, $dept->id);
+        }
         
-        return view('view_plan')->with(['bp' => $sorted, 'users' => $users,
-            'depts' => $depts]);
+        return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
+            'depts' => Department::all(), 'leadOf' => $leadOf]);
     }
 
     public function showChanges($id) {
