@@ -137,7 +137,8 @@ class ViewPlanController extends Controller
                     $change->goat_id = $goat->id;
                     $change->user_id = Auth::user()->id;
                     $change->save();
-                } elseif ($diff = array_diff($curLeads, $newLeads)) {
+                } 
+                if ($diff = array_diff($curLeads, $newLeads)) {
                     $users = array_map(function($id) {
                         return User::findOrFail($id)->name();
                     }, $diff);
