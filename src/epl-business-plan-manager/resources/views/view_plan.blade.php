@@ -34,7 +34,6 @@
             <th class="hidden">Goal Type</th>
             <th colspan=3>Priority</th>
             <th>Task</th>
-            <th>Type</th>
             <th>Dept/Team</th>
             <th>Lead</th>
             <th>Collab</th>
@@ -66,7 +65,7 @@
                     <td><!-- for goal/objective descriptions (otherwise with priority filter) --></td>
                     <td class="priority-{{$goat->priority}}">{{ ' HML'[min([$goat->priority, 3])] }}</td>
                     <td>{{ $goat->description }}</td>
-                    <td style="white-space: nowrap;">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
+                    <td class="hidden">{{ $goat->goal_type == 'B' ? 'Business Plan' : 'Department' }}</td>
                     <td style="white-space: nowrap;">{{ $goat->department ? $goat->department->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
