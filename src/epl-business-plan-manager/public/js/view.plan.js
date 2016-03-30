@@ -57,7 +57,9 @@ $(document).ready(function() {
             allowNesting(false);
             expandAll();
             filters[0] = [];
+            delete filterDict['0'];
             addFilters("0", ['A', 'T']);
+            console.log(filters[0]);
             $('#goal-box').attr('disabled', true).parent().wrap("<strike>");
             $('#objective-box').attr('disabled', true).parent().wrap("<strike>");
             $('#action-box').prop('checked', true);
