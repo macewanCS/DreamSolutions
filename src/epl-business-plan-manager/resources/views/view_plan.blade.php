@@ -71,7 +71,7 @@
                     {{$goat->description}}
                     </td>
                     <td align="right">
-                    @if (count($leadOf) && $goat->type == 'O' || ($goat->type == 'G' && $goat->goal_type == 'D'))
+                    @if (count($leadOf) && ($goat->type == 'O' && $goat->goal_type == 'B') || ($goat->goal_type == 'D' && in_array($goat->department_id, $leadOf)))
                     <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-a">+</a>
                     @endif
                     </td>
