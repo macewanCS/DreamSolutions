@@ -55,7 +55,7 @@ class ViewPlanController extends Controller
         
         return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
             'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
-            'query' => $request, 'bp_id' => $currentBp->id]);
+            'query' => $request, 'bp_id' => $currentBp->id, 'is_bplead' => Auth::user() && Auth::user()->is_bplead]);
     }
 
     public function showChanges($id) {

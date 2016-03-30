@@ -71,7 +71,10 @@
                     {{$goat->description}}
                     </td>
                     <td align="right">
-                    @if (count($leadOf) && ($goat->type == 'O' && $goat->goal_type == 'B') || ($goat->goal_type == 'D' && in_array($goat->department_id, $leadOf)))
+                    @if ($is_bplead || ($goat->goal_type == 'D' && in_array($goat->department_id, $leadOf) && $goat->type == 'O'))
+                    <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit-white.png" width=15px height=15px></a>
+                    @endif
+                    @if ($is_bplead || count($leadOf) && ($goat->type == 'O' && $goat->goal_type == 'B') || ($goat->goal_type == 'D' && in_array($goat->department_id, $leadOf)))
                     <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-a">+</a>
                     @endif
                     </td>
@@ -88,7 +91,7 @@
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
                     <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td style="white-space: nowrap;">{{ $goat->due_date}}</td>
+                    <td style="white-space: nowrap;">{{ $goat->due_date }}</td>
 
                     <td style="white-space: nowrap;">
                     @if ($goat->complete)
@@ -102,10 +105,10 @@
 
                     <td style="white-space: nowrap; font-size: 15px; font-weight: bold">
                         <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="/images/note.png" width=15px height=15px></a>
-                        @if (in_array($goat->department_id, $leadOf))
+                        @if ($is_bplead || in_array($goat->department_id, $leadOf))
                         <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit.png" width=15px height=15px></a>
                         @endif
-                        @if (in_array($goat->department_id, $leadOf) && $goat->type == 'A')
+                        @if (($is_bplead || in_array($goat->department_id, $leadOf)) && $goat->type == 'A')
                         <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-t">+</a>
                         @endif
                     </td>
