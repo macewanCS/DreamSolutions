@@ -22,7 +22,7 @@
         Select Business Plan:
         <select id="bp-selector">
             @foreach ($plans as $plan)
-            <option value={{ $plan->id }} {{ $query && $plan->id == $query->bp ? 'selected' : '' }}>{{ $plan->start->format('Y') . ' - ' . $plan->end->format('Y') }}</option>
+            <option value={{ $plan->id }} {{ $plan->id == $bp_id ? 'selected' : '' }}>{{ $plan->start->format('Y') . ' - ' . $plan->end->format('Y') }}</option>
             @endforeach
         </select>
         </div>
@@ -100,10 +100,10 @@
                     @endif
                     </td>
 
-                    <td style="white-space: nowrap; font-size: small; font-weight: bold">
-                        <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="images/note.png" width=15px height=15px></a>
+                    <td style="white-space: nowrap; font-size: 15px; font-weight: bold">
+                        <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="/images/note.png" width=15px height=15px></a>
                         @if (in_array($goat->department_id, $leadOf))
-                        <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="images/edit.png" width=15px height=15px></a>
+                        <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit.png" width=15px height=15px></a>
                         @endif
                         @if (in_array($goat->department_id, $leadOf) && $goat->type == 'A')
                         +

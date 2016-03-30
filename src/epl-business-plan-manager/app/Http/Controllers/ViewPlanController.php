@@ -10,14 +10,22 @@ use App\Department;
 use App\BusinessPlan;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class ViewPlanController extends Controller
 {
     public function index(Request $request) {
-        if ($request->bp)
+        $currentBp;
+        if ($request->bp) {
             $bp = Goat::where('bid', $request->bp)->get();
-        else
-            $bp = Goat::where('bid', BusinessPlan::all()->last()->id)->get();
+        } else {
+            $currentBp = BusinessPlan::where('start', '<=', Carbon::now())->where('end', '>=', Carbon::now())->first();
+            if ($currentBp) {
+                $bp = Goat::where('bid', $currentBp->id)->get();
+            } else {
+                $bp = Goat::where('bid', BusinessPlan::all()->last()->id)->get();
+            }
+        }
         // TODO: CACHE THIS!!
 
         $sorted = collect();
@@ -40,17 +48,26 @@ class ViewPlanController extends Controller
         }
 
         $leadOf = array();
-        foreach (Auth::user()->leadOf as $dept) {
-            array_push($leadOf, $dept->id);
+        if (Auth::user()) {
+            foreach (Auth::user()->leadOf as $dept) {
+                array_push($leadOf, $dept->id);
+            }
         }
         
         return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
             'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
-            'query' => $request]);
+            'query' => $request, 'bp_id' => $currentBp->id]);
     }
 
     public function showChanges($id) {
         return view('goat_history', ['changes' => Goat::findOrFail($id)->changes()->orderBy('created_at', 'desc')->get()]);
+    }
+
+    public function createGoat($parent_id) {
+        $goat = new Goat;
+        $goat->parent_id = $parent_id;
+
+        return view('goat_create', ['goat' => $goat, 'users' => User::all()]);
     }
 
     public function editGoat($id) {
