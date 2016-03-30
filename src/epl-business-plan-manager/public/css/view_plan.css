@@ -203,5 +203,8 @@ input:disabled {
 
 .view-goal-form {
     width: 450px;
+}
 
+.view-form-label {
+    vertical-align: top;
 }
