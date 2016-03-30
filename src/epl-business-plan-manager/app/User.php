@@ -48,7 +48,7 @@ class User extends Authenticatable
     public function permission(Department $department)
     {
         $dept = $this->belongsToMany('App\Department')->withPivot('permission_level')->find($department->id);
-        return $dept ? $dept->pivot->permission_level : null;
+        return $dept ? $w->pivot->permission_level : null;
     }
 
     public function leadOf()

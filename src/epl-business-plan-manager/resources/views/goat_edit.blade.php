@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-</head>
-<body>
 
-<h3>Edit: {!! $goat->description!!}</h3>
+    <head>
+    </head>
 
-{!! Form::model($goat, ['method' => 'PATCH', 'action' => ['ViewPlanController@updateGoat', $goat->id]]) !!}
-        @include ('goat_form', ['submitButtonText' => 'Create'])
-{!! Form::close() !!}
-</body> 
+    <body>
+        <div class="view-goal-form">
+                <h3>Editing: {!! $goat->description!!}</h3>
+                <hr>
+                {!! Form::model($goat, ['method' => 'PATCH', 'action' => ['ViewPlanController@updateGoat', $goat->id]]) !!}
+                        @include ('goat_form', ['submitButtonText' => 'Update'])
+                {!! Form::close() !!}
+        </div>
+    </body>
+
 </html>
 
