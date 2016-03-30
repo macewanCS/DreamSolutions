@@ -243,16 +243,6 @@ class ManagePlanController extends Controller
             ]);
             $elem = Goat::find($request->taskId);
         }
-        // Not certain if this for loop does what its supposed to => logging and testing required.
-        $users = $elem->userLeads();
-        foreach ($users as $user) {
-            $user->delete();
-        }
-        $users = $elem->userCollaborators();
-        foreach ($users as $user) {
-            $user->delete();
-        }
-        return back(); // Tmp
         $elem->delete();
         return back();
     }

@@ -58,13 +58,6 @@
                 {!! Form::textarea('goalDescription', null, ['cols' => '35', 'rows' => '1']) !!}<br>
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
-                @if (count($errors))
-                <ul>
-                  @foreach ($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                  @endforeach
-                </ul>
-                @endif
               </div>
 
               <div id="cobjective" class="tab-pane fade">
@@ -124,7 +117,7 @@
                   {!! Form::label('End date') !!}<br>
                   {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
+                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
@@ -170,17 +163,10 @@
                   {!! Form::label('End date') !!}<br>
                   {!! Form::date('end', \Carbon\Carbon::now()) !!}<br>
                   {!! Form::label('Priority') !!}<br>
-                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}
+                  {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low']) !!}<br>
                   {!! Form::submit('submit', ['class' => 'button']) !!}
                 </div>
                 {!! Form::close() !!}
-                @if (count($errors))
-                <ul>
-                  @foreach ($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                  @endforeach
-                </ul>
-                @endif
               </div>
             </div>
             </div>
@@ -277,7 +263,7 @@
                     {!! Form::label('End date') !!}<br>
                     <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -325,7 +311,7 @@
                     {!! Form::label('End date') !!}<br>
                     <input name="end" class="dDate" value="" type="date"></input><br>
                     {!! Form::label('Priority') !!}<br>
-                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}
+                    {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -407,7 +393,7 @@
                     {!! Form::label('End date') !!}<br>
                     <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
-                    {!! Form::label(null, null, ['class' => 'actionPriority']) !!}
+                    {!! Form::label(null, null, ['class' => 'actionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -436,18 +422,14 @@
                   <div id="task-right">
                     {!! Form::label('Lead') !!}<br>
                     <table id="dTaskLeads">
-                      <!-- For each -->
                     </table><br>
-                    <!-- //{!! Form::text('leadName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('Collaborator') !!}<br>
                     <table id="dTaskCollabs">
-                      <!-- For each -->
                     </table><br>
-                    <!-- //{!! Form::text('collaboratorName', null, ['readonly']) !!}<br> -->
                     {!! Form::label('End date') !!}<br>
                     <input name="end" class="dDate" readonly="readonly" value="" type="date"></input><br>
                     {!! Form::label(null, 'Priority: ') !!}
-                    {!! Form::label(null, null, ['class' => 'taskPriority']) !!}
+                    {!! Form::label(null, null, ['class' => 'taskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -456,6 +438,13 @@
             </div>
           </div>
         </div>
+        @if (count($errors))
+          <div style="color: #f00; display: flex; align-items: center; justify-content: center;"><ul>
+            @foreach ($errors->all() as $error)
+              <li>{!! $error !!}</li>
+            @endforeach
+          </ul></div>
+        @endif
       </div>
     </div>
 @stop
