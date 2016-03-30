@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Change;
+use Carbon;
 use App\Goat;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,11 +20,10 @@ class EditController extends Controller
 
     public function show($id){
         
-        // $task = Change::user();//where('goat_id', intval($id))->get();
         $changes = Change::where('goat_id', $id)->get();
         $task = Goat::where('id', $id)->first();
         $leads = $task->userLeads()->get();
-
+        
         $collabs = $task->userCollaborators()->get();
         $leadsArray = array();
         $collabsArray = array();
@@ -46,8 +46,19 @@ class EditController extends Controller
             $change->lname = User::where('id', $change->user_id)->value('last_name');
         }
 
-        $leads = join(",", $leadsArray);
-        $collabs = join(",", $collabsArray);
+        // dd(Carbon\Carbon::parse($task->due_date));
+        $message = false;
+        if(Carbon\Carbon::parse($task->due_date)->lt(Carbon\Carbon::now())){
+            $message = array('#b30000', 'Overdue');
+        }
+
+        if($task->complete){
+            $message = array('#669966', 'Complete');   
+        }
+        
+
+        $leads = join(", ", $leadsArray);
+        $collabs = join(", ", $collabsArray);
         
         $priority = array("High", "Medium", "Low");
 
@@ -61,7 +72,7 @@ class EditController extends Controller
     		array('Priority', $priority[$task->priority - 1])
     	);
     	
-    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty'));
+    	return view('edit', compact('fields', 'changes', 'needsResize', 'empty', 'task', 'message'));
     }
 
     public function create(Request $req){
@@ -77,6 +88,13 @@ class EditController extends Controller
         }
         if ($req->complete){
             Goat::where('id', $req->id)->update(['complete' =>'1']);
+        }
+        else{
+            Goat::where('id', $req->id)->update(['complete' => false]);
+        }
+
+        if ($req->statusUpdate === '' && $req->complete){
+            $req->statusUpdate = 'Complete';
         }
 
         $change = Change::create([
