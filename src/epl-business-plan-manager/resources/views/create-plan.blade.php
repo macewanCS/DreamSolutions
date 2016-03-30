@@ -27,6 +27,7 @@
 
                         <h1 class="create-plan-year-labels">End Year</h1>
                         <select id="end-year" class="create-plan-years"></select>
+                        <p id="create-plan-mandatory-label">* Start year may not exceed end year</p>
                     </div>
                 </section>
 
