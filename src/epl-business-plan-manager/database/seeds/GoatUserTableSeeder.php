@@ -43,12 +43,26 @@ class GoatUserTableSeeder extends Seeder
                 'user_id' => 2,
                 'user_role' => 'L'),
 
+            //John Doe
+            // Action - Establish a fine-free day to take place every second year
+            array(
+                'goat_id' => 11,
+                'user_id' => 2,
+                'user_role' => 'C'),
+
             // Mark Smith
             // Task - Aid in the selection, purchase, and configuration of equipment for the fourth literacy van
             array(
                 'goat_id' => 14,
                 'user_id' => 3,
                 'user_role' => 'L'),
+
+            //Mark Smith
+            //Task - Pay wireless bill
+            array(
+                'goat_id' => 9,
+                'user_id' => 3,
+                'user_role' => 'C'),
 
             // Sels Hunt
             // Task - Provide planning assistance to the Customer Payments team to

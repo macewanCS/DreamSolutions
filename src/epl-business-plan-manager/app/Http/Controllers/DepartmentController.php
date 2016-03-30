@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BusinessPlan;
+use App\Goat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Department;
@@ -47,6 +50,20 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         Department::create($request->input());
+
+        foreach (BusinessPlan::lists('id') as $bid) {
+            $newGoal = new Goat();
+            $newGoal->type = 'G';
+            $newGoal->parent_id = null;
+            $newGoal->description = $request['name']." Goals";
+            $newGoal->priority = 0;
+            $newGoal->complete = false;
+            $newGoal->goal_type = 'D';
+            $newGoal->due_date = null;
+            $newGoal->budget = 0;
+            $newGoal->bid = $bid;
+            $newGoal->save();
+        }
 
         return redirect('admin/depts');
     }

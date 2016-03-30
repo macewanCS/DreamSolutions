@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Log;
+use Auth;
 use App\Goat;
 use App\User;
 use App\BusinessPlan;
@@ -14,8 +15,12 @@ use Illuminate\Support\Facades\Input;
 
 class ManagePlanController extends Controller
 {
+
+    protected $user;
+
     public function __Construct()
     {
+        $user = Auth::user();
         $this->middleware('auth');
     }
 
@@ -25,7 +30,7 @@ class ManagePlanController extends Controller
         $goats = Goat::all();
         $users = User::all();
 
-        return view('manage_plan', compact('businessPlans', 'goats', 'users'));
+        return view('manage_plan', compact('businessPlans', 'goats', 'users', 'user'));
     }
 
     public function show()

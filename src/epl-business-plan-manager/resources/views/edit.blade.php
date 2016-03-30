@@ -5,15 +5,23 @@
 @stop
 
 @section('content')
+	
 
 	<div id="edit-content">
-		
-		<div id="left">
+		@if ($message)
+			<table>
+				<tr>
+					<th colspan="6" width="1055px" style="background: {{$message[0]}};"><h4>{{$message[1]}}</h4></td>
+				</tr>
+			</table>
+			@endif
+
+		<div id="left" style="margin-top: 20px">
 			<table style="width: 550px">
 				<tbody>
 					@foreach($fields as $field)
 						<tr>
-							<td style="padding: 10px 20px">{{ $field[0] }}:</td>
+							<td style="padding: 10px 20px; width: 100px">{{ $field[0] }}:</td>
 							<td>{{ $field[1] }}</td>
 						</tr>
 					@endforeach
@@ -21,7 +29,7 @@
 			</table>
 		</div>
 
-		<div id="right">
+		<div id="right" style="margin-top: 20px">
 
 			@if ($needsResize)
 				<table style="overflow-y:scroll; height:250px; display:block; scroll-behavior: smooth;">
@@ -56,10 +64,13 @@
 					@endforeach
 				</tbody>
 			</table>
+
 		</div>
 
 
+
 		<div id="bottom">
+			
 				<br><br>
 			 	{!! Form::open() !!}
                 {!! Form::label('Enter Status Update:', null, ['class' => 'label']) !!}<br><br>
@@ -69,8 +80,8 @@
 	                {!! Form::label('Status', null, ['class' => 'options']) !!}
 				 	{!! Form::radio('option', 'Status', true, ['class' => 'options']) !!}<br>
 				</div>
-                {!! Form::textarea('statusUpdate', null, ['class' => 'text-area']) !!}<br>
-                {!! Form::checkbox('complete', 1, null, ['class' => 'field']) !!}
+                {!! Form::textarea('statusUpdate', null, ['class' => 'text-area', 'required']) !!}<br>
+                {!! Form::checkbox('complete', 1, $task->complete, ['class' => 'field']) !!}
                 {!! Form::label('Task Complete', null, ['class' => 'clabel']) !!}
                 {!! Form::submit('submit', ['class' => 'button']) !!}
                 {!! Form::close() !!}
