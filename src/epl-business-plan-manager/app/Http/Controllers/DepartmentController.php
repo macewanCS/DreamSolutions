@@ -61,8 +61,6 @@ class DepartmentController extends Controller
             $newGoal->goal_type = 'D';
             $newGoal->due_date = null;
             $newGoal->budget = 0;
-            $newGoal->created_at = Carbon::now();
-            $newGoal->updated_at = Carbon::now();
             $newGoal->bid = $bid;
             $newGoal->save();
         }

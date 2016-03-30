@@ -41,8 +41,6 @@ class CreatePlanController extends Controller
             $newGoal->goal_type = 'B';
             $newGoal->due_date = null;
             $newGoal->budget = 0;
-            $newGoal->created_at = Carbon::now();
-            $newGoal->updated_at = Carbon::now();
             $newGoal->bid = $newBusinessPlan->id;
             $newGoal->save();
 
@@ -56,8 +54,6 @@ class CreatePlanController extends Controller
                 $newObj->goal_type = 'B';
                 $newObj->due_date = null;
                 $newObj->budget = 0;
-                $newObj->created_at = Carbon::now();
-                $newObj->updated_at = Carbon::now();
                 $newObj->bid = $newBusinessPlan->id;
                 $newObj->save();
             }
@@ -73,8 +69,6 @@ class CreatePlanController extends Controller
             $newGoal->goal_type = 'D';
             $newGoal->due_date = null;
             $newGoal->budget = 0;
-            $newGoal->created_at = Carbon::now();
-            $newGoal->updated_at = Carbon::now();
             $newGoal->bid = $newBusinessPlan->id;
             $newGoal->save();
         }
