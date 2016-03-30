@@ -60,7 +60,10 @@
                     @endif
                     {{$goat->description}}
                     </td>
-                    <td>
+                    <td align="right">
+                    @if (count($leadOf) && $goat->type == 'O' || ($goat->type == 'G' && $goat->goal_type == 'D'))
+                    +
+                    @endif
                     </td>
 
                 @else
@@ -87,12 +90,14 @@
                     @endif
                     </td>
 
-                    <td style="white-space: nowrap;">
+                    <td style="white-space: nowrap; font-size: small; font-weight: bold">
                         <a href="/view/{{ $goat->id }}" data-featherlight="ajax"><img src="images/note.png" width=15px height=15px></a>
                         @if (in_array($goat->department_id, $leadOf))
                         <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="images/edit.png" width=15px height=15px></a>
                         @endif
-
+                        @if (in_array($goat->department_id, $leadOf) && $goat->type == 'A')
+                        +
+                        @endif
                     </td>
 
                 @endif
