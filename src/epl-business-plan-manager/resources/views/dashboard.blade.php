@@ -19,7 +19,7 @@
 					<th>Task</th>
 					<th width="100px">Due Date</th>
 					<!-- <th>Status</th> -->
-					<th></th>
+					<th width="20px"></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -52,7 +52,7 @@
 					<th>Task</th>
 					<th>Update</th>
 					<th width="100px">Date</th>
-					<th></th>
+					<th width="20px"></th>
 				</tr>
 				</thead>
 				<tbody>

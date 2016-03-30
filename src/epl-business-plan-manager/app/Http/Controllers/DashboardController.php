@@ -29,6 +29,7 @@ class DashboardController extends Controller
         $dept = $user->departments()->get();
         $recentEmpty = true;
         $tasksEmpty = true;
+        // dd($tasks);
 
         foreach($tasks as $task){
             if (!$task->complete){

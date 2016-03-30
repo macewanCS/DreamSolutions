@@ -23,7 +23,7 @@ class EditController extends Controller
         $changes = Change::where('goat_id', $id)->get();
         $task = Goat::where('id', $id)->first();
         $leads = $task->userLeads()->get();
-        // dd($task->complete);
+        // dd($task);
 
         $collabs = $task->userCollaborators()->get();
         $leadsArray = array();
