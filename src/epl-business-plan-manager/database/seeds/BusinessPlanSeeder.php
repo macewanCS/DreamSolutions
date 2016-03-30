@@ -15,15 +15,7 @@ class BusinessPlanSeeder extends Seeder
 
             array(
                 'start' => Carbon\Carbon::createFromDate(2014, 1, 1, 'America/Edmonton'),
-                'end' => Carbon\Carbon::createFromDate(2016, 12, 31, 'America/Edmonton')),
-
-            array(
-                'start' => Carbon\Carbon::createFromDate(2016, 2, 5, 'America/Edmonton'),
-                'end' => Carbon\Carbon::createFromDate(2018, 2, 5, 'America/Edmonton')),
-
-            array(
-                'start' => Carbon\Carbon::createFromDate(2018, 2, 5, 'America/Edmonton'),
-                'end' => Carbon\Carbon::createFromDate(2020, 2, 5, 'America/Edmonton')),
+                'end' => Carbon\Carbon::createFromDate(2016, 12, 31, 'America/Edmonton'))
         ));
     }
 }
