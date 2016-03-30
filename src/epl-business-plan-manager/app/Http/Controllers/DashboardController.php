@@ -52,9 +52,7 @@ class DashboardController extends Controller
                 $overdue++;
             }
         }
-
-        dd($tasks);
-
+        
         foreach ($recent as $task){
             $recentEmpty = false;
             $task->task = Goat::where('id', $task->goat_id)->value('description');
