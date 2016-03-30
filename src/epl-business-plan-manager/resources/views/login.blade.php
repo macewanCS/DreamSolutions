@@ -38,6 +38,8 @@
       {!! Form::close() !!}
       
 
+      Or <a href="/view">continue as guest</a>
+
 
     </div>
   </body>

@@ -16,11 +16,9 @@
                     @if (Auth::user() && Auth::user()->is_admin)
                     <li><a href="/admin/users" class="{{ Request::segments()[0] == "admin" ? "active" : "" }}">Admin</a></li>
                     @endif
-                    @if (Auth::user())
                     <ul id="logout-area">
-                        <li class="logout-bar"><a href="/logout">Logout</a></li>
+                        <li class="logout-bar"><a href="/logout">{{ Auth::user() ? 'Logout' : 'Login' }}</a></li>
                     </ul>
-                    @endif
                 </ul>
                 </div>
             </div>
