@@ -191,11 +191,11 @@
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
                 @if (Auth::user()->is_bplead)
-                  <li class="active"><a data-toggle="pill" href="#cgoal">Goal</a></li>
-                  <li><a data-toggle="pill" href="#cobjective">Objective</a></li>
-                  <li><a data-toggle="pill" href="#caction">Action</a></li>
+                  <li class="active"><a data-toggle="pill" href="#ugoal">Goal</a></li>
+                  <li><a data-toggle="pill" href="#uobjective">Objective</a></li>
+                  <li><a data-toggle="pill" href="#uaction">Action</a></li>
                 @else
-                    <li class="active"><a data-toggle="pill" href="#caction">Action</a></li>
+                    <li class="active"><a data-toggle="pill" href="#uaction">Action</a></li>
                 @endif
                   <li><a data-toggle="pill" href="#utask">Task</a></li>
                 </ul>
@@ -351,11 +351,11 @@
               <nav class="goat-nav">
                 <ul class="nav nav-pills">
                 @if (Auth::user()->is_bplead)
-                  <li class="active"><a data-toggle="pill" href="#cgoal">Goal</a></li>
-                  <li><a data-toggle="pill" href="#cobjective">Objective</a></li>
-                  <li><a data-toggle="pill" href="#caction">Action</a></li>
+                  <li class="active"><a data-toggle="pill" href="#dgoal">Goal</a></li>
+                  <li><a data-toggle="pill" href="#dobjective">Objective</a></li>
+                  <li><a data-toggle="pill" href="#daction">Action</a></li>
                 @else
-                    <li class="active"><a data-toggle="pill" href="#caction">Action</a></li>
+                    <li class="active"><a data-toggle="pill" href="#daction">Action</a></li>
                 @endif
                   <li><a data-toggle="pill" href="#dtask">Task</a></li>
                 </ul>

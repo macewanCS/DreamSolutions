@@ -61,7 +61,6 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = null;
             $elem->complete = null;
-            // return back();
             $elem->save();
         } elseif ($type == 'O') {
             $this->validate($request, [
@@ -84,7 +83,8 @@ class ManagePlanController extends Controller
             'goalId' => 'required',
             'objId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem->type = $type;
             $elem->goal_type = 'B';
@@ -115,7 +115,8 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem->type = $type;
             $elem->goal_type = 'B';
@@ -170,7 +171,8 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem = Goat::find($request->actionId);
             $elem->description = $request->actionDescription;
@@ -184,7 +186,8 @@ class ManagePlanController extends Controller
             'actionId' => 'required',
             'taskId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'end' => 'required|date|after:today'
+            'end' => 'required|date|after:today',
+            'leadName' => 'required'
             ]);
             $elem = Goat::find($request->taskId);
             $elem->description = $request->taskDescription;
