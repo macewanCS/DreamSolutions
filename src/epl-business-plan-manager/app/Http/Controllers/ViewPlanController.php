@@ -98,7 +98,7 @@ class ViewPlanController extends Controller
 
         $change = new \App\Change;
         $change->change_type = 'G';
-        $change->description = "New item created";
+        $change->description = "GOAT created";
         $change->goat_id = $goat->id;
         $change->user_id = Auth::user()->id;
         $change->save();
