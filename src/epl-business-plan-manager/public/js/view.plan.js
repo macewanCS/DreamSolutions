@@ -50,9 +50,10 @@ $(document).ready(function() {
         allowNesting(true);
         $('.hide-children').each(function() { $(this).removeClass('hide-children'); });
         $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
-        $('#deptteam-select').val('').trigger('change');
-        $('#lead-select').val('').trigger('change');
-        $('#collab-select').val('').trigger('change');
+        $(".user-select-multiple").each(function () {
+            if ($(this).val())
+                $(this).val('').trigger('change');
+        });
         $("#view-plan-table").trigger('sortReset').trigger('filterReset');
         expandAll();
         $('#goal-box').removeAttr('disabled');

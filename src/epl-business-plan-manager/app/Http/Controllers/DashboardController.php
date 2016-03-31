@@ -44,14 +44,16 @@ class DashboardController extends Controller
         }//redo controller
 
 
-        $inProgress = $tasks->where('complete', '0')->count();
-        $complete = $tasks->where('complete', '1')->count();
+        $inProgress = $user->goats()->where('complete', '0')->count();
+        $complete = $user->goats()->where('complete', '1')->count();
         $overdue = 0;
         foreach($tasks as $task){
             if (Carbon\Carbon::parse($task->due_date)->lt(Carbon\Carbon::now())){
                 $overdue++;
             }
         }
+
+        $inProgress -= $overdue;
 
         foreach ($recent as $task){
             $recentEmpty = false;

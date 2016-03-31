@@ -17,7 +17,7 @@
         @else
             <!-- creating a new goat -->
             @foreach (Auth::user()->leadOf as $dept)
-                @if ($goat->parent->departmentCollaborators->contains($dept))
+                @if ($goat->parent->departmentCollaborators->contains($dept) || $goat->goal_type == 'D')
                 <option value={{ $dept->id }}>{{ $dept->name }}</option>
                 @endif
             @endforeach
