@@ -1,5 +1,4 @@
 <table>
-
     <tr>
         <td class="view-form-label">{!! Form::label('department', 'Department: ') !!}</td>
         <td>
@@ -13,9 +12,15 @@
             <option value={{ $dept->id }}>{{ $dept->name }}</option>
             @endforeach
         @elseif ($goat->department_id)
+            <!-- editing a goat -->
             <option value={{ $goat->department_id}} selected>{{ $goat->department->name }}</option>
         @else
-            <option value={{ $goat->parent->department_id}} selected>{{ $goat->parent->department->name }}</option>
+            <!-- creating a new goat -->
+            @foreach (Auth::user()->leadOf as $dept)
+                @if ($goat->parent->departmentCollaborators->contains($dept))
+                <option value={{ $dept->id }}>{{ $dept->name }}</option>
+                @endif
+            @endforeach
         @endif
         </select>
         </td>
