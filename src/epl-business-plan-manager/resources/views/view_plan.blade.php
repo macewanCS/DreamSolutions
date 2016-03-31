@@ -93,8 +93,10 @@
                     <td style="white-space: nowrap;">{{ $goat->department ? $goat->department->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach
-                        @foreach ($goat->departmentCollaborators as $dept) {{ $dept->name }} <br>@endforeach</td>
+                    <td style="white-space: nowrap;">
+                        @foreach ($goat->departmentCollaborators as $dept) <b>{{ $dept->name }}</b> <br>@endforeach
+                        @foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach
+                    </td>
                     <td style="white-space: nowrap;">{{ $goat->due_date }}</td>
 
                     <td style="white-space: nowrap;">
