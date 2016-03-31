@@ -128,6 +128,16 @@ class ViewPlanController extends Controller
             $change->user_id = Auth::user()->id;
             $change->save();
         }
+
+        if ($request->success_measure != $goat->success_measure) {
+            $change = new \App\Change;
+            $change->change_type = 'M';
+            $change->description = "Success Measure: ".$request->success_measure;
+            $change->goat_id = $goat->id;
+            $change->user_id = Auth::user()->id;
+            $change->save();
+        }
+
         if ($request->leads) {
             $newLeads = $request->leads;
             $curLeads = $goat->userLeads()->get()->map(function($user) {
@@ -216,6 +226,7 @@ class ViewPlanController extends Controller
         }
 
         $goat->description = $request->description;
+        $goat->success_measure = $request->success_measure;
         $goat->due_date = $request->due_date;
         $goat->priority = $request->priority;
         $goat->department_id = $request->department;

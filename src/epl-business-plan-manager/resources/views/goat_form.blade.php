@@ -94,6 +94,14 @@
             </td>
         </tr>
 
+
+        @if ($goat->goat_level() == 3 || $goat->goat_level() == 4)
+            <tr>
+                <td class="view-form-label">{!! Form::label('success_measure', 'Success Measure: ') !!}</td>
+                <td>{!! Form::textarea('success_measure', null, ['class' => 'view-form-textarea', 'rows' => '4', 'cols' => '45']) !!}</td>
+            </tr>
+        @endif
+
         <tr>
             <td class="view-form-label">{!! Form::label('due_date', 'Due date: ') !!}</td>
             <td>{!! Form::date('due_date', null) !!}</td>
