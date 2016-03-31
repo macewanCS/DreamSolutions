@@ -17,12 +17,17 @@ elixir(function(mix) {
     mix.styles([
         'libs/header.css',
         'app.css',
+        'manage_plan.css',
+        'select2_4.0.2.css'
     ]);
 
     mix.version('public/css/all.css');
 
     mix.scripts([
-    	'cascadeFillSelect.js'
+    	'cascadeFillSelect.js',
+        'ajaxJquery1.12.0.js',
+        'select2_4.0.2.js',
+        'bootstrap3.3.6.js'
     	], 'public/build/js/all.js',
     	'resources/assets/js');
 });
