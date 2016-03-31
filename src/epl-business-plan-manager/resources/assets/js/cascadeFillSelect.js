@@ -51,6 +51,7 @@ $(document).ready(function() {
 //----------------------------------------------------------------------------------------------------------------
     $('.actionId').on('change', function(e){
       var action_Id = e.target.value;
+      var i = 2;
 
       if ($('#delete').hasClass('active')) {
         if ($('#daction').hasClass('active')) {
@@ -74,13 +75,24 @@ $(document).ready(function() {
             });
           });
         } else { // Delete, task
-          $.get('/ajax-task?action_Id=' + action_Id, function(data){
+          if (i == 1) {
+            $.get('/ajax-task?action_Id=' + action_Id, function(data){
             $('.taskId').empty();
             $('.taskId').append('<option default selected disabled>Select Task</option>');
             $.each(data, function(index, taskObj){
               $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
             });
           });
+          } else {
+            console.log('Im in.');
+            $.get('/ajax-leadTask?action_Id=' + action_Id, function(data){
+              $('.taskId').empty();
+              $('.taskId').append('<option default selected disabled>Select Task</option>');
+              $.each(data, function(index, taskObj){
+                $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
+              });
+            });
+          }
         }
       } else { // In update section.
         if ($('#uaction').hasClass('active')) {

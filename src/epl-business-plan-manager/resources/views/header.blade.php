@@ -1,4 +1,4 @@
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="{{ elixir('css/all.css') }}"></link>
 
     <div id="header-area">
         <img id="epl-logo" src="/images/eplbpm-vertical.png" alt="EPL Logo">

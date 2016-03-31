@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Log;
 use Auth;
 use App\Goat;
 use App\User;
@@ -40,7 +38,6 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
-        Log::info($request);
         $elem = new Goat;
         $type = $request->type;
         $elem->bid = $request->businessId;
