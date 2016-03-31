@@ -124,7 +124,17 @@ class ViewPlanController extends Controller
     public function updateGoat(Request $request, $id) {
         $goat = Goat::find($id);
 
-        $this->createChanges($goat, $request);
+        $userCollabs = array();
+        $deptCollabs = array();
+
+        foreach ($request->collabs as $col) {
+            if (strpos($col, 'user') !== false)
+                array_push($userCollabs, $col[5]);
+            else
+                array_push($deptCollabs, $col[5]);
+        }
+
+        $this->createChanges($goat, $request->department, $request->description, $request->success_measure, $request->leads, $userCollabs, $request->due_date, $request->priority);
 
         $goat->description = $request->description;
         $goat->success_measure = $request->success_measure;
@@ -134,8 +144,9 @@ class ViewPlanController extends Controller
         $goat->save();
 
         $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
-        $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
+        $collabs = array_fill_keys($userCollabs, ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
+        $goat->departmentCollaborators()->sync($deptCollabs);
 
         return redirect('/view');
     }

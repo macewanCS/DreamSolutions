@@ -21,37 +21,37 @@ trait ChangeLogger {
         $change->save();
     }
 
-    public function createChanges(Goat $goat, Request $request) {
+    public function createChanges(Goat $goat, $department_id, $description, $success_measure, $leads, $collabs, $due_date, $priority) {
 
-        if ($request->department != $goat->department_id) {
+        if ($department_id != $goat->department_id) {
             $change = new \App\Change;
             $change->change_type = 'L';
-            $change->description = 'Assigned to ' . Department::find($request->department)->name;
+            $change->description = 'Assigned to ' . Department::find($department_id)->name;
             $change->goat_id = $goat->id;
             $change->user_id = Auth::user()->id;
             $change->save();
         }
 
-        if ($request->description != $goat->description) {
+        if ($description != $goat->description) {
             $change = new \App\Change;
             $change->change_type = 'D';
-            $change->description = $request->description;
+            $change->description = $description;
             $change->goat_id = $goat->id;
             $change->user_id = Auth::user()->id;
             $change->save();
         }
 
-        if ($request->success_measure != $goat->success_measure) {
+        if ($success_measure != $goat->success_measure) {
             $change = new \App\Change;
             $change->change_type = 'M';
-            $change->description = "Success Measure: ".$request->success_measure;
+            $change->description = "Success Measure: ".$success_measure;
             $change->goat_id = $goat->id;
             $change->user_id = Auth::user()->id;
             $change->save();
         }
 
-        if ($request->leads) {
-            $newLeads = $request->leads;
+        if ($leads) {
+            $newLeads = $leads;
             $curLeads = $goat->userLeads()->get()->map(function($user) {
                 return $user->id;
             })->toArray();
@@ -84,8 +84,8 @@ trait ChangeLogger {
             }
         }
 
-        if ($request->collabs) {
-            $newCollaborators = $request->collabs;
+        if ($collabs) {
+            $newCollaborators = $collabs;
             $curCollaborators = $goat->userCollaborators()->get()->map(function($user) {
                 return $user->id;
             })->toArray();
@@ -119,19 +119,19 @@ trait ChangeLogger {
             }
         }
 
-        if ($goat->due_date != $request->due_date) {
+        if ($goat->due_date != $due_date) {
             $change = new \App\Change;
             $change->change_type = 'T';
-            $change->description = "Changed from " . \Carbon\Carbon::parse($goat->due_date)->toDateString() . " to " . \Carbon\Carbon::parse($request->due_date)->toDateString();
+            $change->description = "Changed from " . \Carbon\Carbon::parse($goat->due_date)->toDateString() . " to " . \Carbon\Carbon::parse($due_date)->toDateString();
             $change->goat_id = $goat->id;
             $change->user_id = Auth::user()->id;
             $change->save();
         }
 
-        if ($goat->priority != $request->priority) {
+        if ($goat->priority != $priority) {
             $change = new \App\Change;
             $change->change_type = 'P';
-            $change->description = "Changed from " . $this->priority_string($goat->priority) . " to " . $this->priority_string($request->priority);
+            $change->description = "Changed from " . $this->priority_string($goat->priority) . " to " . $this->priority_string($priority);
             $change->goat_id = $goat->id;
             $change->user_id = Auth::user()->id;
             $change->save();
