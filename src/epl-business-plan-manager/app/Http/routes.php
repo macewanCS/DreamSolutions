@@ -63,19 +63,21 @@ Route::get('ajax-Collabs', function () {
 Route::get('ajax-goat_lUsers', function () {
     $actionId = Input::get('goat_Id');
     $data = Goat::where('id', '=', $actionId)->first()->userLeads;
-    Log::info($data);
     return Response::json($data);
 });
 Route::get('ajax-goat_cUsers', function () {
     $actionId = Input::get('goat_Id');
     $data = Goat::where('id', '=', $actionId)->first()->userCollaborators;
-    Log::info($data);
     return Response::json($data);
 });
-
-// Create business controller routes
-// Route::get('/manage/create-plan', 'CreatePlanController@show');
-// Route::post('/manage/create-plan', 'CreatePlanController@create');
+Route::get('ajax-leadTask', function() {
+    // $user = Auth::user();
+    Log::info($user);
+    $actionId = Input::get('action_Id');
+    $tasks = Goat::where('parent_id', '=', $actionId)->where('type', '=', 'T')->$user->leadOf()->get();
+    Log::info($tasks);
+    return Response::json($tasks);
+});
 
 /*
 |--------------------------------------------------------------------------
