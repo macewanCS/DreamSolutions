@@ -128,6 +128,111 @@ class GoatUserTableSeeder extends Seeder
                 'user_id' => 1,
                 'user_role' => 'L'),
 
+            array(
+                'goat_id' => 33,
+                'user_id' => 5,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 33,
+                'user_id' => 6,
+                'user_role' => 'C'),
+
+            array(
+                'goat_id' => 34,
+                'user_id' => 8,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 34,
+                'user_id' => 2,
+                'user_role' => 'C'),
+
+            array(
+                'goat_id' => 36,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 37,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 38,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 39,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 40,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 41,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 42,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 44,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 45,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 46,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 47,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 48,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 49,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 50,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 51,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 52,
+                'user_id' => 1,
+                'user_role' => 'L'),
+
+            array(
+                'goat_id' => 53,
+                'user_id' => 1,
+                'user_role' => 'L'),
+            
         ));
     }
 }

@@ -26,7 +26,9 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null
+            ),
 
 			// Goal - 2
             array(
@@ -41,7 +43,9 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null
+            ),
 
 			// Goal - 3
             array(
@@ -56,7 +60,9 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null
+            ),
 
 			// Goal - 4
             array(
@@ -71,7 +77,9 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null
+            ),
 
 			// Objective - 5
             array(
@@ -86,7 +94,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null
+                'department_id' => null,
+                'success_measure' => null
 			),
 
             // Action - 6
@@ -101,7 +110,9 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 1),
+                'department_id' => 1,
+                'success_measure' => 'Achieve an 90% satisfaction rating; Increase computer usage by 20%'
+            ),
 
 			// Task - 7
             array('type' => 'T',
@@ -115,7 +126,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => null),
 
 			// Task - 8
             array('type' => 'T',
@@ -129,7 +141,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 3),
+                'department_id' => 3,
+                'success_measure' => null),
 
 			// Task - 9
             array('type' => 'T',
@@ -143,7 +156,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 4),
+                'department_id' => 4,
+                'success_measure' => null),
 
 			// Objective - 10
             array('type' => 'O',
@@ -157,7 +171,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null),
 
 			// Action - 11
             array('type' => 'A',
@@ -171,7 +186,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 5),
+                'department_id' => 5,
+                'success_measure' => null),
 
 			// Task - 12
             array('type' => 'T',
@@ -185,7 +201,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 1),
+                'department_id' => 1,
+                'success_measure' => null),
 
 			// Action - 13
             array('type' => 'A',
@@ -199,7 +216,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => 'Increased use and knowledge of EPL services in underserved communities'),
 
 			// Task - 14
             array('type' => 'T',
@@ -213,7 +231,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 3),
+                'department_id' => 3,
+                'success_measure' => 'Equipment purchased, configured, and deployed'),
 
 			// Objective - 15
             array('type' => 'O',
@@ -227,7 +246,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => null),
+                'department_id' => null,
+                'success_measure' => null),
 
 			// Action - 16
 			array('type' => 'A',
@@ -241,7 +261,8 @@ class GoatsTableSeeder extends Seeder
 				'created_at' => Carbon\Carbon::now(),
 				'updated_at' => Carbon\Carbon::now(),
 				'bid' => 1,
-                'department_id' => 5),
+                'department_id' => 5,
+                'success_measure' => 'Achieve an 90% satisfaction rating with services and content'),
 
             // Task - 17
             array('type' => 'T',
@@ -255,7 +276,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => 'SSO is implemented'),
 
             // IT Goal - 18
             array('type' => 'G',
@@ -269,12 +291,13 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => null),
 
             // IT Goal - 19
             array('type' => 'O',
                 'parent_id' => 18,
-                'description' => 'Mobile Device Management (MDM) documentation and rollout',
+                'description' => 'Test Windows 10 in EPL\'s environment and develop a deployment plan ',
                 'priority' => 1,
                 'complete' => false,
                 'goal_type' => 'D',
@@ -283,12 +306,13 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => null),
             
             // IT Goal - 20
-            array('type' => 'A',
+            array('type' => 'O',
                 'parent_id' => 19,
-                'description' => 'Create internal documentation for each profile (i.e. Early literacy and Mini-makerspace) applied to EPL iPads by EPL\'s Mobile Device Management software',
+                'description' => 'Mobile Device Management (MDM) documentation and roll out',
                 'priority' => 2,
                 'complete' => true,
                 'goal_type' => 'D',
@@ -297,7 +321,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 2),
+                'department_id' => 2,
+                'success_measure' => null),
 
             // Events Team Goals - 21
             array('type' => 'G',
@@ -311,12 +336,13 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 1),
+                'department_id' => 1,
+                'success_measure' => null),
 
             // Human Resources Goals - 22
             array('type' => 'G',
                 'parent_id' => null,
-                'description' => 'Events Team Goals',
+                'description' => 'Human Resources Goals',
                 'priority' => 2,
                 'complete' => false,
                 'goal_type' => 'D',
@@ -325,12 +351,13 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 3),
+                'department_id' => 3,
+                'success_measure' => null),
 
             // Financial Services Goals - 23
             array('type' => 'G',
                 'parent_id' => null,
-                'description' => 'Events Team Goals',
+                'description' => 'Financial Services Goals Goals',
                 'priority' => 2,
                 'complete' => false,
                 'goal_type' => 'D',
@@ -339,7 +366,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 4),
+                'department_id' => 4,
+                'success_measure' => null),
 
             // Marketing Goals - 24
             array('type' => 'G',
@@ -353,7 +381,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 5),
+                'department_id' => 5,
+                'success_measure' => null),
 
             // Fund Development Goals - 25
             array('type' => 'G',
@@ -367,7 +396,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 6),
+                'department_id' => 6,
+                'success_measure' => null),
 
             // Collection Management and Access Goals - 26
             array('type' => 'G',
@@ -381,7 +411,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 7),
+                'department_id' => 7,
+                'success_measure' => null),
 
             // School Aged Services (SAS) Team Goals - 27
             array('type' => 'G',
@@ -395,7 +426,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 8),
+                'department_id' => 8,
+                'success_measure' => null),
 
             // Community-Led Team Goals - 28
             array('type' => 'G',
@@ -409,7 +441,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 9),
+                'department_id' => 9,
+                'success_measure' => null),
 
             // Foundational Programming Team Goals - 29
             array('type' => 'G',
@@ -423,7 +456,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 10),
+                'department_id' => 10,
+                'success_measure' => null),
 
             // Membership Services Team Goals - 30
             array('type' => 'G',
@@ -437,7 +471,8 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 11),
+                'department_id' => 11,
+                'success_measure' => null),
 
             // Discovery Team Goals - 31
             array('type' => 'G',
@@ -451,7 +486,338 @@ class GoatsTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now(),
                 'bid' => 1,
-                'department_id' => 12),
+                'department_id' => 12,
+                'success_measure' => null),
+
+            // Objective - 32
+            array('type' => 'O',
+                'parent_id' => 3,
+                'description' => 'act as a catalyst for learning, discovering and creating',
+                'priority' => 2,
+                'complete' => true,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 2, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Action - 33
+            array('type' => 'A',
+                'parent_id' => 32,
+                'description' => 'Develop an Open Data policy that includes how we will use and share our own data; participate in Edmonton\'s Open Data community and support data literacy initiatives.',
+                'priority' => 2,
+                'complete' => true,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 2, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 34
+            array('type' => 'T',
+                'parent_id' => 33,
+                'description' => 'Release more EPL open data to City of Edmonton open data portal.',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Objective - 35
+            array('type' => 'O',
+                'parent_id' => 3,
+                'description' => 'EPL is a staff of learners confident in their abilities to assist customers',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Action - 36
+            array('type' => 'A',
+                'parent_id' => 35,
+                'description' => 'Review technology needs to provide services and implement strategies to meet them',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 37
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'Support the ILS team\'s implementation of Mobile Circ',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 38
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'Purchase new iPad kits for each branch currently without one per budget request',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 39
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'Purchase laptop kits for each branch currently without one per budget request',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 40
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'In collaboration with DLI, select equipment to replace aging Makerspace equipment',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 41
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'Implement a regular "What\'s up with that?" style blog post by IT to enhance staff understanding of technology',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 42
+            array('type' => 'T',
+                'parent_id' => 36,
+                'description' => 'Stabilize and standardize the display board environment',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Objective - 43
+            array('type' => 'O',
+                'parent_id' => 4,
+                'description' => 'We have transformed our approach to service delivery and use of physical spaces',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Action - 44
+            array('type' => 'A',
+                'parent_id' => 43,
+                'description' => 'Complete reviews to ensure ongoing improvement of interlibrary loans, custodial, service point operations, and others. ',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 45
+            array('type' => 'T',
+                'parent_id' => 44,
+                'description' => 'Compare IT\'s current ticketing sytems against demos of inexpensive, focused ticketing systems to determine if a migration can and should occur.',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 46
+            array('type' => 'T',
+                'parent_id' => 44,
+                'description' => 'Conduct a literature review of Help Desk best practices to determine how EPL\'s processes can be improved',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 47
+            array('type' => 'T',
+                'parent_id' => 44,
+                'description' => 'Create an Internal Service Level Agreement document outlining IT\'s processes and commitments to its customers',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'B',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 48
+            array('type' => 'T',
+                'parent_id' => 20,
+                'description' => 'Create internal documentation for each profile (i.e. Early literacy and Mini-makerspace) applied to EPL iPads by EPL\'s Mobile Device Management software',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 49
+            array('type' => 'T',
+                'parent_id' => 20,
+                'description' => 'Develop and implement an implementation plan for rolling EPL\'s Mobile Device Management tool out to all pre-existing kit iPads',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 50
+            array('type' => 'T',
+                'parent_id' => 20,
+                'description' => 'Complete a cost/benefit analysis of using EPL\'s MDM to secure manager iPads',
+                'priority' => 2,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2017, 1, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 51
+            array('type' => 'T',
+                'parent_id' => 19,
+                'description' => 'Develop a test plan to determine if EPL is ready to move to Windows 10',
+                'priority' => 1,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2018, 8, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 52
+            array('type' => 'T',
+                'parent_id' => 19,
+                'description' => 'Determine the budget implications of upgrading to Windows 10',
+                'priority' => 1,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2018, 8, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
+
+            // Task - 53
+            array('type' => 'T',
+                'parent_id' => 19,
+                'description' => 'Develop a deployment/upgrade plan to migrate to Windows 10 if appropriate',
+                'priority' => 1,
+                'complete' => false,
+                'goal_type' => 'D',
+                'due_date' => Carbon\Carbon::createFromDate(2018, 8, 7),
+                'budget' => 0,
+                'created_at' => Carbon\Carbon::now(),
+                'updated_at' => Carbon\Carbon::now(),
+                'bid' => 1,
+                'department_id' => 2,
+                'success_measure' => null),
         ));
     }
 }

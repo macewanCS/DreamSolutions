@@ -15,7 +15,8 @@ class Goat extends Model
     	'budget',
         'bp_id',
         'complete',
-        'department_id'
+        'department_id',
+        'success_measure'
     ];
 
     public function userLeads()

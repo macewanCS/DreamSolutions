@@ -25,6 +25,10 @@ class DepartmentGoatTableSeeder extends Seeder
                 'department_id' => 4,
                 'goat_id' => 13),
 
+            array(
+                'department_id' => 12,
+                'goat_id' => 36),
+
         ));
     }
 }
