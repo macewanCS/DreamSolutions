@@ -230,7 +230,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".user-select-multiple").select2({ placeholder: 'Select filters', width: '200px',  });
+    $(".user-select-multiple").select2({ placeholder: 'Select filters', width: '337px',  });
 
     // hack to prevent select2 menu from opening when clearing it
     // See https://github.com/select2/select2/issues/3320
@@ -245,6 +245,6 @@ $(document).ready(function() {
     });
 
     $.featherlight.defaults.afterOpen = function() {
-        $(".select-multiple").select2({ placeholder: 'Select users', width: '200px' });
+        $(".select-multiple").select2({ placeholder: 'Select users', width: '337px' });
     };
 });
