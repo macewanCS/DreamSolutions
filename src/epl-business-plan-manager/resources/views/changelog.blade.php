@@ -45,8 +45,8 @@
                 <td>{{ ($change->change_type === 'S' ? 'Status' :
                 ($change->change_type === 'N' ? 'Note' :
                 ($change->change_type === 'G' ? 'Create' :
-                ($change->change_type === 'L' ? 'Leads' :
-                ($change->change_type === 'C' ? 'Collaborators' :
+                ($change->change_type === 'L' ? 'Lead' :
+                ($change->change_type === 'C' ? 'Collaborator' :
                 ($change->change_type === 'T' ? 'Date' :
                 ($change->change_type === 'D' ? 'Description' :
                 ($change->change_type === 'P' ? 'Priority' :
@@ -74,6 +74,18 @@
         <li><label><input name="changetype" type="radio" value='' {{ array_key_exists('type', $query) && $query['type'] ? '' : 'checked' }}/>All</label></li>
         <li><label><input name="changetype" type="radio" value='S' {{ array_key_exists('type', $query) && $query['type']  == 'S' ? 'checked' : '' }}/>Status</label></li>
         <li><label><input name="changetype" type="radio" value='N' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Note</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='G' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Create</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='L' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Lead</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='C' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Collaborator</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='T' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Date</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='D' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Description</label></li>
+        </label></li>
+        <li><label><input name="changetype" type="radio" value='P' {{ array_key_exists('type', $query) && $query['type']  == 'N' ? 'checked' : '' }}/>Priority</label></li>
     </ul>
 </div>
 
