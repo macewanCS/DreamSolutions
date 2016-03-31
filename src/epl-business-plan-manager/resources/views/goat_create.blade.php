@@ -11,7 +11,7 @@
                 <h3>Create: Goal</h3>
             @elseif ($goat->goat_level() == 2)
                 <h3>Create: Objective</h3>
-            @elseif ($goat->goat_level() == 3w)
+            @elseif ($goat->goat_level() == 3)
                 <h3>Create: Action</h3>
             @elseif ($goat->goat_level() == 4)
                 <h3>Create: Task</h3>

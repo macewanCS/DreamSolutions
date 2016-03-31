@@ -93,7 +93,8 @@
                     <td style="white-space: nowrap;">{{ $goat->department ? $goat->department->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach</td>
+                    <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach
+                        @foreach ($goat->departmentCollaborators as $dept) {{ $dept->name }} <br>@endforeach</td>
                     <td style="white-space: nowrap;">{{ $goat->due_date }}</td>
 
                     <td style="white-space: nowrap;">
@@ -111,8 +112,8 @@
                         @if ($is_bplead || in_array($goat->department_id, $leadOf))
                         <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit.png" width=15px height=15px></a>
                         @endif
-                        @if (($is_bplead || in_array($goat->department_id, $leadOf)) && $goat->type == 'A')
-                        <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-t">+</a>
+                        @if (($is_bplead || in_array($goat->department_id, $leadOf ) || in_array($goat->id, $collaboratorGoals)) && $goat->type == 'A')
+                            <a href="/view/{{ $goat->id }}/create" data-featherlight="ajax" class="create-t">+</a>
                         @endif
                     </td>
 

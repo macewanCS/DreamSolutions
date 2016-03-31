@@ -47,15 +47,30 @@ class ViewPlanController extends Controller
         }
 
         $leadOf = array();
+
         if (Auth::user()) {
             foreach (Auth::user()->leadOf as $dept) {
                 array_push($leadOf, $dept->id);
             }
         }
-        
-        return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
-            'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
-            'query' => $request, 'bp_id' => $currentBp->id, 'is_bplead' => Auth::user() && Auth::user()->is_bplead]);
+
+        $collaboratorGoals = array();
+        foreach ($leadOf as $dept_id) {
+            foreach (Department::find($dept_id)->collaboratorOn as $goat) {
+                array_push($collaboratorGoals, $goat->id);
+            }
+        }
+
+        return view('view_plan')->with([
+                'bp' => $sorted,
+                'users' => User::all(),
+                'depts' => Department::all(),
+                'leadOf' => $leadOf,
+                'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
+                'query' => $request, 'bp_id' => $currentBp->id,
+                'is_bplead' => Auth::user() && Auth::user()->is_bplead,
+                'collaboratorGoals' => $collaboratorGoals
+        ]);
     }
 
     public function showChanges($id) {

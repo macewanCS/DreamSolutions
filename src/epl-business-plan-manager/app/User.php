@@ -29,14 +29,19 @@ class User extends Authenticatable
 
     public function leadOn()
     {
-        return $this->belongsToMany('App\Goat', 'user_role')->where('user_role', '=', 'L')->withTimestamps();
+        return $this->belongsToMany('App\Goat')->where('user_role', '=', 'L')->withTimestamps();
     }
 
     public function collaboratorOn()
     {
-        return $this->belongsToMany('App\Goat');//, 'user_role')->where('user_role', '=', 'C')->withTimestamps();
+        return $this->belongsToMany('App\Goat')->where('user_role', '=', 'C')->withTimestamps();
     }
 
+    public function goats()
+    {
+        return $this->belongsToMany('App\Goat');
+    }
+    
     // To access the permission_level as it is... something like
     //    $user->departments()->where('name', 'IT')->first()->pivot->permission_level
     // There's gotta be an easier way than this!
@@ -48,17 +53,12 @@ class User extends Authenticatable
     public function permission(Department $department)
     {
         $dept = $this->belongsToMany('App\Department')->withPivot('permission_level')->find($department->id);
-        return $dept ? $w->pivot->permission_level : null;
+        return $dept ? $dept->pivot->permission_level : null;
     }
 
     public function leadOf()
     {
         return $this->belongsToMany('App\Department')->where('permission_level', 'T')->withTimestamps();
-    }
-
-    public function collaboratorOf()
-    {
-        return $this->belongsToMany('App\goat_user')->where('user_role', '=', 'C')->withTimestamps();
     }
 
     public function name()
