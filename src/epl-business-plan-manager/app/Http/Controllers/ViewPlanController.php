@@ -85,6 +85,7 @@ class ViewPlanController extends Controller
         $goat->type = $goat->parent->type == 'G' ? 'O' :
                       ($goat->parent->type == 'O' ? 'A' :
                       'T');
+        $goat->goal_type = $goat->parent->goal_type; 
         $goat->priority = 2;
 
         return view('goat_create', ['goat' => $goat, 'users' => User::orderBy('first_name')->get(), 'parentId' => $parent_id]);
