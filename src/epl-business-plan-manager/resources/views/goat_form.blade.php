@@ -113,7 +113,7 @@
         </tr>
         <tr>
             <td class="view-form-label">{!! Form::label('priority', 'Priority: ') !!}</td>
-            <td>{!! Form::select('priority', array('1' => 'High', '2' => 'Medium', '3' => 'Low'), [ 'class' => 'view-form-select']) !!}</td>
+            <td>{!! Form::select('priority', array('1' => 'High', '2' => 'Medium', '3' => 'Low'), null, [ 'class' => 'view-form-select']) !!}</td>
         </tr>
     @endif
 </table>
