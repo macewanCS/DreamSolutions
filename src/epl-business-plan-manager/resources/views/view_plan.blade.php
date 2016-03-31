@@ -93,8 +93,10 @@
                     <td style="white-space: nowrap;">{{ $goat->department ? $goat->department->name : 'None' }}</td>
                     <!-- TODO: turn into lists -->
                     <td style="white-space: nowrap;">@foreach ($goat->userLeads as $user) {{ $user->name() }} <br>@endforeach</td>
-                    <td style="white-space: nowrap;">@foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach
-                        @foreach ($goat->departmentCollaborators as $dept) {{ $dept->name }} <br>@endforeach</td>
+                    <td style="white-space: nowrap;">
+                        @foreach ($goat->departmentCollaborators as $dept) <b>{{ $dept->name }}</b> <br>@endforeach
+                        @foreach ($goat->userCollaborators as $user) {{ $user->name() }} <br>@endforeach
+                    </td>
                     <td style="white-space: nowrap;">{{ $goat->due_date }}</td>
 
                     <td style="white-space: nowrap;">
@@ -154,7 +156,7 @@
 
 <div id="deptteam-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        <select class="user-select-multiple" col='6' multiple="multiple">
+        <select id="deptteam-select" class="user-select-multiple" col='6' multiple="multiple">
           @foreach ($depts as $dept)
             <option value="{{ $dept->name }}">{{ $dept->name }}</option>
           @endforeach
@@ -164,7 +166,7 @@
 
 <div id="lead-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        <select class="user-select-multiple" col='7' multiple="multiple">
+        <select id="lead-select" class="user-select-multiple" col='7' multiple="multiple">
           @foreach ($users as $user)
             <option value="{{ $user->name() }}">{{ $user->name() }}</option>
           @endforeach
@@ -174,10 +176,17 @@
 
 <div id="collaborator-dropdown" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
-        <select class="user-select-multiple" col='8' multiple="multiple">
+        <select id="collab-select" class="user-select-multiple" col='8' multiple="multiple">
+            <optgroup label="Departments and Teams">
+            @foreach ($depts as $dept)
+                <option value="{{ $dept->name }}">{{ $dept->name }}</option>
+            @endforeach
+            </optgroup>
+            <optgroup label="Users">
             @foreach ($users as $user)
                 <option value="{{ $user->name() }}">{{ $user->name() }}</option>
             @endforeach
+            </optgroup>
         </select>
     </div>
 </div>

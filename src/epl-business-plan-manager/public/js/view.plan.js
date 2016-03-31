@@ -41,7 +41,8 @@ $(document).ready(function() {
           output_delivery      : 'd',         // (p)opup, (d)ownload
           output_saveRows      : 'v',         // (a)ll, (v)isible, (f)iltered, jQuery filter selector (string only) or filter function
           output_duplicateSpans : false,
-          output_ignoreColumns : [0, 1, 2, 5, 11]
+          output_ignoreColumns : [0, 1, 2, 5, 11],
+          output_saveFileName : 'bp.csv'
         }
     });
 
@@ -49,6 +50,9 @@ $(document).ready(function() {
         allowNesting(true);
         $('.hide-children').each(function() { $(this).removeClass('hide-children'); });
         $('.jq-dropdown :checkbox').each(function() { $(this).attr('checked', false); });
+        $('#deptteam-select').val('').trigger('change');
+        $('#lead-select').val('').trigger('change');
+        $('#collab-select').val('').trigger('change');
         $("#view-plan-table").trigger('sortReset').trigger('filterReset');
         expandAll();
         $('#goal-box').removeAttr('disabled');

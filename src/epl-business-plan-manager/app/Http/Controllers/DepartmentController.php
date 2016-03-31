@@ -24,7 +24,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $pagesize = 5;
+        $pagesize = 15;
 
         $depts = Department::paginate($pagesize);
 
