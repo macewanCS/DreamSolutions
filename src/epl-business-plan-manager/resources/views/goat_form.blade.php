@@ -2,7 +2,19 @@
 
     <tr>
         <td class="view-form-label">{!! Form::label('department', 'Department: ') !!}</td>
-        <td>{!! Form::label('department', Auth::user()->leadOf()->first()->name) !!}</td>
+        <td>
+        <select name='department'>
+        @if (Auth::user()->is_bplead)
+            @foreach (App\Department::all() as $dept)
+            <option value={{$dept->id}} {{ $goat->department_id == $dept->id ? 'selected' : '' }}>{{ $dept->name }}</option>
+            @endforeach
+        @elseif (count(Auth::user()->leadOf))
+            @foreach (Auth::user()->leadOf as $dept)
+            <option value={{$dept->id}} {{ $goat->department_id == $dept->id ? 'selected' : '' }}>{{ $dept->name }}</option>
+            @endforeach
+        @endif
+        </select>
+        </td>
     </tr>
 
     @if ($goat->goat_level() == 1)

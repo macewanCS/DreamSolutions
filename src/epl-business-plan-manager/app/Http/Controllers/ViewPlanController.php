@@ -26,7 +26,7 @@ class ViewPlanController extends Controller
         }
 
         $sorted = Goat::where('bid', $currentBp->id)->where('type', 'G')->orderBy('goal_type')->orderBy('description')->get();
-        $bp = Goat::where('bid', $currentBp->id)->where('type', '<>', 'G')->orderBy('description', 'desc')->get();
+        $bp = Goat::where('bid', $currentBp->id)->where('type', '<>', 'G')->orderByRaw("FIELD(type, 'O', 'A', 'T')")->orderBy('description', 'desc')->get();
 
         foreach ($bp as $goat) {
             if ($goat->type === 'G') {
@@ -110,6 +110,16 @@ class ViewPlanController extends Controller
 
     public function updateGoat(Request $request, $id) {
         $goat = Goat::find($id);
+
+        if ($request->department != $goat->department_id) {
+            $change = new \App\Change;
+            $change->change_type = 'L';
+            $change->description = 'Assigned to ' . Department::find($request->department)->name;
+            $change->goat_id = $goat->id;
+            $change->user_id = Auth::user()->id;
+            $change->save();
+        }
+
         if ($request->description != $goat->description) {
             $change = new \App\Change;
             $change->change_type = 'D';
@@ -208,6 +218,7 @@ class ViewPlanController extends Controller
         $goat->description = $request->description;
         $goat->due_date = $request->due_date;
         $goat->priority = $request->priority;
+        $goat->department_id = $request->department;
         $goat->save();
 
         $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
