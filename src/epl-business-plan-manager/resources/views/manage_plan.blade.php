@@ -52,7 +52,6 @@
               @endif
                   {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                   {!! Form::hidden('type','G') !!}
-                  <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
                   {!! Form::label('Business Plan Year') !!}<br>
                   <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
