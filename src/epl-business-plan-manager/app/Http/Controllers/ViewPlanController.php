@@ -108,9 +108,22 @@ class ViewPlanController extends Controller
         $goat->priority = $request->priority;
         $goat->save();
 
+        $userCollabs = array();
+        $deptCollabs = array();
+
+        if ($request->collabs) {
+            foreach ($request->collabs as $col) {
+                if (strpos($col, 'user') !== false)
+                    array_push($userCollabs, substr($col, 5));
+                else
+                    array_push($deptCollabs, substr($col, 5));
+            }
+        }
+
         $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
-        $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
+        $collabs = array_fill_keys($userCollabs, ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
+        $goat->departmentCollaborators()->sync($deptCollabs);
 
         $this->createNewGoatChange($goat);
 
@@ -130,9 +143,9 @@ class ViewPlanController extends Controller
         if ($request->collabs) {
             foreach ($request->collabs as $col) {
                 if (strpos($col, 'user') !== false)
-                    array_push($userCollabs, $col[5]);
+                    array_push($userCollabs, substr($col, 5));
                 else
-                    array_push($deptCollabs, $col[5]);
+                    array_push($deptCollabs, substr($col, 5));
             }
         }
 
