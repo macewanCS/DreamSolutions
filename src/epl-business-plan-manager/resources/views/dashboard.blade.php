@@ -10,7 +10,21 @@
 
 		<div id="profile-right" >
 
-		<h2 style="margin-left: 18px">Hello, {{$user->first_name}}</h2>
+				
+		<table style="text-align: center; width: 1010px">
+			
+			<tr>
+				<td rowspan="2" width="700px"><h2 style="float: left; margin-left: 45px">Hello, {{$user->first_name}}</h2></td>
+				<td style="color: blue">{{$inProgress}}</td>
+				<td style="color: green">{{$complete}}</td>
+				<td style="color: red">{{$overdue}}</td>
+			</tr>
+			<tr>
+				<td>In Progress</td>
+				<td>Complete</td>
+				<td>Overdue</td>
+			</tr>
+		</table>
 			<h3 style="margin-left: 5%">Your Tasks:</h3>
 
 			<table id="todo">
@@ -56,7 +70,7 @@
 				<tbody>
 					@if ($recentEmpty)
 					<tr>
-						<td colspan="3" style="padding-left: 360px;"><h4>No recent activity to show</h4></td>
+						<td colspan="4" style="padding-left: 360px;"><h4>No recent activity to show</h4></td>
 					</tr>
 					@endif
 					@foreach ($recent as $task)
