@@ -61,7 +61,12 @@
             <tr class = "{{ $goat->type == 'G' ? "goal" :
                            ($goat->type == 'O' ? "objective" :
                            ($goat->type == 'A' ? "action" :
-                           ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}">
+                           ("task"))) }} {{ ($goat->goal_type == 'B' ? 'goat-bp' : 'goat-dept')}}
+                           @if (!$is_bplead && $goat->goal_type == 'D' && $goat->type == 'G' && !in_array($goat->department_id, $leadOf) && ($bp->has($index+1) && $bp[$index+1]->type == 'G') || !$bp->has($index+1))
+                            hidden
+                           @endif
+
+                            ">
 
                 @if ($goat->type == 'G' || $goat->type == 'O')
                     <td class="hidden">{{ $goat->type }}</td>
