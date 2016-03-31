@@ -65,8 +65,8 @@ class ViewPlanController extends Controller
 
         return view('view_plan')->with([
                 'bp' => $sorted,
-                'users' => User::all(),
-                'depts' => Department::all(),
+                'users' => User::orderBy('first_name')->get(),
+                'depts' => Department::orderBy('name')->get(),
                 'leadOf' => $leadOf,
                 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
                 'query' => $request, 'bp_id' => $currentBp->id,
@@ -83,11 +83,11 @@ class ViewPlanController extends Controller
         $goat = new Goat;
         $goat->parent_id = $parent_id;
         $goat->type = $goat->parent->type == 'G' ? 'O' :
-                      $goat->parent->type == 'O' ? 'A' :
-                      'T';
+                      ($goat->parent->type == 'O' ? 'A' :
+                      'T');
         $goat->priority = 2;
 
-        return view('goat_create', ['goat' => $goat, 'users' => User::all(), 'parentId' => $parent_id]);
+        return view('goat_create', ['goat' => $goat, 'users' => User::orderBy('first_name')->get(), 'parentId' => $parent_id]);
     }
 
     public function storeGoat(Request $request, $parent_id)
@@ -108,9 +108,22 @@ class ViewPlanController extends Controller
         $goat->priority = $request->priority;
         $goat->save();
 
+        $userCollabs = array();
+        $deptCollabs = array();
+
+        if ($request->collabs) {
+            foreach ($request->collabs as $col) {
+                if (strpos($col, 'user') !== false)
+                    array_push($userCollabs, substr($col, 5));
+                else
+                    array_push($deptCollabs, substr($col, 5));
+            }
+        }
+
         $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
-        $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
+        $collabs = array_fill_keys($userCollabs, ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
+        $goat->departmentCollaborators()->sync($deptCollabs);
 
         $this->createNewGoatChange($goat);
 
@@ -118,7 +131,7 @@ class ViewPlanController extends Controller
     }
 
     public function editGoat($id) {
-        return view('goat_edit', ['goat' => Goat::findOrFail($id), 'users' => User::all() ]);
+        return view('goat_edit', ['goat' => Goat::findOrFail($id), 'users' => User::orderBy('first_name')->get() ]);
     }
 
     public function updateGoat(Request $request, $id) {
@@ -130,9 +143,9 @@ class ViewPlanController extends Controller
         if ($request->collabs) {
             foreach ($request->collabs as $col) {
                 if (strpos($col, 'user') !== false)
-                    array_push($userCollabs, $col[5]);
+                    array_push($userCollabs, substr($col, 5));
                 else
-                    array_push($deptCollabs, $col[5]);
+                    array_push($deptCollabs, substr($col, 5));
             }
         }
 

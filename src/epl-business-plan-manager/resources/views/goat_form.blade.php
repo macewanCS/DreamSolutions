@@ -93,7 +93,7 @@
             <td>
                 <select name="collabs[]" class="select-multiple view-form-select" multiple="multiple">
                     <optgroup label="Departments and Teams">
-                    @foreach (\App\Department::all() as $dept)
+                    @foreach (\App\Department::orderBy('name')->get() as $dept)
                         <option value="{{ 'dept-'.$dept->id }}" {{ $goat->departmentCollaborators->contains($dept) ? 'selected' : '' }}>{{ $dept->name }}</option>
                     @endforeach
                     </optgroup>
