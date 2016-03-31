@@ -11,25 +11,23 @@
 }
 
 #edit-content #right{
-	/*margin-left: 600px;*/
 	float:right;
 	width: 500px;
 }
 
-#right table { 
-  	width: 100%; 
+#right table {
+  	width: 95%;
   	padding: 10px;
-  /*border-collapse: collapse; */
 }
 
-#right tr:nth-of-type(odd) { 
-  background: #dbe6f0; 
+#right tr:nth-of-type(odd) {
+  background: #dbe6f0;
 }
 
 #right th{
-	background: #004b8e; 
- 	color: white; 
-	font-weight: bold; 
+	background: #004b8e;
+ 	color: white;
+	font-weight: bold;
 }
 
 #right td{
@@ -48,24 +46,22 @@
 	width: 150px;
 	height: 30px;
 	margin-left: 427px;
+	border: none;
+	cursor: pointer;
 }
 
 #bottom .text-area{
 	margin-left: 150px;
 	width: 700px;
 	height: 90px;
-}	
+}
 
 #bottom .label{
 	margin-left: 150px;
 }
 
 #bottom .field{
-	margin-left: 150px;	
-}
-
-#bottom .clabel{
-	
+	margin-left: 150px;
 }
 
 #edit-content .options{

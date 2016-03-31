@@ -16,14 +16,14 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function dashboard()
     {
-        $user = Auth::user();	
+        $user = Auth::user();
         $recent = Change::where('user_id', $user->id)->get();
         $tasks = $user->goats()->orderBy('due_date')->get();
         $dept = $user->departments()->get();
@@ -41,7 +41,7 @@ class DashboardController extends Controller
         //     else{
         //         $task->soon = '';
         //     }
-        }
+        }//redo controller
 
 
         $inProgress = $tasks->where('complete', '0')->count();
@@ -57,9 +57,9 @@ class DashboardController extends Controller
             $recentEmpty = false;
             $task->task = Goat::where('id', $task->goat_id)->value('description');
         }
-        
+
     	return view('dashboard', compact('user', 'tasks', 'dept', 'recent', 'recentEmpty', 'tasksEmpty', 'complete', 'inProgress', 'overdue'));
     }
 
-   
+
 }
