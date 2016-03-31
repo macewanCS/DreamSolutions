@@ -77,4 +77,5 @@ class Goat extends Model
 
         return $goat;
     }
+
 }
