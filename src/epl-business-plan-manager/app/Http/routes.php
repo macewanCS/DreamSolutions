@@ -24,11 +24,11 @@ Route::get('ajax-objective', function () {
     $objectives = Goat::where('parent_id', '=', $goal_Id)->where('type', '=', 'O')->get();
     return Response::json($objectives);
 });
-Route::get('ajax-action', function () {
-    $obj_Id = Input::get('obj_Id');
-    $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
-    return Response::json($actions);
-});
+// Route::get('ajax-action', function () {
+//     $obj_Id = Input::get('obj_Id');
+//     $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
+//     return Response::json($actions);
+// });
 // Route::get('ajax-task', function () {
 //     $action_Id = Input::get('action_Id');
 //     $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
@@ -69,14 +69,6 @@ Route::get('ajax-goat_cUsers', function () {
     $actionId = Input::get('goat_Id');
     $data = Goat::where('id', '=', $actionId)->first()->userCollaborators;
     return Response::json($data);
-});
-Route::get('ajax-leadTask', function() {
-    // $user = Auth::user();
-    Log::info($user);
-    $actionId = Input::get('action_Id');
-    $tasks = Goat::where('parent_id', '=', $actionId)->where('type', '=', 'T')->$user->leadOf()->get();
-    Log::info($tasks);
-    return Response::json($tasks);
 });
 
 /*
@@ -124,17 +116,33 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/manage', 'ManagePlanController@store');
     Route::patch('/manage', 'ManagePlanController@update');
     Route::delete('/manage', 'ManagePlanController@destroy');
-    // Route::get('ajax-action', function () {
-    //     $obj_Id = Input::get('obj_Id');
-    //     $actions = Auth::user()->leadOf()->first()->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
-    //     return Response::json($actions);
-    // });
+    Route::get('ajax-action', function () {
+        $obj_Id = Input::get('obj_Id');
+        $user = Auth::user();
+        if ($user->is_bplead) {
+            $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
+            return Response::json($actions);
+        } else {
+            // $actions = $user->leadOf()->first()->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'T')->get();
+            $actions = $user->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
+            $action = $actions->map(function ($elem) {
+                return $elem;
+            });
+            return Response::json($action);
+        }
+    });
     Route::get('ajax-task', function () {
         $action_Id = Input::get('action_Id');
-        $tasks = Auth::user()->leadOf()->first()->leadOn()->where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
-        $task = $tasks->map(function ($elem) {
-            return $elem;
-        });
-        return Response::json($task);
+        $user = Auth::user();
+        if ($user->is_bplead) {
+            $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
+            return Response::json($tasks);
+        } else {
+            $tasks = $user->leadOf()->first()->leadOn()->where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
+            $task = $tasks->map(function ($elem) {
+                return $elem;
+            });
+            return Response::json($task);
+        }
     });
 });
