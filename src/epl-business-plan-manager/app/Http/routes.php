@@ -29,11 +29,11 @@ Route::get('ajax-action', function () {
     $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
     return Response::json($actions);
 });
-Route::get('ajax-task', function () {
-    $action_Id = Input::get('action_Id');
-    $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
-    return Response::json($tasks);
-});
+// Route::get('ajax-task', function () {
+//     $action_Id = Input::get('action_Id');
+//     $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
+//     return Response::json($tasks);
+// });
 Route::get('ajax-actionData', function () {
     $actionId = Input::get('action_Id');
     $data = Goat::where('id', '=', $actionId)->where('type', '=', 'A')->get();
@@ -124,4 +124,17 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/manage', 'ManagePlanController@store');
     Route::patch('/manage', 'ManagePlanController@update');
     Route::delete('/manage', 'ManagePlanController@destroy');
+    // Route::get('ajax-action', function () {
+    //     $obj_Id = Input::get('obj_Id');
+    //     $actions = Auth::user()->leadOf()->first()->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
+    //     return Response::json($actions);
+    // });
+    Route::get('ajax-task', function () {
+        $action_Id = Input::get('action_Id');
+        $tasks = Auth::user()->leadOf()->first()->leadOn()->where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
+        $task = $tasks->map(function ($elem) {
+            return $elem;
+        });
+        return Response::json($task);
+    });
 });

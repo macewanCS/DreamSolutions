@@ -25,7 +25,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $recent = Change::where('user_id', $user->id)->get();
-        $tasks = $user->collaboratorOn()->orderBy('due_date')->get();
+        $tasks = $user->goats()->orderBy('due_date')->get();
         $dept = $user->departments()->get();
         $recentEmpty = true;
         $tasksEmpty = true;

@@ -47,15 +47,30 @@ class ViewPlanController extends Controller
         }
 
         $leadOf = array();
+
         if (Auth::user()) {
             foreach (Auth::user()->leadOf as $dept) {
                 array_push($leadOf, $dept->id);
             }
         }
-        
-        return view('view_plan')->with(['bp' => $sorted, 'users' => User::all(),
-            'depts' => Department::all(), 'leadOf' => $leadOf, 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
-            'query' => $request, 'bp_id' => $currentBp->id, 'is_bplead' => Auth::user() && Auth::user()->is_bplead]);
+
+        $collaboratorGoals = array();
+        foreach ($leadOf as $dept_id) {
+            foreach (Department::find($dept_id)->collaboratorOn as $goat) {
+                array_push($collaboratorGoals, $goat->id);
+            }
+        }
+
+        return view('view_plan')->with([
+                'bp' => $sorted,
+                'users' => User::all(),
+                'depts' => Department::all(),
+                'leadOf' => $leadOf,
+                'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
+                'query' => $request, 'bp_id' => $currentBp->id,
+                'is_bplead' => Auth::user() && Auth::user()->is_bplead,
+                'collaboratorGoals' => $collaboratorGoals
+        ]);
     }
 
     public function showChanges($id) {
@@ -128,6 +143,16 @@ class ViewPlanController extends Controller
             $change->user_id = Auth::user()->id;
             $change->save();
         }
+
+        if ($request->success_measure != $goat->success_measure) {
+            $change = new \App\Change;
+            $change->change_type = 'M';
+            $change->description = "Success Measure: ".$request->success_measure;
+            $change->goat_id = $goat->id;
+            $change->user_id = Auth::user()->id;
+            $change->save();
+        }
+
         if ($request->leads) {
             $newLeads = $request->leads;
             $curLeads = $goat->userLeads()->get()->map(function($user) {
@@ -216,6 +241,7 @@ class ViewPlanController extends Controller
         }
 
         $goat->description = $request->description;
+        $goat->success_measure = $request->success_measure;
         $goat->due_date = $request->due_date;
         $goat->priority = $request->priority;
         $goat->department_id = $request->department;

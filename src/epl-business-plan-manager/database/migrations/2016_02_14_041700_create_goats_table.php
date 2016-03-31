@@ -17,6 +17,7 @@ class CreateGoatsTable extends Migration
             $table->char('type');
             $table->char('goal_type');
             $table->string('description');
+            $table->string('success_measure');
             $table->smallInteger('priority')->nullable();
             $table->date('due_date')->nullable();
             $table->boolean('complete')->nullable();
