@@ -34,17 +34,17 @@ input:disabled {
   display: none;
 }
 
-#reset {
+button {
     float            : right;
-
     background-color : #004b8e;
     font-weight      : bold;
     color            : #fff;
     border           : none;
     outline          : none;
+    margin: 0px 5px;
 }
 
-#reset:active {
+button:active {
     transform : translateY(1px);
 }
 

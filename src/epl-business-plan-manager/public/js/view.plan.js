@@ -25,11 +25,24 @@ $(document).ready(function() {
         },
         // set type, either numeric or text 
         type: 'numeric' 
-    }); 
+    });
+
+
+    $('#download').click(function() {
+        // tell the output widget do it's thing
+        $('#view-plan-table').trigger('outputTable');
+        console.log('clicked');
+    });
 
     $("#view-plan-table").tablesorter({
         duplicateSpan: false,
-        widgets : ["filter"],
+        widgets : ["filter", "output"],
+        widgetOptions: {
+          output_delivery      : 'd',         // (p)opup, (d)ownload
+          output_saveRows      : 'v',         // (a)ll, (v)isible, (f)iltered, jQuery filter selector (string only) or filter function
+          output_duplicateSpans : false,
+          output_ignoreColumns : [0, 1, 2, 5, 11]
+        }
     });
 
     $('button#reset').click(function() {
