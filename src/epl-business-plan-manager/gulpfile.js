@@ -21,8 +21,6 @@ elixir(function(mix) {
         ], 'public/build/css/all.css',
         'resources/assets/css');
 
-    // mix.version('public/css/all.css');
-
     mix.scripts([
         'ajaxJquery1.12.0.js',
         'bootstrap3.3.6.js',
