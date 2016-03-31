@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('head')
-  <link rel="stylesheet" href="{{ elixir('css/all.css') }}"></link>
+  {!! Html::style('build/css/all.css') !!}
   {!! Html::script('build/js/all.js') !!}
 @stop
 
