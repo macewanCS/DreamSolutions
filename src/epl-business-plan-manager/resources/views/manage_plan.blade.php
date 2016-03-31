@@ -1,11 +1,7 @@
 @extends('app')
 
 @section('head')
-  <link rel="stylesheet" type="text/css" href="/css/manage_plan.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+  {!! Html::style('build/css/all.css') !!}
   {!! Html::script('build/js/all.js') !!}
 @stop
 
@@ -56,7 +52,6 @@
               @endif
                   {!! Form::open(['url' => 'manage', 'action' => ['managePlanController@store']]) !!}
                   {!! Form::hidden('type','G') !!}
-                  <input id="businessItem" name="businessItem" type="checkbox" value="B" checked="checked">Business Plan Item?</input><br>
                   {!! Form::label('Business Plan Year') !!}<br>
                   <select class="bId" name="businessId" style="margin-bottom: 10px; margin-top: 1px;">
                     <option default selected disabled>Select BP Year</option>
@@ -286,7 +281,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" value="" type="date"><br>
+                    <input name="endDate" class="uActionDate" value="" type="date"><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uActionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -334,7 +329,7 @@
                     </select>
                     </div>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" value="" type="date"><br>
+                    <input name="endDate" class="uTaskDate" value="" type="date"><br>
                     {!! Form::label('Priority') !!}<br>
                     {!! Form::select('priority', ['1' => 'High', '2' => 'Medium', '3' => 'Low'], null, ['class' => 'uTaskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
@@ -428,9 +423,9 @@
                     {!! Form::label('Collaborator') !!}<br>
                     <table id="dActionCollabs"></table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"><br>
+                    <input name="endDate" class="dActionDate" readonly="readonly" value="" type="date"><br>
                     {!! Form::label(null, 'Priority: ') !!}
-                    {!! Form::label(null, null, ['class' => 'actionPriority']) !!}<br>
+                    {!! Form::label(null, null, ['class' => 'dActionPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}
                   </div>
                   {!! Form::close() !!}
@@ -464,7 +459,7 @@
                     <table id="dTaskCollabs">
                     </table><br>
                     {!! Form::label('End date') !!}<br>
-                    <input name="endDate" class="dDate" readonly="readonly" value="" type="date"><br>
+                    <input name="endDate" class="dTaskDate" readonly="readonly" value="" type="date"><br>
                     {!! Form::label(null, 'Priority: ') !!}
                     {!! Form::label(null, null, ['class' => 'taskPriority']) !!}<br>
                     {!! Form::submit('submit', ['class' => 'button']) !!}

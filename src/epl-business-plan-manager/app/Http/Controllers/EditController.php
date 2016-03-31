@@ -13,17 +13,17 @@ use Auth;
 class EditController extends Controller
 {
 
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function show($id){
-        
+
         $changes = Change::where('goat_id', $id)->get();
         $task = Goat::where('id', $id)->first();
         $leads = $task->userLeads()->get();
-        
+
         $collabs = $task->userCollaborators()->get();
         $leadsArray = array();
         $collabsArray = array();
@@ -53,13 +53,13 @@ class EditController extends Controller
         }
 
         if($task->complete){
-            $message = array('#669966', 'Complete');   
+            $message = array('#669966', 'Complete');
         }
-        
+
 
         $leads = join(", ", $leadsArray);
         $collabs = join(", ", $collabsArray);
-        
+
         $priority = array("High", "Medium", "Low");
 
 
@@ -71,7 +71,7 @@ class EditController extends Controller
     		array('Status', 'In Progress'),
     		array('Priority', $priority[$task->priority - 1])
     	);
-    	
+
     	return view('edit', compact('fields', 'changes', 'needsResize', 'empty', 'task', 'message'));
     }
 
@@ -79,7 +79,7 @@ class EditController extends Controller
 
         $user = Auth::user();
         $change = new Change;
-      
+
         if ($req->option === 'Status'){
             $changeType = 'S';
         }
@@ -104,7 +104,7 @@ class EditController extends Controller
             'user_id' => $user->id
             ]);
 
-        return redirect('dashboard');
+        return back();
     }
 
 }

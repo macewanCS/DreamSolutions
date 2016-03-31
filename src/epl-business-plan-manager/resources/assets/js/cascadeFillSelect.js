@@ -68,18 +68,19 @@ $(document).ready(function() {
           });
           $.get('/ajax-actionData?action_Id=' + action_Id, function(data){
           $.each(data, function(index, actionData){
-            $('.actionPriority').empty();
-            $('.actionPriority').text(pri[actionData.priority-1]);
+            $('.dActionPriority').empty();
+            $('.dActionPriority').text(pri[actionData.priority-1]);
+            $('.dActionDate').val(actionData.due_date);
             });
           });
         } else { // Delete, task
           $.get('/ajax-task?action_Id=' + action_Id, function(data){
-            $('.taskId').empty();
-            $('.taskId').append('<option default selected disabled>Select Task</option>');
-            $.each(data, function(index, taskObj){
-              $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
-            });
+          $('.taskId').empty();
+          $('.taskId').append('<option default selected disabled>Select Task</option>');
+          $.each(data, function(index, taskObj){
+            $('.taskId').append('<option value="' + taskObj.id + '">' + taskObj.description + '</option>');
           });
+        });
         }
       } else { // In update section.
         if ($('#uaction').hasClass('active')) {
@@ -97,6 +98,12 @@ $(document).ready(function() {
           });
           $('#uActionCollabs').val(cUsers).trigger("change");
           });
+          $.get('/ajax-actionData?action_Id=' + action_Id, function(data){
+          $.each(data, function(index, actionData){
+            $('.uActionPriority').val(actionData.priority).trigger("change");
+            $('.uActionDate').val(actionData.due_date);
+          });
+          });
           $('.actionDescription').empty();
           var actionId = $('.actionId option[value=' + action_Id + ']').first().text();
           $('.actionDescription').text(actionId);
@@ -109,14 +116,6 @@ $(document).ready(function() {
             });
           });
         }
-      }
-      if (($('#uaction').hasClass('active')) || ($('#daction').hasClass('active'))) {
-        $.get('/ajax-actionData?action_Id=' + action_Id, function(data){
-        $.each(data, function(index, actionData){
-          $('.uActionPriority').val(actionData.priority).trigger("change");
-          $('.dDate').val(actionData.due_date);
-        });
-        });
       }
     });
 //----------------------------------------------------------------------------------------------------------------
@@ -143,6 +142,12 @@ $(document).ready(function() {
               $('.taskPriority').text(pri[taskData.priority-1]);
             });
           });
+          $.get('/ajax-taskData?task_Id=' + task_Id, function(data){
+          $.each(data, function(index, taskData){
+            $('.dTaskPriority').val(taskData.priority).trigger("change");
+            $('.dTaskDate').val(taskData.due_date);
+          });
+          });
         }
       } else { // In update section.
         if ($('#utask').hasClass('active')) {
@@ -158,20 +163,18 @@ $(document).ready(function() {
           $.each(data, function(index, userData) {
             cUsers.push(userData.id);
           });
+          $.get('/ajax-taskData?task_Id=' + task_Id, function(data){
+          $.each(data, function(index, taskData){
+            $('.uTaskPriority').val(taskData.priority).trigger("change");
+            $('.uTaskDate').val(taskData.due_date);
+          });
+          });
           $('#uTaskCollabs').val(cUsers).trigger("change");
           });
           $('.taskDescription').empty();
           var taskId = $('.taskId option[value=' + task_Id + ']').first().text();
           $('.taskDescription').text(taskId);
       }
-    }
-    if (($('#utask').hasClass('active')) || ($('#dtask').hasClass('active'))) {
-      $.get('/ajax-taskData?task_Id=' + task_Id, function(data){
-      $.each(data, function(index, taskData){
-        $('.uTaskPriority').val(taskData.priority).trigger("change");
-        $('.dDate').val(taskData.due_date);
-      });
-      });
     }
     });
   });

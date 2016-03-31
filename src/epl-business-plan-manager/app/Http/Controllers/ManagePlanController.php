@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Log;
 use Auth;
 use App\Goat;
 use App\User;
@@ -40,7 +38,6 @@ class ManagePlanController extends Controller
 
     public function store(Request $request)
     {
-        Log::info($request);
         $elem = new Goat;
         $type = $request->type;
         $elem->bid = $request->businessId;
@@ -49,11 +46,7 @@ class ManagePlanController extends Controller
             'businessId' => 'required',
             'goalDescription' => 'required|min:10|max:300'
             ]);
-            if (Input::get('businessItem') === 'B') {
-                $elem->goal_type = 'B';
-            } else {
-                $elem->goal_type = 'D';
-            }
+            $elem->goal_type = 'B';
             $elem->type = $type;
             $elem->description = $request->goalDescription;
             $elem->priority = null;
@@ -61,6 +54,7 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = null;
             $elem->complete = null;
+            $elem->department_id = null;
             $elem->save();
         } elseif ($type == 'O') {
             $this->validate($request, [
@@ -76,6 +70,7 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = $request->goalId;
             $elem->complete = null;
+            $elem->department_id = null;
             $elem->save();
         } elseif ($type == 'A') {
             $this->validate($request, [
@@ -94,6 +89,7 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = $request->objId;
             $elem->complete = null;
+            $elem->department_id = Auth::user()->leadOf()->first()->id;
             $elem->save();
             if ($request->leadName === null && $request->collaboratorName === null) {
             } elseif ($request->leadName === null) {
@@ -125,6 +121,7 @@ class ManagePlanController extends Controller
             $elem->budget = null;
             $elem->parent_id = $request->actionId;
             $elem->complete = null;
+            $elem->department_id = Auth::user()->leadOf()->first()->id;
             $elem->save();
             if ($request->leadName === null && $request->collaboratorName === null) {
                 return back();
