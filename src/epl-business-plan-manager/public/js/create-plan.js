@@ -38,7 +38,13 @@ $(document).ready(function() {
         onStepChanging: function (event, currentIndex, newIndex) {
 
             /* Action performed based on current index */
-            if (currentIndex === 0) { populateYears(); }
+            if (currentIndex === 0) {
+                populateYears();
+
+                if (sYear >= eYear) return false;
+
+
+            }
             if (currentIndex === 1) {
                 if (document.getElementById('goal0') === undefined || document.getElementById('goal0') === null) {
                     return false;
