@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $pagesize = 5;
+        $pagesize = 15;
         $query = $request->input();
         //unset($query['page']);
 
