@@ -78,7 +78,7 @@ class ManagePlanController extends Controller
             'goalId' => 'required',
             'objId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'endDate' => 'required|date|after:today',
+            'endDate' => 'required|date',
             'leadName' => 'required'
             ]);
             $elem->type = $type;
@@ -110,7 +110,7 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'endDate' => 'required|date|after:today',
+            'endDate' => 'required|date',
             'leadName' => 'required'
             ]);
             $elem->type = $type;
@@ -167,7 +167,7 @@ class ManagePlanController extends Controller
             'objId' => 'required',
             'actionId' => 'required',
             'actionDescription' => 'required|min:10|max:300',
-            'endDate' => 'required|date|after:today',
+            'endDate' => 'required|date',
             'leadName' => 'required'
             ]);
             $elem = Goat::find($request->actionId);
@@ -182,7 +182,7 @@ class ManagePlanController extends Controller
             'actionId' => 'required',
             'taskId' => 'required',
             'taskDescription' => 'required|min:10|max:300',
-            'endDate' => 'required|date|after:today',
+            'endDate' => 'required|date',
             'leadName' => 'required'
             ]);
             $elem = Goat::find($request->taskId);
