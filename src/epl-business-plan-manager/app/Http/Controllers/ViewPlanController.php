@@ -65,8 +65,8 @@ class ViewPlanController extends Controller
 
         return view('view_plan')->with([
                 'bp' => $sorted,
-                'users' => User::all(),
-                'depts' => Department::all(),
+                'users' => User::orderBy('first_name')->get(),
+                'depts' => Department::orderBy('name')->get(),
                 'leadOf' => $leadOf,
                 'plans' => BusinessPlan::orderBy('id', 'desc')->get(),
                 'query' => $request, 'bp_id' => $currentBp->id,
@@ -87,7 +87,7 @@ class ViewPlanController extends Controller
                       'T');
         $goat->priority = 2;
 
-        return view('goat_create', ['goat' => $goat, 'users' => User::all(), 'parentId' => $parent_id]);
+        return view('goat_create', ['goat' => $goat, 'users' => User::orderBy('first_name')->get(), 'parentId' => $parent_id]);
     }
 
     public function storeGoat(Request $request, $parent_id)
@@ -118,7 +118,7 @@ class ViewPlanController extends Controller
     }
 
     public function editGoat($id) {
-        return view('goat_edit', ['goat' => Goat::findOrFail($id), 'users' => User::all() ]);
+        return view('goat_edit', ['goat' => Goat::findOrFail($id), 'users' => User::orderBy('first_name')->get() ]);
     }
 
     public function updateGoat(Request $request, $id) {
