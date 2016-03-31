@@ -96,8 +96,8 @@ class ViewPlanController extends Controller
 
         $goat->parent_id = $parent_id;
         $goat->type = $goat->parent->type == 'G' ? 'O' :
-                      $goat->parent->type == 'O' ? 'A' :
-                      'T';
+                      ($goat->parent->type == 'O' ? 'A' :
+                      'T');
         $goat->goal_type = $goat->parent->goal_type;
         $goat->bid = $goat->parent->bid;
         $goat->department_id = Auth::user()->leadOf()->first()->id;
