@@ -11,6 +11,7 @@
 <script src="/js/view.plan.js"></script>
 <script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 <link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+<script src="/js/widget-output.js"></script>
 
 @stop
 
@@ -39,6 +40,7 @@
             <li><a href='#' data-jq-dropdown="#date-dropdown">Due date</a></li>
             <li><a href='#' data-jq-dropdown="#status-dropdown">Status</a></li>
         </ul>
+        {!! Form::button('Export CSV', ['id' => 'download']); !!}
         {!! Form::button('Reset View', ['id' => 'reset']); !!}
     </div>
     <table id="view-plan-table">
@@ -70,6 +72,7 @@
                     @endif
                     {{$goat->description}}
                     </td>
+                    <td class="hidden"></td>
                     <td align="right">
                     @if ($is_bplead || ($goat->goal_type == 'D' && in_array($goat->department_id, $leadOf) && $goat->type == 'O'))
                     <a href="/view/{{ $goat->id }}/edit" data-featherlight="ajax"><img src="/images/edit-white.png" width=15px height=15px></a>
