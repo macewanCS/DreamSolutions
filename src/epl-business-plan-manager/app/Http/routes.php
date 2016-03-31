@@ -24,16 +24,6 @@ Route::get('ajax-objective', function () {
     $objectives = Goat::where('parent_id', '=', $goal_Id)->where('type', '=', 'O')->get();
     return Response::json($objectives);
 });
-// Route::get('ajax-action', function () {
-//     $obj_Id = Input::get('obj_Id');
-//     $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
-//     return Response::json($actions);
-// });
-// Route::get('ajax-task', function () {
-//     $action_Id = Input::get('action_Id');
-//     $tasks = Goat::where('parent_id', '=', $action_Id)->where('type', '=', 'T')->get();
-//     return Response::json($tasks);
-// });
 Route::get('ajax-actionData', function () {
     $actionId = Input::get('action_Id');
     $data = Goat::where('id', '=', $actionId)->where('type', '=', 'A')->get();
@@ -123,7 +113,6 @@ Route::group(['middleware' => 'web'], function () {
             $actions = Goat::where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
             return Response::json($actions);
         } else {
-            // $actions = $user->leadOf()->first()->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'T')->get();
             $actions = $user->leadOn()->where('parent_id', '=', $obj_Id)->where('type', '=', 'A')->get();
             $action = $actions->map(function ($elem) {
                 return $elem;

@@ -51,7 +51,6 @@ $(document).ready(function() {
 //----------------------------------------------------------------------------------------------------------------
     $('.actionId').on('change', function(e){
       var action_Id = e.target.value;
-      var i = 2;
 
       if ($('#delete').hasClass('active')) {
         if ($('#daction').hasClass('active')) {
