@@ -14,6 +14,8 @@ use Carbon\Carbon;
 
 class ViewPlanController extends Controller
 {
+    use ChangeLogger;
+
     public function index(Request $request) {
 
         if ($request->bp) {
@@ -83,6 +85,7 @@ class ViewPlanController extends Controller
         $goat->type = $goat->parent->type == 'G' ? 'O' :
                       $goat->parent->type == 'O' ? 'A' :
                       'T';
+        $goat->priority = 2;
 
         return view('goat_create', ['goat' => $goat, 'users' => User::all(), 'parentId' => $parent_id]);
     }
@@ -109,12 +112,7 @@ class ViewPlanController extends Controller
         $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
 
-        $change = new \App\Change;
-        $change->change_type = 'G';
-        $change->description = "GOAT created";
-        $change->goat_id = $goat->id;
-        $change->user_id = Auth::user()->id;
-        $change->save();
+        $this->createNewGoatChange($goat);
 
         return redirect('/view');
     }
@@ -126,119 +124,19 @@ class ViewPlanController extends Controller
     public function updateGoat(Request $request, $id) {
         $goat = Goat::find($id);
 
-        if ($request->department != $goat->department_id) {
-            $change = new \App\Change;
-            $change->change_type = 'L';
-            $change->description = 'Assigned to ' . Department::find($request->department)->name;
-            $change->goat_id = $goat->id;
-            $change->user_id = Auth::user()->id;
-            $change->save();
-        }
-
-        if ($request->description != $goat->description) {
-            $change = new \App\Change;
-            $change->change_type = 'D';
-            $change->description = $request->description;
-            $change->goat_id = $goat->id;
-            $change->user_id = Auth::user()->id;
-            $change->save();
-        }
-
-        if ($request->success_measure != $goat->success_measure) {
-            $change = new \App\Change;
-            $change->change_type = 'M';
-            $change->description = "Success Measure: ".$request->success_measure;
-            $change->goat_id = $goat->id;
-            $change->user_id = Auth::user()->id;
-            $change->save();
-        }
-
-        if ($request->leads) {
-            $newLeads = $request->leads;
-            $curLeads = $goat->userLeads()->get()->map(function($user) {
-                return $user->id;
-            })->toArray();
-            sort($newLeads);
-            sort($curLeads);
-
-            if ($newLeads != $curLeads) {
-                if ($diff = array_diff($newLeads, $curLeads)) {
-                    $users = array_map(function($id) {
-                        return User::findOrFail($id)->name();
-                    }, $diff);
-                    $change = new \App\Change;
-                    $change->change_type = 'L';
-                    $change->description = "Added " . join(',', $users);
-                    $change->goat_id = $goat->id;
-                    $change->user_id = Auth::user()->id;
-                    $change->save();
-                } 
-                if ($diff = array_diff($curLeads, $newLeads)) {
-                    $users = array_map(function($id) {
-                        return User::findOrFail($id)->name();
-                    }, $diff);
-                    $change = new \App\Change;
-                    $change->change_type = 'L';
-                    $change->description = "Removed " . join(',', $users);
-                    $change->goat_id = $goat->id;
-                    $change->user_id = Auth::user()->id;
-                    $change->save();
-                }
-            }
-        }
+        $userCollabs = array();
+        $deptCollabs = array();
 
         if ($request->collabs) {
-            $newCollaborators = $request->collabs;
-            $curCollaborators = $goat->userCollaborators()->get()->map(function($user) {
-                return $user->id;
-            })->toArray();
-            sort($newCollaborators);
-            sort($curCollaborators);
-
-            if ($newCollaborators != $curCollaborators) {
-                if ($diff = array_diff($newCollaborators, $curCollaborators)) {
-                    $users = array_map(function($id) {
-                        return User::findOrFail($id)->name();
-                    }, $diff);
-                    $change = new \App\Change;
-                    $change->change_type = 'C';
-                    $change->description = "Added " . join(',', $users);
-                    $change->goat_id = $goat->id;
-                    $change->user_id = Auth::user()->id;
-                    $change->save();
-                }
-
-                if ($diff = array_diff($curCollaborators, $newCollaborators)) {
-                    $users = array_map(function($id) {
-                        return User::findOrFail($id)->name();
-                    }, $diff);
-                    $change = new \App\Change;
-                    $change->change_type = 'C';
-                    $change->description = "Removed " . join(',', $users);
-                    $change->goat_id = $goat->id;
-                    $change->user_id = Auth::user()->id;
-                    $change->save();
-                }
+            foreach ($request->collabs as $col) {
+                if (strpos($col, 'user') !== false)
+                    array_push($userCollabs, $col[5]);
+                else
+                    array_push($deptCollabs, $col[5]);
             }
         }
 
-        if ($goat->due_date != $request->due_date) {
-            $change = new \App\Change;
-            $change->change_type = 'T';
-            $change->description = "Changed from " . \Carbon\Carbon::parse($goat->due_date)->toDateString() . " to " . \Carbon\Carbon::parse($request->due_date)->toDateString();
-            $change->goat_id = $goat->id;
-            $change->user_id = Auth::user()->id;
-            $change->save();
-        }
-
-        if ($goat->priority != $request->priority) {
-            $change = new \App\Change;
-            $change->change_type = 'P';
-            $change->description = "Changed from " . $this->priority_string($goat->priority) . " to " . $this->priority_string($request->priority);
-            $change->goat_id = $goat->id;
-            $change->user_id = Auth::user()->id;
-            $change->save();
-        }
+        $this->createChanges($goat, $request->department, $request->description, $request->success_measure, $request->leads, $userCollabs, $deptCollabs, $request->due_date, $request->priority);
 
         $goat->description = $request->description;
         $goat->success_measure = $request->success_measure;
@@ -248,8 +146,9 @@ class ViewPlanController extends Controller
         $goat->save();
 
         $leads = array_fill_keys(($request->leads ? $request->leads : array()), ['user_role' => 'L']);
-        $collabs = array_fill_keys(($request->collabs ? $request->collabs : array()), ['user_role' => 'C']);
+        $collabs = array_fill_keys($userCollabs, ['user_role' => 'C']);
         $goat->userLeads()->sync($leads + $collabs);
+        $goat->departmentCollaborators()->sync($deptCollabs);
 
         return redirect('/view');
     }
