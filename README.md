@@ -1,4 +1,4 @@
-# DreamSolutions
+# DreamSolutions - EPL Business Plan Manager
 
 Requirements
 ------------
