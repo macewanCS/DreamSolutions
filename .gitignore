@@ -1,3 +1,9 @@
-**/.DS_Store
-**/.env
-**/npm-debug.log
+/vendor
+/node_modules
+/public/css/all.css*
+/resources/css/app.css
+/public/build
+Homestead.yaml
+Homestead.json
+.env
+**/.idea
