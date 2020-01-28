@@ -22,7 +22,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::auth();
 Route::get('/dashboard', 'DashboardController@dashboard');
 
 // View plan controller routes
