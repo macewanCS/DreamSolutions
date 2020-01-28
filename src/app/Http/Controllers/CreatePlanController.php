@@ -59,7 +59,7 @@ class CreatePlanController extends Controller
             }
         }
 
-        foreach (Department::lists('name') as $dept_name) {
+        foreach (Department::pluck('name') as $dept_name) {
             $newGoal = new Goat();
             $newGoal->type = 'G';
             $newGoal->parent_id = null;

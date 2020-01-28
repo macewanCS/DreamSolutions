@@ -51,7 +51,7 @@ class DepartmentController extends Controller
     {
         Department::create($request->input());
 
-        foreach (BusinessPlan::lists('id') as $bid) {
+        foreach (BusinessPlan::pluck('id') as $bid) {
             $newGoal = new Goat();
             $newGoal->type = 'G';
             $newGoal->parent_id = null;
