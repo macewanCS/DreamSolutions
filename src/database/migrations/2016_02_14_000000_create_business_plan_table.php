@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -27,6 +28,6 @@ class CreateBusinessPlanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('business_plans');
+        Schema::dropIfExists('business_plans');
     }
 }

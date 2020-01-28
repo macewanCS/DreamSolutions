@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -34,6 +35,6 @@ class CreateGoatUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goat_user');
+        Schema::dropIfExists('goat_user');
     }
 }
